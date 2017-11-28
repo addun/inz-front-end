@@ -35,6 +35,10 @@ export class ApiService {
       .patch(`${this.serverUrl}${url}`, body, options);
   }
 
+  options(url: string, options?: Options) {
+    return this.httpClient.options(url, options);
+  }
+
 }
 
 
