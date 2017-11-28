@@ -1,10 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+
+import {RoutersRoutingModule} from './routers-routing.module';
+import {RoutersComponent} from './routers.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RoutersRoutingModule
   ],
-  declarations: []
+  declarations: [
+    RoutersComponent
+  ]
 })
-export class RoutersModule { }
+export class RoutersModule {
+}
