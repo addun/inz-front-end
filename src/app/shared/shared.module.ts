@@ -6,7 +6,7 @@ import {InputGeneratorComponent} from './components/input-generator/input-genera
   imports: [
     CommonModule
   ],
-  declarations: [InputGeneratorComponent]
+  declarations: []
 })
 export class SharedModule {
 }
