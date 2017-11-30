@@ -17,4 +17,8 @@ export class TreeService {
     return this.apiService.get(`tree/nodes/0/children/`);
   }
 
+  addTree(tree: Tree): Observable<Tree> {
+    return this.apiService.post(`tree/nodes/`, tree);
+  }
+
 }

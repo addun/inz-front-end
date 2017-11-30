@@ -3,4 +3,8 @@ export class Tree {
   name: string;
   parent?: number;
   hasChildren: boolean;
+
+  constructor(tree: Tree) {
+    Object.assign(this, tree);
+  }
 }
