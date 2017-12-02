@@ -1,19 +1,13 @@
 <div class="app__container">
 
   <div class="app__tree">
-    <tree-root #tree [nodes]="nodes" [options]="treeOptions">
-
-      <ng-template #treeNodeTemplate let-node let-index="index">
-
-        <i class="fa fa-folder-o" aria-hidden="true"></i>
-        <!--<i class="fa fa-file-o" aria-hidden="true"></i>-->
-        <span>{{ node.data.name }}</span>
-
-        <i class="fa fa-plus-square-o" aria-hidden="true" (click)="addTreeNodeToNode(node)"></i>
-
-      </ng-template>
-
-    </tree-root>
+    <tree
+      #treeFFS
+      [tree]="tree"
+      (nodeRemoved)="onNodeRemoved($event)"
+      (nodeRenamed)="onNodeRenamed($event)"
+      (nodeCreated)="onNodeCreated($event)">
+    </tree>
   </div>
 
   <div class="app__table">
