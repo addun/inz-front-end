@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {TreeService} from './tree/services/tree/tree.service';
-import {NodeEvent, Tree, TreeModel} from 'ng2-tree';
+import {MenuItemSelectedEvent, NodeEvent, NodeMenuItemAction, Tree, TreeModel} from 'ng2-tree';
 import {Directory} from './tree/models/directory.model';
 import {Tag} from './tree/models/tag.model';
 import {TreeToastService} from './tree/services/toast/tree-toast.service';
@@ -16,6 +16,8 @@ export class RoutersComponent implements OnInit, AfterViewInit {
     value: '/',
     id: 'root',
     settings: {
+      'rightMenu': true,
+      isCollapsedOnInit: true,
       cssClasses: {
         expanded: 'fa fa-caret-down',
         collapsed: 'fa fa-caret-right',
@@ -24,8 +26,16 @@ export class RoutersComponent implements OnInit, AfterViewInit {
       },
       templates: {
         node: '<i class="fa fa-folder-o"></i>',
-        leaf: '<i class="fa fa-file-o"></i>'
-      }
+        leaf: '<i class="fa fa-file-o"></i>',
+        'leftMenu': '<i class="fa fa-navicon fa-lg"></i>'
+      },
+      'menuItems': [
+        {action: NodeMenuItemAction.Rename, name: 'Rename', cssClass: 'fa fa-pencil-square-o'},
+        {action: NodeMenuItemAction.NewFolder, name: 'New folder', cssClass: 'fa fa-folder-o'},
+        {action: NodeMenuItemAction.NewTag, name: 'New file', cssClass: 'fa fa-file-o'},
+        {action: NodeMenuItemAction.Remove, name: 'Remove', cssClass: 'fa fa-times'},
+        {action: NodeMenuItemAction.Custom, name: 'Add', cssClass: 'fa fa-book'}
+      ]
     },
     children: []
   };
@@ -42,12 +52,29 @@ export class RoutersComponent implements OnInit, AfterViewInit {
     this.treeService
       .getTreeStructure()
       .subscribe(structure => {
-        console.log(structure);
         rootNodeController.setChildren(structure);
       });
   }
 
-  public onNodeRemoved(e: NodeEvent): void {
+  onNodeSelected(e: NodeEvent): void {
+    if (e.node.isLeaf()) {
+      console.log('laaf');
+    } else {
+      console.log('dir');
+    }
+  }
+
+  onMenuItemSelected(e: MenuItemSelectedEvent): void {
+    if (e.selectedItem === 'Add') {
+      this.doSomethink(e.node);
+    }
+  }
+
+  doSomethink(e: Tree) {
+    console.log(e);
+  }
+
+  onNodeRemoved(e: NodeEvent): void {
     if (e.node.isLeaf()) {
       this.removeTag(e.node);
     } else {
@@ -55,7 +82,7 @@ export class RoutersComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public onNodeRenamed(e: NodeEvent): void {
+  onNodeRenamed(e: NodeEvent): void {
     if (e.node.isLeaf()) {
       this.patchTag(e.node);
     } else {
@@ -64,7 +91,7 @@ export class RoutersComponent implements OnInit, AfterViewInit {
   }
 
 
-  public onNodeCreated(e: NodeEvent, controller): void {
+  onNodeCreated(e: NodeEvent, controller): void {
     if (e.node.isLeaf()) {
       this.saveTag(e.node);
     } else {
