@@ -3,6 +3,7 @@ import {TreeService} from './tree/services/tree/tree.service';
 import {NodeEvent, Tree, TreeModel} from 'ng2-tree';
 import {Directory} from './tree/models/directory.model';
 import {Tag} from './tree/models/tag.model';
+import {TreeToastService} from './tree/services/toast/tree-toast.service';
 
 @Component({
   selector: 'inz-routers',
@@ -29,7 +30,7 @@ export class RoutersComponent implements OnInit, AfterViewInit {
     children: []
   };
 
-  constructor(private treeService: TreeService) {
+  constructor(private treeService: TreeService, private treeToastService: TreeToastService) {
   }
 
 
@@ -79,7 +80,9 @@ export class RoutersComponent implements OnInit, AfterViewInit {
     });
     this.treeService
       .patchNode(directory)
-      .subscribe();
+      .subscribe(response => {
+        this.treeToastService.directoryRenamed();
+      });
   }
 
   private saveNode(node: Tree) {
@@ -91,13 +94,16 @@ export class RoutersComponent implements OnInit, AfterViewInit {
       .addNode(directory)
       .subscribe(response => {
         node.id = response.id;
+        this.treeToastService.directorySaved();
       });
   }
 
   private removeNode(node: Tree) {
     this.treeService
       .deleteNode(+node.id)
-      .subscribe();
+      .subscribe(response => {
+        this.treeToastService.directoryRemoved();
+      });
   }
 
 
@@ -109,7 +115,9 @@ export class RoutersComponent implements OnInit, AfterViewInit {
     });
     this.treeService
       .patchTag(tag)
-      .subscribe();
+      .subscribe(response => {
+        this.treeToastService.fileRenamed();
+      });
   }
 
   private saveTag(node: Tree) {
@@ -121,12 +129,15 @@ export class RoutersComponent implements OnInit, AfterViewInit {
       .addTag(tag)
       .subscribe(response => {
         node.id = response.id;
+        this.treeToastService.fileSaved();
       });
   }
 
   private removeTag(node: Tree) {
     this.treeService
       .deleteTag(+node.id)
-      .subscribe();
+      .subscribe(response => {
+        this.treeToastService.fileRemoved();
+      });
   }
 }
