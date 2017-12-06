@@ -19,6 +19,10 @@ export class TreeToastService {
     this.toastr.success('Directory has been renamed');
   }
 
+  operationError() {
+    this.toastr.error('Error while make operations');
+  }
+
 
   fileSaved() {
     this.toastr.success('File has been created');
@@ -30,6 +34,10 @@ export class TreeToastService {
 
   fileRenamed() {
     this.toastr.success('File has been renamed');
+  }
+
+  operationNotSupported() {
+    this.toastr.error('Operation is not supported yet');
   }
 
 }

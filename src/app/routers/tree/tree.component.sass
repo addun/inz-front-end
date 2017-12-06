@@ -1,0 +1,18 @@
+.app
+
+  &__container
+    height: 100%
+    display: grid
+    grid-template-columns: 450px auto
+    grid-template-rows: 50% 50%
+    grid-template-areas: "tree table" "tree table"
+
+  &__tree
+    grid-area: tree
+
+  &__table
+    grid-area: table
+    overflow: auto
+
+//&__image
+//  grid-area: image

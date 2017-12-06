@@ -1,0 +1,42 @@
+<div class="app__container">
+
+  <div class="app__tree">
+    <tree
+      #treeFFS
+      [tree]="tree"
+      (menuItemSelected)="onMenuItemSelected($event)"
+      (nodeSelected)="onNodeSelected($event)"
+      (nodeRemoved)="onNodeRemoved($event)"
+      (nodeRenamed)="onNodeRenamed($event)"
+      (nodeCreated)="onNodeCreated($event)">
+    </tree>
+  </div>
+
+  <div class="app__table">
+
+    <table class="table table-hover">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Location</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let machin of randomData, let i = index">
+        <th>{{i+1}}</th>
+        <td>{{machin.name}}</td>
+        <td>{{machin.weight}}</td>
+        <td>{{machin.location}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="app__image">
+
+  </div>
+
+</div>
