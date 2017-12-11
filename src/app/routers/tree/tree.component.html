@@ -18,17 +18,17 @@
       <thead class="thead-light">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Weight</th>
-        <th scope="col">Location</th>
+        <th scope="col">Description</th>
+        <th scope="col">Number of tools in toolmagazine</th>
+        <th scope="col">Automatically pallet changeable</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let machin of randomData, let i = index">
+      <tr *ngFor="let machineToolRequirement of machineToolRequirements, let i = index">
         <th>{{i+1}}</th>
-        <td>{{machin.name}}</td>
-        <td>{{machin.weight}}</td>
-        <td>{{machin.location}}</td>
+        <td>{{machineToolRequirement.description}}</td>
+        <td>{{machineToolRequirement.number_of_tools_in_tool_magazine}}</td>
+        <td>{{machineToolRequirement.automatically_pallet_changeable}}</td>
       </tr>
       </tbody>
     </table>

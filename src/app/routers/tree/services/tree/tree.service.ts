@@ -5,6 +5,7 @@ import {Directory} from '../../models/directory.model';
 import {Tag} from '../../models/tag.model';
 import {TreeStructure} from '../../models/tree-structure.model';
 import {map} from 'rxjs/operators';
+import {MachineToolRequirement} from '../../../forms/shared/models/machine-tool-requirement';
 
 @Injectable()
 export class TreeService {
@@ -42,6 +43,17 @@ export class TreeService {
 
   deleteTag(tagId: number): Observable<Tag> {
     return this.apiService.delete(`${this.serviceBaseUrl}tags/${tagId}/`);
+  }
+
+  addMachineTooRequirementToTag(tagId: number, machineToolRequirementId: number) {
+    return this.apiService.post(`${this.serviceBaseUrl}tags-machine-tool-requirements/`, {
+      tag: tagId,
+      machine_tool_requirement: machineToolRequirementId
+    });
+  }
+
+  getMachineTooRequirementsByTag(tagId: number): Observable<MachineToolRequirement[]> {
+    return this.apiService.get(`${this.serviceBaseUrl}machine-tool-requirement-with-tag/${tagId}/`);
   }
 
 

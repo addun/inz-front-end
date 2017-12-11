@@ -4,6 +4,8 @@ import {TreeService} from './services/tree/tree.service';
 import {TreeToastService} from './services/toast/tree-toast.service';
 import {Directory} from './models/directory.model';
 import {Tag} from './models/tag.model';
+import {Router} from '@angular/router';
+import {MachineToolRequirement} from '../forms/shared/models/machine-tool-requirement';
 
 @Component({
   selector: 'inz-tree',
@@ -12,7 +14,7 @@ import {Tag} from './models/tag.model';
 })
 export class TreeComponent implements OnInit, AfterViewInit {
   @ViewChild('treeFFS') public treeFFS;
-  randomData: any[] = [];
+  machineToolRequirements: MachineToolRequirement[] = [];
 
   public tree: TreeModel = {
     value: '/',
@@ -42,7 +44,9 @@ export class TreeComponent implements OnInit, AfterViewInit {
     children: []
   };
 
-  constructor(private treeService: TreeService, private treeToastService: TreeToastService) {
+  constructor(private treeService: TreeService,
+              private router: Router,
+              private treeToastService: TreeToastService) {
   }
 
 
@@ -60,7 +64,12 @@ export class TreeComponent implements OnInit, AfterViewInit {
 
   onNodeSelected(e: NodeEvent): void {
     if (e.node.isLeaf()) {
-      this.generateRandomData();
+      const tagId = +e.node.id;
+      this.treeService
+        .getMachineTooRequirementsByTag(tagId)
+        .subscribe(response => {
+          this.machineToolRequirements = response;
+        });
     } else {
 
     }
@@ -69,19 +78,12 @@ export class TreeComponent implements OnInit, AfterViewInit {
 
   onMenuItemSelected(e: MenuItemSelectedEvent): void {
     if (e.selectedItem === 'Add') {
-      this.treeToastService.operationNotSupported();
-    }
-  }
-
-  generateRandomData() {
-    this.randomData = [];
-    const max = Math.random() * 50;
-    for (let i = 0; i < max; ++i) {
-      this.randomData.push({
-        name: Math.random().toString(36).substr(2, 5).toString(),
-        weight: Math.round(Math.random() * 100),
-        location: Math.random().toString(36).substr(2, 5).toString()
+      this.router.navigate(['/forms'], {
+        queryParams: {
+          'tag': e.node.id
+        }
       });
+
     }
   }
 

@@ -7,17 +7,19 @@ import {MachineToolRequirementsFormComponent} from './shared/components/machine-
 import {ReactiveFormsModule} from '@angular/forms';
 import {FormToastService} from './shared/services/toast/form-toast.service';
 import {MachineToolRequirementService} from './shared/services/machine-tool-requirement/machine-tool-requirement.service';
+import {TreeService} from '../tree/services/tree/tree.service';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsRoutingModule
+    FormsRoutingModule,
   ],
   declarations: [FormsComponent, MachineToolRequirementsFormComponent],
   providers: [
     MachineToolRequirementService,
-    FormToastService
+    FormToastService,
+    TreeService
   ]
 })
 export class FormsModule {

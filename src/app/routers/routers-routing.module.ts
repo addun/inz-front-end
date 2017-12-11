@@ -6,14 +6,14 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: './tree/tree.module#TreeModule',
-    canActivate: [AuthGuardService],
-    canActivateChild: [AuthGuardService]
+    // canActivate: [AuthGuardService],
+    // canActivateChild: [AuthGuardService]
   },
   {
     path: 'forms',
     loadChildren: './forms/forms.module#FormsModule',
-    canActivate: [AuthGuardService],
-    canActivateChild: [AuthGuardService]
+    // canActivate: [AuthGuardService],
+    // canActivateChild: [AuthGuardService]
   },
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
 ];
