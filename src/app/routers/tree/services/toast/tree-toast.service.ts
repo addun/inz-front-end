@@ -37,7 +37,7 @@ export class TreeToastService {
   }
 
   operationNotSupported() {
-    this.toastr.error('Operation is not supported yet');
+    this.toastr.error('Operation is not supported');
   }
 
 }

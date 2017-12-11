@@ -13,7 +13,7 @@ import {MachineToolRequirement} from '../forms/shared/models/machine-tool-requir
   styleUrls: ['./tree.component.sass']
 })
 export class TreeComponent implements OnInit, AfterViewInit {
-  @ViewChild('treeFFS') public treeFFS;
+  @ViewChild('treeFFS') treeFFS;
   machineToolRequirements: MachineToolRequirement[] = [];
 
   public tree: TreeModel = {
@@ -25,7 +25,7 @@ export class TreeComponent implements OnInit, AfterViewInit {
       cssClasses: {
         expanded: 'fa fa-caret-down',
         collapsed: 'fa fa-caret-right',
-        empty: 'fa fa-caret-right disabled',
+        empty: 'disable',
         leaf: 'fa'
       },
       templates: {
@@ -41,7 +41,9 @@ export class TreeComponent implements OnInit, AfterViewInit {
         {action: NodeMenuItemAction.Custom, name: 'Add', cssClass: 'fa fa-book'}
       ]
     },
-    children: []
+    loadChildren: callback => {
+
+    }
   };
 
   constructor(private treeService: TreeService,
@@ -89,7 +91,9 @@ export class TreeComponent implements OnInit, AfterViewInit {
 
   onNodeRemoved(e: NodeEvent): void {
     if (e.node.isLeaf()) {
-      this.removeTag(e.node);
+      if (e.node.parent.id !== 'root') {
+        this.removeTag(e.node);
+      }
     } else {
       this.removeNode(e.node);
     }
@@ -106,7 +110,12 @@ export class TreeComponent implements OnInit, AfterViewInit {
 
   onNodeCreated(e: NodeEvent): void {
     if (e.node.isLeaf()) {
-      this.saveTag(e.node);
+      if (e.node.parent.id === 'root') {
+        this.treeToastService.operationNotSupported();
+        this.treeFFS.getControllerByNodeId(e.node.id).remove();
+      } else {
+        this.saveTag(e.node);
+      }
     } else {
       this.saveNode(e.node);
     }
