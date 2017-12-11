@@ -14,5 +14,13 @@ export class MachineToolRequirementService {
     return this.apiService.post(`${this.serviceBaseUrl}machine-tool-requirements/`, machineToolRequirement);
   }
 
+  getMachineToolRequirement(machineToolRequirementId: number): Observable<MachineToolRequirement> {
+    return this.apiService.get(`${this.serviceBaseUrl}machine-tool-requirements/${machineToolRequirementId}`);
+  }
+
+  updateMachineToolRequirement(machineToolRequirement: MachineToolRequirement): Observable<MachineToolRequirement> {
+    return this.apiService.patch(`${this.serviceBaseUrl}machine-tool-requirements/${machineToolRequirement.id}/`, machineToolRequirement);
+  }
+
 
 }

@@ -21,6 +21,7 @@
         <th scope="col">Description</th>
         <th scope="col">Number of tools in toolmagazine</th>
         <th scope="col">Automatically pallet changeable</th>
+        <th scope="col">Actions</th>
       </tr>
       </thead>
       <tbody>
@@ -29,6 +30,11 @@
         <td>{{machineToolRequirement.description}}</td>
         <td>{{machineToolRequirement.number_of_tools_in_tool_magazine}}</td>
         <td>{{machineToolRequirement.automatically_pallet_changeable}}</td>
+        <td>
+          <span
+            [routerLink]="['/forms', 'machine-tool-requirement',machineToolRequirement.id]"
+            class="fa fa-pencil-square-o action" aria-hidden="true" title="Edit"></span>
+        </td>
       </tr>
       </tbody>
     </table>

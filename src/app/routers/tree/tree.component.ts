@@ -74,12 +74,15 @@ export class TreeComponent implements OnInit, AfterViewInit {
 
   onMenuItemSelected(e: MenuItemSelectedEvent): void {
     if (e.selectedItem === 'Add') {
-      this.router.navigate(['/forms'], {
-        queryParams: {
-          'tag': e.node.id
-        }
-      });
-
+      if (e.node.id === 'root') {
+        this.treeToastService.cannotAddToRootDirectory();
+      } else {
+        this.router.navigate(['/forms'], {
+          queryParams: {
+            'tag': e.node.id
+          }
+        });
+      }
     }
   }
 

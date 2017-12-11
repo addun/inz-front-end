@@ -23,21 +23,12 @@ export class TreeToastService {
     this.toastr.error('Error while make operations');
   }
 
-
-  fileSaved() {
-    this.toastr.success('File has been created');
-  }
-
-  fileRemoved() {
-    this.toastr.success('File has been removed');
-  }
-
-  fileRenamed() {
-    this.toastr.success('File has been renamed');
-  }
-
   operationNotSupported() {
     this.toastr.error('Operation is not supported');
+  }
+
+  cannotAddToRootDirectory() {
+    this.toastr.error('Can\'t add to root directory');
   }
 
 }

@@ -11,4 +11,12 @@ export class FormToastService {
     this.toastr.success('Added');
   }
 
+  updateSuccess() {
+    this.toastr.success('Updated');
+  }
+
+  errorInRequest() {
+    this.toastr.error('Invalid request!');
+  }
+
 }

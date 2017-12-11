@@ -1,4 +1,6 @@
 <form [formGroup]="machineToolRequirementsForm" (ngSubmit)="onSubmit()" novalidate>
+  <input type="hidden" formControlName="id">
+
   <div class="form-group">
     <label for="description">Description</label>
     <input class="form-control" id="description" formControlName="description">
