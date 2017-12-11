@@ -3,7 +3,6 @@ import {MenuItemSelectedEvent, NodeEvent, NodeMenuItemAction, Tree, TreeModel} f
 import {TreeService} from './services/tree/tree.service';
 import {TreeToastService} from './services/toast/tree-toast.service';
 import {Directory} from './models/directory.model';
-import {Tag} from './models/tag.model';
 import {Router} from '@angular/router';
 import {MachineToolRequirement} from '../forms/shared/models/machine-tool-requirement';
 
@@ -36,9 +35,8 @@ export class TreeComponent implements OnInit, AfterViewInit {
       'menuItems': [
         {action: NodeMenuItemAction.Rename, name: 'Rename', cssClass: 'fa fa-pencil-square-o'},
         {action: NodeMenuItemAction.NewFolder, name: 'New folder', cssClass: 'fa fa-folder-o'},
-        {action: NodeMenuItemAction.NewTag, name: 'New file', cssClass: 'fa fa-file-o'},
-        {action: NodeMenuItemAction.Remove, name: 'Remove', cssClass: 'fa fa-times'},
-        {action: NodeMenuItemAction.Custom, name: 'Add', cssClass: 'fa fa-book'}
+        {action: NodeMenuItemAction.Custom, name: 'Add', cssClass: 'fa fa-book'},
+        {action: NodeMenuItemAction.Remove, name: 'Remove', cssClass: 'fa fa-remove'},
       ]
     },
     loadChildren: callback => {
@@ -65,16 +63,12 @@ export class TreeComponent implements OnInit, AfterViewInit {
   }
 
   onNodeSelected(e: NodeEvent): void {
-    if (e.node.isLeaf()) {
-      const tagId = +e.node.id;
-      this.treeService
-        .getMachineTooRequirementsByTag(tagId)
-        .subscribe(response => {
-          this.machineToolRequirements = response;
-        });
-    } else {
-
-    }
+    const tagId = +e.node.id;
+    this.treeService
+      .getMachineTooRequirementsByTag(tagId)
+      .subscribe(response => {
+        this.machineToolRequirements = response;
+      });
   }
 
 
@@ -90,35 +84,16 @@ export class TreeComponent implements OnInit, AfterViewInit {
   }
 
   onNodeRemoved(e: NodeEvent): void {
-    if (e.node.isLeaf()) {
-      if (e.node.parent.id !== 'root') {
-        this.removeTag(e.node);
-      }
-    } else {
-      this.removeNode(e.node);
-    }
+    this.removeNode(e.node);
   }
 
   onNodeRenamed(e: NodeEvent): void {
-    if (e.node.isLeaf()) {
-      this.patchTag(e.node);
-    } else {
-      this.patchNode(e.node);
-    }
+    this.patchNode(e.node);
   }
 
 
   onNodeCreated(e: NodeEvent): void {
-    if (e.node.isLeaf()) {
-      if (e.node.parent.id === 'root') {
-        this.treeToastService.operationNotSupported();
-        this.treeFFS.getControllerByNodeId(e.node.id).remove();
-      } else {
-        this.saveTag(e.node);
-      }
-    } else {
-      this.saveNode(e.node);
-    }
+    this.saveNode(e.node);
   }
 
   private patchNode(node: Tree) {
@@ -160,46 +135,4 @@ export class TreeComponent implements OnInit, AfterViewInit {
         this.treeToastService.operationError();
       });
   }
-
-
-  private patchTag(node: Tree) {
-    const tag = new Tag({
-      value: node.value,
-      node: +node.parent.id,
-      id: +node.id
-    });
-    this.treeService
-      .patchTag(tag)
-      .subscribe(response => {
-        this.treeToastService.fileRenamed();
-      }, error => {
-        this.treeToastService.operationError();
-      });
-  }
-
-  private saveTag(node: Tree) {
-    const tag = new Tag({
-      value: node.value,
-      node: +node.parent.id
-    });
-    this.treeService
-      .addTag(tag)
-      .subscribe(response => {
-        node.id = response.id;
-        this.treeToastService.fileSaved();
-      }, error => {
-        this.treeToastService.operationError();
-      });
-  }
-
-  private removeTag(node: Tree) {
-    this.treeService
-      .deleteTag(+node.id)
-      .subscribe(response => {
-        this.treeToastService.fileRemoved();
-      }, error => {
-        this.treeToastService.operationError();
-      });
-  }
-
 }

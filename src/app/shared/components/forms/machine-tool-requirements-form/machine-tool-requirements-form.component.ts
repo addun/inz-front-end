@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MachineToolRequirement} from '../../models/machine-tool-requirement';
+import {MachineToolRequirement} from '../../../../routers/forms/shared/models/machine-tool-requirement';
 
 @Component({
   selector: 'inz-machine-tool-requirements-form',

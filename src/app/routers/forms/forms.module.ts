@@ -1,21 +1,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
 import {FormsRoutingModule} from './forms-routing.module';
 import {FormsComponent} from './forms.component';
-import {MachineToolRequirementsFormComponent} from './shared/components/machine-tool-requirements-form/machine-tool-requirements-form.component';
-import {ReactiveFormsModule} from '@angular/forms';
 import {FormToastService} from './shared/services/toast/form-toast.service';
 import {MachineToolRequirementService} from './shared/services/machine-tool-requirement/machine-tool-requirement.service';
 import {TreeService} from '../tree/services/tree/tree.service';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     FormsRoutingModule,
+    SharedModule
   ],
-  declarations: [FormsComponent, MachineToolRequirementsFormComponent],
+  declarations: [FormsComponent],
   providers: [
     MachineToolRequirementService,
     FormToastService,

@@ -2,9 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiService} from '../../../../core/api/api.service';
 import {Observable} from 'rxjs/Observable';
 import {Directory} from '../../models/directory.model';
-import {Tag} from '../../models/tag.model';
 import {TreeStructure} from '../../models/tree-structure.model';
-import {map} from 'rxjs/operators';
 import {MachineToolRequirement} from '../../../forms/shared/models/machine-tool-requirement';
 
 @Injectable()
@@ -15,10 +13,7 @@ export class TreeService {
   }
 
   getTreeStructure(): Observable<TreeStructure[]> {
-    return this.apiService.get(`${this.serviceBaseUrl}structure/`)
-      .pipe(
-        map((structure: TreeStructure[]) => this.concatTagsToChildren(structure))
-      );
+    return this.apiService.get(`${this.serviceBaseUrl}structure/`);
   }
 
   addNode(node: Directory): Observable<Directory> {
@@ -33,38 +28,15 @@ export class TreeService {
     return this.apiService.delete(`${this.serviceBaseUrl}nodes/${nodeId}/`);
   }
 
-  patchTag(tag: Tag): Observable<Tag> {
-    return this.apiService.patch(`${this.serviceBaseUrl}tags/${tag.id}/`, tag);
-  }
-
-  addTag(tag: Tag): Observable<Tag> {
-    return this.apiService.post(`${this.serviceBaseUrl}tags/`, tag);
-  }
-
-  deleteTag(tagId: number): Observable<Tag> {
-    return this.apiService.delete(`${this.serviceBaseUrl}tags/${tagId}/`);
-  }
-
-  addMachineTooRequirementToTag(tagId: number, machineToolRequirementId: number) {
-    return this.apiService.post(`${this.serviceBaseUrl}tags-machine-tool-requirements/`, {
-      tag: tagId,
+  addMachineTooRequirementToTag(nodeId: number, machineToolRequirementId: number) {
+    return this.apiService.post(`${this.serviceBaseUrl}node-machine-tool-requirement/`, {
+      node: nodeId,
       machine_tool_requirement: machineToolRequirementId
     });
   }
 
   getMachineTooRequirementsByTag(tagId: number): Observable<MachineToolRequirement[]> {
-    return this.apiService.get(`${this.serviceBaseUrl}machine-tool-requirement-with-tag/${tagId}/`);
-  }
-
-
-  private concatTagsToChildren(structure: TreeStructure[]) {
-    return structure.map(element => {
-      if (element.children) {
-        element.children = this.concatTagsToChildren(element.children);
-      }
-      element.children.push(...element.tags);
-      return element;
-    });
+    return this.apiService.get(`${this.serviceBaseUrl}machine-tool-requirement-in-node/${tagId}/`);
   }
 
 }
