@@ -1,1 +1,11 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/" *ngIf="router.url !== '/'">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+  </a>
+
+  <span class="navbar-text" style="visibility: hidden;">
+    Navbar text with an inline element
+  </span>
+
+</nav>
 <router-outlet></router-outlet>

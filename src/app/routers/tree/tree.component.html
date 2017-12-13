@@ -32,9 +32,12 @@
         <td>{{machineToolRequirement.automatically_pallet_changeable}}</td>
         <td>
           <span
-            [routerLink]="['/forms', 'machine-tool-requirement',machineToolRequirement.id]"
+            [routerLink]="['forms', 'machine-tool-requirement',machineToolRequirement.id, 'change']"
             class="fa fa-pencil-square-o action" aria-hidden="true" title="Edit"></span>
         </td>
+      </tr>
+      <tr *ngIf="!machineToolRequirements.length">
+        <th colspan="99" class="text-center">Nothing found</th>
       </tr>
       </tbody>
     </table>

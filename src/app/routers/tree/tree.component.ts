@@ -20,7 +20,7 @@ export class TreeComponent implements OnInit, AfterViewInit {
     id: 'root',
     settings: {
       'rightMenu': true,
-      isCollapsedOnInit: true,
+      isCollapsedOnInit: false,
       cssClasses: {
         expanded: 'fa fa-caret-down',
         collapsed: 'fa fa-caret-right',
@@ -77,7 +77,7 @@ export class TreeComponent implements OnInit, AfterViewInit {
       if (e.node.id === 'root') {
         this.treeToastService.cannotAddToRootDirectory();
       } else {
-        this.router.navigate(['/forms'], {
+        this.router.navigate(['/forms/machine-tool-requirement/add'], {
           queryParams: {
             'tag': e.node.id
           }

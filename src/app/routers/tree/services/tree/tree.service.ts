@@ -16,6 +16,10 @@ export class TreeService {
     return this.apiService.get(`${this.serviceBaseUrl}structure/`);
   }
 
+  getNodes(): Observable<Directory[]> {
+    return this.apiService.get(`${this.serviceBaseUrl}nodes/`);
+  }
+
   addNode(node: Directory): Observable<Directory> {
     return this.apiService.post(`${this.serviceBaseUrl}nodes/`, node);
   }
