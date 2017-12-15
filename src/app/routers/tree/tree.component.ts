@@ -4,7 +4,6 @@ import {TreeService} from './services/tree/tree.service';
 import {TreeToastService} from './services/toast/tree-toast.service';
 import {Directory} from './models/directory.model';
 import {Router} from '@angular/router';
-import {MachineToolRequirement} from '../forms/shared/models/machine-tool-requirement';
 
 @Component({
   selector: 'inz-tree',
@@ -13,7 +12,6 @@ import {MachineToolRequirement} from '../forms/shared/models/machine-tool-requir
 })
 export class TreeComponent implements OnInit, AfterViewInit {
   @ViewChild('treeFFS') treeFFS;
-  machineToolRequirements: MachineToolRequirement[] = [];
 
   public tree: TreeModel = {
     value: '/',
@@ -63,12 +61,7 @@ export class TreeComponent implements OnInit, AfterViewInit {
   }
 
   onNodeSelected(e: NodeEvent): void {
-    const tagId = +e.node.id;
-    this.treeService
-      .getMachineTooRequirementsByTag(tagId)
-      .subscribe(response => {
-        this.machineToolRequirements = response;
-      });
+
   }
 
 

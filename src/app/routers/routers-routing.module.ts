@@ -5,7 +5,8 @@ import { AuthGuardService } from '../core/auth/guard/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './tree/tree.module#TreeModule',
+    // loadChildren: './tree/tree.module#TreeModule',
+    redirectTo: 'forms/machine-tool-specification'
     // canActivate: [AuthGuardService],
     // canActivateChild: [AuthGuardService]
   },

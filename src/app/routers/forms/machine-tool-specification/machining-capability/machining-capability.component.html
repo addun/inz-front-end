@@ -1,0 +1,14 @@
+<inz-form-heading>Machining Capability</inz-form-heading>
+
+<dynamic-bootstrap-form [group]="formGroup" [model]="formModel">
+
+  <ng-template modelId="array" align="START">
+
+    <h2>#####</h2>
+
+  </ng-template>
+
+</dynamic-bootstrap-form>
+
+<button type="button" class="btn btn-primary" (click)="addItem()">Add item</button>
+<button type="button" class="btn btn-primary" (click)="clear()">Remove all items</button>

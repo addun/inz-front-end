@@ -6,11 +6,11 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./forms.component.sass']
 })
 export class FormsComponent implements OnInit {
-
   constructor() {
   }
 
   ngOnInit() {
   }
+
 
 }
