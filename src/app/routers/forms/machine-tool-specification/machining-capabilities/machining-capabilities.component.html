@@ -4,11 +4,16 @@
 
   <ng-template modelId="array" let-group let-index="index" let-context="context">
 
-    <button type="button" class="btn btn-primary" (click)="removeItem(context, index)">Remove</button>
+    <div class="text-right">
+      <button type="button" class="btn btn-danger" (click)="removeItem(context, index)">Remove</button>
+    </div>
+
 
   </ng-template>
 
 </dynamic-bootstrap-form>
 
-<button type="button" class="btn btn-primary" (click)="addItem()">Add item</button>
+<div class="text-center">
+  <button type="button" class="btn btn-primary" (click)="addItem()">Add item</button>
+</div>
 

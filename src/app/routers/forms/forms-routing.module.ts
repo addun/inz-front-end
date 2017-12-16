@@ -5,9 +5,9 @@ import {DeviceIdComponent} from './machine-tool-specification/device-id/device-i
 import {MeasuringCapabilityComponent} from './machine-tool-specification/measuring-capability/measuring-capability.component';
 import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
 import {LocatorComponent} from './machine-tool-specification/locator/locator.component';
-import {TailstockComponent} from './machine-tool-specification/machine-tool-element/tailstock/tailstock.component';
-import {MachineToolElementComponent} from './machine-tool-specification/machine-tool-element/machine-tool-element.component';
 import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
+import {MachineToolElementsComponent} from './machine-tool-specification/machine-tool-elements/machine-tool-elements.component';
+import {TailstockComponent} from './machine-tool-specification/machine-tool-elements/tailstock/tailstock.component';
 
 const routes: Routes = [
   {
@@ -55,14 +55,14 @@ const routes: Routes = [
         },
       },
       {
-        path: 'machine-tool-element',
+        path: 'machine-tool-elements',
         data: {
           breadcrumb: 'Machine Tool Elements'
         },
         children: [
           {
             path: '',
-            component: MachineToolElementComponent
+            component: MachineToolElementsComponent
           },
           {
             path: ':machineToolElementId/tailstock',

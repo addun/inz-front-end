@@ -12,12 +12,12 @@ import {FormsRoutingModule} from './forms-routing.module';
 import {DeviceIdComponent} from './machine-tool-specification/device-id/device-id.component';
 import {FormHeadingComponent} from './shared/components/form-heading/form-heading.component';
 import {MeasuringCapabilityComponent} from './machine-tool-specification/measuring-capability/measuring-capability.component';
-import {MachineToolElementComponent} from './machine-tool-specification/machine-tool-element/machine-tool-element.component';
-import {TailstockComponent} from './machine-tool-specification/machine-tool-element/tailstock/tailstock.component';
 import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
 import {LocatorComponent} from './machine-tool-specification/locator/locator.component';
 import {MachineToolSpecificationService} from './machine-tool-specification/shared/services/machine-tool-specification/machine-tool-specification.service';
 import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
+import {MachineToolElementsComponent} from './machine-tool-specification/machine-tool-elements/machine-tool-elements.component';
+import {TailstockComponent} from './machine-tool-specification/machine-tool-elements/tailstock/tailstock.component';
 
 @NgModule({
   imports: [
@@ -35,7 +35,7 @@ import {MachiningCapabilitiesComponent} from './machine-tool-specification/machi
     FormHeadingComponent,
     MachiningCapabilitiesComponent,
     MeasuringCapabilityComponent,
-    MachineToolElementComponent,
+    MachineToolElementsComponent,
     TailstockComponent,
     InstallationComponent,
     LocatorComponent

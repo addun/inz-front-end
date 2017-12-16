@@ -5,6 +5,7 @@ import {installationForm} from '../../../../shared/forms/installation.form';
 import {machiningCapabilityForm} from '../../../../shared/forms/machining-capability.form';
 import {measuringCapabilityForm} from '../../../../shared/forms/measuring-capability.form';
 import {machineToolSpecificationForm} from '../../../../shared/forms/machine-tool-specification.form';
+import {locatorForm} from '../../../../shared/forms/locator.form';
 
 @Injectable()
 export class MachineToolSpecificationService {
@@ -19,7 +20,7 @@ export class MachineToolSpecificationService {
     })
   ];
   measuringCapabilityModel = measuringCapabilityForm();
-  locationModel = installationForm();
+  locationModel = locatorForm();
 
   constructor(private  dynamicFormService: DynamicFormService) {
   }

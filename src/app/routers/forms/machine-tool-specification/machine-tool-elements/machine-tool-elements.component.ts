@@ -4,11 +4,11 @@ import {DynamicFormArrayModel, DynamicFormControlModel, DynamicFormService} from
 import {machineToolElement} from '../../shared/forms/machine-tool-element.form';
 
 @Component({
-  selector: 'inz-machine-tool-element',
-  templateUrl: './machine-tool-element.component.html',
-  styleUrls: ['./machine-tool-element.component.sass']
+  selector: 'inz-machine-tool-elements',
+  templateUrl: './machine-tool-elements.component.html',
+  styleUrls: ['./machine-tool-elements.component.sass']
 })
-export class MachineToolElementComponent implements OnInit, OnDestroy {
+export class MachineToolElementsComponent implements OnInit, OnDestroy {
   formModel: DynamicFormControlModel[] = [
     new DynamicFormArrayModel({
       id: 'array',
