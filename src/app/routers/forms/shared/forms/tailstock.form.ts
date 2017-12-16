@@ -1,8 +1,8 @@
 import {DynamicFormControlModel, DynamicInputModel} from '@ng-dynamic-forms/core';
-import {elementCapability} from './element-capability.form';
+import {elementCapabilityForm} from './element-capability.form';
 
 export function tailstockForm(): DynamicFormControlModel[] {
-  return elementCapability().concat([
+  return elementCapabilityForm().concat([
     new DynamicInputModel({
       id: 'spindle_name',
       label: 'Spindle Name'

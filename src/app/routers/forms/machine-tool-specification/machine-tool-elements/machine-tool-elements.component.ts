@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {DynamicFormArrayModel, DynamicFormControlModel, DynamicFormService} from '@ng-dynamic-forms/core';
-import {machineToolElement} from '../../shared/forms/machine-tool-element.form';
+import {machineToolElementForm} from '../../shared/forms/machine-tool-element.form';
 
 @Component({
   selector: 'inz-machine-tool-elements',
@@ -13,7 +13,7 @@ export class MachineToolElementsComponent implements OnInit, OnDestroy {
     new DynamicFormArrayModel({
       id: 'array',
       initialCount: 2,
-      groupFactory: machineToolElement
+      groupFactory: machineToolElementForm
     })
   ];
   formGroup: FormGroup;

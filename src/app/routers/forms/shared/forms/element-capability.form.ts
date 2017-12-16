@@ -1,6 +1,6 @@
 import {DynamicFormControlModel, DynamicInputModel} from '@ng-dynamic-forms/core';
 
-export function elementCapability(): DynamicFormControlModel[] {
+export function elementCapabilityForm(): DynamicFormControlModel[] {
   return [
 
     new DynamicInputModel({

@@ -1,5 +1,5 @@
 import {DynamicFormControlModel, DynamicFormGroupModel, DynamicInputModel, DynamicSelectModel} from '@ng-dynamic-forms/core';
-import {machiningSize} from './machining-size.form';
+import {machiningSizeForm} from './machining-size.form';
 
 export function machiningCapabilityForm(): DynamicFormControlModel[] {
   return [
@@ -44,7 +44,7 @@ export function machiningCapabilityForm(): DynamicFormControlModel[] {
     new DynamicFormGroupModel({
       id: 'machining_size',
       legend: 'Machining Size',
-      group: machiningSize()
+      group: machiningSizeForm()
     }),
   ];
 }

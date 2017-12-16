@@ -1,6 +1,6 @@
 import {DYNAMIC_FORM_CONTROL_INPUT_TYPE_NUMBER, DynamicFormControlModel, DynamicInputModel} from '@ng-dynamic-forms/core';
 
-export function machineToolElement(): DynamicFormControlModel[] {
+export function machineToolElementForm(): DynamicFormControlModel[] {
   return [
     new DynamicInputModel({
       id: 'name',

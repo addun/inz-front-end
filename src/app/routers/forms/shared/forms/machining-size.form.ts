@@ -1,6 +1,6 @@
 import {DYNAMIC_FORM_CONTROL_INPUT_TYPE_NUMBER, DynamicFormControlModel, DynamicInputModel} from '@ng-dynamic-forms/core';
 
-export function machiningSize(): DynamicFormControlModel[] {
+export function machiningSizeForm(): DynamicFormControlModel[] {
   return [
 
     new DynamicInputModel({
