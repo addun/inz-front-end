@@ -6,8 +6,6 @@ import {MeasuringCapabilityComponent} from './machine-tool-specification/measuri
 import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
 import {LocatorComponent} from './machine-tool-specification/locator/locator.component';
 import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
-import {MachineToolElementsComponent} from './machine-tool-specification/machine-tool-elements/machine-tool-elements.component';
-import {TailstockComponent} from './machine-tool-specification/machine-tool-elements/tailstock/tailstock.component';
 
 const routes: Routes = [
   {
@@ -59,19 +57,7 @@ const routes: Routes = [
         data: {
           breadcrumb: 'Machine Tool Elements'
         },
-        children: [
-          {
-            path: '',
-            component: MachineToolElementsComponent
-          },
-          {
-            path: ':machineToolElementId/tailstock',
-            component: TailstockComponent,
-            data: {
-              breadcrumb: 'Tailstock'
-            },
-          },
-        ]
+        loadChildren: './machine-tool-specification/machine-tool-elements/machine-tool-elements.module#MachineToolElementsModule'
       },
 
     ]

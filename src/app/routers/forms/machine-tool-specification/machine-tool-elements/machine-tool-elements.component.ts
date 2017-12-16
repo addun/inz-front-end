@@ -12,7 +12,7 @@ export class MachineToolElementsComponent implements OnInit, OnDestroy {
   formModel: DynamicFormControlModel[] = [
     new DynamicFormArrayModel({
       id: 'array',
-      initialCount: 2,
+      initialCount: 1,
       groupFactory: machineToolElementForm
     })
   ];

@@ -4,8 +4,12 @@
   <ng-template modelId="array" let-group let-index="index" let-context="context">
 
     <a routerLink="{{index}}/tailstock" class="btn btn-primary">Tailstock</a>
+    <a routerLink="{{index}}/bar-feeder" class="btn btn-primary">Bar feeder</a>
+    <a routerLink="{{index}}/collet" class="btn btn-primary">Collet</a>
 
 
   </ng-template>
 
 </dynamic-bootstrap-form>
+
+<router-outlet></router-outlet>
