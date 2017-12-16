@@ -1,12 +1,24 @@
 <inz-form-heading>Machine Tool Specification</inz-form-heading>
 
-<div class="form-horizontal">
-  <dynamic-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-bootstrap-form>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
+      <dynamic-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-bootstrap-form>
+
+      <a routerLink="device-id" class="btn btn-primary">Device Id</a>
+      <a routerLink="measuring-capability" class="btn btn-primary">Measuring Capability</a>
+      <a routerLink="machine-tool-element" class="btn btn-primary">Machine Tool Elements</a>
+      <a routerLink="machining-capability" class="btn btn-primary">Machining Capabilities</a>
+      <a routerLink="locator" class="btn btn-primary">Locator</a>
+      <a routerLink="installation" class="btn btn-primary">Installation</a>
+
+    </div>
+
+    <div class="col-12">
+      <pre>
+        {{generate() | json}}
+      </pre>
+    </div>
+  </div>
 </div>
-
-
-<a routerLink="device-id" class="btn btn-primary" role="button" aria-pressed="true">Device Id</a>
-<a routerLink="measuring-capability" class="btn btn-primary" role="button" aria-pressed="true">Measuring Capability</a>
-<a routerLink="machining-capability" class="btn btn-primary" role="button" aria-pressed="true">
-  Machining Capability
-</a>

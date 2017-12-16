@@ -1,8 +1,13 @@
-import {DynamicFormControlModel, DynamicSelectModel} from '@ng-dynamic-forms/core';
+import {DynamicFormControlModel, DynamicInputModel, DynamicSelectModel} from '@ng-dynamic-forms/core';
 
 
 export function machineToolSpecificationForm(): DynamicFormControlModel[] {
   return [
+
+    new DynamicInputModel({
+      id: 'description',
+      label: 'Description',
+    }),
 
     new DynamicSelectModel({
       id: 'machine_class',

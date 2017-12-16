@@ -1,0 +1,11 @@
+<inz-form-heading>Machine Tool Element</inz-form-heading>
+<dynamic-bootstrap-form [group]="formGroup" [model]="formModel">
+
+  <ng-template modelId="array" let-group let-index="index" let-context="context">
+
+    <a routerLink="{{index}}/tailstock" class="btn btn-primary">Tailstock</a>
+
+
+  </ng-template>
+
+</dynamic-bootstrap-form>

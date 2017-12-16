@@ -2,13 +2,13 @@
 
 <dynamic-bootstrap-form [group]="formGroup" [model]="formModel">
 
-  <ng-template modelId="array" align="START">
+  <ng-template modelId="array" let-group let-index="index" let-context="context">
 
-    <h2>#####</h2>
+    <button type="button" class="btn btn-primary" (click)="removeItem(context, index)">Remove</button>
 
   </ng-template>
 
 </dynamic-bootstrap-form>
 
 <button type="button" class="btn btn-primary" (click)="addItem()">Add item</button>
-<button type="button" class="btn btn-primary" (click)="clear()">Remove all items</button>
+

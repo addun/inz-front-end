@@ -1,14 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
 import {DynamicFormControlModel, DynamicFormService} from '@ng-dynamic-forms/core';
+import {FormGroup} from '@angular/forms';
 import {MachineToolSpecificationService} from '../shared/services/machine-tool-specification/machine-tool-specification.service';
 
 @Component({
-  selector: 'inz-device-id',
-  templateUrl: './device-id.component.html',
-  styleUrls: ['./device-id.component.sass']
+  selector: 'inz-locator',
+  templateUrl: './locator.component.html',
+  styleUrls: ['./locator.component.sass']
 })
-export class DeviceIdComponent implements OnInit {
+export class LocatorComponent implements OnInit {
   formModel: DynamicFormControlModel[];
   formGroup: FormGroup;
 
@@ -17,7 +17,7 @@ export class DeviceIdComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formModel = this.machineToolSpecificationService.deviceIdModel;
+    this.formModel = this.machineToolSpecificationService.locationModel;
     this.formGroup = this.formService.createFormGroup(this.formModel);
   }
 

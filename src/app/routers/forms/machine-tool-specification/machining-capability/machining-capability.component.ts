@@ -1,34 +1,25 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DynamicFormArrayModel, DynamicFormControlModel, DynamicFormService} from '@ng-dynamic-forms/core';
 import {FormArray, FormGroup} from '@angular/forms';
-import {machiningCapabilityForm} from '../../shared/forms/machining-capability.form';
+import {MachineToolSpecificationService} from '../shared/services/machine-tool-specification/machine-tool-specification.service';
 
 @Component({
   selector: 'inz-machining-capability',
   templateUrl: './machining-capability.component.html',
   styleUrls: ['./machining-capability.component.sass']
 })
-export class MachiningCapabilityComponent implements OnInit, OnDestroy {
+export class MachiningCapabilityComponent implements OnInit {
   formArrayModel: DynamicFormArrayModel;
-  formModel: DynamicFormControlModel[] = [
-    new DynamicFormArrayModel({
-      id: 'array',
-      initialCount: 1,
-      groupFactory: machiningCapabilityForm
-    })
-  ];
+  formModel: DynamicFormControlModel[];
   formGroup: FormGroup;
   formArrayControl: FormArray;
 
-  constructor(private formService: DynamicFormService) {
-  }
-
-
-  ngOnDestroy(): void {
-
+  constructor(private formService: DynamicFormService,
+              private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
   ngOnInit() {
+    this.formModel = this.machineToolSpecificationService.machiningCapabilitiesModel;
     this.formGroup = this.formService.createFormGroup(this.formModel);
 
     this.formArrayControl = this.formGroup.get('array') as FormArray;
@@ -39,9 +30,8 @@ export class MachiningCapabilityComponent implements OnInit, OnDestroy {
     this.formService.addFormArrayGroup(this.formArrayControl, this.formArrayModel);
   }
 
-  clear() {
-    this.formService.clearFormArray(this.formArrayControl, this.formArrayModel);
+  removeItem(context: DynamicFormArrayModel, index: number) {
+    this.formService.removeFormArrayGroup(index, this.formArrayControl, context);
   }
 
 }
-

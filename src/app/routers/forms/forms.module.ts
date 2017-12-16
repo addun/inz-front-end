@@ -9,10 +9,15 @@ import {DynamicFormsBootstrapUIModule} from '@ng-dynamic-forms/ui-bootstrap';
 import {MachineToolSpecificationComponent} from './machine-tool-specification/machine-tool-specification.component';
 import {RouterModule} from '@angular/router';
 import {FormsRoutingModule} from './forms-routing.module';
-import { DeviceIdComponent } from './machine-tool-specification/device-id/device-id.component';
-import { FormHeadingComponent } from './shared/components/form-heading/form-heading.component';
-import { MachiningCapabilityComponent } from './machine-tool-specification/machining-capability/machining-capability.component';
-import { MeasuringCapabilityComponent } from './machine-tool-specification/measuring-capability/measuring-capability.component';
+import {DeviceIdComponent} from './machine-tool-specification/device-id/device-id.component';
+import {FormHeadingComponent} from './shared/components/form-heading/form-heading.component';
+import {MachiningCapabilityComponent} from './machine-tool-specification/machining-capability/machining-capability.component';
+import {MeasuringCapabilityComponent} from './machine-tool-specification/measuring-capability/measuring-capability.component';
+import {MachineToolElementComponent} from './machine-tool-specification/machine-tool-element/machine-tool-element.component';
+import {TailstockComponent} from './machine-tool-specification/machine-tool-element/tailstock/tailstock.component';
+import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
+import {LocatorComponent} from './machine-tool-specification/locator/locator.component';
+import {MachineToolSpecificationService} from './machine-tool-specification/shared/services/machine-tool-specification/machine-tool-specification.service';
 
 @NgModule({
   imports: [
@@ -23,8 +28,20 @@ import { MeasuringCapabilityComponent } from './machine-tool-specification/measu
     DynamicFormsCoreModule.forRoot(),
     DynamicFormsBootstrapUIModule,
   ],
-  declarations: [FormsComponent, MachineToolSpecificationComponent, DeviceIdComponent, FormHeadingComponent, MachiningCapabilityComponent, MeasuringCapabilityComponent],
+  declarations: [
+    FormsComponent,
+    MachineToolSpecificationComponent,
+    DeviceIdComponent,
+    FormHeadingComponent,
+    MachiningCapabilityComponent,
+    MeasuringCapabilityComponent,
+    MachineToolElementComponent,
+    TailstockComponent,
+    InstallationComponent,
+    LocatorComponent
+  ],
   providers: [
+    MachineToolSpecificationService,
     FormToastService,
     TreeService
   ]
