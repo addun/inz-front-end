@@ -4,15 +4,17 @@ import {MachineToolElementsComponent} from './machine-tool-elements.component';
 import {TailstockComponent} from './tailstock/tailstock.component';
 import {BarFeederComponent} from './bar-feeder/bar-feeder.component';
 import {ColletComponent} from './collet/collet.component';
+import {RouterOutletComponent} from './shared/components/router-outlet/router-outlet.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MachineToolElementsComponent,
-    data: {
-      breadcrumb: 'Machine Tool Elements'
-    },
+    component: RouterOutletComponent,
     children: [
+      {
+        path: '',
+        component: MachineToolElementsComponent,
+      },
       {
         path: ':machineToolElementId',
         children: [
