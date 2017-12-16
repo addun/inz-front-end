@@ -1,13 +1,26 @@
-<inz-form-heading>Machine Tool Element</inz-form-heading>
+<inz-form-heading>Machine Tool Elements</inz-form-heading>
 <dynamic-bootstrap-form [group]="formGroup" [model]="formModel">
 
   <ng-template modelId="array" let-group let-index="index" let-context="context">
 
-    <a routerLink="{{index}}/tailstock" class="btn btn-primary">Tailstock</a>
-    <a routerLink="{{index}}/bar-feeder" class="btn btn-primary">Bar feeder</a>
-    <a routerLink="{{index}}/collet" class="btn btn-primary">Collet</a>
-
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="btn-group">
+          <a routerLink="{{index}}/tailstock" class="btn btn-primary">Tailstock</a>
+          <a routerLink="{{index}}/bar-feeder" class="btn btn-primary">Bar feeder</a>
+          <a routerLink="{{index}}/collet" class="btn btn-primary">Collet</a>
+          <a routerLink="{{index}}/chuck" class="btn btn-primary">Chuck</a>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 text-right">
+        <button  (click)="removeItem(context, index)" class="btn btn-danger">Remove</button>
+      </div>
+    </div>
 
   </ng-template>
 
 </dynamic-bootstrap-form>
+
+<div class="text-center">
+  <button class="btn btn-primary" (click)="addItem()">Add item</button>
+</div>

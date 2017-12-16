@@ -1,14 +1,11 @@
 <inz-form-heading>Machining Capability</inz-form-heading>
 
 <dynamic-bootstrap-form [group]="formGroup" [model]="formModel">
-
   <ng-template modelId="array" let-group let-index="index" let-context="context">
 
     <div class="text-right">
       <button type="button" class="btn btn-danger" (click)="removeItem(context, index)">Remove</button>
     </div>
-
-
   </ng-template>
 
 </dynamic-bootstrap-form>

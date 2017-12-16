@@ -1,24 +1,22 @@
 import {Component, OnInit} from '@angular/core';
-import {DynamicFormControlModel, DynamicFormService} from '@ng-dynamic-forms/core';
-import {FormGroup} from '@angular/forms';
+import {DynamicFormService} from '@ng-dynamic-forms/core';
 import {MachineToolSpecificationService} from '../shared/services/machine-tool-specification/machine-tool-specification.service';
+import {FormComponent} from '../../shared/models/form-component';
 
 @Component({
   selector: 'inz-installation',
   templateUrl: './installation.component.html',
   styleUrls: ['./installation.component.sass']
 })
-export class InstallationComponent implements OnInit {
-  formModel: DynamicFormControlModel[];
-  formGroup: FormGroup;
-
-  constructor(private formService: DynamicFormService,
+export class InstallationComponent extends FormComponent implements OnInit {
+  constructor(protected formService: DynamicFormService,
               private machineToolSpecificationService: MachineToolSpecificationService) {
+    super();
   }
 
   ngOnInit() {
     this.formModel = this.machineToolSpecificationService.installationModel;
-    this.formGroup = this.formService.createFormGroup(this.formModel);
+    this.createFormGroup();
   }
 
 }

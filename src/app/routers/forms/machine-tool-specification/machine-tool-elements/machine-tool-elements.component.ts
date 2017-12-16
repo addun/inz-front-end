@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray, FormGroup} from '@angular/forms';
 import {DynamicFormArrayModel, DynamicFormControlModel, DynamicFormService} from '@ng-dynamic-forms/core';
-import {machineToolElementForm} from '../../shared/forms/machine-tool-element.form';
+import {MachineToolElementsService} from './shared/services/machine-tool-elements/machine-tool-elements.service';
 
 @Component({
   selector: 'inz-machine-tool-elements',
@@ -9,23 +9,33 @@ import {machineToolElementForm} from '../../shared/forms/machine-tool-element.fo
   styleUrls: ['./machine-tool-elements.component.sass']
 })
 export class MachineToolElementsComponent implements OnInit, OnDestroy {
-  formModel: DynamicFormControlModel[] = [
-    new DynamicFormArrayModel({
-      id: 'array',
-      initialCount: 1,
-      groupFactory: machineToolElementForm
-    })
-  ];
+  formArrayModel: any;
+  formModel: DynamicFormControlModel[];
   formGroup: FormGroup;
+  private formArrayControl: FormArray;
 
-  constructor(private formService: DynamicFormService) {
+  constructor(private formService: DynamicFormService,
+              private  machineToolElementsService: MachineToolElementsService) {
   }
 
   ngOnDestroy() {
   }
 
   ngOnInit() {
+    this.formModel = this.machineToolElementsService.machineToolElementsModel;
     this.formGroup = this.formService.createFormGroup(this.formModel);
+
+    this.formArrayControl = this.formGroup.get('array') as FormArray;
+    this.formArrayModel = this.formService.findById('array', this.formModel) as DynamicFormArrayModel;
+
+  }
+
+  addItem() {
+    this.formService.addFormArrayGroup(this.formArrayControl, this.formArrayModel);
+  }
+
+  removeItem(context: DynamicFormArrayModel, index: number) {
+    this.formService.removeFormArrayGroup(index, this.formArrayControl, context);
   }
 
 }

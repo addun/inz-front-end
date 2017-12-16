@@ -12,7 +12,9 @@ export class TailstockComponent implements OnInit, OnDestroy {
   formModel: DynamicFormControlModel[] = tailstockForm();
   formGroup: FormGroup;
 
-  constructor(private formService: DynamicFormService) {
+  constructor(private formService: DynamicFormService
+
+  ) {
   }
 
   ngOnDestroy() {

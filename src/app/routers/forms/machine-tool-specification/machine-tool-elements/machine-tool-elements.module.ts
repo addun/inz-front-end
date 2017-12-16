@@ -6,7 +6,9 @@ import {ColletComponent} from './collet/collet.component';
 import {BarFeederComponent} from './bar-feeder/bar-feeder.component';
 import {MachineToolElementsComponent} from './machine-tool-elements.component';
 import {FormsSharedModule} from '../../shared/forms-shared.module';
-import { RouterOutletComponent } from './shared/components/router-outlet/router-outlet.component';
+import {RouterOutletComponent} from './shared/components/router-outlet/router-outlet.component';
+import {ChuckComponent} from './chuck/chuck.component';
+import {MachineToolElementsService} from './shared/services/machine-tool-elements/machine-tool-elements.service';
 
 @NgModule({
   imports: [
@@ -20,6 +22,10 @@ import { RouterOutletComponent } from './shared/components/router-outlet/router-
     ColletComponent,
     TailstockComponent,
     RouterOutletComponent,
+    ChuckComponent,
+  ],
+  providers: [
+    MachineToolElementsService
   ]
 })
 export class MachineToolElementsModule {
