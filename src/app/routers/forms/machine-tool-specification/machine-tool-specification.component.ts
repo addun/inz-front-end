@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {DynamicFormControlModel, DynamicFormService} from '@ng-dynamic-forms/core';
 
@@ -11,7 +11,7 @@ import {MachineToolSpecificationService} from './shared/services/machine-tool-sp
   templateUrl: './machine-tool-specification.component.html',
   styleUrls: ['./machine-tool-specification.component.sass']
 })
-export class MachineToolSpecificationComponent implements OnInit, OnDestroy {
+export class MachineToolSpecificationComponent implements OnInit {
   formModel: DynamicFormControlModel[] = machineToolSpecificationForm();
   formGroup: FormGroup;
 
@@ -19,11 +19,9 @@ export class MachineToolSpecificationComponent implements OnInit, OnDestroy {
               private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
-  ngOnDestroy(): void {
-    this.machineToolSpecificationService.machine_tool_specification = this.formGroup.value;
-  }
 
   ngOnInit() {
+    this.formModel = this.machineToolSpecificationService.deviceIdModel;
     this.formGroup = this.formService.createFormGroup(this.formModel);
   }
 
