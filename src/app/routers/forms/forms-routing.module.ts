@@ -2,12 +2,12 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MachineToolSpecificationComponent} from './machine-tool-specification/machine-tool-specification.component';
 import {DeviceIdComponent} from './machine-tool-specification/device-id/device-id.component';
-import {MachiningCapabilityComponent} from './machine-tool-specification/machining-capability/machining-capability.component';
 import {MeasuringCapabilityComponent} from './machine-tool-specification/measuring-capability/measuring-capability.component';
 import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
 import {LocatorComponent} from './machine-tool-specification/locator/locator.component';
 import {TailstockComponent} from './machine-tool-specification/machine-tool-element/tailstock/tailstock.component';
 import {MachineToolElementComponent} from './machine-tool-specification/machine-tool-element/machine-tool-element.component';
+import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
 
 const routes: Routes = [
   {
@@ -34,10 +34,10 @@ const routes: Routes = [
         },
       },
       {
-        path: 'machining-capability',
-        component: MachiningCapabilityComponent,
+        path: 'machining-capabilities',
+        component: MachiningCapabilitiesComponent,
         data: {
-          breadcrumb: 'Machining Capability'
+          breadcrumb: 'Machining Capabilities'
         },
       },
       {

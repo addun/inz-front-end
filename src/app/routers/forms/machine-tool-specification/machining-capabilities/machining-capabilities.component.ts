@@ -5,10 +5,10 @@ import {MachineToolSpecificationService} from '../shared/services/machine-tool-s
 
 @Component({
   selector: 'inz-machining-capability',
-  templateUrl: './machining-capability.component.html',
-  styleUrls: ['./machining-capability.component.sass']
+  templateUrl: './machining-capabilities.component.html',
+  styleUrls: ['./machining-capabilities.component.sass']
 })
-export class MachiningCapabilityComponent implements OnInit {
+export class MachiningCapabilitiesComponent implements OnInit {
   formArrayModel: DynamicFormArrayModel;
   formModel: DynamicFormControlModel[];
   formGroup: FormGroup;
