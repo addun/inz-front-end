@@ -21,7 +21,7 @@ export class MachineToolSpecificationComponent implements OnInit {
 
 
   ngOnInit() {
-    this.formModel = this.machineToolSpecificationService.deviceIdModel;
+    this.formModel = this.machineToolSpecificationService.machineToolSpecification;
     this.formGroup = this.formService.createFormGroup(this.formModel);
   }
 

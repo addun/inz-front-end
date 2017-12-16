@@ -4,9 +4,11 @@ import {DynamicFormArrayModel, DynamicFormService} from '@ng-dynamic-forms/core'
 import {installationForm} from '../../../../shared/forms/installation.form';
 import {machiningCapabilityForm} from '../../../../shared/forms/machining-capability.form';
 import {measuringCapabilityForm} from '../../../../shared/forms/measuring-capability.form';
+import {machineToolSpecificationForm} from '../../../../shared/forms/machine-tool-specification.form';
 
 @Injectable()
 export class MachineToolSpecificationService {
+  machineToolSpecification = machineToolSpecificationForm();
   deviceIdModel = deviceIdForm();
   installationModel = installationForm();
   machiningCapabilitiesModel = [
