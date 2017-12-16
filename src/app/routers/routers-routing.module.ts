@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AuthGuardService } from '../core/auth/guard/auth-guard.service';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
@@ -13,10 +12,13 @@ const routes: Routes = [
   {
     path: 'forms',
     loadChildren: './forms/forms.module#FormsModule',
+    data: {
+      breadcrumb: 'Forms'
+    },
     // canActivate: [AuthGuardService],
     // canActivateChild: [AuthGuardService]
   },
-  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
+  {path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
 ];
 
 @NgModule({

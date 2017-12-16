@@ -12,18 +12,65 @@ import {MachineToolElementComponent} from './machine-tool-specification/machine-
 const routes: Routes = [
   {
     path: 'machine-tool-specification',
+    data: {
+      breadcrumb: 'Machine Tool Specification'
+    },
     children: [
-      {path: '', component: MachineToolSpecificationComponent},
-      {path: 'device-id', component: DeviceIdComponent},
-      {path: 'locator', component: LocatorComponent},
-      {path: 'machining-capability', component: MachiningCapabilityComponent},
-      {path: 'installation', component: InstallationComponent},
-      {path: 'measuring-capability', component: MeasuringCapabilityComponent},
+      {
+        path: '',
+        component: MachineToolSpecificationComponent,
+      },
+      {
+        path: 'device-id', component: DeviceIdComponent,
+        data: {
+          breadcrumb: 'Device Id'
+        },
+      },
+      {
+        path: 'locator',
+        component: LocatorComponent,
+        data: {
+          breadcrumb: 'Locator'
+        },
+      },
+      {
+        path: 'machining-capability',
+        component: MachiningCapabilityComponent,
+        data: {
+          breadcrumb: 'Machining Capability'
+        },
+      },
+      {
+        path: 'installation',
+        component: InstallationComponent,
+        data: {
+          breadcrumb: 'Installation'
+        },
+      },
+      {
+        path: 'measuring-capability',
+        component: MeasuringCapabilityComponent,
+        data: {
+          breadcrumb: 'Measuring Capability'
+        },
+      },
       {
         path: 'machine-tool-element',
+        data: {
+          breadcrumb: 'Machine Tool Elements'
+        },
         children: [
-          {path: '', component: MachineToolElementComponent},
-          {path: ':machineToolElementId/tailstock', component: TailstockComponent},
+          {
+            path: '',
+            component: MachineToolElementComponent
+          },
+          {
+            path: ':machineToolElementId/tailstock',
+            component: TailstockComponent,
+            data: {
+              breadcrumb: 'Tailstock'
+            },
+          },
         ]
       },
 
