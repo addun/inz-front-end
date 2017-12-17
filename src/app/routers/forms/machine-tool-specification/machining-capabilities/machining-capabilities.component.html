@@ -1,23 +1,53 @@
-<inz-card cardName="Machining capabilities">
+<div [formGroup]="machiningCapabilitiesForm">
+  <div formArrayName="capabilities">
+    <div *ngFor="let a of machiningCapabilitiesForm.controls['capabilities'].controls; let i=index">
 
-  <div [formGroup]="orderForm">
+      <inz-card [cardName]="'Machining Capability #' + (1+i)" class="form-array-item">
+        <div [formGroupName]="i">
+          <div class="form-group row">
+            <label for="capability" class="col-sm-2 col-form-label require">Capability</label>
+            <div class="col-sm-10">
+              <select formControlName="capability" id="capability" class="form-control custom-select">
+                <option *ngFor="let item of machiningCapabilityProfile | keys" [value]="item.key">
+                  {{item.value}}
+                </option>
+              </select>
+            </div>
+          </div>
 
-    <input type="text" formControlName="customerName">
-    <input type="text" formControlName="email">
+          <div class="form-group row">
+            <label for="machining_accuracy" class="col-sm-2 col-form-label">Machining Accuracy</label>
+            <div class="col-sm-10">
+              <input formControlName="machining_accuracy" id="machining_accuracy" class="form-control"/>
+            </div>
+          </div>
 
-    <div formArrayName="items"
-         *ngFor="let item of orderForm.get('items').controls; let i = index;">
-      <div [formGroupName]="i">
-        <input formControlName="name" placeholder="Item name">
-        <input formControlName="description" placeholder="Item description">
-        <input formControlName="price" placeholder="Item price">
-      </div>
+          <div class="form-group row">
+            <label for="description" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+              <input formControlName="description" id="description" class="form-control"/>
+            </div>
+          </div>
+        </div>
 
-      Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }}
+        <div class="text-right">
+          <button class="btn btn-danger" (click)="removeCapability(i)">Remove capability</button>
+        </div>
+      </inz-card>
+
     </div>
-
   </div>
+</div>
 
-  <button (click)="addItem()">DODJA KURWA MI TO</button>
+<div class="text-left">
+  <span class="text-primary" (click)="addCapability()">Add new capability +</span>
+</div>
 
-</inz-card>
+<div class="text-center">
+  <button class="btn btn-primary" (click)="saveAll()">Save all</button>
+</div>
+
+<pre>
+  {{machiningCapabilitiesForm.value | json}}
+</pre>
+

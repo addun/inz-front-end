@@ -5,8 +5,5 @@ import {MachineToolSpecification} from '../../../../shared/models/machine-tool-s
 export class MachineToolSpecificationService {
   machine_tool_specification: MachineToolSpecification = new MachineToolSpecification();
 
-  getData() {
-    return this.machine_tool_specification;
-  }
 }
 

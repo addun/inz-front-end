@@ -9,18 +9,18 @@ import {MachineToolSpecificationService} from '../shared/services/machine-tool-s
   styleUrls: ['./device-id.component.sass']
 })
 export class DeviceIdComponent implements OnInit {
-  formGroup: FormGroup;
+  deviceIdForm: FormGroup;
 
   constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
   ngOnInit() {
-    this.formGroup = this.buildForm();
+    this.deviceIdForm = this.buildForm();
   }
 
   saveForm() {
     this.machineToolSpecificationService
-      .machine_tool_specification.device_id = new DeviceId(this.formGroup.value);
+      .machine_tool_specification.device_id = new DeviceId(this.deviceIdForm.value);
   }
 
   private buildForm() {

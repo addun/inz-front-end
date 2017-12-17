@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {MachineClass} from '../shared/types/machine-class.type';
 import {MachineToolSpecification} from '../shared/models/machine-tool-specification.model';
+import {MachineToolSpecificationService} from './shared/services/machine-tool-specification/machine-tool-specification.service';
 
 
 @Component({
@@ -10,18 +10,19 @@ import {MachineToolSpecification} from '../shared/models/machine-tool-specificat
   styleUrls: ['./machine-tool-specification.component.sass']
 })
 export class MachineToolSpecificationComponent implements OnInit {
-  formGroup: FormGroup;
-  machineClass = MachineClass;
+  machineToolSpecification: MachineToolSpecification;
+  machineToolSpecificationForm: FormGroup;
 
-  constructor() {
+  constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
   ngOnInit() {
     this.buildForm();
+    this.machineToolSpecification = this.machineToolSpecificationService.machine_tool_specification;
   }
 
   private buildForm() {
-    this.formGroup = new FormGroup(MachineToolSpecification.getFormControls());
+    this.machineToolSpecificationForm = new FormGroup(MachineToolSpecification.getFormControls());
   }
 
 

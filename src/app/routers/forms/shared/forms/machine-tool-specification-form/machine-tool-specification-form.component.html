@@ -1,0 +1,19 @@
+<div [formGroup]="machineToolSpecificationForm">
+
+  <div class="form-group row">
+    <label for="description" class="col-sm-2 col-form-label require">Description</label>
+    <div class="col-sm-10">
+      <input formControlName="description" id="description" class="form-control" required/>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="machine_class" class="col-sm-2 col-form-label require">Machine Class</label>
+    <div class="col-sm-10">
+      <select formControlName="machine_class" id="machine_class" class="form-control" required>
+        <option *ngFor="let item of machineClass | keys" [value]="item.key">{{item.value}}</option>
+      </select>
+    </div>
+  </div>
+
+</div>

@@ -15,8 +15,8 @@ export class MachiningCapability {
 
     return {
       capability: new FormControl(loadModel.capability, Validators.required),
-      machining_accuracy: new FormControl(loadModel.capability),
-      description: new FormControl(loadModel.capability),
+      machining_accuracy: new FormControl(loadModel.machining_accuracy),
+      description: new FormControl(loadModel.description),
     };
   }
 }
