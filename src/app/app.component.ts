@@ -3,7 +3,7 @@ import {ToastsManager} from 'ng2-toastr';
 
 @Component({
   selector: 'inz-root',
-  templateUrl: './app.component.html',
+  template: '<inz-layout></inz-layout>',
   styleUrls: ['./shared/styles/main.sass'],
   encapsulation: ViewEncapsulation.None
 })

@@ -26,7 +26,7 @@ export function deviceIdForm(): DynamicFormControlModel[] {
     new DynamicInputModel({
       id: 'data_manufactured',
       label: 'Data manufactured',
-      inputType: 'date'
+      inputType: 'date',
     }),
   ];
 }

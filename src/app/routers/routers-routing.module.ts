@@ -4,10 +4,14 @@ import {RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    // loadChildren: './tree/tree.module#TreeModule',
-    redirectTo: 'forms/machine-tool-specification'
-    // canActivate: [AuthGuardService],
-    // canActivateChild: [AuthGuardService]
+    redirectTo: 'tree'
+  },
+  {
+    path: 'tree',
+    loadChildren: './tree/tree.module#TreeModule',
+    data: {
+      breadcrumb: 'Tree'
+    }
   },
   {
     path: 'forms',
@@ -15,10 +19,11 @@ const routes: Routes = [
     data: {
       breadcrumb: 'Forms'
     },
-    // canActivate: [AuthGuardService],
-    // canActivateChild: [AuthGuardService]
   },
-  {path: 'auth', loadChildren: './auth/auth.module#AuthModule'}
+  {
+    path: 'auth',
+    loadChildren: './auth/auth.module#AuthModule'
+  }
 ];
 
 @NgModule({

@@ -7,11 +7,19 @@ export function machineToolSpecificationForm(): DynamicFormControlModel[] {
     new DynamicInputModel({
       id: 'description',
       label: 'Description',
+      required: true,
+      errorMessages: {
+        required: 'This field is require'
+      }
     }),
 
     new DynamicSelectModel({
       id: 'machine_class',
       label: 'Machine Class',
+      required: true,
+      errorMessages: {
+        required: 'This field is require'
+      },
       options: [
         {
           label: 'Drilling Machine',

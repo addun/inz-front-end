@@ -7,6 +7,10 @@ export function machiningCapabilityForm(): DynamicFormControlModel[] {
     new DynamicSelectModel({
       id: 'capability',
       label: 'Capability',
+      required: true,
+      errorMessages: {
+        required: 'This field is require'
+      },
       options: [
         {
           label: 'Boring Capability',
