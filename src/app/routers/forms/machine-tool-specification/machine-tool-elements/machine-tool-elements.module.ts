@@ -8,7 +8,6 @@ import {MachineToolElementsComponent} from './machine-tool-elements.component';
 import {FormsSharedModule} from '../../shared/forms-shared.module';
 import {RouterOutletComponent} from './shared/components/router-outlet/router-outlet.component';
 import {ChuckComponent} from './chuck/chuck.component';
-import {MachineToolElementsService} from './shared/services/machine-tool-elements/machine-tool-elements.service';
 
 @NgModule({
   imports: [
@@ -23,9 +22,6 @@ import {MachineToolElementsService} from './shared/services/machine-tool-element
     TailstockComponent,
     RouterOutletComponent,
     ChuckComponent,
-  ],
-  providers: [
-    MachineToolElementsService
   ]
 })
 export class MachineToolElementsModule {

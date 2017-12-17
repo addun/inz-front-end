@@ -6,10 +6,12 @@ import {MeasuringCapabilityComponent} from './machine-tool-specification/measuri
 import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
 import {LocatorComponent} from './machine-tool-specification/locator/locator.component';
 import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
+import {FormsComponent} from './forms.component';
 
 const routes: Routes = [
   {
     path: 'machine-tool-specification',
+    component: FormsComponent,
     data: {
       breadcrumb: 'Machine Tool Specification'
     },

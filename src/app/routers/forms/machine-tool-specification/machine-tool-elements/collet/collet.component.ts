@@ -1,24 +1,25 @@
 import {Component, OnInit} from '@angular/core';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
-import {DynamicFormControlModel, DynamicFormService} from '@ng-dynamic-forms/core';
-import {FormGroup} from '@angular/forms';
+import {DynamicFormService} from '@ng-dynamic-forms/core';
+import {FormArrayComponent} from '../../../shared/models/form-array-component';
+import {MachineToolElementsService} from '../shared/services/machine-tool-elements/machine-tool-elements.service';
 
 @Component({
   selector: 'inz-collet',
   templateUrl: './collet.component.html',
   styleUrls: ['./collet.component.sass']
 })
-export class ColletComponent implements OnInit {
-  formModel: DynamicFormControlModel[];
-  formGroup: FormGroup;
+export class ColletComponent extends FormArrayComponent implements OnInit {
 
-  constructor(private formService: DynamicFormService,
-              private machineToolSpecificationService: MachineToolSpecificationService) {
+  constructor(protected formService: DynamicFormService,
+              private machineToolElementsService: MachineToolElementsService) {
+    super();
   }
 
   ngOnInit() {
-    this.formModel = this.machineToolSpecificationService.colletModel;
-    this.formGroup = this.formService.createFormGroup(this.formModel);
+    this.formModel = this.machineToolElementsService.collet;
+    this.createFormGroup();
+    this.createArrayActions();
   }
 
 }

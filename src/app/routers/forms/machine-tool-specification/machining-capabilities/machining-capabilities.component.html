@@ -1,6 +1,7 @@
 <inz-form-heading>Machining Capability</inz-form-heading>
 
 <dynamic-bootstrap-form [group]="formGroup" [model]="formModel">
+
   <ng-template modelId="array" let-group let-index="index" let-context="context">
 
     <div class="text-right">
@@ -10,7 +11,7 @@
 
 </dynamic-bootstrap-form>
 
-<div class="text-center">
-  <button type="button" class="btn btn-primary" (click)="addItem()">Add item</button>
-</div>
+<inz-add-item>
+  <div (click)="addItem()">Add item</div>
+</inz-add-item>
 

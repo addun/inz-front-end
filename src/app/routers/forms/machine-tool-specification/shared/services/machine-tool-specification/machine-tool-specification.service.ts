@@ -6,34 +6,48 @@ import {machiningCapabilityForm} from '../../../../shared/forms/machining-capabi
 import {measuringCapabilityForm} from '../../../../shared/forms/measuring-capability.form';
 import {machineToolSpecificationForm} from '../../../../shared/forms/machine-tool-specification.form';
 import {locatorForm} from '../../../../shared/forms/locator.form';
-import {barFeederForm} from '../../../../shared/forms/bar-feeder.form';
-import {colletForm} from '../../../../shared/forms/collet.form';
+import {MachineToolElementsService} from '../../../machine-tool-elements/shared/services/machine-tool-elements/machine-tool-elements.service';
 
 @Injectable()
 export class MachineToolSpecificationService {
   machineToolSpecification = machineToolSpecificationForm();
   deviceIdModel = deviceIdForm();
   installationModel = installationForm();
-  machiningCapabilitiesModel = [
-    new DynamicFormArrayModel({
-      id: 'array',
-      initialCount: 0,
-      groupFactory: machiningCapabilityForm
-    })
-  ];
+  machiningCapabilitiesModel = this.generateClearArray(machiningCapabilityForm);
   measuringCapabilityModel = measuringCapabilityForm();
   locationModel = locatorForm();
-  barFeederModel: DynamicFormControlModel[] = barFeederForm();
-  colletModel: DynamicFormControlModel[] = colletForm();
 
-  constructor(private  dynamicFormService: DynamicFormService) {
+  constructor(private  dynamicFormService: DynamicFormService,
+              private machineToolElementsService: MachineToolElementsService) {
   }
 
-  generateData() {
-    return {
-      device_id: this.dynamicFormService.createFormGroup(this.machiningCapabilitiesModel).value['array']
-    };
+  getData() {
+    const machineToolSpecification = this.getValues(this.machineToolSpecification);
+
+    machineToolSpecification['device_id'] = this.getValues(this.deviceIdModel);
+    machineToolSpecification['machining_capabilities'] = this.getValues(this.machiningCapabilitiesModel);
+    machineToolSpecification['measuring_capability'] = this.getValues(this.measuringCapabilityModel);
+    machineToolSpecification['location'] = this.getValues(this.locationModel);
+    machineToolSpecification['installation'] = this.getValues(this.installationModel);
+    machineToolSpecification['its_elements'] = this.machineToolElementsService.getData();
+
+    return machineToolSpecification;
   }
 
+  private getValues(model: DynamicFormControlModel[]): any {
+    const value = this.dynamicFormService.createFormGroup(model).value;
+    return value['array'] ? value['array'] : value;
+  }
+
+  private generateClearArray(groupFactory: () => DynamicFormControlModel[]) {
+    return [
+      new DynamicFormArrayModel({
+        id: 'array',
+        initialCount: 0,
+        groupFactory: groupFactory
+      })
+    ];
+  }
 
 }
+

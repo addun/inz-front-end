@@ -1,2 +1,14 @@
-<inz-form-heading>Bar feeder</inz-form-heading>
-<dynamic-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-bootstrap-form>
+<inz-form-heading>Bar feeders</inz-form-heading>
+<dynamic-bootstrap-form [group]="formGroup" [model]="formModel">
+
+  <ng-template modelId="array" let-group let-index="index" let-context="context">
+
+    <button (click)="removeItem(context, index)" class="btn btn-danger">Remove</button>
+
+  </ng-template>
+
+</dynamic-bootstrap-form>
+
+<inz-add-item>
+  <div (click)="addItem()">Add item</div>
+</inz-add-item>

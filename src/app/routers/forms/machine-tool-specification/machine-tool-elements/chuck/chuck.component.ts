@@ -1,22 +1,24 @@
 import {Component, OnInit} from '@angular/core';
-import {DynamicFormControlModel, DynamicFormService} from '@ng-dynamic-forms/core';
-import {FormGroup} from '@angular/forms';
+import {DynamicFormService} from '@ng-dynamic-forms/core';
+import {FormArrayComponent} from '../../../shared/models/form-array-component';
+import {MachineToolElementsService} from '../shared/services/machine-tool-elements/machine-tool-elements.service';
 
 @Component({
   selector: 'inz-chuck',
   templateUrl: './chuck.component.html',
   styleUrls: ['./chuck.component.sass']
 })
-export class ChuckComponent implements OnInit {
-  formModel: DynamicFormControlModel[];
-  formGroup: FormGroup;
+export class ChuckComponent extends FormArrayComponent implements OnInit {
 
-  constructor(private formService: DynamicFormService) {
+  constructor(protected formService: DynamicFormService,
+              private machineToolElementsService: MachineToolElementsService) {
+    super();
   }
 
   ngOnInit() {
-    // this.formModel = this.machineToolSpecificationService.barFeederModel;
-    // this.formGroup = this.formService.createFormGroup(this.formModel);
+    this.formModel = this.machineToolElementsService.chuckModel;
+    this.createFormGroup();
+    this.createArrayActions();
   }
 
 }

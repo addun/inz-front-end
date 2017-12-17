@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormHeadingComponent} from './components/form-heading/form-heading.component';
 import {DynamicFormsBootstrapUIModule} from '@ng-dynamic-forms/ui-bootstrap';
 import {DynamicFormsCoreModule} from '@ng-dynamic-forms/core';
+import {AddItemComponent} from './components/add-item/add-item.component';
 
 @NgModule({
   imports: [
@@ -11,10 +12,12 @@ import {DynamicFormsCoreModule} from '@ng-dynamic-forms/core';
     DynamicFormsBootstrapUIModule,
   ],
   declarations: [
-    FormHeadingComponent
+    FormHeadingComponent,
+    AddItemComponent,
   ],
   exports: [
     FormHeadingComponent,
+    AddItemComponent,
     DynamicFormsCoreModule,
     DynamicFormsBootstrapUIModule,
   ]

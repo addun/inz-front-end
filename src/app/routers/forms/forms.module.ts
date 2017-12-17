@@ -13,6 +13,7 @@ import {LocatorComponent} from './machine-tool-specification/locator/locator.com
 import {MachineToolSpecificationService} from './machine-tool-specification/shared/services/machine-tool-specification/machine-tool-specification.service';
 import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
 import {FormsSharedModule} from './shared/forms-shared.module';
+import {MachineToolElementsService} from './machine-tool-specification/machine-tool-elements/shared/services/machine-tool-elements/machine-tool-elements.service';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import {FormsSharedModule} from './shared/forms-shared.module';
   ],
   providers: [
     MachineToolSpecificationService,
+    MachineToolElementsService,
     FormToastService,
     TreeService
   ]

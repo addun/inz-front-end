@@ -39,6 +39,13 @@ const routes: Routes = [
               breadcrumb: 'Collet'
             },
           },
+          {
+            path: 'tailstock',
+            component: TailstockComponent,
+            data: {
+              breadcrumb: 'Tailstock'
+            },
+          },
         ]
       },
     ]
