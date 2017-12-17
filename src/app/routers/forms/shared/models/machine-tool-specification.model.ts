@@ -1,8 +1,8 @@
 import {MachineTool} from './machine-tool.model';
 import {MachineClass} from '../types/machine-class.type';
 import {DeviceId} from './device-id.model';
-import {MachiningCapability} from './machining-capabilities.model';
 import {AbstractControl, FormControl, Validators} from '@angular/forms';
+import {MachiningCapability} from './machining-capability.model';
 
 export class MachineToolSpecification extends MachineTool {
   machine_class: MachineClass = MachineClass.DRILLING_MACHINE;

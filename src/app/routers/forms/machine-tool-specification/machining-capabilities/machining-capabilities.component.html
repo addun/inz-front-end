@@ -1,17 +1,23 @@
-<inz-form-heading>Machining Capability</inz-form-heading>
+<inz-card cardName="Machining capabilities">
 
-<dynamic-bootstrap-form [group]="formGroup" [model]="formModel">
+  <div [formGroup]="orderForm">
 
-  <ng-template modelId="array" let-group let-index="index" let-context="context">
+    <input type="text" formControlName="customerName">
+    <input type="text" formControlName="email">
 
-    <div class="text-right">
-      <button type="button" class="btn btn-danger" (click)="removeItem(context, index)">Remove</button>
+    <div formArrayName="items"
+         *ngFor="let item of orderForm.get('items').controls; let i = index;">
+      <div [formGroupName]="i">
+        <input formControlName="name" placeholder="Item name">
+        <input formControlName="description" placeholder="Item description">
+        <input formControlName="price" placeholder="Item price">
+      </div>
+
+      Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }}
     </div>
-  </ng-template>
 
-</dynamic-bootstrap-form>
+  </div>
 
-<inz-add-item>
-  <div (click)="addItem()">Add item</div>
-</inz-add-item>
+  <button (click)="addItem()">DODJA KURWA MI TO</button>
 
+</inz-card>
