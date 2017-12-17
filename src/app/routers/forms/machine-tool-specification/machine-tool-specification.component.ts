@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DynamicFormService} from '@ng-dynamic-forms/core';
-import {MachineToolSpecificationService} from './shared/services/machine-tool-specification/machine-tool-specification.service';
-import {FormComponent} from '../shared/models/form-component';
+import {FormGroup} from '@angular/forms';
+import {MachineClass} from '../shared/types/machine-class.type';
+import {MachineToolSpecification} from '../shared/models/machine-tool-specification.model';
 
 
 @Component({
@@ -9,14 +9,20 @@ import {FormComponent} from '../shared/models/form-component';
   templateUrl: './machine-tool-specification.component.html',
   styleUrls: ['./machine-tool-specification.component.sass']
 })
-export class MachineToolSpecificationComponent extends FormComponent implements OnInit {
-  constructor(protected formService: DynamicFormService,
-              private machineToolSpecificationService: MachineToolSpecificationService) {
-    super();
+export class MachineToolSpecificationComponent implements OnInit {
+  formGroup: FormGroup;
+  machineClass = MachineClass;
+
+  constructor() {
   }
 
   ngOnInit() {
-    this.formModel = this.machineToolSpecificationService.machineToolSpecification;
-    this.createFormGroup();
+    this.buildForm();
   }
+
+  private buildForm() {
+    this.formGroup = new FormGroup(MachineToolSpecification.getFormControls());
+  }
+
+
 }

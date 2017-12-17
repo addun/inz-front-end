@@ -1,23 +1,34 @@
 import {Component, OnInit} from '@angular/core';
-import {DynamicFormService} from '@ng-dynamic-forms/core';
+import {FormGroup} from '@angular/forms';
+import {DeviceId} from '../../shared/models/device-id.model';
 import {MachineToolSpecificationService} from '../shared/services/machine-tool-specification/machine-tool-specification.service';
-import {FormComponent} from '../../shared/models/form-component';
 
 @Component({
   selector: 'inz-device-id',
   templateUrl: './device-id.component.html',
   styleUrls: ['./device-id.component.sass']
 })
-export class DeviceIdComponent extends FormComponent implements OnInit {
+export class DeviceIdComponent implements OnInit {
+  formGroup: FormGroup;
 
-  constructor(protected formService: DynamicFormService,
-              private machineToolSpecificationService: MachineToolSpecificationService) {
-    super();
+  constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
   ngOnInit() {
-    this.formModel = this.machineToolSpecificationService.deviceIdModel;
-    this.createFormGroup();
+    this.formGroup = this.buildForm();
+  }
+
+  saveForm() {
+    this.machineToolSpecificationService
+      .machine_tool_specification.device_id = new DeviceId(this.formGroup.value);
+  }
+
+  private buildForm() {
+    return new FormGroup(
+      DeviceId.getControls(
+        this.machineToolSpecificationService.machine_tool_specification.device_id
+      )
+    );
   }
 
 }

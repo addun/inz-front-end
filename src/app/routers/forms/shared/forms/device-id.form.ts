@@ -6,22 +6,34 @@ export function deviceIdForm(): DynamicFormControlModel[] {
     new DynamicInputModel({
       id: 'id',
       label: 'Id',
-      required: true
+      required: true,
+      errorMessages: {
+        required: 'This field is require'
+      }
     }),
     new DynamicInputModel({
       id: 'model_name',
       label: 'Model name',
-      required: true
+      required: true,
+      errorMessages: {
+        required: 'This field is require'
+      }
     }),
     new DynamicInputModel({
       id: 'serial_name',
       label: 'Serial name',
-      required: true
+      required: true,
+      errorMessages: {
+        required: 'This field is require'
+      }
     }),
     new DynamicInputModel({
       id: 'manufacturer',
       label: 'Manufacturer',
-      required: true
+      required: true,
+      errorMessages: {
+        required: 'This field is require'
+      }
     }),
     new DynamicInputModel({
       id: 'data_manufactured',
