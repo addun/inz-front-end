@@ -1,6 +1,6 @@
 import {MachiningSize} from './machining-size.model';
 import {MachiningCapabilityProfile} from '../types/machining-capability-profile.type';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 export class MachiningCapability {
   capability: MachiningCapabilityProfile = MachiningCapabilityProfile.BORING_CAPABILITY;
@@ -17,6 +17,7 @@ export class MachiningCapability {
       capability: new FormControl(loadModel.capability, Validators.required),
       machining_accuracy: new FormControl(loadModel.machining_accuracy),
       description: new FormControl(loadModel.description),
+      machining_size: new FormGroup(MachiningSize.getFormControls())
     };
   }
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormHeadingComponent } from './form-heading.component';
+import { FieldsetComponent } from './fieldset.component';
 
-describe('FormHeadingComponent', () => {
-  let component: FormHeadingComponent;
-  let fixture: ComponentFixture<FormHeadingComponent>;
+describe('FieldsetComponent', () => {
+  let component: FieldsetComponent;
+  let fixture: ComponentFixture<FieldsetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormHeadingComponent ]
+      declarations: [ FieldsetComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormHeadingComponent);
+    fixture = TestBed.createComponent(FieldsetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
