@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MachiningCapability} from '../../shared/models/machining-capability.model';
 import {FormArray, FormGroup} from '@angular/forms';
-import {MachiningCapabilityProfile} from '../../shared/types/machining-capability-profile.type';
 import {MachineToolSpecificationService} from '../shared/services/machine-tool-specification/machine-tool-specification.service';
 
 @Component({
@@ -11,10 +10,12 @@ import {MachineToolSpecificationService} from '../shared/services/machine-tool-s
 })
 export class MachiningCapabilitiesComponent implements OnInit {
   machiningCapabilitiesForm: FormGroup;
-  machiningCapabilityProfile = MachiningCapabilityProfile;
 
   constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
+  }
 
+  get capabilitiesControl(): any {
+    return this.machiningCapabilitiesForm.controls['capabilities'];
   }
 
   ngOnInit(): void {
@@ -28,7 +29,12 @@ export class MachiningCapabilitiesComponent implements OnInit {
   }
 
   loadCapabilityForm(): FormGroup[] {
-    const machiningCapabilities = this.machineToolSpecificationService.machine_tool_specification.machining_capabilities;
+    let machiningCapabilities = this.machineToolSpecificationService.machine_tool_specification.machining_capabilities;
+
+    if (!machiningCapabilities) {
+      machiningCapabilities = [new MachiningCapability()];
+    }
+
     return machiningCapabilities.map(model => {
       return new FormGroup(
         MachiningCapability.getFormControls(model)
@@ -37,13 +43,13 @@ export class MachiningCapabilitiesComponent implements OnInit {
   }
 
   addCapability() {
-    const control = <FormArray>this.machiningCapabilitiesForm.controls['capabilities'];
+    const control = <FormArray>this.capabilitiesControl;
     control.push(new FormGroup(MachiningCapability.getFormControls()));
   }
 
   removeCapability(index: number) {
-    const controlCount = (<any>this.machiningCapabilitiesForm.controls['capabilities']).length;
-    const control = <FormArray>this.machiningCapabilitiesForm.controls['capabilities'];
+    const controlCount = (<any>this.capabilitiesControl).length;
+    const control = <FormArray>this.capabilitiesControl;
     if (controlCount > 1) {
       control.removeAt(index);
     }

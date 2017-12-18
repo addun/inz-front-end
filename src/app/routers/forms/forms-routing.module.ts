@@ -4,6 +4,7 @@ import {FormsComponent} from './forms.component';
 import {DeviceIdComponent} from './machine-tool-specification/device-id/device-id.component';
 import {MachineToolSpecificationComponent} from './machine-tool-specification/machine-tool-specification.component';
 import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
+import {ItsElementsComponent} from './machine-tool-specification/its-elements/its-elements.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,13 @@ const routes: Routes = [
         component: MachiningCapabilitiesComponent,
         data: {
           breadcrumb: 'Machining Capabilities'
+        },
+      },
+      {
+        path: 'its-elements',
+        component: ItsElementsComponent,
+        data: {
+          breadcrumb: 'Its Elements'
         },
       },
     ]

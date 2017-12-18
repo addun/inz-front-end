@@ -1,11 +1,11 @@
 import {AbstractControl, FormControl, Validators} from '@angular/forms';
 
 export class DeviceId {
-  id = '';
-  model_name = '';
-  serial_number = '';
-  manufacturer = '';
-  date_manufactured?;
+  id: string;
+  model_name: string;
+  serial_number: string;
+  manufacturer: string;
+  date_manufactured?: Date;
 
   constructor(data?: any) {
     Object.assign(this, data);

@@ -13,16 +13,33 @@ export class MachineToolSpecificationComponent implements OnInit {
   machineToolSpecification: MachineToolSpecification;
   machineToolSpecificationForm: FormGroup;
 
+  schema;
+
   constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
   ngOnInit() {
-    this.buildForm();
+    this.machineToolSpecificationForm = this.buildForm();
     this.machineToolSpecification = this.machineToolSpecificationService.machine_tool_specification;
   }
 
+  save() {
+    const values = this.machineToolSpecificationForm.value;
+
+    this.machineToolSpecificationService
+      .machine_tool_specification = Object.assign(
+      this.machineToolSpecificationService.machine_tool_specification, values
+    );
+
+    this.schema = this.machineToolSpecificationService.machine_tool_specification;
+  }
+
   private buildForm() {
-    this.machineToolSpecificationForm = new FormGroup(MachineToolSpecification.getFormControls());
+    return this.machineToolSpecificationForm = new FormGroup(
+      MachineToolSpecification.getFormControls(
+        this.machineToolSpecificationService.machine_tool_specification
+      )
+    );
   }
 
 

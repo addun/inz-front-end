@@ -5,9 +5,9 @@ import {AbstractControl, FormControl, Validators} from '@angular/forms';
 import {MachiningCapability} from './machining-capability.model';
 
 export class MachineToolSpecification extends MachineTool {
-  machine_class: MachineClass = MachineClass.DRILLING_MACHINE;
-  device_id: DeviceId = new DeviceId();
-  machining_capabilities: MachiningCapability[] = [];
+  machine_class: MachineClass;
+  device_id: DeviceId;
+  machining_capabilities: MachiningCapability[];
 
 
   public static getFormControls(loadModel?: MachineToolSpecification): { [key: string]: AbstractControl } {

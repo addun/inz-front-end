@@ -1,36 +1,36 @@
 <div [formGroup]="deviceIdForm">
 
   <div class="form-group row">
-    <label for="id" class="col-sm-2 col-form-label require">Id</label>
-    <div class="col-sm-10">
+    <label for="id" class="col-12 col-sm-12 col-md-3 col-form-label require">Id</label>
+    <div class="col-12 col-sm-12 col-md-9">
       <input formControlName="id" id="id" class="form-control"/>
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="model_name" class="col-sm-2 col-form-label require">Model Name</label>
-    <div class="col-sm-10">
+    <label for="model_name" class="col-12 col-sm-12 col-md-3 col-form-label require">Model Name</label>
+    <div class="col-12 col-sm-12 col-md-9">
       <input formControlName="model_name" id="model_name" class="form-control"/>
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="serial_number" class="col-sm-2 col-form-label require">Serial Number</label>
-    <div class="col-sm-10">
+    <label for="serial_number" class="col-12 col-sm-12 col-md-3 col-form-label require">Serial Number</label>
+    <div class="col-12 col-sm-12 col-md-9">
       <input formControlName="serial_number" id="serial_number" class="form-control"/>
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="manufacturer" class="col-sm-2 col-form-label require">Manufacturer</label>
-    <div class="col-sm-10">
+    <label for="manufacturer" class="col-12 col-sm-12 col-md-3 col-form-label require">Manufacturer</label>
+    <div class="col-12 col-sm-12 col-md-9">
       <input formControlName="manufacturer" id="manufacturer" class="form-control"/>
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="date_manufactured" class="col-sm-2 col-form-label">Date Manufactured</label>
-    <div class="input-group col-sm-10">
+    <label for="date_manufactured" class="col-12 col-sm-12 col-md-3 col-form-label">Date Manufactured</label>
+    <div class="input-group col-12 col-sm-12 col-md-9">
       <input ngbDatepicker #d2="ngbDatepicker" placeholder="yyyy-mm-dd" formControlName="date_manufactured"
              id="date_manufactured"
              class="form-control"/>

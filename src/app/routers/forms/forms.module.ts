@@ -11,6 +11,7 @@ import {MachiningCapabilitiesComponent} from './machine-tool-specification/machi
 import {FormsSharedModule} from './shared/forms-shared.module';
 import {DeviceIdComponent} from './machine-tool-specification/device-id/device-id.component';
 import {SharedModule} from '../../shared/shared.module';
+import { ItsElementsComponent } from './machine-tool-specification/its-elements/its-elements.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import {SharedModule} from '../../shared/shared.module';
     MachineToolSpecificationComponent,
     MachiningCapabilitiesComponent,
     DeviceIdComponent,
+    ItsElementsComponent,
   ],
   providers: [
     MachineToolSpecificationService,
