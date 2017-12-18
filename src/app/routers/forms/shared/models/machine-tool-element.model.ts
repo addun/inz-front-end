@@ -6,7 +6,7 @@ export class MachineToolElement {
   weight: number;
   capabilities?: any[];
 
-  public static getControls(loadModel?: MachineToolElement) {
+  public static getFormControls(loadModel?: MachineToolElement) {
     if (!loadModel) {
       loadModel = new MachineToolElement();
     }

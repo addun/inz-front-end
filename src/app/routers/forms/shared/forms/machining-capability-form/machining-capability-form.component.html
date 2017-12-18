@@ -1,9 +1,9 @@
 <div [formGroup]="machiningCapabilityForm">
 
   <div class="form-group row">
-    <label for="capability" class="col-12 col-sm-12 col-md-3 col-form-label require">Capability</label>
+    <label [for]="'capability_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label require">Capability</label>
     <div class="col-12 col-sm-12 col-md-9">
-      <select formControlName="capability" id="capability" class="form-control custom-select">
+      <select formControlName="capability" [id]="'capability_'+uniqId" class="form-control custom-select">
         <option *ngFor="let item of machiningCapabilityProfile | keys" [value]="item.key">
           {{item.value}}
         </option>
@@ -12,43 +12,45 @@
   </div>
 
   <div class="form-group row">
-    <label for="machining_accuracy" class="col-12 col-sm-12 col-md-3 col-form-label">Machining Accuracy</label>
+    <label [for]="'machining_accuracy_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label">Machining
+      Accuracy</label>
     <div class="col-12 col-sm-12 col-md-9">
-      <input formControlName="machining_accuracy" id="machining_accuracy" class="form-control"/>
+      <input formControlName="machining_accuracy" [id]="'machining_accuracy_'+uniqId" class="form-control"/>
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="description" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
+    <label [for]="'description_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
     <div class="col-12 col-sm-12 col-md-9">
-      <input formControlName="description" id="description" class="form-control"/>
+      <input formControlName="description" [id]="'description_'+uniqId" class="form-control"/>
     </div>
   </div>
 
   <div formGroupName="machining_size">
     <inz-fieldset legend="Machine Size">
       <div class="form-group row">
-        <label for="machining_size_description" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
+        <label [for]="'machining_size_description_'+uniqId"
+               class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
         <div class="col-12 col-sm-12 col-md-9">
-          <input formControlName="description" id="machining_size_description" class="form-control"/>
+          <input formControlName="description" [id]="'machining_size_description_'+uniqId" class="form-control"/>
         </div>
       </div>
       <div class="form-group row">
-        <label for="x" class="col-12 col-sm-12 col-md-3 col-form-label require">X</label>
+        <label [for]="'x_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label require">X</label>
         <div class="col-12 col-sm-12 col-md-9">
-          <input formControlName="x" id="x" class="form-control"/>
+          <input formControlName="x" [id]="'x_'+uniqId" class="form-control"/>
         </div>
       </div>
       <div class="form-group row">
-        <label for="y" class="col-12 col-sm-12 col-md-3 col-form-label require">Y</label>
+        <label [for]="'y_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label require">Y</label>
         <div class="col-12 col-sm-12 col-md-9">
-          <input formControlName="y" id="y" class="form-control"/>
+          <input formControlName="y" [id]="'y_'+uniqId" class="form-control"/>
         </div>
       </div>
       <div class="form-group row">
-        <label for="z" class="col-12 col-sm-12 col-md-3 col-form-label require">Z</label>
+        <label [for]="'z_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label require">Z</label>
         <div class="col-12 col-sm-12 col-md-9">
-          <input formControlName="z" id="z" class="form-control"/>
+          <input formControlName="z" [id]="'z_'+uniqId" class="form-control"/>
         </div>
       </div>
     </inz-fieldset>

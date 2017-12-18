@@ -3,11 +3,13 @@ import {MachineClass} from '../types/machine-class.type';
 import {DeviceId} from './device-id.model';
 import {AbstractControl, FormControl, Validators} from '@angular/forms';
 import {MachiningCapability} from './machining-capability.model';
+import {MachineToolElement} from './machine-tool-element.model';
 
 export class MachineToolSpecification extends MachineTool {
   machine_class: MachineClass;
   device_id: DeviceId;
   machining_capabilities: MachiningCapability[];
+  its_elements: MachineToolElement[];
 
 
   public static getFormControls(loadModel?: MachineToolSpecification): { [key: string]: AbstractControl } {
