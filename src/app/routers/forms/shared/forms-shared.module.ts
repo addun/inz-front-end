@@ -9,10 +9,13 @@ import {DeviceIdFormComponent} from './forms/device-id-form/device-id-form.compo
 import {MachineToolSpecificationFormComponent} from './forms/machine-tool-specification-form/machine-tool-specification-form.component';
 import {MachiningCapabilityFormComponent} from './forms/machining-capability-form/machining-capability-form.component';
 import {FieldsetComponent} from './components/fieldset/fieldset.component';
+import {RouterOutletComponent} from './components/router-outlet/router-outlet.component';
+import {SharedModule} from '../../../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
   ],
@@ -24,6 +27,7 @@ import {FieldsetComponent} from './components/fieldset/fieldset.component';
     MachineToolSpecificationFormComponent,
     MachiningCapabilityFormComponent,
     FieldsetComponent,
+    RouterOutletComponent,
   ],
   exports: [
     AddItemComponent,
@@ -35,6 +39,7 @@ import {FieldsetComponent} from './components/fieldset/fieldset.component';
     NgbModule,
     MachiningCapabilityFormComponent,
     FieldsetComponent,
+    RouterOutletComponent
   ]
 })
 export class FormsSharedModule {

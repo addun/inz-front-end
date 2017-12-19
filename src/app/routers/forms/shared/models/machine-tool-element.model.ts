@@ -1,10 +1,11 @@
 import {FormControl, Validators} from '@angular/forms';
+import {BarFeeder} from './bar-feeder.model';
 
 export class MachineToolElement {
   name: string;
   description?: string;
   weight: number;
-  capabilities?: any[];
+  capabilities?: Capabilities = new Capabilities();
 
   public static getFormControls(loadModel?: MachineToolElement) {
     if (!loadModel) {
@@ -17,4 +18,9 @@ export class MachineToolElement {
       weight: new FormControl(loadModel.weight),
     };
   }
+}
+
+
+class Capabilities {
+  bar_feeder: BarFeeder[] = [];
 }

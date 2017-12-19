@@ -5,7 +5,7 @@ export abstract class MachineTool {
 
   public static getFormControls(loadModel?: MachineTool): { [key: string]: AbstractControl } {
     return {
-      description: new FormControl((loadModel ? loadModel.description : ''), Validators.required)
+      description: new FormControl((loadModel ? loadModel.description : null), Validators.required)
     };
   }
 }

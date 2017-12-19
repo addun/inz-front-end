@@ -1,0 +1,56 @@
+<div [formGroup]="barFeederForm">
+  <div formArrayName="bar_feeder">
+    <div *ngFor="let a of bar_feeder.controls; let i=index">
+
+      <inz-card [cardName]="'Bar Feeder #' + (1+i)" class="form-array-item">
+        <div [formGroupName]="i">
+
+          <div class="form-group row">
+            <label [for]="'description_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="description" [id]="'description_'+i" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'minimum_stock_diameter_'+i" class="col-12 col-sm-12 col-md-3 col-form-label require">Minimum
+              Stock Diameter</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="minimum_stock_diameter" [id]="'minimum_stock_diameter_'+i" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'maximum_stock_diameter_'+i" class="col-12 col-sm-12 col-md-3 col-form-label require">Maximum
+              Stock Diameter</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="maximum_stock_diameter" [id]="'maximum_stock_diameter_'+i" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'maximum_stock_length_'+i" class="col-12 col-sm-12 col-md-3 col-form-label require">Maximum
+              Stock Length</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="maximum_stock_length" [id]="'maximum_stock_length_'+i" class="form-control"/>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="text-right">
+          <button class="btn btn-danger"
+                  (click)="removeBarFeeder(i)">Remove
+          </button>
+        </div>
+      </inz-card>
+
+    </div>
+  </div>
+</div>
+
+<div class="text-left">
+  <span class="text-primary pointer" (click)="addBarFeeder()">Add new +</span>
+</div>
+
+<div class="text-center">
+  <button class="btn btn-primary" (click)="saveAll()">Save all</button>
+</div>

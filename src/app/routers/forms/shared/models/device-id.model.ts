@@ -5,13 +5,10 @@ export class DeviceId {
   model_name: string;
   serial_number: string;
   manufacturer: string;
-  date_manufactured?: Date;
+  date_manufactured?: string;
 
-  constructor(data?: any) {
-    Object.assign(this, data);
-  }
 
-  public static getControls(loadModel?: DeviceId): { [key: string]: AbstractControl } {
+  public static getFormControls(loadModel?: DeviceId): { [key: string]: AbstractControl } {
     if (!loadModel) {
       loadModel = new DeviceId();
     }

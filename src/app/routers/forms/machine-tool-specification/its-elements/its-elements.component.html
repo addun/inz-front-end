@@ -4,7 +4,6 @@
 
       <inz-card [cardName]="'Machine Tool Element #' + (1+i)" class="form-array-item">
         <div [formGroupName]="i">
-
           <div class="form-group row">
             <label [for]="'name_'+i" class="col-12 col-sm-12 col-md-3 col-form-label require">Name</label>
             <div class="col-12 col-sm-12 col-md-9">
@@ -23,7 +22,13 @@
               <input formControlName="weight" [id]="'weight_'+i" class="form-control"/>
             </div>
           </div>
+        </div>
 
+        <div class="form-group row">
+          <label class="col-12 col-sm-12 col-md-3 col-form-label">Tailstocks</label>
+          <div class="col-12 col-sm-12 col-md-9">
+            <a [routerLink]="[i, 'bar-feeder']" class="btn btn-primary btn-block">Go to bar feeder forms</a>
+          </div>
         </div>
 
 
@@ -39,7 +44,7 @@
 </div>
 
 <div class="text-left">
-  <span class="text-primary pointer" (click)="addMachineToolElement()">Add new +</span>
+  <span class="text-primary pointer" (click)="addMachineToolElement()">Add new machine tool element +</span>
 </div>
 
 <div class="text-center">

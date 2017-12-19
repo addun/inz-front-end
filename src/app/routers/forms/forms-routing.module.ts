@@ -4,7 +4,7 @@ import {FormsComponent} from './forms.component';
 import {DeviceIdComponent} from './machine-tool-specification/device-id/device-id.component';
 import {MachineToolSpecificationComponent} from './machine-tool-specification/machine-tool-specification.component';
 import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
-import {ItsElementsComponent} from './machine-tool-specification/its-elements/its-elements.component';
+import {RouterOutletComponent} from './shared/components/router-outlet/router-outlet.component';
 
 const routes: Routes = [
   {
@@ -34,7 +34,8 @@ const routes: Routes = [
       },
       {
         path: 'its-elements',
-        component: ItsElementsComponent,
+        component: RouterOutletComponent,
+        loadChildren: './machine-tool-specification/its-elements/its-elements.module#ItsElementsModule',
         data: {
           breadcrumb: 'Its Elements'
         },

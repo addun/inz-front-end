@@ -6,7 +6,7 @@ export class MachiningCapability {
   capability: MachiningCapabilityProfile;
   machining_accuracy?: string;
   description ?: string;
-  machining_size?: MachiningSize;
+  machining_size?: MachiningSize = new MachiningSize();
 
   public static getFormControls(loadModel?: MachiningCapability) {
     if (!loadModel) {

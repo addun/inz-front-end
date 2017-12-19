@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormGroup} from '@angular/forms';
+import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
 import {MachineToolSpecificationService} from '../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {MachineToolElement} from '../../shared/models/machine-tool-element.model';
 
@@ -14,8 +14,12 @@ export class ItsElementsComponent implements OnInit {
   constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
-  get machineToolElements(): any {
+  get machineToolElements(): AbstractControl {
     return this.machineToolElementsForm.controls['machine_tool_elements'];
+  }
+
+  get its_elements(): MachineToolElement[] {
+    return this.machineToolSpecificationService.machine_tool_specification.its_elements;
   }
 
   ngOnInit(): void {
@@ -29,7 +33,7 @@ export class ItsElementsComponent implements OnInit {
   }
 
   loadMachineToolElementsForm(): FormGroup[] {
-    let machineToolElements = this.machineToolSpecificationService.machine_tool_specification.its_elements;
+    let machineToolElements = this.its_elements;
 
     if (!machineToolElements) {
       machineToolElements = [new MachineToolElement()];
@@ -45,16 +49,22 @@ export class ItsElementsComponent implements OnInit {
   addMachineToolElement() {
     const control = <FormArray>this.machineToolElements;
     control.push(new FormGroup(MachineToolElement.getFormControls()));
+    this.saveAll();
   }
 
   removeMachineToolElement(index: number) {
     const control = <FormArray>this.machineToolElements;
     control.removeAt(index);
+    this.saveAll();
   }
 
   saveAll() {
-    this.machineToolSpecificationService
-      .machine_tool_specification.its_elements = this.machineToolElements.value;
+    this.machineToolElements.value.map((machineToolElement: MachineToolElement, index: number) => {
+      if (this.its_elements[index]) {
+        this.its_elements[index] = Object.assign(this.its_elements[index], machineToolElement);
+      } else {
+        this.its_elements[index] = machineToolElement;
+      }
+    });
   }
-
 }

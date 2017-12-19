@@ -7,9 +7,9 @@ import {MachineToolElement} from './machine-tool-element.model';
 
 export class MachineToolSpecification extends MachineTool {
   machine_class: MachineClass;
-  device_id: DeviceId;
-  machining_capabilities: MachiningCapability[];
-  its_elements: MachineToolElement[];
+  device_id: DeviceId = new DeviceId();
+  machining_capabilities: MachiningCapability[] = [];
+  its_elements: MachineToolElement[] = [];
 
 
   public static getFormControls(loadModel?: MachineToolSpecification): { [key: string]: AbstractControl } {

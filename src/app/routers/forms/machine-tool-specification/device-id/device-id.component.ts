@@ -20,12 +20,12 @@ export class DeviceIdComponent implements OnInit {
 
   saveForm() {
     this.machineToolSpecificationService
-      .machine_tool_specification.device_id = new DeviceId(this.deviceIdForm.value);
+      .machine_tool_specification.device_id = this.deviceIdForm.value;
   }
 
   private buildForm() {
     return new FormGroup(
-      DeviceId.getControls(
+      DeviceId.getFormControls(
         this.machineToolSpecificationService.machine_tool_specification.device_id
       )
     );
