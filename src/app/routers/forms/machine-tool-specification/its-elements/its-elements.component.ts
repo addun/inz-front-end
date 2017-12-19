@@ -61,7 +61,7 @@ export class ItsElementsComponent implements OnInit {
   saveAll() {
     this.machineToolElements.value.map((machineToolElement: MachineToolElement, index: number) => {
       if (this.its_elements[index]) {
-        this.its_elements[index] = Object.assign(this.its_elements[index], machineToolElement);
+        this.its_elements[index] = new MachineToolElement(Object.assign(this.its_elements[index], machineToolElement));
       } else {
         this.its_elements[index] = machineToolElement;
       }

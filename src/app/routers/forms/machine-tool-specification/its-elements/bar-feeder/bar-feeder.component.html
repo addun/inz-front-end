@@ -1,5 +1,5 @@
 <div [formGroup]="barFeederForm">
-  <div formArrayName="bar_feeder">
+  <div formArrayName="bar_feeders">
     <div *ngFor="let a of bar_feeder.controls; let i=index">
 
       <inz-card [cardName]="'Bar Feeder #' + (1+i)" class="form-array-item">

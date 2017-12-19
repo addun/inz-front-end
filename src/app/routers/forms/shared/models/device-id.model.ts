@@ -7,6 +7,10 @@ export class DeviceId {
   manufacturer: string;
   date_manufactured?: string;
 
+  constructor(deviceId?) {
+    Object.assign(this, deviceId || {});
+  }
+
 
   public static getFormControls(loadModel?: DeviceId): { [key: string]: AbstractControl } {
     if (!loadModel) {

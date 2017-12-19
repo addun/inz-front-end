@@ -7,6 +7,10 @@ export class MachineToolElement {
   weight: number;
   capabilities?: Capabilities = new Capabilities();
 
+  constructor(machineToolElement?) {
+    Object.assign(this, machineToolElement || {});
+  }
+
   public static getFormControls(loadModel?: MachineToolElement) {
     if (!loadModel) {
       loadModel = new MachineToolElement();
@@ -22,5 +26,5 @@ export class MachineToolElement {
 
 
 class Capabilities {
-  bar_feeder: BarFeeder[] = [];
+  bar_feeders: BarFeeder[] = [];
 }

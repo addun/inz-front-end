@@ -14,19 +14,26 @@ export class DeviceIdComponent implements OnInit {
   constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
+  get deviceId() {
+    return this.machineToolSpecificationService.machine_tool_specification.device_id;
+  }
+
+  set deviceId(deviceId: DeviceId) {
+    this.machineToolSpecificationService.machine_tool_specification.device_id = deviceId;
+  }
+
   ngOnInit() {
     this.deviceIdForm = this.buildForm();
   }
 
   saveForm() {
-    this.machineToolSpecificationService
-      .machine_tool_specification.device_id = this.deviceIdForm.value;
+    this.deviceId = new DeviceId(this.deviceIdForm.value);
   }
 
   private buildForm() {
     return new FormGroup(
       DeviceId.getFormControls(
-        this.machineToolSpecificationService.machine_tool_specification.device_id
+        this.deviceId
       )
     );
   }

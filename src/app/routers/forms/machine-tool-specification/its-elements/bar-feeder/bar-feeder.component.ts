@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
-import {FormArray, FormGroup} from '@angular/forms';
+import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
 import {BarFeeder} from '../../../shared/models/bar-feeder.model';
 import {ActivatedRoute} from '@angular/router';
 
@@ -17,8 +17,24 @@ export class BarFeederComponent implements OnInit {
               private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
-  get bar_feeder(): any {
-    return this.barFeederForm.controls['bar_feeder'];
+  get bar_feeder(): AbstractControl {
+    return this.barFeederForm.controls['bar_feeders'];
+  }
+
+  get barFeeders(): BarFeeder[] {
+    return this.machineToolSpecificationService
+      .machine_tool_specification
+      .its_elements[this.activeArrayIndex]
+      .capabilities
+      .bar_feeders;
+  }
+
+  set barFeeders(barFeeders: BarFeeder[]) {
+    this.machineToolSpecificationService
+      .machine_tool_specification
+      .its_elements[this.activeArrayIndex]
+      .capabilities
+      .bar_feeders = barFeeders;
   }
 
   ngOnInit(): void {
@@ -33,26 +49,12 @@ export class BarFeederComponent implements OnInit {
 
   buildBarFeederForm(): FormGroup {
     return new FormGroup({
-      bar_feeder: new FormArray(this.loadBarFeederForm())
+      bar_feeders: new FormArray(this.loadBarFeederForm())
     });
   }
 
   loadBarFeederForm(): FormGroup[] {
-    let capabilities = this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities;
-
-    if (!capabilities) {
-      capabilities = {
-        bar_feeder: []
-      };
-    } else {
-      if (!capabilities.bar_feeder) {
-        capabilities.bar_feeder = [];
-      }
-    }
-
-    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities = capabilities;
-
-    return capabilities.bar_feeder.map(model => {
+    return this.barFeeders.map(model => {
       return new FormGroup(
         BarFeeder.getFormControls(model)
       );
@@ -70,8 +72,7 @@ export class BarFeederComponent implements OnInit {
   }
 
   saveAll() {
-    this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.bar_feeder = this.bar_feeder.value;
+    this.barFeeders = this.bar_feeder.value;
   }
 
 }

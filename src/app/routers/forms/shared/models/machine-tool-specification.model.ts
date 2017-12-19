@@ -11,6 +11,11 @@ export class MachineToolSpecification extends MachineTool {
   machining_capabilities: MachiningCapability[] = [];
   its_elements: MachineToolElement[] = [];
 
+  constructor(machineToolSpecification?) {
+    super(machineToolSpecification);
+    Object.assign(this, machineToolSpecification || {});
+  }
+
 
   public static getFormControls(loadModel?: MachineToolSpecification): { [key: string]: AbstractControl } {
     if (!loadModel) {
