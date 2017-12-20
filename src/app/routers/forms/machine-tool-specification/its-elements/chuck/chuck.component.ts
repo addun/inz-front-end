@@ -3,14 +3,13 @@ import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {Chuck} from '../../../shared/models/chuck.model';
-import {Collet} from '../../../shared/models/collet.model';
 
 @Component({
-  selector: 'inz-collet',
-  templateUrl: './collet.component.html',
-  styleUrls: ['./collet.component.sass']
+  selector: 'inz-chuck',
+  templateUrl: './chuck.component.html',
+  styleUrls: ['./chuck.component.sass']
 })
-export class ColletComponent implements OnInit {
+export class ChuckComponent implements OnInit {
   formModelGroup: FormGroup;
   private activeArrayIndex: number;
 
@@ -22,20 +21,20 @@ export class ColletComponent implements OnInit {
     return this.formModelGroup.controls['arrayModel'];
   }
 
-  get model(): Collet[] {
+  get model(): Chuck[] {
     return this.machineToolSpecificationService
       .machine_tool_specification
       .its_elements[this.activeArrayIndex]
       .capabilities
-      .collets;
+      .chucks;
   }
 
-  set model(collet: Collet[]) {
+  set model(chucks: Chuck[]) {
     this.machineToolSpecificationService
       .machine_tool_specification
       .its_elements[this.activeArrayIndex]
       .capabilities
-      .collets = collet;
+      .chucks = chucks;
   }
 
   ngOnInit(): void {
@@ -58,14 +57,14 @@ export class ColletComponent implements OnInit {
     console.log(this.model);
     return this.model.map(model => {
       return new FormGroup(
-        Collet.getFormControls(model)
+        Chuck.getFormControls(model)
       );
     });
   }
 
   add() {
     const control = <FormArray>this.modelForm;
-    control.push(new FormGroup(Collet.getFormControls()));
+    control.push(new FormGroup(Chuck.getFormControls()));
   }
 
   remove(index: number) {

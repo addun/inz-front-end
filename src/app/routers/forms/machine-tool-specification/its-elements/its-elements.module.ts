@@ -7,6 +7,7 @@ import {FormsSharedModule} from '../../shared/forms-shared.module';
 import {ItsElementsComponent} from './its-elements.component';
 import { TailstockComponent } from './tailstock/tailstock.component';
 import { ColletComponent } from './collet/collet.component';
+import { ChuckComponent } from './chuck/chuck.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { ColletComponent } from './collet/collet.component';
     ItsElementsComponent,
     BarFeederComponent,
     TailstockComponent,
-    ColletComponent]
+    ColletComponent,
+    ChuckComponent]
 })
 export class ItsElementsModule {
 }

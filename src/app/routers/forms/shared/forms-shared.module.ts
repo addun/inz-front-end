@@ -13,6 +13,7 @@ import {RouterOutletComponent} from './components/router-outlet/router-outlet.co
 import {SharedModule} from '../../../shared/shared.module';
 import {CardActionComponent} from './components/card-action/card-action.component';
 import {ArrayActionComponent} from './components/array-action/array-action.component';
+import { ChuckFormComponent } from './forms/chuck-form/chuck-form.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import {ArrayActionComponent} from './components/array-action/array-action.compo
     RouterOutletComponent,
     CardActionComponent,
     ArrayActionComponent,
+    ChuckFormComponent,
   ],
   exports: [
     AddItemComponent,
@@ -46,6 +48,8 @@ import {ArrayActionComponent} from './components/array-action/array-action.compo
     RouterOutletComponent,
     CardActionComponent,
     ArrayActionComponent,
+    ChuckFormComponent,
+
   ]
 })
 export class FormsSharedModule {
