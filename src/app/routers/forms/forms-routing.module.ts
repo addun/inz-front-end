@@ -5,6 +5,8 @@ import {DeviceIdComponent} from './machine-tool-specification/device-id/device-i
 import {MachineToolSpecificationComponent} from './machine-tool-specification/machine-tool-specification.component';
 import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
 import {RouterOutletComponent} from './shared/components/router-outlet/router-outlet.component';
+import {LocationComponent} from './machine-tool-specification/location/location.component';
+import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,20 @@ const routes: Routes = [
         component: DeviceIdComponent,
         data: {
           breadcrumb: 'Device Id'
+        },
+      },
+      {
+        path: 'location',
+        component: LocationComponent,
+        data: {
+          breadcrumb: 'Location'
+        },
+      },
+      {
+        path: 'installation',
+        component: InstallationComponent,
+        data: {
+          breadcrumb: 'Installation'
         },
       },
       {

@@ -7,7 +7,10 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class FieldsetComponent implements OnInit {
   @Input() legend: string;
-  constructor() { }
+  @Input() required: boolean;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

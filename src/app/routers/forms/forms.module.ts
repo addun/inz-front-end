@@ -10,6 +10,8 @@ import {MachiningCapabilitiesComponent} from './machine-tool-specification/machi
 import {FormsSharedModule} from './shared/forms-shared.module';
 import {DeviceIdComponent} from './machine-tool-specification/device-id/device-id.component';
 import {SharedModule} from '../../shared/shared.module';
+import { LocationComponent } from './machine-tool-specification/location/location.component';
+import { InstallationComponent } from './machine-tool-specification/installation/installation.component';
 
 @NgModule({
   imports: [
@@ -23,6 +25,8 @@ import {SharedModule} from '../../shared/shared.module';
     MachineToolSpecificationComponent,
     MachiningCapabilitiesComponent,
     DeviceIdComponent,
+    LocationComponent,
+    InstallationComponent,
   ],
   providers: [
     MachineToolSpecificationService,

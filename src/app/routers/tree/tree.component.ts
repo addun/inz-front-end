@@ -3,6 +3,7 @@ import {MenuItemSelectedEvent, NodeEvent, NodeMenuItemAction, Tree, TreeComponen
 import {TreeService} from './services/tree/tree.service';
 import {TreeToastService} from './services/toast/tree-toast.service';
 import {Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'inz-tree',
@@ -37,8 +38,15 @@ export class TreeComponent implements OnInit, AfterViewInit {
         {action: NodeMenuItemAction.Remove, name: 'Remove', cssClass: 'fa fa-remove'},
       ]
     },
-    loadChildren: (callback) => {
-      console.log(this);
+    loadChildren: function(callback) {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+          callback(JSON.parse(this.responseText));
+        }
+      };
+      xhttp.open('GET', `${environment.apiBaseUrl}tree/?parent=${this.id}`, true);
+      xhttp.send();
     }
   };
 
@@ -52,7 +60,7 @@ export class TreeComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
-    this.self  = this;
+    this.self = this;
     console.log(self);
 
   }

@@ -39,7 +39,9 @@ export class MachiningCapabilitiesComponent implements OnInit {
   loadForm(): FormGroup[] {
     let machiningCapabilities = this.model;
 
-    if (!machiningCapabilities) {
+    console.log(this.model);
+
+    if (!machiningCapabilities.length) {
       machiningCapabilities = [new MachiningCapability()];
     }
 

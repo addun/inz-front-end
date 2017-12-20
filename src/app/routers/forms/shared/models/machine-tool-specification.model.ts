@@ -4,11 +4,16 @@ import {DeviceId} from './device-id.model';
 import {AbstractControl, FormControl, Validators} from '@angular/forms';
 import {MachiningCapability} from './machining-capability.model';
 import {MachineToolElement} from './machine-tool-element.model';
+import {Installation} from './installation.model';
+import {Location} from './location.model';
+
 
 export class MachineToolSpecification extends MachineTool {
   machine_class: MachineClass;
   device_id: DeviceId = new DeviceId();
   machining_capabilities: MachiningCapability[] = [];
+  location: Location = new Location();
+  installation: Installation = new Installation();
   its_elements: MachineToolElement[] = [];
 
   constructor(machineToolSpecification?) {

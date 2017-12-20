@@ -1,0 +1,130 @@
+<inz-card cardName="Installation">
+
+  <div [formGroup]="installationForm">
+
+    <div class="form-group row">
+      <label for="weight" class="col-12 col-sm-12 col-md-3 col-form-label required">Weight</label>
+      <div class="col-12 col-sm-12 col-md-9">
+        <input formControlName="weight" id="weight" class="form-control" required/>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="air_pressure_requirement" class="col-12 col-sm-12 col-md-3 col-form-label">Air Pressure
+        Requirement</label>
+      <div class="col-12 col-sm-12 col-md-9">
+        <input formControlName="air_pressure_requirement" id="air_pressure_requirement" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="water_flow_rate" class="col-12 col-sm-12 col-md-3 col-form-label">Water Flow Rate</label>
+      <div class="col-12 col-sm-12 col-md-9">
+        <input formControlName="water_flow_rate" id="water_flow_rate" class="form-control"/>
+      </div>
+    </div>
+
+    <inz-fieldset legend="Size" formGroupName="size" required="true">
+      <div class="form-group row">
+        <label for="machine_length" class="col-12 col-sm-12 col-md-3 col-form-label required">Machine Length</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input formControlName="machine_length" id="machine_length" class="form-control" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="machine_width" class="col-12 col-sm-12 col-md-3 col-form-label required">Machine Width</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input formControlName="machine_width" id="machine_width" class="form-control" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="machine_height" class="col-12 col-sm-12 col-md-3 col-form-label required">Machine Height</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input formControlName="machine_height" id="machine_height" class="form-control" required/>
+        </div>
+      </div>
+
+    </inz-fieldset>
+
+    <inz-fieldset legend="Electrical" formGroupName="electrical" required="true">
+
+      <div class="form-group row">
+        <label for="electric_phase" class="col-12 col-sm-12 col-md-3 col-form-label required">Electric Phase</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input type="number" formControlName="electric_phase" id="electric_phase" class="form-control" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="electric_power" class="col-12 col-sm-12 col-md-3 col-form-label required">Electric Power</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input type="number" formControlName="electric_power" id="electric_power" class="form-control" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="electrical_current"
+               class="col-12 col-sm-12 col-md-3 col-form-label required">Electrical Current</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input type="number" formControlName="electrical_current" id="electrical_current" class="form-control"
+                 required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="electrical_frequency"
+               class="col-12 col-sm-12 col-md-3 col-form-label required">Electrical Frequency</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input type="number" formControlName="electrical_frequency" id="electrical_frequency" class="form-control"
+                 required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="electrical_grounding"
+               class="col-12 col-sm-12 col-md-3 col-form-label required">Electrical Grounding</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input type="number" formControlName="electrical_grounding" id="electrical_grounding" class="form-control"
+                 required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="electrical_voltage"
+               class="col-12 col-sm-12 col-md-3 col-form-label required">Electrical Voltage</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input type="number" formControlName="electrical_voltage" id="electrical_voltage" class="form-control"
+                 required/>
+        </div>
+      </div>
+    </inz-fieldset>
+
+    <inz-fieldset legend="Hydraulics" formGroupName="hydraulics" required="true">
+
+      <div class="form-group row">
+        <label for="type_of_hydraulic_oil" class="col-12 col-sm-12 col-md-3 col-form-label required">Type Of Hydraulic
+          Oil</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input formControlName="type_of_hydraulic_oil" id="type_of_hydraulic_oil" class="form-control" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="pump_outlet_pressure"
+               class="col-12 col-sm-12 col-md-3 col-form-label required">Pump Outlet Pressure</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input formControlName="pump_outlet_pressure" id="pump_outlet_pressure" class="form-control" required/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="capacity_of_hydraulics_tank" class="col-12 col-sm-12 col-md-3 col-form-label required">Capacity Of
+          Hydraulics Tank</label>
+        <div class="col-12 col-sm-12 col-md-9">
+          <input formControlName="capacity_of_hydraulics_tank" id="capacity_of_hydraulics_tank" class="form-control"
+                 required/>
+        </div>
+      </div>
+
+    </inz-fieldset>
+
+  </div>
+
+  <div class="text-center">
+    <button (click)="saveForm()" [disabled]="!installationForm.valid" class="btn btn-primary">Save</button>
+  </div>
+
+
+</inz-card>

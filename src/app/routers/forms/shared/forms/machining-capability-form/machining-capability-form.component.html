@@ -1,7 +1,7 @@
 <div [formGroup]="machiningCapabilityForm">
 
   <div class="form-group row">
-    <label [for]="'capability_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label require">Capability</label>
+    <label [for]="'capability_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label required">Capability</label>
     <div class="col-12 col-sm-12 col-md-9">
       <select formControlName="capability" [id]="'capability_'+uniqId" class="form-control custom-select">
         <option *ngFor="let item of machiningCapabilityProfile | keys" [value]="item.key">
@@ -36,19 +36,19 @@
         </div>
       </div>
       <div class="form-group row">
-        <label [for]="'x_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label require">X</label>
+        <label [for]="'x_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label required">X</label>
         <div class="col-12 col-sm-12 col-md-9">
           <input formControlName="x" [id]="'x_'+uniqId" class="form-control"/>
         </div>
       </div>
       <div class="form-group row">
-        <label [for]="'y_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label require">Y</label>
+        <label [for]="'y_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label required">Y</label>
         <div class="col-12 col-sm-12 col-md-9">
           <input formControlName="y" [id]="'y_'+uniqId" class="form-control"/>
         </div>
       </div>
       <div class="form-group row">
-        <label [for]="'z_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label require">Z</label>
+        <label [for]="'z_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label required">Z</label>
         <div class="col-12 col-sm-12 col-md-9">
           <input formControlName="z" [id]="'z_'+uniqId" class="form-control"/>
         </div>
