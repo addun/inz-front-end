@@ -5,6 +5,7 @@ import {BarFeederComponent} from './bar-feeder/bar-feeder.component';
 import {SharedModule} from '../../../../shared/shared.module';
 import {FormsSharedModule} from '../../shared/forms-shared.module';
 import {ItsElementsComponent} from './its-elements.component';
+import { TailstockComponent } from './tailstock/tailstock.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {ItsElementsComponent} from './its-elements.component';
   ],
   declarations: [
     ItsElementsComponent,
-    BarFeederComponent]
+    BarFeederComponent,
+    TailstockComponent]
 })
 export class ItsElementsModule {
 }

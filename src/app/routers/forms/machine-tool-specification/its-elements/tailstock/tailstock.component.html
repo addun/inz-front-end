@@ -1,8 +1,8 @@
 <div [formGroup]="formModelGroup">
-  <div formArrayName="arrayModel">
+  <div formArrayName="bar_feeders">
     <div *ngFor="let a of modelForm.controls; let i=index">
 
-      <inz-card-action [cardName]="'Tailstock #' + (1+i)"
+      <inz-card-action [cardName]="'Bar Feeder #' + (1+i)"
                        (remove)="remove(i)">
 
         <div [formGroupName]="i">

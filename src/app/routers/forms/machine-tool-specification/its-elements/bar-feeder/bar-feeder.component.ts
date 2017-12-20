@@ -10,18 +10,18 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./bar-feeder.component.sass']
 })
 export class BarFeederComponent implements OnInit {
-  barFeederForm: FormGroup;
+  formModelGroup: FormGroup;
   private activeArrayIndex: number;
 
   constructor(private activatedRoute: ActivatedRoute,
               private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
-  get bar_feeder(): AbstractControl {
-    return this.barFeederForm.controls['bar_feeders'];
+  get modelForm(): AbstractControl {
+    return this.formModelGroup.controls['arrayModel'];
   }
 
-  get barFeeders(): BarFeeder[] {
+  get model(): BarFeeder[] {
     return this.machineToolSpecificationService
       .machine_tool_specification
       .its_elements[this.activeArrayIndex]
@@ -29,7 +29,7 @@ export class BarFeederComponent implements OnInit {
       .bar_feeders;
   }
 
-  set barFeeders(barFeeders: BarFeeder[]) {
+  set model(barFeeders: BarFeeder[]) {
     this.machineToolSpecificationService
       .machine_tool_specification
       .its_elements[this.activeArrayIndex]
@@ -43,36 +43,37 @@ export class BarFeederComponent implements OnInit {
       .params
       .subscribe(params => {
         this.activeArrayIndex = params['machineToolElementId'];
-        this.barFeederForm = this.buildBarFeederForm();
+        this.formModelGroup = this.buildForm();
       });
   }
 
-  buildBarFeederForm(): FormGroup {
+  buildForm(): FormGroup {
     return new FormGroup({
-      bar_feeders: new FormArray(this.loadBarFeederForm())
+      arrayModel: new FormArray(this.loadForm())
     });
   }
 
-  loadBarFeederForm(): FormGroup[] {
-    return this.barFeeders.map(model => {
+  loadForm(): FormGroup[] {
+    console.log(this.model);
+    return this.model.map(model => {
       return new FormGroup(
         BarFeeder.getFormControls(model)
       );
     });
   }
 
-  addBarFeeder() {
-    const control = <FormArray>this.bar_feeder;
+  add() {
+    const control = <FormArray>this.modelForm;
     control.push(new FormGroup(BarFeeder.getFormControls()));
   }
 
-  removeBarFeeder(index: number) {
-    const control = <FormArray>this.bar_feeder;
+  remove(index: number) {
+    const control = <FormArray>this.modelForm;
     control.removeAt(index);
   }
 
   saveAll() {
-    this.barFeeders = this.bar_feeder.value;
+    this.model = this.modelForm.value;
   }
 
 }

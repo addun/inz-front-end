@@ -55,6 +55,7 @@ export class ItsElementsComponent implements OnInit {
   removeMachineToolElement(index: number) {
     const control = <FormArray>this.machineToolElements;
     control.removeAt(index);
+    this.its_elements.splice(index, 1);
     this.saveAll();
   }
 

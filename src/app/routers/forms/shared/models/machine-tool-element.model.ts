@@ -1,5 +1,6 @@
 import {FormControl, Validators} from '@angular/forms';
 import {BarFeeder} from './bar-feeder.model';
+import {Tailstock} from './tailstock.model';
 
 export class MachineToolElement {
   name: string;
@@ -27,4 +28,5 @@ export class MachineToolElement {
 
 class Capabilities {
   bar_feeders: BarFeeder[] = [];
+  tailstock: Tailstock[] = [];
 }

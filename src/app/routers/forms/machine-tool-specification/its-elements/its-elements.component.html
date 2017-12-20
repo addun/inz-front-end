@@ -2,7 +2,8 @@
   <div formArrayName="machine_tool_elements">
     <div *ngFor="let a of machineToolElements.controls; let i=index">
 
-      <inz-card [cardName]="'Machine Tool Element #' + (1+i)" class="form-array-item">
+      <inz-card-action [cardName]="'Machine Tool Element #' + (1+i)"
+                       (remove)="removeMachineToolElement(i)">
         <div [formGroupName]="i">
           <div class="form-group row">
             <label [for]="'name_'+i" class="col-12 col-sm-12 col-md-3 col-form-label require">Name</label>
@@ -25,28 +26,22 @@
         </div>
 
         <div class="form-group row">
+          <label class="col-12 col-sm-12 col-md-3 col-form-label">Bar feeders</label>
+          <div class="col-12 col-sm-12 col-md-9">
+            <a [routerLink]="[i, 'bar-feeders']" class="btn btn-outline-primary btn-block">Go to bar feeder forms</a>
+          </div>
+        </div>
+        <div class="form-group row">
           <label class="col-12 col-sm-12 col-md-3 col-form-label">Tailstocks</label>
           <div class="col-12 col-sm-12 col-md-9">
-            <a [routerLink]="[i, 'bar-feeder']" class="btn btn-primary btn-block">Go to bar feeder forms</a>
+            <a [routerLink]="[i, 'tailstocks']" class="btn btn-outline-primary  btn-block">Go to tailstocks forms</a>
           </div>
         </div>
 
 
-        <div class="text-right">
-          <button class="btn btn-danger"
-                  (click)="removeMachineToolElement(i)">Remove
-          </button>
-        </div>
-      </inz-card>
-
+      </inz-card-action>
     </div>
   </div>
 </div>
 
-<div class="text-left">
-  <span class="text-primary pointer" (click)="addMachineToolElement()">Add new machine tool element +</span>
-</div>
-
-<div class="text-center">
-  <button class="btn btn-primary" (click)="saveAll()">Save all</button>
-</div>
+<inz-array-action (add)="addMachineToolElement()" (save)="saveAll()"></inz-array-action>

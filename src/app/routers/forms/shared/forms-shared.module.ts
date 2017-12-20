@@ -11,6 +11,8 @@ import {MachiningCapabilityFormComponent} from './forms/machining-capability-for
 import {FieldsetComponent} from './components/fieldset/fieldset.component';
 import {RouterOutletComponent} from './components/router-outlet/router-outlet.component';
 import {SharedModule} from '../../../shared/shared.module';
+import {CardActionComponent} from './components/card-action/card-action.component';
+import {ArrayActionComponent} from './components/array-action/array-action.component';
 
 @NgModule({
   imports: [
@@ -28,6 +30,8 @@ import {SharedModule} from '../../../shared/shared.module';
     MachiningCapabilityFormComponent,
     FieldsetComponent,
     RouterOutletComponent,
+    CardActionComponent,
+    ArrayActionComponent,
   ],
   exports: [
     AddItemComponent,
@@ -39,7 +43,9 @@ import {SharedModule} from '../../../shared/shared.module';
     NgbModule,
     MachiningCapabilityFormComponent,
     FieldsetComponent,
-    RouterOutletComponent
+    RouterOutletComponent,
+    CardActionComponent,
+    ArrayActionComponent,
   ]
 })
 export class FormsSharedModule {

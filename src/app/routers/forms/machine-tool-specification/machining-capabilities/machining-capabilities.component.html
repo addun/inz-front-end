@@ -2,30 +2,19 @@
   <div formArrayName="capabilities">
     <div *ngFor="let a of capabilitiesControl.controls; let i=index">
 
-      <inz-card [cardName]="'Machining Capability #' + (1+i)" class="form-array-item">
+      <inz-card-action
+        [cardName]="'Machining Capability #' + (1+i)"
+        [disable]="capabilitiesControl.length <=1"
+        (remove)="removeCapability(i)">
         <div [formGroupName]="i">
           <inz-machining-capability-form
             [machiningCapabilityForm]="capabilitiesControl.controls[i]">
           </inz-machining-capability-form>
         </div>
-
-
-        <div class="text-right">
-          <button class="btn btn-danger"
-                  [disabled]="capabilitiesControl.length <=1"
-                  (click)="removeCapability(i)">Remove
-          </button>
-        </div>
-      </inz-card>
+      </inz-card-action>
 
     </div>
   </div>
 </div>
 
-<div class="text-left">
-  <span class="text-primary pointer" (click)="addCapability()">Add +</span>
-</div>
-
-<div class="text-center">
-  <button class="btn btn-primary" (click)="saveAll()">Save</button>
-</div>
+<inz-array-action (add)="addCapability()" (new)="saveAll()"></inz-array-action>
