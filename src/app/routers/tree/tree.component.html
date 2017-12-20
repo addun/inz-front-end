@@ -3,7 +3,7 @@
   <div class="app__tree">
     <tree
       #treeFFS
-      [tree]="tree"
+      [(tree)]="tree"
       (menuItemSelected)="onMenuItemSelected($event)"
       (nodeSelected)="onNodeSelected($event)"
       (nodeRemoved)="onNodeRemoved($event)"
@@ -25,20 +25,6 @@
       </tr>
       </thead>
       <tbody>
-      <!--<tr *ngFor="let machineToolRequirement of machineToolRequirements, let i = index">-->
-        <!--<th>{{i+1}}</th>-->
-        <!--<td>{{machineToolRequirement.description}}</td>-->
-        <!--<td>{{machineToolRequirement.number_of_tools_in_tool_magazine}}</td>-->
-        <!--<td>{{machineToolRequirement.automatically_pallet_changeable}}</td>-->
-        <!--<td>-->
-          <!--<span-->
-            <!--[routerLink]="['forms', 'machine-tool-requirement',machineToolRequirement.id, 'change']"-->
-            <!--class="fa fa-pencil-square-o action" aria-hidden="true" title="Edit"></span>-->
-        <!--</td>-->
-      <!--</tr>-->
-      <tr *ngIf="!machineToolRequirements.length">
-        <th colspan="99" class="text-center">Nothing found</th>
-      </tr>
       </tbody>
     </table>
 

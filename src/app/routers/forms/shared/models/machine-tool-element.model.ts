@@ -1,6 +1,8 @@
 import {FormControl, Validators} from '@angular/forms';
 import {BarFeeder} from './bar-feeder.model';
 import {Tailstock} from './tailstock.model';
+import {Collet} from './collet.model';
+import {Chuck} from './chuck.model';
 
 export class MachineToolElement {
   name: string;
@@ -27,6 +29,8 @@ export class MachineToolElement {
 
 
 class Capabilities {
+  tailstocks: Tailstock[] = [];
   bar_feeders: BarFeeder[] = [];
-  tailstock: Tailstock[] = [];
+  collets: Collet[] = [];
+  chucks: Chuck[] = [];
 }

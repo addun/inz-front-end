@@ -9,27 +9,35 @@ import {MachineToolSpecificationService} from '../shared/services/machine-tool-s
   styleUrls: ['./machining-capabilities.component.sass']
 })
 export class MachiningCapabilitiesComponent implements OnInit {
-  machiningCapabilitiesForm: FormGroup;
+  formModelGroup: FormGroup;
 
   constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
   }
 
-  get capabilitiesControl(): any {
-    return this.machiningCapabilitiesForm.controls['capabilities'];
+  get modelForm(): any {
+    return this.formModelGroup.controls['capabilities'];
+  }
+
+  get model(): MachiningCapability[] {
+    return this.machineToolSpecificationService.machine_tool_specification.machining_capabilities;
+  }
+
+  set model(machiningCapabilities: MachiningCapability[]) {
+    this.machineToolSpecificationService.machine_tool_specification.machining_capabilities = machiningCapabilities;
   }
 
   ngOnInit(): void {
-    this.machiningCapabilitiesForm = this.buildCapabilitiesForm();
+    this.formModelGroup = this.buildForm();
   }
 
-  buildCapabilitiesForm(): FormGroup {
+  buildForm(): FormGroup {
     return new FormGroup({
-      capabilities: new FormArray(this.loadCapabilityForm())
+      capabilities: new FormArray(this.loadForm())
     });
   }
 
-  loadCapabilityForm(): FormGroup[] {
-    let machiningCapabilities = this.machineToolSpecificationService.machine_tool_specification.machining_capabilities;
+  loadForm(): FormGroup[] {
+    let machiningCapabilities = this.model;
 
     if (!machiningCapabilities) {
       machiningCapabilities = [new MachiningCapability()];
@@ -42,22 +50,21 @@ export class MachiningCapabilitiesComponent implements OnInit {
     });
   }
 
-  addCapability() {
-    const control = <FormArray>this.capabilitiesControl;
+  add() {
+    const control = <FormArray>this.modelForm;
     control.push(new FormGroup(MachiningCapability.getFormControls()));
   }
 
-  removeCapability(index: number) {
-    const controlCount = (<any>this.capabilitiesControl).length;
-    const control = <FormArray>this.capabilitiesControl;
+  remove(index: number) {
+    const controlCount = (<any>this.modelForm).length;
+    const control = <FormArray>this.modelForm;
     if (controlCount > 1) {
       control.removeAt(index);
     }
   }
 
   saveAll() {
-    this.machineToolSpecificationService
-      .machine_tool_specification.machining_capabilities = this.machiningCapabilitiesForm.value['capabilities'];
+    this.model = this.modelForm.value;
   }
 
 

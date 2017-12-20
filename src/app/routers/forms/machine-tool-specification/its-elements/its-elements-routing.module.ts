@@ -4,6 +4,7 @@ import {BarFeederComponent} from './bar-feeder/bar-feeder.component';
 import {RouterOutletComponent} from '../../shared/components/router-outlet/router-outlet.component';
 import {ItsElementsComponent} from './its-elements.component';
 import {TailstockComponent} from './tailstock/tailstock.component';
+import {ColletComponent} from './collet/collet.component';
 
 const routes: Routes = [
   {
@@ -24,11 +25,19 @@ const routes: Routes = [
             data: {
               breadcrumb: 'Bar Feeder'
             }
-          }, {
+          },
+          {
             path: 'tailstocks',
             component: TailstockComponent,
             data: {
               breadcrumb: 'Tailstock'
+            }
+          },
+          {
+            path: 'collets',
+            component: ColletComponent,
+            data: {
+              breadcrumb: 'Collet'
             }
           },
         ]

@@ -2,10 +2,15 @@
   <div class="row">
     <div class="col-12">
       <router-outlet></router-outlet>
+
+
+      <div class="card">
+        <pre>
+          {{schema | json}}
+        </pre>
+      </div>
     </div>
   </div>
 </div>
 
-<pre>
-  {{schema | json}}
-</pre>
+

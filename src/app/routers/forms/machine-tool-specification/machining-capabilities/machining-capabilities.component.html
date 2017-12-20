@@ -1,14 +1,14 @@
-<div [formGroup]="machiningCapabilitiesForm">
+<div [formGroup]="formModelGroup">
   <div formArrayName="capabilities">
-    <div *ngFor="let a of capabilitiesControl.controls; let i=index">
+    <div *ngFor="let a of modelForm.controls; let i=index">
 
       <inz-card-action
         [cardName]="'Machining Capability #' + (1+i)"
-        [disable]="capabilitiesControl.length <=1"
-        (remove)="removeCapability(i)">
+        [disable]="modelForm.length <=1"
+        (remove)="remove(i)">
         <div [formGroupName]="i">
           <inz-machining-capability-form
-            [machiningCapabilityForm]="capabilitiesControl.controls[i]">
+            [machiningCapabilityForm]="modelForm.controls[i]">
           </inz-machining-capability-form>
         </div>
       </inz-card-action>
@@ -17,4 +17,4 @@
   </div>
 </div>
 
-<inz-array-action (add)="addCapability()" (new)="saveAll()"></inz-array-action>
+<inz-array-action (add)="add()" (save)="saveAll()"></inz-array-action>

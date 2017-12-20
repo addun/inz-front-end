@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
-import {Tailstock} from '../../../shared/models/tailstock.model';
+import {Chuck} from '../../../shared/models/chuck.model';
 
 @Component({
-  selector: 'inz-tailstock',
-  templateUrl: './tailstock.component.html',
-  styleUrls: ['./tailstock.component.sass']
+  selector: 'inz-collet',
+  templateUrl: './collet.component.html',
+  styleUrls: ['./collet.component.sass']
 })
-export class TailstockComponent implements OnInit {
-  modelFormGroup: FormGroup;
+export class ColletComponent implements OnInit {
+  formModelGroup: FormGroup;
   private activeArrayIndex: number;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -18,23 +18,23 @@ export class TailstockComponent implements OnInit {
   }
 
   get modelForm(): AbstractControl {
-    return this.modelFormGroup.controls['tailstocks'];
+    return this.formModelGroup.controls['arrayModel'];
   }
 
-  get model(): Tailstock[] {
+  get model(): Chuck[] {
     return this.machineToolSpecificationService
       .machine_tool_specification
       .its_elements[this.activeArrayIndex]
       .capabilities
-      .tailstocks;
+      .chucks;
   }
 
-  set model(tailstock: Tailstock[]) {
+  set model(chucks: Chuck[]) {
     this.machineToolSpecificationService
       .machine_tool_specification
       .its_elements[this.activeArrayIndex]
       .capabilities
-      .tailstocks = tailstock;
+      .chucks = chucks;
   }
 
   ngOnInit(): void {
@@ -43,27 +43,28 @@ export class TailstockComponent implements OnInit {
       .params
       .subscribe(params => {
         this.activeArrayIndex = params['machineToolElementId'];
-        this.modelFormGroup = this.buildForm();
+        this.formModelGroup = this.buildForm();
       });
   }
 
   buildForm(): FormGroup {
     return new FormGroup({
-      tailstocks: new FormArray(this.loadForm())
+      arrayModel: new FormArray(this.loadForm())
     });
   }
 
   loadForm(): FormGroup[] {
+    console.log(this.model);
     return this.model.map(model => {
       return new FormGroup(
-        Tailstock.getFormControls(model)
+        Chuck.getFormControls(model)
       );
     });
   }
 
   add() {
     const control = <FormArray>this.modelForm;
-    control.push(new FormGroup(Tailstock.getFormControls()));
+    control.push(new FormGroup(Chuck.getFormControls()));
   }
 
   remove(index: number) {
@@ -74,5 +75,6 @@ export class TailstockComponent implements OnInit {
   saveAll() {
     this.model = this.modelForm.value;
   }
+
 
 }

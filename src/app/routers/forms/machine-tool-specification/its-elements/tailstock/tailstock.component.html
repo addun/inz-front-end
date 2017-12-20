@@ -1,11 +1,12 @@
-<div [formGroup]="formModelGroup">
-  <div formArrayName="bar_feeders">
+<div [formGroup]="modelFormGroup">
+  <div formArrayName="tailstocks">
     <div *ngFor="let a of modelForm.controls; let i=index">
 
-      <inz-card-action [cardName]="'Bar Feeder #' + (1+i)"
+      <inz-card-action [cardName]="'Tailstock #' + (1+i)"
                        (remove)="remove(i)">
 
         <div [formGroupName]="i">
+
           <div class="form-group row">
             <label [for]="'description_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
             <div class="col-12 col-sm-12 col-md-9">
@@ -13,26 +14,24 @@
             </div>
           </div>
           <div class="form-group row">
-            <label [for]="'minimum_stock_diameter_'+i" class="col-12 col-sm-12 col-md-3 col-form-label require">Minimum
-              Stock Diameter</label>
+            <label [for]="'spindle_name_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Spindle Name</label>
             <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="minimum_stock_diameter" [id]="'minimum_stock_diameter_'+i" class="form-control"/>
+              <input formControlName="spindle_name" [id]="'spindle_name_'+i" class="form-control"/>
             </div>
           </div>
           <div class="form-group row">
-            <label [for]="'maximum_stock_diameter_'+i" class="col-12 col-sm-12 col-md-3 col-form-label require">Maximum
-              Stock Diameter</label>
+            <label [for]="'taper_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Taper</label>
             <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="maximum_stock_diameter" [id]="'maximum_stock_diameter_'+i" class="form-control"/>
+              <input formControlName="taper" [id]="'taper_'+i" class="form-control"/>
             </div>
           </div>
           <div class="form-group row">
-            <label [for]="'maximum_stock_length_'+i" class="col-12 col-sm-12 col-md-3 col-form-label require">Maximum
-              Stock Length</label>
+            <label [for]="'maximum_workpiece_weight_of_quill_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Maximum Workpiece Weight Of Quill</label>
             <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="maximum_stock_length" [id]="'maximum_stock_length_'+i" class="form-control"/>
+              <input formControlName="maximum_workpiece_weight_of_quill" [id]="'maximum_workpiece_weight_of_quill_'+i" class="form-control"/>
             </div>
           </div>
+
         </div>
 
       </inz-card-action>
