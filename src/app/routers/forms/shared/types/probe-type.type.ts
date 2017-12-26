@@ -1,0 +1,5 @@
+export enum ProbeType {
+  NULLING = 'NULLING',
+  PROPORTIONAL = 'PROPORTIONAL',
+  SWITCHING = 'SWITCHING',
+}

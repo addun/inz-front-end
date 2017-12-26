@@ -3,6 +3,9 @@ import {BarFeeder} from './bar-feeder.model';
 import {Tailstock} from './tailstock.model';
 import {Collet} from './collet.model';
 import {Chuck} from './chuck.model';
+import {ToolBreakage} from './tool-breakage.model';
+import {PartProbe} from './part-probe.model';
+import {ToolSetting} from './tool-setting.model';
 
 export class MachineToolElement {
   name: string;
@@ -33,4 +36,7 @@ class Capabilities {
   bar_feeders: BarFeeder[] = [];
   collets: Collet[] = [];
   chucks: Chuck[] = [];
+  toolbreakage: ToolBreakage[] = [];
+  part_probe: PartProbe[] = [];
+  tool_setting: ToolSetting[] = [];
 }

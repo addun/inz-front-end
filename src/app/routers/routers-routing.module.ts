@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'forms',
     loadChildren: './forms/forms.module#FormsModule',
     data: {
-      breadcrumb: 'Forms'
+      breadcrumb: ' '
     },
   },
   {
