@@ -36,7 +36,7 @@ class Capabilities {
   bar_feeders: BarFeeder[] = [];
   collets: Collet[] = [];
   chucks: Chuck[] = [];
-  toolbreakage: ToolBreakage[] = [];
-  part_probe: PartProbe[] = [];
-  tool_setting: ToolSetting[] = [];
+  tool_breakages: ToolBreakage[] = [];
+  part_probes: PartProbe[] = [];
+  tool_settings: ToolSetting[] = [];
 }

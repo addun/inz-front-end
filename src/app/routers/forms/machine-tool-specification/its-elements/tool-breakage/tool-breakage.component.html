@@ -1,0 +1,29 @@
+<div [formGroup]="formModelGroup">
+  <div formArrayName="arrayModel">
+    <div *ngFor="let a of modelForm.controls; let i=index">
+
+      <inz-card-action [cardName]="'Tool breakage #' + (1+i)"
+                       (remove)="remove(i)">
+
+        <div [formGroupName]="i">
+
+          <div class="form-group row">
+            <label [for]="'description_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="description" [id]="'description_'+i" class="form-control"/>
+            </div>
+          </div>
+
+          <inz-fieldset legend="Device id" required="true">
+            <inz-device-id-form [deviceIdForm]="modelForm.controls[i].controls.device_id"></inz-device-id-form>
+          </inz-fieldset>
+
+        </div>
+
+      </inz-card-action>
+
+    </div>
+  </div>
+</div>
+
+<inz-array-action (save)="saveAll()" (add)="add()"></inz-array-action>

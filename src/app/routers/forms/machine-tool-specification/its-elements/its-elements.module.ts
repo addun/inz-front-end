@@ -8,6 +8,7 @@ import {ItsElementsComponent} from './its-elements.component';
 import { TailstockComponent } from './tailstock/tailstock.component';
 import { ColletComponent } from './collet/collet.component';
 import { ChuckComponent } from './chuck/chuck.component';
+import { ToolBreakageComponent } from './tool-breakage/tool-breakage.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ChuckComponent } from './chuck/chuck.component';
     BarFeederComponent,
     TailstockComponent,
     ColletComponent,
-    ChuckComponent]
+    ChuckComponent,
+    ToolBreakageComponent]
 })
 export class ItsElementsModule {
 }
