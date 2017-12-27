@@ -1,0 +1,57 @@
+<div [formGroup]="formModelGroup">
+  <div formArrayName="arrayModel">
+    <div *ngFor="let a of modelForm.controls; let i=index">
+
+      <inz-card-action [cardName]="'Part probe #' + (1+i)"
+                       (remove)="remove(i)">
+
+        <div [formGroupName]="i">
+
+          <div class="form-group row">
+            <label [for]="'description_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="description" [id]="'description_'+i" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'probe_type_'+i" class="col-12 col-sm-12 col-md-3 col-form-labe required">Probe type</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <select formControlName="probe_type" [id]="'probe_type_'+i" class="form-control custom-select">
+                <option *ngFor="let item of probeType | keys" [value]="item.key">
+                  {{item.value}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'dimensionality_'+i"
+                   class="col-12 col-sm-12 col-md-3 col-form-label required">Dimensionality</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <select formControlName="dimensionality" [id]="'dimensionality_'+i" class="form-control custom-select">
+                <option *ngFor="let item of sensorDimensionality | keys" [value]="item.key">
+                  {{item.value}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'setting_time_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Setting
+              time</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="setting_time" [id]="'setting_time_'+i" class="form-control"/>
+            </div>
+          </div>
+
+          <inz-fieldset legend="Device id" required="true">
+            <inz-device-id-form [deviceIdForm]="modelForm.controls[i].controls.device_id"></inz-device-id-form>
+          </inz-fieldset>
+
+        </div>
+
+      </inz-card-action>
+
+    </div>
+  </div>
+</div>
+
+<inz-array-action (save)="saveAll()" (add)="add()"></inz-array-action>

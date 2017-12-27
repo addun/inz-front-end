@@ -9,6 +9,7 @@ import { TailstockComponent } from './tailstock/tailstock.component';
 import { ColletComponent } from './collet/collet.component';
 import { ChuckComponent } from './chuck/chuck.component';
 import { ToolBreakageComponent } from './tool-breakage/tool-breakage.component';
+import { PartProbeComponent } from './part-probe/part-probe.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ToolBreakageComponent } from './tool-breakage/tool-breakage.component';
     TailstockComponent,
     ColletComponent,
     ChuckComponent,
-    ToolBreakageComponent]
+    ToolBreakageComponent,
+    PartProbeComponent]
 })
 export class ItsElementsModule {
 }

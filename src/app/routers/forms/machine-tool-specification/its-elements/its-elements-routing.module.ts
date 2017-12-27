@@ -7,6 +7,7 @@ import {TailstockComponent} from './tailstock/tailstock.component';
 import {ColletComponent} from './collet/collet.component';
 import {ChuckComponent} from './chuck/chuck.component';
 import {ToolBreakageComponent} from './tool-breakage/tool-breakage.component';
+import {PartProbeComponent} from './part-probe/part-probe.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,13 @@ const routes: Routes = [
             component: ToolBreakageComponent,
             data: {
               breadcrumb: 'Tool breakages'
+            }
+          },
+          {
+            path: 'part-probes',
+            component: PartProbeComponent,
+            data: {
+              breadcrumb: 'Part probes'
             }
           },
         ]
