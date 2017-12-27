@@ -11,7 +11,7 @@ export class BarFeeder extends ElementCapability {
     if (!loadModel) {
       loadModel = new BarFeeder();
     }
-    return Object.assign({}, ElementCapability.getFormControls(loadModel), {
+    return Object.assign(ElementCapability.getFormControls(loadModel), {
       minimum_stock_diameter: new FormControl(loadModel.minimum_stock_diameter, Validators.required),
       maximum_stock_diameter: new FormControl(loadModel.maximum_stock_diameter, Validators.required),
       maximum_stock_length: new FormControl(loadModel.maximum_stock_length, Validators.required),

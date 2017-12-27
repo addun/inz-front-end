@@ -15,15 +15,11 @@ export class ToolSetting extends Sensor {
       loadModel = new ToolSetting();
     }
 
-    return {
-      description: new FormControl(loadModel.description),
+    return Object.assign( Sensor.getFormControls(loadModel), {
       measuring_radius: new FormControl(loadModel.measuring_radius, Validators.required),
       measuring_length: new FormControl(loadModel.measuring_length, Validators.required),
       measure_time: new FormControl(loadModel.measure_time, Validators.required),
       probe_type: new FormControl(loadModel.probe_type, Validators.required),
-      device_id: new FormGroup(
-        DeviceId.getFormControls()
-      )
-    };
+    });
   }
 }

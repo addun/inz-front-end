@@ -15,14 +15,10 @@ export class PartProbe extends Sensor {
       loadModel = new PartProbe();
     }
 
-    return {
-      description: new FormControl(loadModel.description),
+    return Object.assign( Sensor.getFormControls(loadModel), {
       probe_type: new FormControl(loadModel.probe_type, Validators.required),
       dimensionality: new FormControl(loadModel.dimensionality, Validators.required),
       setting_time: new FormControl(loadModel.setting_time, Validators.required),
-      device_id: new FormGroup(
-        DeviceId.getFormControls()
-      )
-    };
+    });
   }
 }
