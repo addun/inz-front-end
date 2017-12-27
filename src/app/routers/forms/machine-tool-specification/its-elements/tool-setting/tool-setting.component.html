@@ -1,0 +1,64 @@
+<div [formGroup]="formModelGroup">
+  <div formArrayName="arrayModel">
+    <div *ngFor="let a of modelForm.controls; let i=index">
+
+      <inz-card-action [cardName]="'Tool setting #' + (1+i)"
+                       (remove)="remove(i)">
+
+        <div [formGroupName]="i">
+
+          <div class="form-group row">
+            <label [for]="'description_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="description" [id]="'description_'+i" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="offset-md-3 col-12 col-sm-12 col-md-9">
+              <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" formControlName="measuring_radius">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Measuring radius</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="offset-md-3 col-12 col-sm-12 col-md-9">
+              <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" formControlName="measuring_length">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Measuring length</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'measure_time_'+i"
+                   class="col-12 col-sm-12 col-md-3 col-form-label required">Measure time</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="measure_time" [id]="'measure_time_'+i" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'probe_type_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Probe type</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <select formControlName="probe_type" [id]="'probe_type_'+i" class="form-control custom-select">
+                <option *ngFor="let item of probeType | keys" [value]="item.key">
+                  {{item.value}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <inz-fieldset legend="Device id" required="true">
+            <inz-device-id-form [deviceIdForm]="modelForm.controls[i].controls.device_id"></inz-device-id-form>
+          </inz-fieldset>
+
+        </div>
+
+      </inz-card-action>
+
+    </div>
+  </div>
+</div>
+
+<inz-array-action (save)="saveAll()" (add)="add()"></inz-array-action>

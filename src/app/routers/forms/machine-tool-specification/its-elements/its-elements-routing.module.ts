@@ -8,6 +8,7 @@ import {ColletComponent} from './collet/collet.component';
 import {ChuckComponent} from './chuck/chuck.component';
 import {ToolBreakageComponent} from './tool-breakage/tool-breakage.component';
 import {PartProbeComponent} from './part-probe/part-probe.component';
+import {ToolSettingComponent} from './tool-setting/tool-setting.component';
 
 const routes: Routes = [
   {
@@ -62,6 +63,13 @@ const routes: Routes = [
             component: PartProbeComponent,
             data: {
               breadcrumb: 'Part probes'
+            }
+          },
+          {
+            path: 'tool-settings',
+            component: ToolSettingComponent,
+            data: {
+              breadcrumb: 'Tool settings'
             }
           },
         ]
