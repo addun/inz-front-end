@@ -11,6 +11,7 @@ import { ChuckComponent } from './chuck/chuck.component';
 import { ToolBreakageComponent } from './tool-breakage/tool-breakage.component';
 import { PartProbeComponent } from './part-probe/part-probe.component';
 import { ToolSettingComponent } from './tool-setting/tool-setting.component';
+import { CoolantComponent } from './coolant/coolant.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { ToolSettingComponent } from './tool-setting/tool-setting.component';
     ChuckComponent,
     ToolBreakageComponent,
     PartProbeComponent,
-    ToolSettingComponent]
+    ToolSettingComponent,
+    CoolantComponent]
 })
 export class ItsElementsModule {
 }

@@ -9,6 +9,7 @@ import {ChuckComponent} from './chuck/chuck.component';
 import {ToolBreakageComponent} from './tool-breakage/tool-breakage.component';
 import {PartProbeComponent} from './part-probe/part-probe.component';
 import {ToolSettingComponent} from './tool-setting/tool-setting.component';
+import {CoolantComponent} from './coolant/coolant.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,13 @@ const routes: Routes = [
             component: ToolSettingComponent,
             data: {
               breadcrumb: 'Tool settings'
+            }
+          },
+          {
+            path: 'collants',
+            component: CoolantComponent,
+            data: {
+              breadcrumb: 'Coolants'
             }
           },
         ]

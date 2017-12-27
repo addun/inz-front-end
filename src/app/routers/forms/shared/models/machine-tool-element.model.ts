@@ -6,6 +6,7 @@ import {Chuck} from './chuck.model';
 import {ToolBreakage} from './tool-breakage.model';
 import {PartProbe} from './part-probe.model';
 import {ToolSetting} from './tool-setting.model';
+import {Coolant} from './coolant.model';
 
 export class MachineToolElement {
   name: string;
@@ -39,4 +40,5 @@ class Capabilities {
   tool_breakages: ToolBreakage[] = [];
   part_probes: PartProbe[] = [];
   tool_settings: ToolSetting[] = [];
+  coolant: Coolant[] = [];
 }

@@ -1,0 +1,62 @@
+<div [formGroup]="formModelGroup">
+  <div formArrayName="arrayModel">
+    <div *ngFor="let a of modelForm.controls; let i=index">
+
+      <inz-card-action [cardName]="'Coolant #' + (1+i)"
+                       (remove)="remove(i)">
+
+        <div [formGroupName]="i">
+
+          <div class="form-group row">
+            <label [for]="'description'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="description" [id]="'description'+'_'+i" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'coolant_type'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Coolant type</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <select formControlName="coolant_type" [id]="'coolant_type_'+i" class="form-control custom-select">
+                <option *ngFor="let item of coolantType | keys" [value]="item.key">
+                  {{item.value}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'means_of_delivery'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Means of
+              delivery</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <select formControlName="means_of_delivery" [id]="'means_of_delivery'+i"
+                      class="form-control custom-select">
+                <option *ngFor="let item of meansOfCoolantDelivery | keys" [value]="item.key">
+                  {{item.value}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'capacity_of_coolant_tank'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Capacity of
+              coolant tank</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="capacity_of_coolant_tank" [id]="'capacity_of_coolant_tank'+'_'+i"
+                     class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label [for]="'coolant_weight'+'_'+i"
+                   class="col-12 col-sm-12 col-md-3 col-form-label">Coolant weight</label>
+            <div class="col-12 col-sm-12 col-md-9">
+              <input formControlName="coolant_weight" [id]="'coolant_weight'+'_'+i" class="form-control"/>
+            </div>
+          </div>
+
+        </div>
+
+      </inz-card-action>
+
+    </div>
+  </div>
+</div>
+
+<inz-array-action (save)="saveAll()" (add)="add()"></inz-array-action>
