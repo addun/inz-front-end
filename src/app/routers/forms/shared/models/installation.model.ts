@@ -1,15 +1,15 @@
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 export class Installation {
-  weight: number;
+  weight: number = null;
   size: MachineSize = new MachineSize();
   electrical: Electrical = new Electrical();
   hydraulics: Hydraulics = new Hydraulics();
-  air_pressure_requirement?: number;
-  water_flow_rate?: number;
+  air_pressure_requirement?: number = null;
+  water_flow_rate?: number = null;
 
   constructor(installation?) {
-    Object.assign(this, installation || {});
+    Object.assign(this, installation);
   }
 
   public static getFormControls(loadModel?: Installation) {
@@ -31,12 +31,12 @@ export class Installation {
 
 
 class MachineSize {
-  machine_length: number;
-  machine_width: number;
-  machine_height: number;
+  machine_length: number = null;
+  machine_width: number = null;
+  machine_height: number = null;
 
   constructor(machineSize?) {
-    Object.assign(this, machineSize || {});
+    Object.assign(this, machineSize);
   }
 
   public static getFormControls(loadModel?: MachineSize) {
@@ -53,15 +53,15 @@ class MachineSize {
 }
 
 class Electrical {
-  electric_phase: number;
-  electric_power: number;
-  electrical_current: number;
-  electrical_frequency: string;
-  electrical_grounding: string;
-  electrical_voltage: number;
+  electric_phase: number = null;
+  electric_power: number = null;
+  electrical_current: number = null;
+  electrical_frequency: string = null;
+  electrical_grounding: string = null;
+  electrical_voltage: number = null;
 
   constructor(electrical?) {
-    Object.assign(this, electrical || {});
+    Object.assign(this, electrical);
   }
 
   public static getFormControls(loadModel?: Electrical) {
@@ -81,9 +81,9 @@ class Electrical {
 }
 
 class Hydraulics {
-  type_of_hydraulic_oil: string;
-  pump_outlet_pressure: number;
-  capacity_of_hydraulics_tank: number;
+  type_of_hydraulic_oil: string = null;
+  pump_outlet_pressure: number = null;
+  capacity_of_hydraulics_tank: number = null;
 
   constructor(installation?) {
     Object.assign(this, installation || {});

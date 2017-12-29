@@ -1,61 +1,15 @@
-<div [formGroup]="machiningCapabilityForm">
+<inz-form [form]="machiningCapabilityForm">
 
-  <div class="form-group row">
-    <label [for]="'capability_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label required">Capability</label>
-    <div class="col-12 col-sm-12 col-md-9">
-      <select formControlName="capability" [id]="'capability_'+uniqId" class="form-control custom-select">
-        <option *ngFor="let item of machiningCapabilityProfile | keys" [value]="item.key">
-          {{item.value}}
-        </option>
-      </select>
-    </div>
-  </div>
+  <inz-select controlName="capability" [options]="machiningCapabilityProfile" [required]="true"
+              label="Capability"></inz-select>
+  <inz-input controlName="machining_accuracy" [required]="false" label="Machining accuracy"></inz-input>
+  <inz-input controlName="description" [required]="false" label="Description"></inz-input>
 
-  <div class="form-group row">
-    <label [for]="'machining_accuracy_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label">Machining
-      Accuracy</label>
-    <div class="col-12 col-sm-12 col-md-9">
-      <input formControlName="machining_accuracy" [id]="'machining_accuracy_'+uniqId" class="form-control"/>
-    </div>
-  </div>
+  <inz-form [form]="machiningCapabilityForm.controls['machining_size']" label="Machine size">
+    <inz-input controlName="description" [required]="false" label="Description"></inz-input>
+    <inz-input controlName="x" [required]="true" label="X"></inz-input>
+    <inz-input controlName="y" [required]="true" label="Y"></inz-input>
+    <inz-input controlName="z" [required]="true" label="Z"></inz-input>
+  </inz-form>
 
-  <div class="form-group row">
-    <label [for]="'description_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
-    <div class="col-12 col-sm-12 col-md-9">
-      <input formControlName="description" [id]="'description_'+uniqId" class="form-control"/>
-    </div>
-  </div>
-
-  <div formGroupName="machining_size">
-    <inz-fieldset legend="Machine Size">
-      <div class="form-group row">
-        <label [for]="'machining_size_description_'+uniqId"
-               class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
-        <div class="col-12 col-sm-12 col-md-9">
-          <input formControlName="description" [id]="'machining_size_description_'+uniqId" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label [for]="'x_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label required">X</label>
-        <div class="col-12 col-sm-12 col-md-9">
-          <input formControlName="x" [id]="'x_'+uniqId" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label [for]="'y_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label required">Y</label>
-        <div class="col-12 col-sm-12 col-md-9">
-          <input formControlName="y" [id]="'y_'+uniqId" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label [for]="'z_'+uniqId" class="col-12 col-sm-12 col-md-3 col-form-label required">Z</label>
-        <div class="col-12 col-sm-12 col-md-9">
-          <input formControlName="z" [id]="'z_'+uniqId" class="form-control"/>
-        </div>
-      </div>
-    </inz-fieldset>
-
-
-  </div>
-
-</div>
+</inz-form>

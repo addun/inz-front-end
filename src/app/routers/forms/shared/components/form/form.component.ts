@@ -8,6 +8,8 @@ import {FormGroup} from '@angular/forms';
 })
 export class FormComponent implements OnInit {
   @Input() form: FormGroup;
+  @Input() label: string;
+  @Input() required: boolean;
 
   constructor() {
   }

@@ -1,6 +1,9 @@
 <div class="card">
-  <h1 class="card-header text-center">{{cardName}}</h1>
+  <h1 class="card-header text-center">{{ cardName }}</h1>
   <div class="card-body">
     <ng-content></ng-content>
+  </div>
+  <div class="card-footer text-center">
+    <ng-template [ngTemplateOutlet]="footer"></ng-template>
   </div>
 </div>

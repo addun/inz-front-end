@@ -2,12 +2,11 @@
   <h1 class="card-header text-center">{{cardName}}</h1>
   <div class="card-body">
     <ng-content></ng-content>
-
-    <div class="text-right">
-      <button class="btn btn-danger"
-              [disabled]="disable"
-              (click)="emitClick()">Remove
-      </button>
-    </div>
+  </div>
+  <div class="card-footer text-right">
+    <button class="btn btn-danger"
+            [disabled]="disable"
+            (click)="emitClick()">Remove
+    </button>
   </div>
 </div>

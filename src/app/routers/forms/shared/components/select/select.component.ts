@@ -10,7 +10,7 @@ import {FormComponent} from '../form/form.component';
 export class SelectComponent implements OnInit {
   @Input() controlName: string;
   @Input() options;
-  @Input() require: boolean;
+  @Input() required: boolean;
   @Input() label: string;
   form: FormGroup;
   randomId: string = Math.random().toString(36).substring(2, 30);

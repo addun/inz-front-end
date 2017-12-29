@@ -2,8 +2,8 @@
 
   <inz-device-id-form [deviceIdForm]="deviceIdForm"></inz-device-id-form>
 
-  <div class="text-center">
+  <ng-template #footer>
     <button (click)="saveForm()" class="btn btn-primary" [disabled]="!deviceIdForm.valid">Save</button>
-  </div>
+  </ng-template>
 </inz-card>
 

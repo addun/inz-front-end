@@ -1,7 +1,7 @@
 <inz-form [form]="deviceIdForm">
-  <inz-input controlName="id" required="true" label="Id"></inz-input>
-  <inz-input controlName="model_name" required="true" label="Model name"></inz-input>
-  <inz-input controlName="serial_number" required="true" label="Serial number"></inz-input>
-  <inz-input controlName="manufacturer" required="true" label="Manufacturer"></inz-input>
-  <inz-input controlName="date_manufactured" label="Date manufactured"></inz-input>
+  <inz-input controlName="id" [required]="true" label="Id"></inz-input>
+  <inz-input controlName="model_name" [required]="true" label="Model name"></inz-input>
+  <inz-input controlName="serial_number" [required]="true" label="Serial number"></inz-input>
+  <inz-input controlName="manufacturer" [required]="true" label="Manufacturer"></inz-input>
+  <inz-input controlName="date_manufactured" [required]="false" label="Date manufactured"></inz-input>
 </inz-form>

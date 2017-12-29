@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'inz-card',
@@ -7,6 +7,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input() cardName: string;
+  @ContentChild(TemplateRef)
+  public footer: TemplateRef<any>;
 
   constructor() {
   }

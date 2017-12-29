@@ -2,16 +2,14 @@
   <div formArrayName="capabilities">
     <div *ngFor="let a of modelForm.controls; let i=index">
 
-      <inz-card-action
-        [cardName]="'Machining Capability #' + (1+i)"
-        [disable]="modelForm.length <=1"
-        (remove)="remove(i)">
-        <div [formGroupName]="i">
-          <inz-machining-capability-form
-            [machiningCapabilityForm]="modelForm.controls[i]">
-          </inz-machining-capability-form>
-        </div>
-      </inz-card-action>
+      <inz-card [cardName]="'Machining Capability #' + (1+i)">
+        <inz-machining-capability-form [machiningCapabilityForm]="modelForm.controls[i]">
+        </inz-machining-capability-form>
+
+        <ng-template #footer>
+          <button class="btn btn-danger" (click)="remove(i)">Remove</button>
+        </ng-template>
+      </inz-card>
 
     </div>
   </div>

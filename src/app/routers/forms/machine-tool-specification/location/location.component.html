@@ -1,39 +1,15 @@
 <inz-card cardName="Location">
 
-  <div [formGroup]="locationForm">
+  <inz-form [form]="locationForm">
+    <inz-input controlName="business_unit" [required]="true" label="Business Unit"></inz-input>
+    <inz-input controlName="plant_location" [required]="true" label="Plant Location"></inz-input>
+    <inz-input controlName="building" [required]="true" label="Building"></inz-input>
+    <inz-input controlName="cell" [required]="true" label="Cell"></inz-input>
 
-    <div class="form-group row">
-      <label for="business_unit" class="col-12 col-sm-12 col-md-3 col-form-label required">Business Unit</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <input formControlName="business_unit" id="business_unit" class="form-control" required/>
-      </div>
-    </div>
+  </inz-form>
 
-    <div class="form-group row">
-      <label for="plant_location" class="col-12 col-sm-12 col-md-3 col-form-label required">Plant Location</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <input formControlName="plant_location" id="plant_location" class="form-control" required/>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="building" class="col-12 col-sm-12 col-md-3 col-form-label required">Building</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <input formControlName="building" id="building" class="form-control" required/>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label for="cell" class="col-12 col-sm-12 col-md-3 col-form-label required">Cell</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <input formControlName="cell" id="cell" class="form-control" required/>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="text-center">
+  <ng-template #footer>
     <button (click)="saveForm()" class="btn btn-primary" [disabled]="!locationForm.valid">Save</button>
-  </div>
+  </ng-template>
 
 </inz-card>
