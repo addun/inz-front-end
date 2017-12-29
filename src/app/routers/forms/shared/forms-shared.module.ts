@@ -14,7 +14,6 @@ import {SharedModule} from '../../../shared/shared.module';
 import {CardActionComponent} from './components/card-action/card-action.component';
 import {ArrayActionComponent} from './components/array-action/array-action.component';
 import {ChuckFormComponent} from './forms/chuck-form/chuck-form.component';
-import {MachineToolAxisFormComponent} from './forms/machine-tool-axis-form/machine-tool-axis-form.component';
 
 @NgModule({
   imports: [
@@ -35,7 +34,6 @@ import {MachineToolAxisFormComponent} from './forms/machine-tool-axis-form/machi
     CardActionComponent,
     ArrayActionComponent,
     ChuckFormComponent,
-    MachineToolAxisFormComponent,
   ],
   exports: [
     AddItemComponent,
@@ -51,7 +49,6 @@ import {MachineToolAxisFormComponent} from './forms/machine-tool-axis-form/machi
     CardActionComponent,
     ArrayActionComponent,
     ChuckFormComponent,
-    MachineToolAxisFormComponent
   ]
 })
 export class FormsSharedModule {
