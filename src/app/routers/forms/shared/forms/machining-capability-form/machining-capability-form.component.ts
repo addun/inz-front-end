@@ -10,7 +10,6 @@ import {MachiningCapabilityProfile} from '../../types/machining-capability-profi
 export class MachiningCapabilityFormComponent implements OnInit {
   @Input() machiningCapabilityForm: FormGroup;
   machiningCapabilityProfile = MachiningCapabilityProfile;
-  uniqId: string = '' + Math.floor(Math.random() * 10000);
 
   constructor() {
   }

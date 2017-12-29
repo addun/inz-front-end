@@ -1,7 +1,7 @@
 import {MachineTool} from './machine-tool.model';
 import {MachineClass} from '../types/machine-class.type';
 import {DeviceId} from './device-id.model';
-import {AbstractControl, FormControl, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MachiningCapability} from './machining-capability.model';
 import {MachineToolElement} from './machine-tool-element.model';
 import {Installation} from './installation.model';
@@ -28,7 +28,9 @@ export class MachineToolSpecification extends MachineTool {
     }
 
     return Object.assign(MachineTool.getFormControls(loadModel), {
-      machine_class: new FormControl(loadModel.machine_class, Validators.required)
+      machine_class: new FormControl(loadModel.machine_class, Validators.required),
+      device_id: new FormGroup(DeviceId.getFormControls(loadModel.device_id)),
+      location: new FormGroup(Location.getFormControls(loadModel.location)),
     });
   }
 }

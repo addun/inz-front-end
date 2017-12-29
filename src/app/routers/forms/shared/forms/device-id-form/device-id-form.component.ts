@@ -7,8 +7,6 @@ import {FormGroup} from '@angular/forms';
   styleUrls: ['./device-id-form.component.sass']
 })
 export class DeviceIdFormComponent implements OnInit {
-  @Input() deviceIdForm: FormGroup;
-
   constructor() {
   }
 

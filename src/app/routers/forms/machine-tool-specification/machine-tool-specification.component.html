@@ -1,25 +1,22 @@
 <inz-card cardName="Machine Tool Specification">
 
-  <inz-machine-tool-specification-form [machineToolSpecificationForm]="machineToolSpecificationForm">
-  </inz-machine-tool-specification-form>
+  <inz-form [form]="machineToolSpecificationForm" label="Base">
+    <inz-machine-tool-specification-form></inz-machine-tool-specification-form>
+  </inz-form>
 
-  <div class="form-group row">
-    <label class="col-12 col-sm-12 col-md-3 col-form-label required">Device Id</label>
-    <div class="col-12 col-sm-12 col-md-9">
-      <a routerLink="device-id" class="btn btn-outline-primary btn-block">Open</a>
-    </div>
-  </div>
+  <inz-form [form]="machineToolSpecificationForm.controls['device_id']" label="Device id" [required]="true">
+    <inz-device-id-controls></inz-device-id-controls>
+  </inz-form>
+
+  <inz-form [form]="machineToolSpecificationForm.controls['location']" label="Location">
+    <inz-location-controls></inz-location-controls>
+  </inz-form>
+
 
   <div class="form-group row">
     <label class="col-12 col-sm-12 col-md-3 col-form-label required">Machining capabilities</label>
     <div class="col-12 col-sm-12 col-md-9">
       <a routerLink="machining-capabilities" class="btn btn-outline-primary btn-block">Open</a>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-12 col-sm-12 col-md-3 col-form-label">Location</label>
-    <div class="col-12 col-sm-12 col-md-9">
-      <a routerLink="location" class="btn btn-outline-primary btn-block">Open</a>
     </div>
   </div>
   <div class="form-group row">

@@ -18,6 +18,8 @@ import {FormGroupComponent} from './components/form-group/form-group.component';
 import {InputComponent} from './components/input/input.component';
 import {SelectComponent} from './components/select/select.component';
 import {FormComponent} from './components/form/form.component';
+import {DeviceIdControlsComponent} from './controls/device-id-controls/device-id-controls.component';
+import {LocationControlsComponent} from './controls/location-controls/location-controls.component';
 
 @NgModule({
   imports: [
@@ -42,6 +44,8 @@ import {FormComponent} from './components/form/form.component';
     InputComponent,
     SelectComponent,
     FormComponent,
+    DeviceIdControlsComponent,
+    LocationControlsComponent,
   ],
   exports: [
     AddItemComponent,
@@ -61,6 +65,8 @@ import {FormComponent} from './components/form/form.component';
     InputComponent,
     SelectComponent,
     FormComponent,
+    DeviceIdControlsComponent,
+    LocationControlsComponent,
   ]
 })
 export class FormsSharedModule {
