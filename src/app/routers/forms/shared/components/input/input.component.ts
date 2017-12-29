@@ -9,6 +9,8 @@ import {FormComponent} from '../form/form.component';
 })
 export class InputComponent implements OnInit {
   @Input() controlName: string;
+  @Input() required: boolean;
+  @Input() label: string;
   form: FormGroup;
   randomId: string = Math.random().toString(36).substring(2, 30);
 
@@ -17,6 +19,14 @@ export class InputComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formComponent.form;
+  }
+
+  getLabel() {
+    if (!this.label) {
+      return this.controlName;
+    } else {
+      return this.label;
+    }
   }
 
 }
