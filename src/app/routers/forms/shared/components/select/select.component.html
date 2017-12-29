@@ -1,0 +1,10 @@
+<div class="form-group row" [formGroup]="form">
+  <label [for]="randomId" class="col-12 col-sm-12 col-md-3 col-form-label">
+    {{controlName}}
+  </label>
+  <div class="col-12 col-sm-12 col-md-9">
+    <select [id]="randomId" type="text" [formControlName]="controlName" class="form-control custom-select ">
+      <option *ngFor="let option of options | keys" [value]="option.key">{{option.value}}</option>
+    </select>
+  </div>
+</div>

@@ -14,6 +14,10 @@ import {SharedModule} from '../../../shared/shared.module';
 import {CardActionComponent} from './components/card-action/card-action.component';
 import {ArrayActionComponent} from './components/array-action/array-action.component';
 import {ChuckFormComponent} from './forms/chuck-form/chuck-form.component';
+import {FormGroupComponent} from './components/form-group/form-group.component';
+import {InputComponent} from './components/input/input.component';
+import {SelectComponent} from './components/select/select.component';
+import {FormComponent} from './components/form/form.component';
 
 @NgModule({
   imports: [
@@ -34,6 +38,10 @@ import {ChuckFormComponent} from './forms/chuck-form/chuck-form.component';
     CardActionComponent,
     ArrayActionComponent,
     ChuckFormComponent,
+    FormGroupComponent,
+    InputComponent,
+    SelectComponent,
+    FormComponent,
   ],
   exports: [
     AddItemComponent,
@@ -49,6 +57,10 @@ import {ChuckFormComponent} from './forms/chuck-form/chuck-form.component';
     CardActionComponent,
     ArrayActionComponent,
     ChuckFormComponent,
+    FormGroupComponent,
+    InputComponent,
+    SelectComponent,
+    FormComponent,
   ]
 })
 export class FormsSharedModule {

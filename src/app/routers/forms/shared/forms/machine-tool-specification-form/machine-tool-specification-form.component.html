@@ -1,19 +1,5 @@
-<div [formGroup]="machineToolSpecificationForm">
+<inz-form [form]="machineToolSpecificationForm">
+  <inz-input controlName="description"></inz-input>
+  <inz-select controlName="machine_class" [options]="machineClass"></inz-select>
+</inz-form>
 
-  <div class="form-group row">
-    <label for="description" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
-    <div class="col-12 col-sm-12 col-md-9">
-      <input formControlName="description" id="description" class="form-control"/>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="machine_class" class="col-12 col-sm-12 col-md-3 col-form-label require">Machine Class</label>
-    <div class="col-12 col-sm-12 col-md-9">
-      <select formControlName="machine_class" id="machine_class" class="form-control custom-select" required>
-        <option *ngFor="let item of machineClass | keys" [value]="item.key">{{item.value}}</option>
-      </select>
-    </div>
-  </div>
-
-</div>

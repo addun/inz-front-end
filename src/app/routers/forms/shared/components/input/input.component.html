@@ -1,0 +1,8 @@
+<div class="form-group row" [formGroup]="form">
+  <label [for]="randomId" class="col-12 col-sm-12 col-md-3 col-form-label">
+    {{controlName}}
+  </label>
+  <div class="col-12 col-sm-12 col-md-9">
+    <input [id]="randomId" type="text" [formControlName]="controlName" class="form-control"/>
+  </div>
+</div>
