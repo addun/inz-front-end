@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {CoolantType} from '../../../shared/types/coolant-type.type';
-import {MeansOfCoolantDelivery} from '../../../shared/types/means-of-coolant-delivery.type';
-import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {Coolant} from '../../../shared/models/coolant.model';
+import {MeansOfCoolantDelivery} from '../../../shared/types/means-of-coolant-delivery.type';
 
 @Component({
   selector: 'inz-coolant',
@@ -12,33 +12,22 @@ import {Coolant} from '../../../shared/models/coolant.model';
   styleUrls: ['./coolant.component.sass']
 })
 export class CoolantComponent implements OnInit {
-  formModelGroup: FormGroup;
+  formGroups: FormGroup[];
+  generator = Coolant.getFormControls;
   coolantType = CoolantType;
   meansOfCoolantDelivery = MeansOfCoolantDelivery;
   private activeArrayIndex: number;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private machineToolSpecificationService: MachineToolSpecificationService) {
+  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+              private activatedRoute: ActivatedRoute) {
   }
 
-  get modelForm(): AbstractControl {
-    return this.formModelGroup.controls['arrayModel'];
+  get model() {
+    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.coolant;
   }
 
-  get model(): Coolant[] {
-    return this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .coolant;
-  }
-
-  set model(coolants: Coolant[]) {
-    this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .coolant = coolants;
+  set model(model) {
+    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.coolant = model;
   }
 
   ngOnInit(): void {
@@ -46,37 +35,22 @@ export class CoolantComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = params['machineToolElementId'];
-        this.formModelGroup = this.buildForm();
+        this.activeArrayIndex = +params['machineToolElementId'];
+        this.formGroups = this.buildForms();
       });
   }
 
-  buildForm(): FormGroup {
-    return new FormGroup({
-      arrayModel: new FormArray(this.loadForm())
+  buildForms(): FormGroup[] {
+    return this.model.map(capability => {
+      return new FormGroup(Coolant.getFormControls(capability));
     });
   }
 
-  loadForm(): FormGroup[] {
-    return this.model.map(model => {
-      return new FormGroup(
-        Coolant.getFormControls(model)
-      );
+  save() {
+    this.model = [];
+    this.formGroups.forEach(form => {
+      this.model.push(new Coolant(form.value));
     });
-  }
-
-  add() {
-    const control = <FormArray>this.modelForm;
-    control.push(new FormGroup(Coolant.getFormControls()));
-  }
-
-  remove(index: number) {
-    const control = <FormArray>this.modelForm;
-    control.removeAt(index);
-  }
-
-  saveAll() {
-    this.model = this.modelForm.value;
   }
 
 }

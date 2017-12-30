@@ -1,62 +1,16 @@
-<div [formGroup]="formModelGroup">
-  <div formArrayName="arrayModel">
-    <div *ngFor="let a of modelForm.controls; let i=index">
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Coolant">
 
-      <inz-card-action [cardName]="'Coolant #' + (1+i)"
-                       (remove)="remove(i)">
+  <ng-template #controls let-index="index">
+    <inz-form [form]="formGroups[index]">
+      <inz-input controlName="description" [required]="false" label="Description"></inz-input>
+      <inz-select controlName="coolant_type" [required]="true" label="Coolant type"
+                  [options]="coolantType"></inz-select>
+      <inz-select controlName="means_of_delivery" [required]="false" label="Means of delivery"
+                  [options]="meansOfCoolantDelivery"></inz-select>
+      <inz-input controlName="capacity_of_coolant_tank" [required]="false" label="Capacity of coolant tank"></inz-input>
+      <inz-input controlName="coolant_weight" [required]="false" label="Coolant weight"></inz-input>
 
-        <div [formGroupName]="i">
+    </inz-form>
+  </ng-template>
 
-          <div class="form-group row">
-            <label [for]="'description'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="description" [id]="'description'+'_'+i" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'coolant_type'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Coolant type</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <select formControlName="coolant_type" [id]="'coolant_type_'+i" class="form-control custom-select">
-                <option *ngFor="let item of coolantType | keys" [value]="item.key">
-                  {{item.value}}
-                </option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'means_of_delivery'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Means of
-              delivery</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <select formControlName="means_of_delivery" [id]="'means_of_delivery'+i"
-                      class="form-control custom-select">
-                <option *ngFor="let item of meansOfCoolantDelivery | keys" [value]="item.key">
-                  {{item.value}}
-                </option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'capacity_of_coolant_tank'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Capacity of
-              coolant tank</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="capacity_of_coolant_tank" [id]="'capacity_of_coolant_tank'+'_'+i"
-                     class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'coolant_weight'+'_'+i"
-                   class="col-12 col-sm-12 col-md-3 col-form-label">Coolant weight</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="coolant_weight" [id]="'coolant_weight'+'_'+i" class="form-control"/>
-            </div>
-          </div>
-
-        </div>
-
-      </inz-card-action>
-
-    </div>
-  </div>
-</div>
-
-<inz-array-action (save)="saveAll()" (add)="add()"></inz-array-action>
+</inz-form-array>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
-import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {PartProbe} from '../../../shared/models/part-probe.model';
 import {SensorDimensionality} from '../../../shared/types/sensor-dimensionality.type';
 import {ProbeType} from '../../../shared/types/probe-type.type';
@@ -12,33 +12,22 @@ import {ProbeType} from '../../../shared/types/probe-type.type';
   styleUrls: ['./part-probe.component.sass']
 })
 export class PartProbeComponent implements OnInit {
-  formModelGroup: FormGroup;
   sensorDimensionality = SensorDimensionality;
   probeType = ProbeType;
+  formGroups: FormGroup[];
+  generator = PartProbe.getFormControls;
   private activeArrayIndex: number;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private machineToolSpecificationService: MachineToolSpecificationService) {
+  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+              private activatedRoute: ActivatedRoute) {
   }
 
-  get modelForm(): AbstractControl {
-    return this.formModelGroup.controls['arrayModel'];
+  get model() {
+    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.part_probes;
   }
 
-  get model(): PartProbe[] {
-    return this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .part_probes;
-  }
-
-  set model(partProbes: PartProbe[]) {
-    this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .part_probes = partProbes;
+  set model(model) {
+    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.part_probes = model;
   }
 
   ngOnInit(): void {
@@ -46,36 +35,21 @@ export class PartProbeComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = params['machineToolElementId'];
-        this.formModelGroup = this.buildForm();
+        this.activeArrayIndex = +params['machineToolElementId'];
+        this.formGroups = this.buildForms();
       });
   }
 
-  buildForm(): FormGroup {
-    return new FormGroup({
-      arrayModel: new FormArray(this.loadForm())
+  buildForms(): FormGroup[] {
+    return this.model.map(capability => {
+      return new FormGroup(PartProbe.getFormControls(capability));
     });
   }
 
-  loadForm(): FormGroup[] {
-    return this.model.map(model => {
-      return new FormGroup(
-        PartProbe.getFormControls(model)
-      );
+  save() {
+    this.model = [];
+    this.formGroups.forEach(form => {
+      this.model.push(new PartProbe(form.value));
     });
-  }
-
-  add() {
-    const control = <FormArray>this.modelForm;
-    control.push(new FormGroup(PartProbe.getFormControls()));
-  }
-
-  remove(index: number) {
-    const control = <FormArray>this.modelForm;
-    control.removeAt(index);
-  }
-
-  saveAll() {
-    this.model = this.modelForm.value;
   }
 }

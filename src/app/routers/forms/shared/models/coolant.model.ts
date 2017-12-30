@@ -9,6 +9,11 @@ export class Coolant extends ElementCapability {
   capacity_of_coolant_tank?: number;
   coolant_weight?: number;
 
+  constructor(model?) {
+    super();
+    Object.assign(this, model);
+  }
+
 
   public static getFormControls(loadModel?) {
     if (!loadModel) {
