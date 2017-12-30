@@ -8,58 +8,17 @@
       <inz-input controlName="weight" label="Weight" [required]="false"></inz-input>
     </inz-form>
 
-    <div class="form-group row">
-      <label class="col-12 col-sm-12 col-md-3 col-form-label">Chucks</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <a [routerLink]="[index, 'chucks']" class="btn btn-outline-primary  btn-block">Go to forms</a>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-12 col-sm-12 col-md-3 col-form-label">Collets</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <a [routerLink]="[index, 'collets']" class="btn btn-outline-primary  btn-block">Go to forms</a>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-12 col-sm-12 col-md-3 col-form-label">Bar feeders</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <a [routerLink]="[index, 'bar-feeders']" class="btn btn-outline-primary btn-block">Go to forms</a>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-12 col-sm-12 col-md-3 col-form-label">Tailstocks</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <a [routerLink]="[index, 'tailstocks']" class="btn btn-outline-primary  btn-block">Go to forms</a>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-12 col-sm-12 col-md-3 col-form-label">Tool breakages</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <a [routerLink]="[index, 'tool-breakages']" class="btn btn-outline-primary  btn-block">Go to forms</a>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-12 col-sm-12 col-md-3 col-form-label">Part probes</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <a [routerLink]="[index, 'part-probes']" class="btn btn-outline-primary  btn-block">Go to forms</a>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-12 col-sm-12 col-md-3 col-form-label">Tool settings</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <a [routerLink]="[index, 'tool-settings']" class="btn btn-outline-primary  btn-block">Go to forms</a>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-12 col-sm-12 col-md-3 col-form-label">Collants</label>
-      <div class="col-12 col-sm-12 col-md-9">
-        <a [routerLink]="[index, 'collants']" class="btn btn-outline-primary  btn-block">Go to forms</a>
-      </div>
-    </div>
+    <inz-form label="Capabilities">
+      <inz-form-href [href]="index+'chucks'" label="Chucks"></inz-form-href>
+      <inz-form-href [href]="index+'collets'" label="Collets"></inz-form-href>
+      <inz-form-href [href]="index+'bar-feeders'" label="Bar feeders"></inz-form-href>
+      <inz-form-href [href]="index+'tailstocks'" label="Tailstocks"></inz-form-href>
+      <inz-form-href [href]="index+'tool-breakages'" label="Tool breakages"></inz-form-href>
+      <inz-form-href [href]="index+'part-probes'" label="Part probes"></inz-form-href>
+      <inz-form-href [href]="index+'tool-settings'" label="Tool settings"></inz-form-href>
+      <inz-form-href [href]="index+'collants'" label="Collants"></inz-form-href>
+    </inz-form>
 
   </ng-template>
 
 </inz-form-array>
-
-
-
