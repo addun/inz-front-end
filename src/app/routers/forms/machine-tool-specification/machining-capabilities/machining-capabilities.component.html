@@ -1,18 +1,8 @@
-<div [formGroup]="formModelGroup">
-  <div formArrayName="capabilities">
-    <div *ngFor="let a of modelForm.controls; let i=index">
+<inz-form-array [forms]="machiningCapabilityForms" [generator]="generator" (save)="save()" label="Machining capability">
 
-      <inz-card [cardName]="'Machining Capability #' + (1+i)">
-        <inz-machining-capability-form [machiningCapabilityForm]="modelForm.controls[i]">
-        </inz-machining-capability-form>
+  <ng-template #controls let-index="index">
+    <inz-machining-capability-form
+      [machiningCapabilityForm]="machiningCapabilityForms[index]"></inz-machining-capability-form>
+  </ng-template>
 
-        <ng-template #footer>
-          <button class="btn btn-danger" (click)="remove(i)">Remove</button>
-        </ng-template>
-      </inz-card>
-
-    </div>
-  </div>
-</div>
-
-<inz-array-action (add)="add()" (save)="saveAll()"></inz-array-action>
+</inz-form-array>

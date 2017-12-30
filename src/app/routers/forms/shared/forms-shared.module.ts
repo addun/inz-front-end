@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AddItemComponent} from './components/add-item/add-item.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {KeysPipe} from './pipes/keys/keys.pipe';
 import {CardComponent} from './components/card/card.component';
 import {DeviceIdFormComponent} from './forms/device-id-form/device-id-form.component';
@@ -20,6 +20,7 @@ import {SelectComponent} from './components/select/select.component';
 import {FormComponent} from './components/form/form.component';
 import {DeviceIdControlsComponent} from './controls/device-id-controls/device-id-controls.component';
 import {LocationControlsComponent} from './controls/location-controls/location-controls.component';
+import {FormArrayComponent} from './components/form-array/form-array.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import {LocationControlsComponent} from './controls/location-controls/location-c
     FormComponent,
     DeviceIdControlsComponent,
     LocationControlsComponent,
+    FormArrayComponent,
   ],
   exports: [
     AddItemComponent,
@@ -67,6 +69,7 @@ import {LocationControlsComponent} from './controls/location-controls/location-c
     FormComponent,
     DeviceIdControlsComponent,
     LocationControlsComponent,
+    FormArrayComponent,
   ]
 })
 export class FormsSharedModule {

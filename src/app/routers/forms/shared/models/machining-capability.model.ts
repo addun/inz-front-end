@@ -1,14 +1,18 @@
 import {MachiningSize} from './machining-size.model';
 import {MachiningCapabilityProfile} from '../types/machining-capability-profile.type';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 
 export class MachiningCapability {
   capability: MachiningCapabilityProfile;
   machining_accuracy?: string;
-  description ?: string;
+  description?: string;
   machining_size?: MachiningSize = new MachiningSize();
 
-  public static getFormControls(loadModel?: MachiningCapability) {
+  constructor(machiningCapability?) {
+    Object.assign(this, machiningCapability);
+  }
+
+  public static getFormControls(loadModel?: MachiningCapability): { [key: string]: AbstractControl } {
     if (!loadModel) {
       loadModel = new MachiningCapability();
     }

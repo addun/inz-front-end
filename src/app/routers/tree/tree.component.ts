@@ -35,7 +35,7 @@ export class TreeComponent implements OnInit, AfterViewInit {
         {action: NodeMenuItemAction.Rename, name: 'Rename', cssClass: 'fa fa-pencil-square-o'},
         {action: NodeMenuItemAction.NewFolder, name: 'New folder', cssClass: 'fa fa-folder-o'},
         {action: NodeMenuItemAction.Custom, name: 'Add', cssClass: 'fa fa-book'},
-        {action: NodeMenuItemAction.Remove, name: 'Remove', cssClass: 'fa fa-remove'},
+        {action: NodeMenuItemAction.Remove, name: 'Remove', cssClass: 'fa fa-removeGroup'},
       ]
     },
     loadChildren: function(callback) {

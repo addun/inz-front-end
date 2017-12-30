@@ -1,0 +1,15 @@
+<inz-card [cardName]="label+' #'+(i+1)" *ngFor="let group of forms; let i = index">
+
+  <ng-template *ngTemplateOutlet="controls;context:{index:i}"></ng-template>
+
+  <ng-template #footer>
+    <div class="text-right">
+      <button class="btn btn-danger" (click)="removeGroup(i)">Remove</button>
+    </div>
+  </ng-template>
+
+</inz-card>
+
+
+<button (click)="addGroup()" class="btn btn-primary">Add new</button>
+<button (click)="saveGroups()" class="btn btn-primary">Save</button>
