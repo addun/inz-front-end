@@ -9,13 +9,13 @@ import {ToolSetting} from './tool-setting.model';
 import {Coolant} from './coolant.model';
 
 export class MachineToolElement {
-  name: string;
-  description?: string;
-  weight: number;
+  name: string = null;
+  description?: string = null;
+  weight: number = null;
   capabilities?: Capabilities = new Capabilities();
 
   constructor(machineToolElement?) {
-    Object.assign(this, machineToolElement || {});
+    Object.assign(this, machineToolElement);
   }
 
   public static getFormControls(loadModel?: MachineToolElement) {
