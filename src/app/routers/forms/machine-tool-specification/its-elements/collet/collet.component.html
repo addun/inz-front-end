@@ -1,43 +1,12 @@
-<div [formGroup]="formModelGroup">
-  <div formArrayName="arrayModel">
-    <div *ngFor="let a of modelForm.controls; let i=index">
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Collet">
 
-      <inz-card-action [cardName]="'Collet #' + (1+i)"
-                       (remove)="remove(i)">
+  <ng-template #controls let-index="index">
+    <inz-form [form]="formGroups[index]">
+      <inz-input controlName="description" [required]="false" label="Description"></inz-input>
+      <inz-input controlName="collet_type" [required]="true" label="Collet type"></inz-input>
+      <inz-input controlName="minimum_part_diameter" [required]="true" label="Minimum Part Diameter"></inz-input>
+      <inz-input controlName="maximum_part_diameter" [required]="true" label="Maximum Part Diameter"></inz-input>
+    </inz-form>
+  </ng-template>
 
-        <div [formGroupName]="i">
-
-          <div class="form-group row">
-            <label [for]="'description'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="description" [id]="'description'+'_'+i" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'collet_type'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Collet Type</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="collet_type" [id]="'collet_type'+'_'+i" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'minimum_part_diameter'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Minimum Part Diameter</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="minimum_part_diameter" [id]="'minimum_part_diameter'+'_'+i" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'maximum_part_diameter'+'_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Maximum Part Diameter</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="maximum_part_diameter" [id]="'maximum_part_diameter'+'_'+i" class="form-control"/>
-            </div>
-          </div>
-
-        </div>
-
-      </inz-card-action>
-
-    </div>
-  </div>
-</div>
-
-<inz-array-action (save)="saveAll()" (add)="add()"></inz-array-action>
+</inz-form-array>

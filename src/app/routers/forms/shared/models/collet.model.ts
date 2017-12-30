@@ -2,9 +2,14 @@ import {ElementCapability} from './element-capability.model';
 import {FormControl, Validators} from '@angular/forms';
 
 export class Collet extends ElementCapability {
-  collet_type: string;
-  minimum_part_diameter: number;
-  maximum_part_diameter: number;
+  collet_type: string = null;
+  minimum_part_diameter: number = null;
+  maximum_part_diameter: number = null;
+
+  constructor(model?) {
+    super();
+    Object.assign(this, model);
+  }
 
   public static getFormControls(loadModel?) {
     if (!loadModel) {
