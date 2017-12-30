@@ -8,6 +8,13 @@
     <inz-device-id-controls></inz-device-id-controls>
   </inz-form>
 
+  <inz-form [form]="machineToolSpecificationForm.controls['environmental_evaluation']" label="Environment"
+            [required]="false">
+    <inz-input controlName="evaluation_name" [required]="true" label="Evaluation name"></inz-input>
+    <inz-input controlName="power_in_idling" [required]="false" label="Power in idling"></inz-input>
+    <inz-input controlName="time_for_warming_up" [required]="false" label="Time for warming up"></inz-input>
+  </inz-form>
+
   <inz-form [form]="machineToolSpecificationForm.controls['location']" label="Location">
     <inz-location-controls></inz-location-controls>
   </inz-form>
