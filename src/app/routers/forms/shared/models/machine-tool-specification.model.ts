@@ -7,12 +7,14 @@ import {MachineToolElement} from './machine-tool-element.model';
 import {Installation} from './installation.model';
 import {Location} from './location.model';
 import {EnvironmentalEvaluation} from './environmental-evaluation.model';
+import {MeasuringCapability} from './measuring-capability.model';
 
 
 export class MachineToolSpecification extends MachineTool {
   machine_class: MachineClass;
   device_id: DeviceId = new DeviceId();
   machining_capabilities: MachiningCapability[] = [];
+  measuring_capability: MeasuringCapability = new MeasuringCapability();
   environmental_evaluation: EnvironmentalEvaluation = new EnvironmentalEvaluation();
   location: Location = new Location();
   installation: Installation = new Installation();
@@ -34,6 +36,7 @@ export class MachineToolSpecification extends MachineTool {
       device_id: new FormGroup(DeviceId.getFormControls(loadModel.device_id)),
       environmental_evaluation: new FormGroup(EnvironmentalEvaluation.getFormControls(loadModel.environmental_evaluation)),
       location: new FormGroup(Location.getFormControls(loadModel.location)),
+      measuring_capability: new FormGroup(MeasuringCapability.getFormControls(loadModel.measuring_capability)),
     });
   }
 }

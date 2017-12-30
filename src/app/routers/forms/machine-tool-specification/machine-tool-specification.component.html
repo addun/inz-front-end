@@ -8,6 +8,23 @@
     <inz-device-id-controls></inz-device-id-controls>
   </inz-form>
 
+  <inz-form label="Machining capabilities">
+    <inz-form-href href="machining-capabilities"></inz-form-href>
+  </inz-form>
+
+  <inz-form label="Measuring capability" [form]="machineToolSpecificationForm.controls['measuring_capability']">
+    <inz-input controlName="measuring_accuracy" [required]="true" label="Measuring accuracy"></inz-input>
+    <inz-input controlName="description" [required]="false" label="Description"></inz-input>
+  </inz-form>
+
+  <inz-form [form]="machineToolSpecificationForm.controls['location']" label="Location">
+    <inz-location-controls></inz-location-controls>
+  </inz-form>
+
+  <inz-form label="Installation">
+    <inz-form-href href="installation"></inz-form-href>
+  </inz-form>
+
   <inz-form [form]="machineToolSpecificationForm.controls['environmental_evaluation']" label="Environment"
             [required]="false">
     <inz-input controlName="evaluation_name" [required]="true" label="Evaluation name"></inz-input>
@@ -16,29 +33,9 @@
     <inz-form-href href="standard-machining-process" label="Power for standard machining"></inz-form-href>
   </inz-form>
 
-  <inz-form [form]="machineToolSpecificationForm.controls['location']" label="Location">
-    <inz-location-controls></inz-location-controls>
+  <inz-form label="Its elements">
+    <inz-form-href href="its-elements" label="Machine tool elements"></inz-form-href>
   </inz-form>
-
-
-  <div class="form-group row">
-    <label class="col-12 col-sm-12 col-md-3 col-form-label required">Machining capabilities</label>
-    <div class="col-12 col-sm-12 col-md-9">
-      <a routerLink="machining-capabilities" class="btn btn-outline-primary btn-block">Open</a>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-12 col-sm-12 col-md-3 col-form-label">Installation</label>
-    <div class="col-12 col-sm-12 col-md-9">
-      <a routerLink="installation" class="btn btn-outline-primary btn-block">Open</a>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-12 col-sm-12 col-md-3 col-form-label">Its elements</label>
-    <div class="col-12 col-sm-12 col-md-9">
-      <a routerLink="its-elements" class="btn btn-outline-primary btn-block">Open</a>
-    </div>
-  </div>
 
   <ng-template #footer>
     <button (click)="save()" class="btn btn-primary">Save</button>
