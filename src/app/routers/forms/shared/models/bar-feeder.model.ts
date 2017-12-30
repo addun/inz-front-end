@@ -6,6 +6,11 @@ export class BarFeeder extends ElementCapability {
   maximum_stock_diameter: number;
   maximum_stock_length: number;
 
+  constructor(barFeeder?) {
+    super();
+    Object.assign(this, barFeeder);
+  }
+
 
   public static getFormControls(loadModel?: BarFeeder): { [key: string]: AbstractControl } {
     if (!loadModel) {

@@ -1,44 +1,12 @@
-<div [formGroup]="formModelGroup">
-  <div formArrayName="arrayModel">
-    <div *ngFor="let a of modelForm.controls; let i=index">
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Bar feeder">
 
-      <inz-card-action [cardName]="'Bar feeder #' + (1+i)"
-                       (remove)="remove(i)">
+  <ng-template #controls let-index="index">
+    <inz-form [form]="formGroups[index]" label="">
+      <inz-input controlName="description" label="Description" [required]="false"></inz-input>
+      <inz-input controlName="minimum_stock_diameter" label="Minimum stock diameter" [required]="true"></inz-input>
+      <inz-input controlName="maximum_stock_diameter" label="Maximum stock diameter" [required]="true"></inz-input>
+      <inz-input controlName="maximum_stock_length" label="Maximum stock length" [required]="true"></inz-input>
+    </inz-form>
+  </ng-template>
 
-        <div [formGroupName]="i">
-          <div class="form-group row">
-            <label [for]="'description_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="description" [id]="'description_'+i" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'minimum_stock_diameter_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Minimum
-              Stock Diameter</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="minimum_stock_diameter" [id]="'minimum_stock_diameter_'+i" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'maximum_stock_diameter_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Maximum
-              Stock Diameter</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="maximum_stock_diameter" [id]="'maximum_stock_diameter_'+i" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'maximum_stock_length_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Maximum
-              Stock Length</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="maximum_stock_length" [id]="'maximum_stock_length_'+i" class="form-control"/>
-            </div>
-          </div>
-        </div>
-
-      </inz-card-action>
-
-    </div>
-  </div>
-</div>
-
-<inz-array-action (save)="saveAll()" (add)="add()"></inz-array-action>
+</inz-form-array>

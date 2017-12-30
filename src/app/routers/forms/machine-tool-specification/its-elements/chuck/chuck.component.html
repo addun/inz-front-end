@@ -1,18 +1,7 @@
-<div [formGroup]="formModelGroup">
-  <div formArrayName="arrayModel">
-    <div *ngFor="let a of modelForm.controls; let i=index">
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Chuck">
 
-      <inz-card-action [cardName]="'Chuck #' + (1+i)"
-                       (remove)="remove(i)">
+  <ng-template #controls let-index="index">
+    <inz-chuck-form [chuckForm]="formGroups[index]"></inz-chuck-form>
+  </ng-template>
 
-        <div [formGroupName]="i">
-          <inz-chuck-form [chuckForm]="modelForm.controls[i]"></inz-chuck-form>
-        </div>
-
-      </inz-card-action>
-
-    </div>
-  </div>
-</div>
-
-<inz-array-action (save)="saveAll()" (add)="add()"></inz-array-action>
+</inz-form-array>

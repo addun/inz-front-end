@@ -1,10 +1,10 @@
 import {AbstractControl, FormControl, Validators} from '@angular/forms';
 
 export class Location {
-  business_unit: string;
-  plant_location: string;
-  building: string;
-  cell: string;
+  business_unit: string = null;
+  plant_location: string = null;
+  building: string = null;
+  cell: string = null;
 
 
   constructor(location?) {

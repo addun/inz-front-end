@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
-import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {BarFeeder} from '../../../shared/models/bar-feeder.model';
 import {ActivatedRoute} from '@angular/router';
 
@@ -10,31 +10,20 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./bar-feeder.component.sass']
 })
 export class BarFeederComponent implements OnInit {
-  formModelGroup: FormGroup;
+  formGroups: FormGroup[];
+  generator = BarFeeder.getFormControls;
   private activeArrayIndex: number;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private machineToolSpecificationService: MachineToolSpecificationService) {
+  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+              private activatedRoute: ActivatedRoute) {
   }
 
-  get modelForm(): AbstractControl {
-    return this.formModelGroup.controls['arrayModel'];
+  get model() {
+    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.bar_feeders;
   }
 
-  get model(): BarFeeder[] {
-    return this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .bar_feeders;
-  }
-
-  set model(barFeeders: BarFeeder[]) {
-    this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .bar_feeders = barFeeders;
+  set model(model) {
+    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.bar_feeders = model;
   }
 
   ngOnInit(): void {
@@ -42,38 +31,21 @@ export class BarFeederComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = params['machineToolElementId'];
-        this.formModelGroup = this.buildForm();
+        this.activeArrayIndex = +params['machineToolElementId'];
+        this.formGroups = this.buildForms();
       });
   }
 
-  buildForm(): FormGroup {
-    return new FormGroup({
-      arrayModel: new FormArray(this.loadForm())
+  buildForms(): FormGroup[] {
+    return this.model.map(capability => {
+      return new FormGroup(BarFeeder.getFormControls(capability));
     });
   }
 
-  loadForm(): FormGroup[] {
-    console.log(this.model);
-    return this.model.map(model => {
-      return new FormGroup(
-        BarFeeder.getFormControls(model)
-      );
+  save() {
+    this.model = [];
+    this.formGroups.forEach(form => {
+      this.model.push(new BarFeeder(form.value));
     });
   }
-
-  add() {
-    const control = <FormArray>this.modelForm;
-    control.push(new FormGroup(BarFeeder.getFormControls()));
-  }
-
-  remove(index: number) {
-    const control = <FormArray>this.modelForm;
-    control.removeAt(index);
-  }
-
-  saveAll() {
-    this.model = this.modelForm.value;
-  }
-
 }

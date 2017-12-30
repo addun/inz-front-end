@@ -18,7 +18,7 @@ export class MachineToolSpecification extends MachineTool {
   environmental_evaluation: EnvironmentalEvaluation = new EnvironmentalEvaluation();
   location: Location = new Location();
   installation: Installation = new Installation();
-  its_elements: MachineToolElement[] = [];
+  its_elements: MachineToolElement[] = [new MachineToolElement()];
 
   constructor(machineToolSpecification?) {
     super(machineToolSpecification);
