@@ -5,6 +5,7 @@ import {MachineToolSpecificationComponent} from './machine-tool-specification/ma
 import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
 import {RouterOutletComponent} from './shared/components/router-outlet/router-outlet.component';
 import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
+import {StandardMachiningProcessComponent} from './machine-tool-specification/standard-machining-process/standard-machining-process.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,13 @@ const routes: Routes = [
         component: MachiningCapabilitiesComponent,
         data: {
           breadcrumb: 'Machining Capabilities'
+        },
+      },
+      {
+        path: 'standard-machining-process',
+        component: StandardMachiningProcessComponent,
+        data: {
+          breadcrumb: 'Standard Machining Process'
         },
       },
       {

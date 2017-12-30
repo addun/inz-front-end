@@ -1,0 +1,12 @@
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Standard machining process">
+
+  <ng-template #controls let-index="index">
+    <inz-form label="Base" [required]="false" [form]="formGroups[index]">
+      <inz-input label="Process description" [required]="true" controlName="process_description"></inz-input>
+      <inz-input label="Type of machining" [required]="true" controlName="type_of_machining"></inz-input>
+      <inz-input label="Power" [required]="true" controlName="power"></inz-input>
+      <inz-input label="Electric power" [required]="true" controlName="electric_power"></inz-input>
+    </inz-form>
+  </ng-template>
+
+</inz-form-array>
