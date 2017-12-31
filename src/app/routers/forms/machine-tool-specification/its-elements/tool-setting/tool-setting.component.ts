@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {ToolSetting} from '../../../shared/models/tool-setting.model';
@@ -11,32 +11,21 @@ import {ProbeType} from '../../../shared/types/probe-type.type';
   styleUrls: ['./tool-setting.component.sass']
 })
 export class ToolSettingComponent implements OnInit {
-  formModelGroup: FormGroup;
+  formGroups: FormGroup[];
+  generator = ToolSetting.getFormControls;
   probeType = ProbeType;
   private activeArrayIndex: number;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private machineToolSpecificationService: MachineToolSpecificationService) {
+  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+              private activatedRoute: ActivatedRoute) {
   }
 
-  get modelForm(): AbstractControl {
-    return this.formModelGroup.controls['arrayModel'];
+  get model() {
+    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tool_settings;
   }
 
-  get model(): ToolSetting[] {
-    return this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .tool_settings;
-  }
-
-  set model(toolSettings: ToolSetting[]) {
-    this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .tool_settings = toolSettings;
+  set model(model) {
+    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tool_settings = model;
   }
 
   ngOnInit(): void {
@@ -44,37 +33,21 @@ export class ToolSettingComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = params['machineToolElementId'];
-        this.formModelGroup = this.buildForm();
+        this.activeArrayIndex = +params['machineToolElementId'];
+        this.formGroups = this.buildForms();
       });
   }
 
-  buildForm(): FormGroup {
-    return new FormGroup({
-      arrayModel: new FormArray(this.loadForm())
+  buildForms(): FormGroup[] {
+    return this.model.map(capability => {
+      return new FormGroup(ToolSetting.getFormControls(capability));
     });
   }
 
-  loadForm(): FormGroup[] {
-    return this.model.map(model => {
-      return new FormGroup(
-        ToolSetting.getFormControls(model)
-      );
+  save() {
+    this.model = [];
+    this.formGroups.forEach(form => {
+      this.model.push(new ToolSetting(form.value));
     });
   }
-
-  add() {
-    const control = <FormArray>this.modelForm;
-    control.push(new FormGroup(ToolSetting.getFormControls()));
-  }
-
-  remove(index: number) {
-    const control = <FormArray>this.modelForm;
-    control.removeAt(index);
-  }
-
-  saveAll() {
-    this.model = this.modelForm.value;
-  }
-
 }

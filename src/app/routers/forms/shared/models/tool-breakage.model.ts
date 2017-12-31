@@ -1,8 +1,11 @@
 import {Sensor} from './sensor.model';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {DeviceId} from './device-id.model';
 
 export class ToolBreakage extends Sensor {
+
+  constructor(model?) {
+    super();
+    Object.assign(this, model);
+  }
 
   public static getFormControls(loadModel?) {
     if (!loadModel) {

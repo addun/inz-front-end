@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {Tailstock} from '../../../shared/models/tailstock.model';
@@ -10,31 +10,20 @@ import {Tailstock} from '../../../shared/models/tailstock.model';
   styleUrls: ['./tailstock.component.sass']
 })
 export class TailstockComponent implements OnInit {
-  modelFormGroup: FormGroup;
+  formGroups: FormGroup[];
+  generator = Tailstock.getFormControls;
   private activeArrayIndex: number;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private machineToolSpecificationService: MachineToolSpecificationService) {
+  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+              private activatedRoute: ActivatedRoute) {
   }
 
-  get modelForm(): AbstractControl {
-    return this.modelFormGroup.controls['tailstocks'];
+  get model() {
+    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tailstocks;
   }
 
-  get model(): Tailstock[] {
-    return this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .tailstocks;
-  }
-
-  set model(tailstock: Tailstock[]) {
-    this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .tailstocks = tailstock;
+  set model(model) {
+    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tailstocks = model;
   }
 
   ngOnInit(): void {
@@ -42,37 +31,21 @@ export class TailstockComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = params['machineToolElementId'];
-        this.modelFormGroup = this.buildForm();
+        this.activeArrayIndex = +params['machineToolElementId'];
+        this.formGroups = this.buildForms();
       });
   }
 
-  buildForm(): FormGroup {
-    return new FormGroup({
-      tailstocks: new FormArray(this.loadForm())
+  buildForms(): FormGroup[] {
+    return this.model.map(capability => {
+      return new FormGroup(Tailstock.getFormControls(capability));
     });
   }
 
-  loadForm(): FormGroup[] {
-    return this.model.map(model => {
-      return new FormGroup(
-        Tailstock.getFormControls(model)
-      );
+  save() {
+    this.model = [];
+    this.formGroups.forEach(form => {
+      this.model.push(new Tailstock(form.value));
     });
   }
-
-  add() {
-    const control = <FormArray>this.modelForm;
-    control.push(new FormGroup(Tailstock.getFormControls()));
-  }
-
-  remove(index: number) {
-    const control = <FormArray>this.modelForm;
-    control.removeAt(index);
-  }
-
-  saveAll() {
-    this.model = this.modelForm.value;
-  }
-
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {ToolBreakage} from '../../../shared/models/tool-breakage.model';
@@ -10,31 +10,20 @@ import {ToolBreakage} from '../../../shared/models/tool-breakage.model';
   styleUrls: ['./tool-breakage.component.sass']
 })
 export class ToolBreakageComponent implements OnInit {
-  formModelGroup: FormGroup;
+  formGroups: FormGroup[];
+  generator = ToolBreakage.getFormControls;
   private activeArrayIndex: number;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private machineToolSpecificationService: MachineToolSpecificationService) {
+  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+              private activatedRoute: ActivatedRoute) {
   }
 
-  get modelForm(): AbstractControl {
-    return this.formModelGroup.controls['arrayModel'];
+  get model() {
+    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tool_breakages;
   }
 
-  get model(): ToolBreakage[] {
-    return this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .tool_breakages;
-  }
-
-  set model(toolBreakages: ToolBreakage[]) {
-    this.machineToolSpecificationService
-      .machine_tool_specification
-      .its_elements[this.activeArrayIndex]
-      .capabilities
-      .tool_breakages = toolBreakages;
+  set model(model) {
+    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tool_breakages = model;
   }
 
   ngOnInit(): void {
@@ -42,37 +31,22 @@ export class ToolBreakageComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = params['machineToolElementId'];
-        this.formModelGroup = this.buildForm();
+        this.activeArrayIndex = +params['machineToolElementId'];
+        this.formGroups = this.buildForms();
       });
   }
 
-  buildForm(): FormGroup {
-    return new FormGroup({
-      arrayModel: new FormArray(this.loadForm())
+  buildForms(): FormGroup[] {
+    return this.model.map(capability => {
+      return new FormGroup(ToolBreakage.getFormControls(capability));
     });
   }
 
-  loadForm(): FormGroup[] {
-    return this.model.map(model => {
-      return new FormGroup(
-        ToolBreakage.getFormControls(model)
-      );
+  save() {
+    this.model = [];
+    this.formGroups.forEach(form => {
+      this.model.push(new ToolBreakage(form.value));
     });
-  }
-
-  add() {
-    const control = <FormArray>this.modelForm;
-    control.push(new FormGroup(ToolBreakage.getFormControls()));
-  }
-
-  remove(index: number) {
-    const control = <FormArray>this.modelForm;
-    control.removeAt(index);
-  }
-
-  saveAll() {
-    this.model = this.modelForm.value;
   }
 
 }

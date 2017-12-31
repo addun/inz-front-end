@@ -1,10 +1,10 @@
 import {AbstractControl, FormControl, Validators} from '@angular/forms';
 
 export class SpindleRange {
-  minimum_drive_speed: number;
-  maximum_drive_speed: number;
-  minimum_drive_torque: number;
-  maximum_drive_torque: number;
+  minimum_drive_speed: number = null;
+  maximum_drive_speed: number = null;
+  minimum_drive_torque: number = null;
+  maximum_drive_torque: number = null;
 
   public static getFormControls(loadModel?: SpindleRange): { [key: string]: AbstractControl } {
     if (!loadModel) {

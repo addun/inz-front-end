@@ -2,9 +2,14 @@ import {ElementCapability} from './element-capability.model';
 import {FormControl, Validators} from '@angular/forms';
 
 export class Tailstock extends ElementCapability {
-  spindle_name: string;
-  taper: string;
-  maximum_workpiece_weight_of_quill: number;
+  spindle_name: string = null;
+  taper: string = null;
+  maximum_workpiece_weight_of_quill: number = null;
+
+  constructor(model?) {
+    super();
+    Object.assign(this, model);
+  }
 
   public static getFormControls(loadModel?) {
     if (!loadModel) {

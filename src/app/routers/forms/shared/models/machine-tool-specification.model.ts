@@ -22,7 +22,7 @@ export class MachineToolSpecification extends MachineTool {
 
   constructor(machineToolSpecification?) {
     super(machineToolSpecification);
-    Object.assign(this, machineToolSpecification || {});
+    Object.assign(this, machineToolSpecification);
   }
 
 

@@ -1,43 +1,12 @@
-<div [formGroup]="modelFormGroup">
-  <div formArrayName="tailstocks">
-    <div *ngFor="let a of modelForm.controls; let i=index">
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Tailstock">
 
-      <inz-card-action [cardName]="'Tailstock #' + (1+i)"
-                       (remove)="remove(i)">
+  <ng-template #controls let-index="index">
+    <inz-form [form]="formGroups[index]" label="Base">
+      <inz-input controlName="description" [required]="false" label="Description"></inz-input>
+      <inz-input controlName="spindle_name" [required]="true" label="Spindle Name"></inz-input>
+      <inz-input controlName="maximum_workpiece_weight_of_quill" [required]="true"
+                 label="Maximum Workpiece Weight Of Quill"></inz-input>
+    </inz-form>
+  </ng-template>
 
-        <div [formGroupName]="i">
-
-          <div class="form-group row">
-            <label [for]="'description_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="description" [id]="'description_'+i" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'spindle_name_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Spindle Name</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="spindle_name" [id]="'spindle_name_'+i" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'taper_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Taper</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="taper" [id]="'taper_'+i" class="form-control"/>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label [for]="'maximum_workpiece_weight_of_quill_'+i" class="col-12 col-sm-12 col-md-3 col-form-label required">Maximum Workpiece Weight Of Quill</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="maximum_workpiece_weight_of_quill" [id]="'maximum_workpiece_weight_of_quill_'+i" class="form-control"/>
-            </div>
-          </div>
-
-        </div>
-
-      </inz-card-action>
-
-    </div>
-  </div>
-</div>
-
-<inz-array-action (save)="saveAll()" (add)="add()"></inz-array-action>
+</inz-form-array>

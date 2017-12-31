@@ -1,29 +1,12 @@
-<div [formGroup]="formModelGroup">
-  <div formArrayName="arrayModel">
-    <div *ngFor="let a of modelForm.controls; let i=index">
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Tool breakage">
 
-      <inz-card-action [cardName]="'Tool breakage #' + (1+i)"
-                       (remove)="remove(i)">
+  <ng-template #controls let-index="index">
+    <inz-form [form]="formGroups[index]" label="Base">
+      <inz-input controlName="description" [required]="false" label="Description"></inz-input>
+      <inz-form [form]="formGroups[index].controls['device_id']" label="Device id">
+        <inz-device-id-controls></inz-device-id-controls>
+      </inz-form>
+    </inz-form>
+  </ng-template>
 
-        <div [formGroupName]="i">
-
-          <div class="form-group row">
-            <label [for]="'description_'+i" class="col-12 col-sm-12 col-md-3 col-form-label">Description</label>
-            <div class="col-12 col-sm-12 col-md-9">
-              <input formControlName="description" [id]="'description_'+i" class="form-control"/>
-            </div>
-          </div>
-
-          <!--<inz-fieldset legend="Device id" required="true">-->
-            <!--<inz-device-id-forms [deviceIdForm]="modelForm.controls[i].controls.device_id"></inz-device-id-forms>-->
-          <!--</inz-fieldset>-->
-
-        </div>
-
-      </inz-card-action>
-
-    </div>
-  </div>
-</div>
-
-<inz-array-action (save)="saveAll()" (add)="add()"></inz-array-action>
+</inz-form-array>
