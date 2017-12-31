@@ -11,7 +11,8 @@ export class InputComponent implements OnInit {
   @Input() controlName: string;
   @Input() required: boolean;
   @Input() label: string;
-  @Input() type: 'text' | 'number' | 'checkbox';
+  @Input() type: 'text' | 'number' | 'checkbox' | 'select';
+  @Input() options;
   form: FormGroup;
   randomId: string = Math.random().toString(36).substring(2, 30);
 

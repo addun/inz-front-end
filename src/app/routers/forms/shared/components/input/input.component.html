@@ -1,8 +1,28 @@
 <div class="form-group row" [formGroup]="form">
+
   <label [for]="randomId" class="col-12 col-sm-12 col-md-3 col-form-label" [ngClass]="{'required': required}">
     {{getLabel()}}
   </label>
-  <div class="col-12 col-sm-12 col-md-9">
-    <input [id]="randomId" type="text" [formControlName]="controlName" class="form-control"/>
+
+  <div [ngSwitch]="type" class="col-12 col-sm-12 col-md-9">
+
+    <input *ngSwitchCase="'text'" [id]="randomId" type="text" [formControlName]="controlName" class="form-control"/>
+
+    <select *ngSwitchCase="'select'" [id]="randomId" type="text" [formControlName]="controlName"
+            class="form-control custom-select ">
+      <option *ngFor="let option of options | keys" [value]="option.key">{{option.value}}</option>
+    </select>
+
+    <input *ngSwitchCase="'number'" [id]="randomId" type="number" [formControlName]="controlName"
+           class="form-control"/>
+
+    <div *ngSwitchCase="'checkbox'" class="form-check" style="margin-left: 20px; margin-top: 8px;">
+      <input class="form-check-input" type="checkbox" [id]="randomId" [formControlName]="controlName">
+      <!--<label class="form-check-label" [for]="randomId">{{getLabel()}}</label>-->
+    </div>
+
+    <input *ngSwitchDefault [id]="randomId" type="text" [formControlName]="controlName" class="form-control"/>
+
   </div>
+
 </div>
