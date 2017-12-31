@@ -1,0 +1,10 @@
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Linear axis">
+
+  <ng-template #controls let-index="index">
+    <inz-linear-axis-form [linearAxisForm]="formGroups[index]"></inz-linear-axis-form>
+  </ng-template>
+
+
+</inz-form-array>
+
+

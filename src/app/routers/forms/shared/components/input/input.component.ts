@@ -14,13 +14,14 @@ export class InputComponent implements OnInit {
   @Input() options;
   form: FormGroup;
   randomId: string = Math.random().toString(36).substring(2, 30);
+  required: boolean;
 
   constructor(private formComponent: FormComponent) {
   }
 
-  get isRequired(): boolean {
+  isRequired(): boolean {
     if (this.form.controls[this.controlName].errors) {
-      return this.form.controls[this.controlName].errors['required'];
+      return <boolean>this.form.controls[this.controlName].errors['required'];
     } else {
       return false;
     }
@@ -28,6 +29,7 @@ export class InputComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formComponent.form;
+    this.required = this.isRequired();
   }
 
   getLabel() {

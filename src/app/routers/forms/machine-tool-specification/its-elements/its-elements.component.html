@@ -3,9 +3,9 @@
   <ng-template #controls let-index="index">
 
     <inz-form [form]="machineToolElementsForms[index]" label="Base">
-      <inz-input controlName="name" label="Name" ></inz-input>
-      <inz-input controlName="description" label="Description" ></inz-input>
-      <inz-input controlName="weight" label="Weight" ></inz-input>
+      <inz-input controlName="name" label="Name"></inz-input>
+      <inz-input controlName="description" label="Description"></inz-input>
+      <inz-input controlName="weight" label="Weight"></inz-input>
     </inz-form>
 
     <inz-form label="Capabilities">
@@ -17,6 +17,9 @@
       <inz-form-href [href]="index+'/part-probes'" label="Part probes"></inz-form-href>
       <inz-form-href [href]="index+'/tool-settings'" label="Tool settings"></inz-form-href>
       <inz-form-href [href]="index+'/collants'" label="Collants"></inz-form-href>
+      <inz-form-href [href]="index+'/machine-tool-axis'" label="Machine tool axis"></inz-form-href>
+      <inz-form-href [href]="index+'/linear-axis'" label="Linear axis"></inz-form-href>
+      <inz-form-href [href]="index+'/continuous-rotary'" label="Continuous rotary"></inz-form-href>
     </inz-form>
 
   </ng-template>

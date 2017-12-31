@@ -2,16 +2,21 @@ import {MachineToolAxis} from './machine-tool-axis.model';
 import {FormControl, Validators} from '@angular/forms';
 
 export class LinearAxis extends MachineToolAxis {
-  minimum_range_of_motion: number;
-  maximum_range_of_motion: number;
-  displacement_error: string;
-  repeatability_error: number;
-  rapid_traverse_feed_rate: number;
-  minimum_cutting_feed_rate: number;
-  maximum_cutting_feed_rate: number;
-  maximum_acceleration?: number;
-  maximum_deceleration?: number;
-  maximum_jerk?: number;
+  minimum_range_of_motion: number = null;
+  maximum_range_of_motion: number = null;
+  displacement_error: string = null;
+  repeatability_error: number = null;
+  rapid_traverse_feed_rate: number = null;
+  minimum_cutting_feed_rate: number = null;
+  maximum_cutting_feed_rate: number = null;
+  maximum_acceleration?: number = null;
+  maximum_deceleration?: number = null;
+  maximum_jerk?: number = null;
+
+  constructor(model?) {
+    super(model);
+    Object.assign(this, model);
+  }
 
   public static getFormControls(loadModel?: LinearAxis) {
     if (!loadModel) {

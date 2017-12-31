@@ -10,6 +10,9 @@ import {ToolBreakageComponent} from './tool-breakage/tool-breakage.component';
 import {PartProbeComponent} from './part-probe/part-probe.component';
 import {ToolSettingComponent} from './tool-setting/tool-setting.component';
 import {CoolantComponent} from './coolant/coolant.component';
+import {MachineToolAxisComponent} from './machine-tool-axis/machine-tool-axis.component';
+import {LinearAxisComponent} from './linear-axis/linear-axis.component';
+import {ContinuousRotaryComponent} from './continuous-rotary/continuous-rotary.component';
 
 const routes: Routes = [
   {
@@ -78,6 +81,27 @@ const routes: Routes = [
             component: CoolantComponent,
             data: {
               breadcrumb: 'Coolants'
+            }
+          },
+          {
+            path: 'machine-tool-axis',
+            component: MachineToolAxisComponent,
+            data: {
+              breadcrumb: 'Machine tool axis'
+            }
+          },
+          {
+            path: 'linear-axis',
+            component: LinearAxisComponent,
+            data: {
+              breadcrumb: 'Linear axis'
+            }
+          },
+          {
+            path: 'continuous-rotary',
+            component: ContinuousRotaryComponent,
+            data: {
+              breadcrumb: 'Continuous rotary'
             }
           },
         ]

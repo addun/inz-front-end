@@ -4,6 +4,11 @@ import {FormControl, Validators} from '@angular/forms';
 export class MachineToolAxis extends ElementCapability {
   axis_name: string;
 
+  constructor(model?) {
+    super(model);
+    Object.assign(this, model);
+  }
+
 
   public static getFormControls(loadModel?: MachineToolAxis) {
     if (!loadModel) {

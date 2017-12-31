@@ -12,6 +12,9 @@ import { ToolBreakageComponent } from './tool-breakage/tool-breakage.component';
 import { PartProbeComponent } from './part-probe/part-probe.component';
 import { ToolSettingComponent } from './tool-setting/tool-setting.component';
 import { CoolantComponent } from './coolant/coolant.component';
+import { MachineToolAxisComponent } from './machine-tool-axis/machine-tool-axis.component';
+import { LinearAxisComponent } from './linear-axis/linear-axis.component';
+import { ContinuousRotaryComponent } from './continuous-rotary/continuous-rotary.component';
 
 @NgModule({
   imports: [
@@ -29,7 +32,10 @@ import { CoolantComponent } from './coolant/coolant.component';
     ToolBreakageComponent,
     PartProbeComponent,
     ToolSettingComponent,
-    CoolantComponent]
+    CoolantComponent,
+    MachineToolAxisComponent,
+    LinearAxisComponent,
+    ContinuousRotaryComponent]
 })
 export class ItsElementsModule {
 }

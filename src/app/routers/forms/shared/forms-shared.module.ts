@@ -15,7 +15,10 @@ import {DeviceIdControlsComponent} from './controls/device-id-controls/device-id
 import {LocationControlsComponent} from './controls/location-controls/location-controls.component';
 import {FormArrayComponent} from './components/form-array/form-array.component';
 import {FormHrefComponent} from './components/form-href/form-href.component';
-import { MachineToolAxisFormComponent } from './forms/machine-tool-axis-form/machine-tool-axis-form.component';
+import {MachineToolAxisFormComponent} from './forms/machine-tool-axis-form/machine-tool-axis-form.component';
+import {LinearAxisFormComponent} from './forms/linear-axis-form/linear-axis-form.component';
+import {RotaryAxisFormComponent} from './forms/rotary-axis-form/rotary-axis-form.component';
+import {ContinuousRotaryFormComponent} from './forms/continuous-rotary-form/continuous-rotary-form.component';
 
 @NgModule({
   imports: [
@@ -38,6 +41,9 @@ import { MachineToolAxisFormComponent } from './forms/machine-tool-axis-form/mac
     FormArrayComponent,
     FormHrefComponent,
     MachineToolAxisFormComponent,
+    LinearAxisFormComponent,
+    RotaryAxisFormComponent,
+    ContinuousRotaryFormComponent,
   ],
   exports: [
     CardComponent,
@@ -54,6 +60,10 @@ import { MachineToolAxisFormComponent } from './forms/machine-tool-axis-form/mac
     LocationControlsComponent,
     FormArrayComponent,
     FormHrefComponent,
+    MachineToolAxisFormComponent,
+    LinearAxisFormComponent,
+    RotaryAxisFormComponent,
+    ContinuousRotaryFormComponent
   ]
 })
 export class FormsSharedModule {

@@ -7,6 +7,9 @@ import {ToolBreakage} from './tool-breakage.model';
 import {PartProbe} from './part-probe.model';
 import {ToolSetting} from './tool-setting.model';
 import {Coolant} from './coolant.model';
+import {MachineToolAxis} from './machine-tool-axis.model';
+import {LinearAxis} from './linear-axis.model';
+import {ContinuousRotary} from './continuous-rotary.model';
 
 export class MachineToolElement {
   name: string = null;
@@ -41,4 +44,7 @@ class Capabilities {
   part_probes: PartProbe[] = [];
   tool_settings: ToolSetting[] = [];
   coolant: Coolant[] = [];
+  machine_tool_axes: MachineToolAxis[] = [];
+  linear_axis: LinearAxis[] = [];
+  continuous_rotary: ContinuousRotary[] = [];
 }
