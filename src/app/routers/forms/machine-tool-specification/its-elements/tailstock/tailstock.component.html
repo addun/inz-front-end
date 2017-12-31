@@ -2,9 +2,9 @@
 
   <ng-template #controls let-index="index">
     <inz-form [form]="formGroups[index]" label="Base">
-      <inz-input controlName="description" [required]="false" label="Description"></inz-input>
-      <inz-input controlName="spindle_name" [required]="true" label="Spindle Name"></inz-input>
-      <inz-input controlName="maximum_workpiece_weight_of_quill" [required]="true"
+      <inz-input controlName="description" label="Description"></inz-input>
+      <inz-input controlName="spindle_name" label="Spindle Name"></inz-input>
+      <inz-input controlName="maximum_workpiece_weight_of_quill"
                  label="Maximum Workpiece Weight Of Quill"></inz-input>
     </inz-form>
   </ng-template>

@@ -2,11 +2,11 @@
 
   <ng-template #controls let-index="index">
     <inz-form [form]="formGroups[index]" label="Base">
-      <inz-input controlName="description" [required]="false" label="Description"></inz-input>
-      <inz-input type="checkbox" controlName="measuring_radius" [required]="true" label="Measuring radius"></inz-input>
-      <inz-input type="checkbox" controlName="measuring_length" [required]="true" label="Measuring length"></inz-input>
-      <inz-input controlName="measure_time" [required]="true" label="Measure time"></inz-input>
-      <inz-input type="select" controlName="probe_type" [required]="true" label="Probe type"
+      <inz-input controlName="description" label="Description"></inz-input>
+      <inz-input type="checkbox" controlName="measuring_radius" label="Measuring radius"></inz-input>
+      <inz-input type="checkbox" controlName="measuring_length" label="Measuring length"></inz-input>
+      <inz-input controlName="measure_time" label="Measure time"></inz-input>
+      <inz-input type="select" controlName="probe_type" label="Probe type"
                  [options]="probeType"></inz-input>
 
       <inz-form [form]="formGroups[index].controls['device_id']" label="Device id" [required]="true">

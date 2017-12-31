@@ -9,7 +9,6 @@ import {FormComponent} from '../form/form.component';
 })
 export class InputComponent implements OnInit {
   @Input() controlName: string;
-  @Input() required: boolean;
   @Input() label: string;
   @Input() type: 'text' | 'number' | 'checkbox' | 'select';
   @Input() options;
@@ -17,6 +16,14 @@ export class InputComponent implements OnInit {
   randomId: string = Math.random().toString(36).substring(2, 30);
 
   constructor(private formComponent: FormComponent) {
+  }
+
+  get isRequired(): boolean {
+    if (this.form.controls[this.controlName].errors) {
+      return this.form.controls[this.controlName].errors['required'];
+    } else {
+      return false;
+    }
   }
 
   ngOnInit() {

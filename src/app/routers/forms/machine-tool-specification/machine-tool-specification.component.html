@@ -13,8 +13,8 @@
   </inz-form>
 
   <inz-form label="Measuring capability" [form]="machineToolSpecificationForm.controls['measuring_capability']">
-    <inz-input controlName="measuring_accuracy" [required]="true" label="Measuring accuracy"></inz-input>
-    <inz-input controlName="description" [required]="false" label="Description"></inz-input>
+    <inz-input controlName="measuring_accuracy" label="Measuring accuracy"></inz-input>
+    <inz-input controlName="description" label="Description"></inz-input>
   </inz-form>
 
   <inz-form [form]="machineToolSpecificationForm.controls['location']" label="Location">
@@ -27,9 +27,9 @@
 
   <inz-form [form]="machineToolSpecificationForm.controls['environmental_evaluation']" label="Environment"
             [required]="false">
-    <inz-input controlName="evaluation_name" [required]="true" label="Evaluation name"></inz-input>
-    <inz-input controlName="power_in_idling" [required]="false" label="Power in idling"></inz-input>
-    <inz-input controlName="time_for_warming_up" [required]="false" label="Time for warming up"></inz-input>
+    <inz-input controlName="evaluation_name" label="Evaluation name"></inz-input>
+    <inz-input controlName="power_in_idling" label="Power in idling"></inz-input>
+    <inz-input controlName="time_for_warming_up" label="Time for warming up"></inz-input>
     <inz-form-href href="standard-machining-process" label="Power for standard machining"></inz-form-href>
   </inz-form>
 

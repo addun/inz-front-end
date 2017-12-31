@@ -1,29 +1,29 @@
 <inz-card cardName="Installation">
 
   <inz-form [form]="installationForm" label="Base">
-    <inz-input controlName="weight" [required]="true" label="Weight"></inz-input>
-    <inz-input controlName="air_pressure_requirement" [required]="false" label="Air pressure requirement"></inz-input>
-    <inz-input controlName="water_flow_rate" [required]="false" label="Water flow rate"></inz-input>
+    <inz-input controlName="weight" label="Weight"></inz-input>
+    <inz-input controlName="air_pressure_requirement" label="Air pressure requirement"></inz-input>
+    <inz-input controlName="water_flow_rate" label="Water flow rate"></inz-input>
 
     <inz-form [form]="installationForm.controls['size']" label="Size" [required]="true">
-      <inz-input controlName="machine_length" [required]="true" label="Machine length"></inz-input>
-      <inz-input controlName="machine_width" [required]="true" label="Machine width"></inz-input>
-      <inz-input controlName="machine_height" [required]="true" label="Machine height"></inz-input>
+      <inz-input controlName="machine_length" label="Machine length"></inz-input>
+      <inz-input controlName="machine_width" label="Machine width"></inz-input>
+      <inz-input controlName="machine_height" label="Machine height"></inz-input>
     </inz-form>
 
     <inz-form [form]="installationForm.controls['electrical']" label="Electrical" [required]="true">
-      <inz-input controlName="electric_phase" [required]="true" label="Electric phase"></inz-input>
-      <inz-input controlName="electric_power" [required]="true" label="Electric power"></inz-input>
-      <inz-input controlName="electrical_current" [required]="true" label="Electrical current"></inz-input>
-      <inz-input controlName="electrical_frequency" [required]="true" label="Electrical frequency"></inz-input>
-      <inz-input controlName="electrical_grounding" [required]="true" label="Electrical grounding"></inz-input>
-      <inz-input controlName="electrical_voltage" [required]="true" label="Electrical voltage"></inz-input>
+      <inz-input controlName="electric_phase" label="Electric phase"></inz-input>
+      <inz-input controlName="electric_power" label="Electric power"></inz-input>
+      <inz-input controlName="electrical_current" label="Electrical current"></inz-input>
+      <inz-input controlName="electrical_frequency" label="Electrical frequency"></inz-input>
+      <inz-input controlName="electrical_grounding" label="Electrical grounding"></inz-input>
+      <inz-input controlName="electrical_voltage" label="Electrical voltage"></inz-input>
     </inz-form>
 
     <inz-form [form]="installationForm.controls['hydraulics']" label="Hydraulics" [required]="false">
-      <inz-input controlName="type_of_hydraulic_oil" [required]="true" label="Type of hydraulic oil"></inz-input>
-      <inz-input controlName="pump_outlet_pressure" [required]="true" label="Pump outlet pressure"></inz-input>
-      <inz-input controlName="capacity_of_hydraulics_tank" [required]="true"
+      <inz-input controlName="type_of_hydraulic_oil" label="Type of hydraulic oil"></inz-input>
+      <inz-input controlName="pump_outlet_pressure" label="Pump outlet pressure"></inz-input>
+      <inz-input controlName="capacity_of_hydraulics_tank"
                  label="Capacity of hydraulics tank"></inz-input>
     </inz-form>
 

@@ -15,6 +15,7 @@ import {DeviceIdControlsComponent} from './controls/device-id-controls/device-id
 import {LocationControlsComponent} from './controls/location-controls/location-controls.component';
 import {FormArrayComponent} from './components/form-array/form-array.component';
 import {FormHrefComponent} from './components/form-href/form-href.component';
+import { MachineToolAxisFormComponent } from './forms/machine-tool-axis-form/machine-tool-axis-form.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import {FormHrefComponent} from './components/form-href/form-href.component';
     LocationControlsComponent,
     FormArrayComponent,
     FormHrefComponent,
+    MachineToolAxisFormComponent,
   ],
   exports: [
     CardComponent,

@@ -1,6 +1,8 @@
 <div class="form-group row" [formGroup]="form">
 
-  <label [for]="randomId" class="col-12 col-sm-12 col-md-3 col-form-label" [ngClass]="{'required': required}">
+  <label [for]="randomId"
+         class="col-12 col-sm-12 col-md-3 col-form-label"
+         [ngClass]="{'required': isRequired}">
     {{getLabel()}}
   </label>
 
