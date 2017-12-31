@@ -10,6 +10,13 @@
 
 </inz-card>
 
+<div *ngIf="forms.length === 0" class="alert alert-secondary text-center" role="alert">
+  <h3>Nothing to display</h3>
+</div>
 
-<button (click)="addGroup()" class="btn btn-primary">Add new</button>
-<button (click)="saveGroups()" class="btn btn-primary">Save</button>
+<p>
+  <span (click)="addGroup()" class="text-primary" style="cursor: pointer;">Add new group +</span>
+</p>
+<div class="text-center">
+  <button (click)="saveGroups()" class="btn btn-primary">Save</button>
+</div>

@@ -13,6 +13,8 @@ import {CoolantComponent} from './coolant/coolant.component';
 import {MachineToolAxisComponent} from './machine-tool-axis/machine-tool-axis.component';
 import {LinearAxisComponent} from './linear-axis/linear-axis.component';
 import {ContinuousRotaryComponent} from './continuous-rotary/continuous-rotary.component';
+import {IndexingComponent} from './indexing/indexing.component';
+import {LimitedSwingComponent} from './limited-swing/limited-swing.component';
 
 const routes: Routes = [
   {
@@ -102,6 +104,20 @@ const routes: Routes = [
             component: ContinuousRotaryComponent,
             data: {
               breadcrumb: 'Continuous rotary'
+            }
+          },
+          {
+            path: 'indexing',
+            component: IndexingComponent,
+            data: {
+              breadcrumb: 'Indexing'
+            }
+          },
+          {
+            path: 'limited-swing',
+            component: LimitedSwingComponent,
+            data: {
+              breadcrumb: 'Limited swing'
             }
           },
         ]

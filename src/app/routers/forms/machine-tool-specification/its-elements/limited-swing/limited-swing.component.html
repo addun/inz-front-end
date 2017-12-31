@@ -1,0 +1,7 @@
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Limited swing">
+
+  <ng-template #controls let-index="index">
+    <inz-limited-swing-form [limitedSwingForm]="formGroups[index]"></inz-limited-swing-form>
+  </ng-template>
+
+</inz-form-array>

@@ -15,6 +15,8 @@ import { CoolantComponent } from './coolant/coolant.component';
 import { MachineToolAxisComponent } from './machine-tool-axis/machine-tool-axis.component';
 import { LinearAxisComponent } from './linear-axis/linear-axis.component';
 import { ContinuousRotaryComponent } from './continuous-rotary/continuous-rotary.component';
+import { IndexingComponent } from './indexing/indexing.component';
+import { LimitedSwingComponent } from './limited-swing/limited-swing.component';
 
 @NgModule({
   imports: [
@@ -35,7 +37,10 @@ import { ContinuousRotaryComponent } from './continuous-rotary/continuous-rotary
     CoolantComponent,
     MachineToolAxisComponent,
     LinearAxisComponent,
-    ContinuousRotaryComponent]
+    ContinuousRotaryComponent,
+    IndexingComponent,
+    LimitedSwingComponent,
+  ]
 })
 export class ItsElementsModule {
 }

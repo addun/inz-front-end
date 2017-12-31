@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewContainerRef, ViewEncapsulation} from '@angular/core';
 import {ToastsManager} from 'ng2-toastr';
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'inz-root',
@@ -9,10 +10,17 @@ import {ToastsManager} from 'ng2-toastr';
 })
 export class AppComponent implements OnInit {
 
-  constructor(public toastr: ToastsManager, vcr: ViewContainerRef) {
+  constructor(public toastr: ToastsManager, vcr: ViewContainerRef,
+              private router: Router) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
   }
 }

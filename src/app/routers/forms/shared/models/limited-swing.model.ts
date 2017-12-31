@@ -6,7 +6,12 @@ export class LimitedSwing extends RotaryAxis {
   maximum_angle_of_motion: string;
   axis_travel_limit: boolean;
 
-  public static getFormControls(loadModel?: LimitedSwing) {
+  constructor(model?) {
+    super(model);
+    Object.assign(this, model);
+  }
+
+  public static getFormControls(loadModel?) {
     if (!loadModel) {
       loadModel = new LimitedSwing();
     }

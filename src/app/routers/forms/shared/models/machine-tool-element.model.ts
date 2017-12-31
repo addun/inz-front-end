@@ -10,6 +10,8 @@ import {Coolant} from './coolant.model';
 import {MachineToolAxis} from './machine-tool-axis.model';
 import {LinearAxis} from './linear-axis.model';
 import {ContinuousRotary} from './continuous-rotary.model';
+import {Indexing} from './indexing.model';
+import {LimitedSwing} from './limited-swing.model';
 
 export class MachineToolElement {
   name: string = null;
@@ -47,4 +49,6 @@ class Capabilities {
   machine_tool_axes: MachineToolAxis[] = [];
   linear_axis: LinearAxis[] = [];
   continuous_rotary: ContinuousRotary[] = [];
+  indexing: Indexing[] = [];
+  limited_swing: LimitedSwing[] = [];
 }

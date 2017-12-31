@@ -1,0 +1,7 @@
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Indexing">
+
+  <ng-template #controls let-index="index">
+    <inz-indexing-form [indexingForm]="formGroups[index]"></inz-indexing-form>
+  </ng-template>
+
+</inz-form-array>
