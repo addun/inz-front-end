@@ -19,6 +19,8 @@ import {MachineToolAxisFormComponent} from './forms/machine-tool-axis-form/machi
 import {LinearAxisFormComponent} from './forms/linear-axis-form/linear-axis-form.component';
 import {RotaryAxisFormComponent} from './forms/rotary-axis-form/rotary-axis-form.component';
 import {ContinuousRotaryFormComponent} from './forms/continuous-rotary-form/continuous-rotary-form.component';
+import {IndexingFormComponent} from './forms/indexing-form/indexing-form.component';
+import {LimitedSwingFormComponent} from './forms/limited-swing-form/limited-swing-form.component';
 
 @NgModule({
   imports: [
@@ -44,6 +46,8 @@ import {ContinuousRotaryFormComponent} from './forms/continuous-rotary-form/cont
     LinearAxisFormComponent,
     RotaryAxisFormComponent,
     ContinuousRotaryFormComponent,
+    IndexingFormComponent,
+    LimitedSwingFormComponent,
   ],
   exports: [
     CardComponent,
@@ -63,7 +67,9 @@ import {ContinuousRotaryFormComponent} from './forms/continuous-rotary-form/cont
     MachineToolAxisFormComponent,
     LinearAxisFormComponent,
     RotaryAxisFormComponent,
-    ContinuousRotaryFormComponent
+    ContinuousRotaryFormComponent,
+    IndexingFormComponent,
+    LimitedSwingFormComponent,
   ]
 })
 export class FormsSharedModule {
