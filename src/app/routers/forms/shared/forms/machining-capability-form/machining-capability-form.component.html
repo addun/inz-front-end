@@ -1,7 +1,7 @@
 <inz-form [form]="machiningCapabilityForm" label="Base">
 
-  <inz-select controlName="capability" [options]="machiningCapabilityProfile" [required]="true"
-              label="Capability"></inz-select>
+  <inz-input type="select" controlName="capability" [options]="machiningCapabilityProfile" [required]="true"
+             label="Capability"></inz-input>
   <inz-input controlName="machining_accuracy" [required]="false" label="Machining accuracy"></inz-input>
   <inz-input controlName="description" [required]="false" label="Description"></inz-input>
 

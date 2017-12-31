@@ -3,10 +3,10 @@
   <ng-template #controls let-index="index">
     <inz-form [form]="formGroups[index]">
       <inz-input controlName="description" [required]="false" label="Description"></inz-input>
-      <inz-select controlName="coolant_type" [required]="true" label="Coolant type"
-                  [options]="coolantType"></inz-select>
-      <inz-select controlName="means_of_delivery" [required]="false" label="Means of delivery"
-                  [options]="meansOfCoolantDelivery"></inz-select>
+      <inz-input type="select" controlName="coolant_type" [required]="true" label="Coolant type"
+                  [options]="coolantType"></inz-input>
+      <inz-input type="select" controlName="means_of_delivery" [required]="false" label="Means of delivery"
+                  [options]="meansOfCoolantDelivery"></inz-input>
       <inz-input controlName="capacity_of_coolant_tank" [required]="false" label="Capacity of coolant tank"></inz-input>
       <inz-input controlName="coolant_weight" [required]="false" label="Coolant weight"></inz-input>
 
