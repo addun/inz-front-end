@@ -24,6 +24,8 @@ import {LimitedSwingFormComponent} from './forms/limited-swing-form/limited-swin
 import { TSlotFormComponent } from './forms/t-slot-form/t-slot-form.component';
 import { PalletFormComponent } from './forms/pallet-form/pallet-form.component';
 import { WorkTableFormComponent } from './forms/work-table-form/work-table-form.component';
+import { CircularWorkTableFormComponent } from './forms/circular-work-table-form/circular-work-table-form.component';
+import { RectangularWorkTableFormComponent } from './forms/rectangular-work-table-form/rectangular-work-table-form.component';
 
 @NgModule({
   imports: [
@@ -54,6 +56,8 @@ import { WorkTableFormComponent } from './forms/work-table-form/work-table-form.
     TSlotFormComponent,
     PalletFormComponent,
     WorkTableFormComponent,
+    CircularWorkTableFormComponent,
+    RectangularWorkTableFormComponent,
   ],
   exports: [
     CardComponent,
@@ -77,6 +81,8 @@ import { WorkTableFormComponent } from './forms/work-table-form/work-table-form.
     IndexingFormComponent,
     LimitedSwingFormComponent,
     PalletFormComponent,
+    CircularWorkTableFormComponent,
+    RectangularWorkTableFormComponent,
   ]
 })
 export class FormsSharedModule {

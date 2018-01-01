@@ -1,0 +1,11 @@
+<inz-form [form]="rectangularWorkTable" [label]="label" [required]="required">
+
+  <inz-work-table-form [workTableForm]="rectangularWorkTable"></inz-work-table-form>
+
+  <inz-input type="number" controlName="table_width" label="Table width"></inz-input>
+  <inz-input type="number" controlName="table_length" label="Table length"></inz-input>
+
+  <inz-chuck-form [chuckForm]="rectangularWorkTable.controls['chuck']" label="Chuck"></inz-chuck-form>
+  <inz-t-slot-form [tSlotForm]="rectangularWorkTable.controls['t_slot']" label="T slot"></inz-t-slot-form>
+
+</inz-form>

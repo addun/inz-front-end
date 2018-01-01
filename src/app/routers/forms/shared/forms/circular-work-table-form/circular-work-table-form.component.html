@@ -1,0 +1,10 @@
+<inz-form [form]="circularWorkTable" [label]="label" [required]="required">
+
+  <inz-work-table-form [workTableForm]="circularWorkTable"></inz-work-table-form>
+
+  <inz-input type="number" controlName="table_diameter" label="Table diameter"></inz-input>
+
+  <inz-chuck-form [chuckForm]="circularWorkTable.controls['chuck']" label="Chuck"></inz-chuck-form>
+  <inz-t-slot-form [tSlotForm]="circularWorkTable.controls['t_slot']" label="T slot"></inz-t-slot-form>
+
+</inz-form>
