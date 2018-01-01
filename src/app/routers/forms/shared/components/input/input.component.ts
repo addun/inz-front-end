@@ -20,6 +20,8 @@ export class InputComponent implements OnInit {
   }
 
   isRequired(): boolean {
+    console.log(this.form);
+    console.log(this.controlName);
     if (this.form.controls[this.controlName].errors) {
       return <boolean>this.form.controls[this.controlName].errors['required'];
     } else {

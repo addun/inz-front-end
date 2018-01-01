@@ -5,11 +5,17 @@ import {FixtureStyle} from '../types/fixture-type.type';
 import {TSlot} from './t-slot.model';
 
 export abstract class WorkTable extends ElementCapability {
-  rotatable: boolean;
-  workpiece_weight?: number;
-  fixture_style?: FixtureStyle;
+  rotatable: boolean = null;
+  workpiece_weight?: number = null;
+  fixture_style?: FixtureStyle = null;
   chuck: Chuck = new Chuck();
   t_slot: TSlot = new TSlot();
+
+  constructor(model?) {
+    super(model);
+    Object.assign(this, model);
+  }
+
 
   public static getFormControls(loadModel?: WorkTable): { [key: string]: AbstractControl } {
     return Object.assign(ElementCapability.getFormControls(loadModel), {

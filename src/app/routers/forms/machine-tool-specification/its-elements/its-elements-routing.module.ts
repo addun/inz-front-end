@@ -15,6 +15,7 @@ import {LinearAxisComponent} from './linear-axis/linear-axis.component';
 import {ContinuousRotaryComponent} from './continuous-rotary/continuous-rotary.component';
 import {IndexingComponent} from './indexing/indexing.component';
 import {LimitedSwingComponent} from './limited-swing/limited-swing.component';
+import {PalletComponent} from './pallet/pallet.component';
 
 const routes: Routes = [
   {
@@ -118,6 +119,13 @@ const routes: Routes = [
             component: LimitedSwingComponent,
             data: {
               breadcrumb: 'Limited swing'
+            }
+          },
+          {
+            path: 'pallet',
+            component: PalletComponent,
+            data: {
+              breadcrumb: 'Pallet'
             }
           },
         ]

@@ -2,9 +2,9 @@ import {ElementCapability} from './element-capability.model';
 import {FormControl, Validators} from '@angular/forms';
 
 export class Chuck extends ElementCapability {
-  minimum_part_diameter: string;
-  maximum_part_diameter: string;
-  number_of_jaws: number;
+  minimum_part_diameter: string = null;
+  maximum_part_diameter: string = null;
+  number_of_jaws: number = null;
 
   constructor(model?) {
     super();

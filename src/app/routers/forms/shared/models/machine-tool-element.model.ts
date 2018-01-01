@@ -12,6 +12,7 @@ import {LinearAxis} from './linear-axis.model';
 import {ContinuousRotary} from './continuous-rotary.model';
 import {Indexing} from './indexing.model';
 import {LimitedSwing} from './limited-swing.model';
+import {Pallet} from './pallet.model';
 
 export class MachineToolElement {
   name: string = null;
@@ -51,4 +52,5 @@ class Capabilities {
   continuous_rotary: ContinuousRotary[] = [];
   indexing: Indexing[] = [];
   limited_swing: LimitedSwing[] = [];
+  pallet: Pallet[] = [];
 }
