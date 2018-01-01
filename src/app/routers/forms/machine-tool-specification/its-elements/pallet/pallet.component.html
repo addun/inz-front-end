@@ -1,0 +1,7 @@
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Part probe">
+
+  <ng-template #controls let-index="index">
+    <inz-pallet-form [palletForm]="formGroups[index]"></inz-pallet-form>
+  </ng-template>
+
+</inz-form-array>

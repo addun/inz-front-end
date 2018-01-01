@@ -2,17 +2,17 @@
 
   <inz-work-table-form [workTableForm]="palletForm"></inz-work-table-form>
 
-  <inz-input type="checkbox" controlName="random_access" label="random_access"></inz-input>
-  <inz-input controlName="table_width" label="table_width"></inz-input>
-  <inz-input controlName="table_length" label="table_length"></inz-input>
-  <inz-input controlName="number_of_pallet" label="number_of_pallet"></inz-input>
+  <inz-input type="checkbox" controlName="random_access" label="Random access"></inz-input>
+  <inz-input controlName="table_width" label="Table width"></inz-input>
+  <inz-input controlName="table_length" label="Table length"></inz-input>
+  <inz-input controlName="number_of_pallet" label="Number of pallet"></inz-input>
   <inz-input type="select" [options]="palletStorageConfiguration" controlName="storage_configuration"
-             label="storage_configuration"></inz-input>
-  <inz-input controlName="pallet_change_time_minimum" label="pallet_change_time_minimum"></inz-input>
-  <inz-input controlName="pallet_change_time_maximum" label="pallet_change_time_maximum"></inz-input>
-  <inz-input controlName="pallet_type" label="pallet_type"></inz-input>
+             label="Storage configuration"></inz-input>
+  <inz-input controlName="pallet_change_time_minimum" label="Pallet change time minimum"></inz-input>
+  <inz-input controlName="pallet_change_time_maximum" label="Pallet change time maximum"></inz-input>
+  <inz-input controlName="pallet_type" label="Pallet type"></inz-input>
 
-  <inz-chuck-form [chuckForm]="palletForm['chuck']" label="Chuck"></inz-chuck-form>
-  <inz-chuck-form [chuckForm]="palletForm['t_slot']" label="T slot"></inz-chuck-form>
+  <inz-chuck-form [chuckForm]="palletForm.controls['chuck']" label="Chuck"></inz-chuck-form>
+  <inz-t-slot-form [tSlotForm]="palletForm.controls['t_slot']" label="T slot"></inz-t-slot-form>
 
 </inz-form>

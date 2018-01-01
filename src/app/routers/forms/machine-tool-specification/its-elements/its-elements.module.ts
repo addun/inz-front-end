@@ -17,6 +17,7 @@ import { LinearAxisComponent } from './linear-axis/linear-axis.component';
 import { ContinuousRotaryComponent } from './continuous-rotary/continuous-rotary.component';
 import { IndexingComponent } from './indexing/indexing.component';
 import { LimitedSwingComponent } from './limited-swing/limited-swing.component';
+import { PalletComponent } from './pallet/pallet.component';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { LimitedSwingComponent } from './limited-swing/limited-swing.component';
     ContinuousRotaryComponent,
     IndexingComponent,
     LimitedSwingComponent,
+    PalletComponent,
   ]
 })
 export class ItsElementsModule {

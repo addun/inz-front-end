@@ -76,6 +76,7 @@ import { WorkTableFormComponent } from './forms/work-table-form/work-table-form.
     ContinuousRotaryFormComponent,
     IndexingFormComponent,
     LimitedSwingFormComponent,
+    PalletFormComponent,
   ]
 })
 export class FormsSharedModule {
