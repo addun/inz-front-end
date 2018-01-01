@@ -1,6 +1,7 @@
-<inz-form [form]="chuckForm">
-  <inz-input controlName="description" label="Description" ></inz-input>
-  <inz-input controlName="minimum_part_diameter" label="Minimum part diameter" ></inz-input>
-  <inz-input controlName="maximum_part_diameter" label="Maximum part diameter" ></inz-input>
-  <inz-input controlName="number_of_jaws" label="Number of jaws" ></inz-input>
+<inz-form [form]="chuckForm" [label]="label" [required]="required">
+
+  <inz-input controlName="description" label="Description"></inz-input>
+  <inz-input controlName="minimum_part_diameter" label="Minimum part diameter"></inz-input>
+  <inz-input controlName="maximum_part_diameter" label="Maximum part diameter"></inz-input>
+  <inz-input controlName="number_of_jaws" label="Number of jaws"></inz-input>
 </inz-form>

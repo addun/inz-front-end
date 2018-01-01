@@ -1,0 +1,8 @@
+<inz-form [form]="workTableForm" [label]="label" [required]="required">
+
+  <inz-input type="checkbox" controlName="description" label="Description"></inz-input>
+  <inz-input type="number" controlName="rotatable" label="Rotatable"></inz-input>
+  <inz-input controlName="workpiece_weight" label="Workpiece weight"></inz-input>
+  <inz-input type="select" [options]="fixtureStyle" controlName="fixture_style" label="Fixture style"></inz-input>
+
+</inz-form>

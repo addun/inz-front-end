@@ -1,0 +1,18 @@
+<inz-form [form]="palletForm" [label]="label" [required]="required">
+
+  <inz-work-table-form [workTableForm]="palletForm"></inz-work-table-form>
+
+  <inz-input type="checkbox" controlName="random_access" label="random_access"></inz-input>
+  <inz-input controlName="table_width" label="table_width"></inz-input>
+  <inz-input controlName="table_length" label="table_length"></inz-input>
+  <inz-input controlName="number_of_pallet" label="number_of_pallet"></inz-input>
+  <inz-input type="select" [options]="palletStorageConfiguration" controlName="storage_configuration"
+             label="storage_configuration"></inz-input>
+  <inz-input controlName="pallet_change_time_minimum" label="pallet_change_time_minimum"></inz-input>
+  <inz-input controlName="pallet_change_time_maximum" label="pallet_change_time_maximum"></inz-input>
+  <inz-input controlName="pallet_type" label="pallet_type"></inz-input>
+
+  <inz-chuck-form [chuckForm]="palletForm['chuck']" label="Chuck"></inz-chuck-form>
+  <inz-chuck-form [chuckForm]="palletForm['t_slot']" label="T slot"></inz-chuck-form>
+
+</inz-form>

@@ -21,6 +21,9 @@ import {RotaryAxisFormComponent} from './forms/rotary-axis-form/rotary-axis-form
 import {ContinuousRotaryFormComponent} from './forms/continuous-rotary-form/continuous-rotary-form.component';
 import {IndexingFormComponent} from './forms/indexing-form/indexing-form.component';
 import {LimitedSwingFormComponent} from './forms/limited-swing-form/limited-swing-form.component';
+import { TSlotFormComponent } from './forms/t-slot-form/t-slot-form.component';
+import { PalletFormComponent } from './forms/pallet-form/pallet-form.component';
+import { WorkTableFormComponent } from './forms/work-table-form/work-table-form.component';
 
 @NgModule({
   imports: [
@@ -48,6 +51,9 @@ import {LimitedSwingFormComponent} from './forms/limited-swing-form/limited-swin
     ContinuousRotaryFormComponent,
     IndexingFormComponent,
     LimitedSwingFormComponent,
+    TSlotFormComponent,
+    PalletFormComponent,
+    WorkTableFormComponent,
   ],
   exports: [
     CardComponent,

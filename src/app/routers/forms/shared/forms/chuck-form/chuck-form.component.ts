@@ -8,8 +8,11 @@ import {FormGroup} from '@angular/forms';
 })
 export class ChuckFormComponent implements OnInit {
   @Input() chuckForm: FormGroup;
+  @Input() label: string;
+  @Input() required: boolean;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
