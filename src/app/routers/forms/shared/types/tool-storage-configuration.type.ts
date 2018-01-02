@@ -1,0 +1,5 @@
+export enum ToolStorageConfiguration {
+  BI_DIRECTIONAL = 'BI_DIRECTIONAL',
+  BOX_MATRIX = 'BOX_MATRIX',
+  UNI_DIRECTIONAL = 'UNI_DIRECTIONAL',
+}
