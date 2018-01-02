@@ -1,0 +1,7 @@
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Rectangular work table">
+
+  <ng-template #controls let-index="index">
+    <inz-rectangular-work-table-form [rectangularWorkTable]="formGroups[index]"></inz-rectangular-work-table-form>
+  </ng-template>
+
+</inz-form-array>

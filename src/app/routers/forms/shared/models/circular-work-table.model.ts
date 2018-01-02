@@ -9,7 +9,7 @@ export class CircularWorkTable extends WorkTable {
     Object.assign(this, model);
   }
 
-  public static getFormControls(loadModel?: CircularWorkTable): { [key: string]: AbstractControl } {
+  public static getFormControls(loadModel?): { [key: string]: AbstractControl } {
     if (!loadModel) {
       loadModel = new CircularWorkTable();
     }

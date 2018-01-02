@@ -7,7 +7,7 @@ export class Chuck extends ElementCapability {
   number_of_jaws: number = null;
 
   constructor(model?) {
-    super();
+    super(model);
     Object.assign(this, model);
   }
 

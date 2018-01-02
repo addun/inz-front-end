@@ -1,17 +1,17 @@
 import {Component, OnInit} from '@angular/core';
+import {CircularWorkTable} from '../../../shared/models/circular-work-table.model';
 import {FormGroup} from '@angular/forms';
-import {Pallet} from '../../../shared/models/pallet.model';
 import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'inz-pallet',
-  templateUrl: './pallet.component.html',
-  styleUrls: ['./pallet.component.sass']
+  selector: 'inz-circular-work-table',
+  templateUrl: './circular-work-table.component.html',
+  styleUrls: ['./circular-work-table.component.sass']
 })
-export class PalletComponent implements OnInit {
+export class CircularWorkTableComponent implements OnInit {
   formGroups: FormGroup[];
-  generator = Pallet.getFormControls;
+  generator = CircularWorkTable.getFormControls;
   private activeArrayIndex: number;
 
   constructor(private machineToolSpecificationService: MachineToolSpecificationService,
@@ -20,12 +20,12 @@ export class PalletComponent implements OnInit {
 
   get model() {
     return this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.pallet;
+      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.circular_work_tables;
   }
 
   set model(model) {
     this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.pallet = model;
+      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.circular_work_tables = model;
   }
 
   ngOnInit(): void {
@@ -40,14 +40,14 @@ export class PalletComponent implements OnInit {
 
   buildForms(): FormGroup[] {
     return this.model.map(capability => {
-      return new FormGroup(Pallet.getFormControls(capability));
+      return new FormGroup(CircularWorkTable.getFormControls(capability));
     });
   }
 
   save() {
     this.model = [];
     this.formGroups.forEach(form => {
-      this.model.push(new Pallet(form.value));
+      this.model.push(new CircularWorkTable(form.value));
     });
   }
 }

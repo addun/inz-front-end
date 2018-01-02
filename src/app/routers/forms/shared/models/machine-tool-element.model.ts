@@ -13,6 +13,8 @@ import {ContinuousRotary} from './continuous-rotary.model';
 import {Indexing} from './indexing.model';
 import {LimitedSwing} from './limited-swing.model';
 import {Pallet} from './pallet.model';
+import {CircularWorkTable} from './circular-work-table.model';
+import {RectangularWorkTable} from './rectangular-work-table.model';
 
 export class MachineToolElement {
   name: string = null;
@@ -53,4 +55,6 @@ class Capabilities {
   indexing: Indexing[] = [];
   limited_swing: LimitedSwing[] = [];
   pallet: Pallet[] = [];
+  circular_work_tables: CircularWorkTable[] = [];
+  rectangular_work_tables: RectangularWorkTable[] = [];
 }

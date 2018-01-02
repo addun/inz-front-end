@@ -12,6 +12,7 @@ export class PalletFormComponent implements OnInit {
   @Input() label: string;
   @Input() required: boolean;
   palletStorageConfiguration = PalletStorageConfiguration;
+
   constructor() {
   }
 

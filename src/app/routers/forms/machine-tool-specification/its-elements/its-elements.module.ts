@@ -18,6 +18,8 @@ import { ContinuousRotaryComponent } from './continuous-rotary/continuous-rotary
 import { IndexingComponent } from './indexing/indexing.component';
 import { LimitedSwingComponent } from './limited-swing/limited-swing.component';
 import { PalletComponent } from './pallet/pallet.component';
+import { CircularWorkTableComponent } from './circular-work-table/circular-work-table.component';
+import { RectangularWorkTableComponent } from './rectangular-work-table/rectangular-work-table.component';
 
 @NgModule({
   imports: [
@@ -42,6 +44,8 @@ import { PalletComponent } from './pallet/pallet.component';
     IndexingComponent,
     LimitedSwingComponent,
     PalletComponent,
+    CircularWorkTableComponent,
+    RectangularWorkTableComponent,
   ]
 })
 export class ItsElementsModule {

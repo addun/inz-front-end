@@ -7,9 +7,9 @@ export abstract class ElementCapability {
     Object.assign(this, model);
   }
 
-  public static getFormControls(loadModel?: ElementCapability): { [key: string]: AbstractControl } {
+  public static getFormControls(loadModel?): { [key: string]: AbstractControl } {
     return {
-      description: new FormControl((loadModel ? loadModel.description : null))
+      description: new FormControl(loadModel.description)
     };
   }
 }

@@ -16,6 +16,8 @@ import {ContinuousRotaryComponent} from './continuous-rotary/continuous-rotary.c
 import {IndexingComponent} from './indexing/indexing.component';
 import {LimitedSwingComponent} from './limited-swing/limited-swing.component';
 import {PalletComponent} from './pallet/pallet.component';
+import {CircularWorkTableComponent} from './circular-work-table/circular-work-table.component';
+import {RectangularWorkTableComponent} from './rectangular-work-table/rectangular-work-table.component';
 
 const routes: Routes = [
   {
@@ -122,10 +124,24 @@ const routes: Routes = [
             }
           },
           {
-            path: 'pallet',
+            path: 'rectangularWorkTables',
             component: PalletComponent,
             data: {
               breadcrumb: 'Pallet'
+            }
+          },
+          {
+            path: 'circular-work-table',
+            component: CircularWorkTableComponent,
+            data: {
+              breadcrumb: 'Circular work table'
+            }
+          },
+          {
+            path: 'rectangular-work-table',
+            component: RectangularWorkTableComponent,
+            data: {
+              breadcrumb: 'Rectangular work table'
             }
           },
         ]
