@@ -9,7 +9,7 @@ export class ToolSetting extends Sensor {
   measure_time: string;
 
   constructor(model?) {
-    super();
+    super(model);
     Object.assign(this, model);
   }
 

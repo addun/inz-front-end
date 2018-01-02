@@ -10,6 +10,11 @@ export class WorkSpindle extends Spindle {
   hex_bar_stock_capacity?: number;
   chuck: Chuck = new Chuck();
 
+  constructor(model?) {
+    super(model);
+    Object.assign(model);
+  }
+
   public static getFormControls(loadModel?) {
     if (!loadModel) {
       loadModel = new WorkSpindle();
