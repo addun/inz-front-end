@@ -15,6 +15,9 @@ import {LimitedSwing} from './limited-swing.model';
 import {Pallet} from './pallet.model';
 import {CircularWorkTable} from './circular-work-table.model';
 import {RectangularWorkTable} from './rectangular-work-table.model';
+import {ToolChanger} from './tool-changer.model';
+import {ToolMagazine} from './tool-magazine.model';
+import {Turret} from './turret.model';
 
 export class MachineToolElement {
   name: string = null;
@@ -57,4 +60,7 @@ class Capabilities {
   pallet: Pallet[] = [];
   circular_work_tables: CircularWorkTable[] = [];
   rectangular_work_tables: RectangularWorkTable[] = [];
+  tool_changer: ToolChanger[] = [];
+  tool_magazine: ToolMagazine[] = [];
+  turret: Turret[] = [];
 }

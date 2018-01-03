@@ -13,8 +13,8 @@ export class ToolChanger extends ToolHandlingUnit {
 
     return Object.assign(ToolHandlingUnit.getFormControls(loadModel), {
       spindle_name: new FormControl(loadModel.spindle_name, Validators.required),
-      cut_to_cut_min_tool_change_time: new FormControl(loadModel.cut_to_cut_min_tool_change_time, Validators.required),
-      cut_to_cut_max_tool_change_time: new FormControl(loadModel.cut_to_cut_max_tool_change_time, Validators.required),
+      cut_to_cut_min_tool_change_time: new FormControl(loadModel.cut_to_cut_min_tool_change_time),
+      cut_to_cut_max_tool_change_time: new FormControl(loadModel.cut_to_cut_max_tool_change_time),
     });
   }
 }

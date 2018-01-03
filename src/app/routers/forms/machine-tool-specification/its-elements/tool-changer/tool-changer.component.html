@@ -1,3 +1,7 @@
-<p>
-  tool-changer works!
-</p>
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Tool changer">
+
+  <ng-template #controls let-index="index">
+    <inz-tool-changer-form [toolChangerForm]="formGroups[index]"></inz-tool-changer-form>
+  </ng-template>
+
+</inz-form-array>
