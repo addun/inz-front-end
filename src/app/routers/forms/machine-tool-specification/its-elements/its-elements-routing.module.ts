@@ -18,6 +18,9 @@ import {LimitedSwingComponent} from './limited-swing/limited-swing.component';
 import {PalletComponent} from './pallet/pallet.component';
 import {CircularWorkTableComponent} from './circular-work-table/circular-work-table.component';
 import {RectangularWorkTableComponent} from './rectangular-work-table/rectangular-work-table.component';
+import {TurretComponent} from './turret/turret.component';
+import {ToolMagazineComponent} from './tool-magazine/tool-magazine.component';
+import {ToolChangerComponent} from './tool-changer/tool-changer.component';
 
 const routes: Routes = [
   {
@@ -142,6 +145,27 @@ const routes: Routes = [
             component: RectangularWorkTableComponent,
             data: {
               breadcrumb: 'Rectangular work table'
+            }
+          },
+          {
+            path: 'turret',
+            component: TurretComponent,
+            data: {
+              breadcrumb: 'Turret'
+            }
+          },
+          {
+            path: 'tool-magazine',
+            component: ToolMagazineComponent,
+            data: {
+              breadcrumb: 'Tool magazine'
+            }
+          },
+          {
+            path: 'tool-changer',
+            component: ToolChangerComponent,
+            data: {
+              breadcrumb: 'Tool changer'
             }
           },
         ]

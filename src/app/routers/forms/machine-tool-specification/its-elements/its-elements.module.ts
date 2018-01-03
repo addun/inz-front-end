@@ -20,6 +20,9 @@ import { LimitedSwingComponent } from './limited-swing/limited-swing.component';
 import { PalletComponent } from './pallet/pallet.component';
 import { CircularWorkTableComponent } from './circular-work-table/circular-work-table.component';
 import { RectangularWorkTableComponent } from './rectangular-work-table/rectangular-work-table.component';
+import { TurretComponent } from './turret/turret.component';
+import { ToolChangerComponent } from './tool-changer/tool-changer.component';
+import { ToolMagazineComponent } from './tool-magazine/tool-magazine.component';
 
 @NgModule({
   imports: [
@@ -46,6 +49,9 @@ import { RectangularWorkTableComponent } from './rectangular-work-table/rectangu
     PalletComponent,
     CircularWorkTableComponent,
     RectangularWorkTableComponent,
+    TurretComponent,
+    ToolChangerComponent,
+    ToolMagazineComponent,
   ]
 })
 export class ItsElementsModule {

@@ -21,11 +21,13 @@ import {RotaryAxisFormComponent} from './forms/rotary-axis-form/rotary-axis-form
 import {ContinuousRotaryFormComponent} from './forms/continuous-rotary-form/continuous-rotary-form.component';
 import {IndexingFormComponent} from './forms/indexing-form/indexing-form.component';
 import {LimitedSwingFormComponent} from './forms/limited-swing-form/limited-swing-form.component';
-import { TSlotFormComponent } from './forms/t-slot-form/t-slot-form.component';
-import { PalletFormComponent } from './forms/pallet-form/pallet-form.component';
-import { WorkTableFormComponent } from './forms/work-table-form/work-table-form.component';
-import { CircularWorkTableFormComponent } from './forms/circular-work-table-form/circular-work-table-form.component';
-import { RectangularWorkTableFormComponent } from './forms/rectangular-work-table-form/rectangular-work-table-form.component';
+import {TSlotFormComponent} from './forms/t-slot-form/t-slot-form.component';
+import {PalletFormComponent} from './forms/pallet-form/pallet-form.component';
+import {WorkTableFormComponent} from './forms/work-table-form/work-table-form.component';
+import {CircularWorkTableFormComponent} from './forms/circular-work-table-form/circular-work-table-form.component';
+import {RectangularWorkTableFormComponent} from './forms/rectangular-work-table-form/rectangular-work-table-form.component';
+import {TurretFormComponent} from './forms/turret-form/turret-form.component';
+import {ToolHandlingUnitFormComponent} from './forms/tool-handling-unit-form/tool-handling-unit-form.component';
 
 @NgModule({
   imports: [
@@ -58,6 +60,8 @@ import { RectangularWorkTableFormComponent } from './forms/rectangular-work-tabl
     WorkTableFormComponent,
     CircularWorkTableFormComponent,
     RectangularWorkTableFormComponent,
+    TurretFormComponent,
+    ToolHandlingUnitFormComponent,
   ],
   exports: [
     CardComponent,
@@ -83,6 +87,7 @@ import { RectangularWorkTableFormComponent } from './forms/rectangular-work-tabl
     PalletFormComponent,
     CircularWorkTableFormComponent,
     RectangularWorkTableFormComponent,
+    TurretFormComponent,
   ]
 })
 export class FormsSharedModule {
