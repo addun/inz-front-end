@@ -1,0 +1,13 @@
+<inz-form [form]="workSpindleForm" [label]="label" [required]="required">
+
+  <inz-spindle-form [spindleForm]="workSpindleForm"></inz-spindle-form>
+
+  <inz-input controlName="spindle_nose_designation" label="Spindle nose designation"></inz-input>
+  <inz-input controlName="spindle_bore_diameter" label="Spindle bore diameter"></inz-input>
+  <inz-input controlName="round_bar_stock_diameter" label="Round bar stock diameter"></inz-input>
+  <inz-input controlName="through_hole_diameter" label="Through hole diameter"></inz-input>
+  <inz-input controlName="hex_bar_stock_capacity" label="Hex bar stock capacity"></inz-input>
+
+  <inz-chuck-form [chuckForm]="workSpindleForm.controls['chuck']"></inz-chuck-form>
+
+</inz-form>

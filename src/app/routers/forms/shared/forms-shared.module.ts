@@ -32,6 +32,13 @@ import {ToolChangerFormComponent} from './forms/tool-changer-form/tool-changer-f
 import {InputArrayComponent} from './components/input-array/input-array.component';
 import {ToolMagazineFormComponent} from './forms/tool-magazine-form/tool-magazine-form.component';
 import {ToolAssemblyFormComponent} from './forms/tool-assembly-form/tool-assembly-form.component';
+import {SpindleFormComponent} from './forms/spindle-form/spindle-form.component';
+import {SpindleRangeFormComponent} from './forms/spindle-range-form/spindle-range-form.component';
+import {WorkSpindleFormComponent} from './forms/work-spindle-form/work-spindle-form.component';
+import {ToolSpindleFormComponent} from './forms/tool-spindle-form/tool-spindle-form.component';
+import { TaperedSpindleFormComponent } from './forms/tapered-spindle-form/tapered-spindle-form.component';
+import { StraightSpindleFormComponent } from './forms/straight-spindle-form/straight-spindle-form.component';
+import { ThreadedSpindleFormComponent } from './forms/threaded-spindle-form/threaded-spindle-form.component';
 
 @NgModule({
   imports: [
@@ -70,6 +77,13 @@ import {ToolAssemblyFormComponent} from './forms/tool-assembly-form/tool-assembl
     InputArrayComponent,
     ToolMagazineFormComponent,
     ToolAssemblyFormComponent,
+    SpindleFormComponent,
+    SpindleRangeFormComponent,
+    WorkSpindleFormComponent,
+    ToolSpindleFormComponent,
+    TaperedSpindleFormComponent,
+    StraightSpindleFormComponent,
+    ThreadedSpindleFormComponent,
   ],
   exports: [
     CardComponent,
@@ -100,6 +114,10 @@ import {ToolAssemblyFormComponent} from './forms/tool-assembly-form/tool-assembl
     InputArrayComponent,
     ToolMagazineFormComponent,
     ToolAssemblyFormComponent,
+    SpindleFormComponent,
+    SpindleRangeFormComponent,
+    WorkSpindleFormComponent,
+    ToolSpindleFormComponent,
   ]
 })
 export class FormsSharedModule {
