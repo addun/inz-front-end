@@ -1,7 +1,10 @@
 <inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Tool magazine">
 
   <ng-template #controls let-index="index">
+
     <inz-tool-magazine-form [toolMagazineForm]="formGroups[index]"></inz-tool-magazine-form>
+    <inz-form-href [href]="index + '/tool-magazine-contents'" label="Tool magazine contents"></inz-form-href>
+
   </ng-template>
 
 </inz-form-array>

@@ -2,6 +2,8 @@
 
   <ng-template #controls let-index="index">
     <inz-turret-form [turretForm]="formGroups[index]"></inz-turret-form>
+    <inz-form-href [href]="index + '/turret-contents'" label="Turret contents"></inz-form-href>
   </ng-template>
+
 
 </inz-form-array>

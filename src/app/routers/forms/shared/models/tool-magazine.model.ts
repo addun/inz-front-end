@@ -13,6 +13,11 @@ export class ToolMagazine extends ToolHandlingUnit {
   storage_configuration?: ToolStorageConfiguration = null;
   tool_magazine_contents: ToolAssembly[] = [];
 
+  constructor(model?) {
+    super(model);
+    Object.assign(this, model);
+  }
+
   public static getFormControls(loadModel?): { [key: string]: AbstractControl } {
     if (!loadModel) {
       loadModel = new ToolMagazine();

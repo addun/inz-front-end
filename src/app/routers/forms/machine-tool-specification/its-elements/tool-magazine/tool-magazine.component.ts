@@ -30,10 +30,10 @@ export class ToolMagazineComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute
-      .parent
-      .params
+      .parent.parent
+      .paramMap
       .subscribe(params => {
-        this.activeArrayIndex = +params['machineToolElementId'];
+        this.activeArrayIndex = +params.get('machineToolElementId');
         this.formGroups = this.buildForms();
       });
   }

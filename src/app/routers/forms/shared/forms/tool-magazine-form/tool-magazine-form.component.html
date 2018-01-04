@@ -1,5 +1,8 @@
 <inz-form [form]="toolMagazineForm">
-  <inz-input controlName="number_of_tools" label="Number 0f tools"></inz-input>
+
+  <inz-tool-handling-unit-form [toolHandlingUnitForm]="toolMagazineForm"></inz-tool-handling-unit-form>
+
+  <inz-input controlName="number_of_tools" label="Number of tools"></inz-input>
   <inz-input controlName="random_access" label="Random access"></inz-input>
   <inz-input controlName="diameter_full" label="Diameter full"></inz-input>
   <inz-input controlName="diameter_empty" label="Diameter empty"></inz-input>

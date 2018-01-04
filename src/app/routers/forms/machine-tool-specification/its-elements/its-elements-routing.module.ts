@@ -21,6 +21,8 @@ import {RectangularWorkTableComponent} from './rectangular-work-table/rectangula
 import {TurretComponent} from './turret/turret.component';
 import {ToolMagazineComponent} from './tool-magazine/tool-magazine.component';
 import {ToolChangerComponent} from './tool-changer/tool-changer.component';
+import {ToolMagazineContentsComponent} from './tool-magazine/tool-magazine-contents/tool-magazine-contents.component';
+import {TurretContentsComponent} from './turret/turret-contents/turret-contents.component';
 
 const routes: Routes = [
   {
@@ -149,17 +151,54 @@ const routes: Routes = [
           },
           {
             path: 'turret',
-            component: TurretComponent,
+            component: RouterOutletComponent,
             data: {
               breadcrumb: 'Turret'
-            }
-          },
-          {
+            },
+            children: [
+              {
+                path: '',
+                component: TurretComponent
+              },
+              {
+                path: ':turretId',
+                component: RouterOutletComponent,
+                children: [
+                  {
+                    path: 'turret-contents',
+                    component: TurretContentsComponent,
+                    data: {
+                      breadcrumb: 'Turret contents'
+                    }
+                  }
+                ]
+              }
+            ]
+          }, {
             path: 'tool-magazine',
-            component: ToolMagazineComponent,
+            component: RouterOutletComponent,
             data: {
               breadcrumb: 'Tool magazine'
-            }
+            },
+            children: [
+              {
+                path: '',
+                component: ToolMagazineComponent
+              },
+              {
+                path: ':toolMagazineId',
+                component: RouterOutletComponent,
+                children: [
+                  {
+                    path: 'tool-magazine-contents',
+                    component: ToolMagazineContentsComponent,
+                    data: {
+                      breadcrumb: 'Tool magazine contents'
+                    }
+                  }
+                ]
+              }
+            ]
           },
           {
             path: 'tool-changer',

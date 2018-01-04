@@ -5,24 +5,26 @@ import {BarFeederComponent} from './bar-feeder/bar-feeder.component';
 import {SharedModule} from '../../../../shared/shared.module';
 import {FormsSharedModule} from '../../shared/forms-shared.module';
 import {ItsElementsComponent} from './its-elements.component';
-import { TailstockComponent } from './tailstock/tailstock.component';
-import { ColletComponent } from './collet/collet.component';
-import { ChuckComponent } from './chuck/chuck.component';
-import { ToolBreakageComponent } from './tool-breakage/tool-breakage.component';
-import { PartProbeComponent } from './part-probe/part-probe.component';
-import { ToolSettingComponent } from './tool-setting/tool-setting.component';
-import { CoolantComponent } from './coolant/coolant.component';
-import { MachineToolAxisComponent } from './machine-tool-axis/machine-tool-axis.component';
-import { LinearAxisComponent } from './linear-axis/linear-axis.component';
-import { ContinuousRotaryComponent } from './continuous-rotary/continuous-rotary.component';
-import { IndexingComponent } from './indexing/indexing.component';
-import { LimitedSwingComponent } from './limited-swing/limited-swing.component';
-import { PalletComponent } from './pallet/pallet.component';
-import { CircularWorkTableComponent } from './circular-work-table/circular-work-table.component';
-import { RectangularWorkTableComponent } from './rectangular-work-table/rectangular-work-table.component';
-import { TurretComponent } from './turret/turret.component';
-import { ToolChangerComponent } from './tool-changer/tool-changer.component';
-import { ToolMagazineComponent } from './tool-magazine/tool-magazine.component';
+import {TailstockComponent} from './tailstock/tailstock.component';
+import {ColletComponent} from './collet/collet.component';
+import {ChuckComponent} from './chuck/chuck.component';
+import {ToolBreakageComponent} from './tool-breakage/tool-breakage.component';
+import {PartProbeComponent} from './part-probe/part-probe.component';
+import {ToolSettingComponent} from './tool-setting/tool-setting.component';
+import {CoolantComponent} from './coolant/coolant.component';
+import {MachineToolAxisComponent} from './machine-tool-axis/machine-tool-axis.component';
+import {LinearAxisComponent} from './linear-axis/linear-axis.component';
+import {ContinuousRotaryComponent} from './continuous-rotary/continuous-rotary.component';
+import {IndexingComponent} from './indexing/indexing.component';
+import {LimitedSwingComponent} from './limited-swing/limited-swing.component';
+import {PalletComponent} from './pallet/pallet.component';
+import {CircularWorkTableComponent} from './circular-work-table/circular-work-table.component';
+import {RectangularWorkTableComponent} from './rectangular-work-table/rectangular-work-table.component';
+import {TurretComponent} from './turret/turret.component';
+import {ToolChangerComponent} from './tool-changer/tool-changer.component';
+import {ToolMagazineComponent} from './tool-magazine/tool-magazine.component';
+import {TurretContentsComponent} from './turret/turret-contents/turret-contents.component';
+import {ToolMagazineContentsComponent} from './tool-magazine/tool-magazine-contents/tool-magazine-contents.component';
 
 @NgModule({
   imports: [
@@ -52,6 +54,8 @@ import { ToolMagazineComponent } from './tool-magazine/tool-magazine.component';
     TurretComponent,
     ToolChangerComponent,
     ToolMagazineComponent,
+    TurretContentsComponent,
+    ToolMagazineContentsComponent,
   ]
 })
 export class ItsElementsModule {
