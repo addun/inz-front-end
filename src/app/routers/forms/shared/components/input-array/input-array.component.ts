@@ -23,6 +23,6 @@ export class InputArrayComponent extends InputComponent implements OnInit {
   }
 
   removeRow(i: number) {
-    this.formControls.splice(i, 1);
+    (<FormArray>this.form.controls[this.controlName]).removeAt(i);
   }
 }
