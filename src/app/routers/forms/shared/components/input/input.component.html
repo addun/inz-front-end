@@ -7,23 +7,31 @@
   </label>
 
   <div [ngSwitch]="type" class="col-12 col-sm-12 col-md-9">
+    <div class="input-group">
 
-    <input *ngSwitchCase="'text'" [id]="randomId" type="text" [formControlName]="controlName" class="form-control"/>
+      <input *ngSwitchCase="'text'" [id]="randomId" type="text" [formControlName]="controlName" class="form-control"/>
 
-    <select *ngSwitchCase="'select'" [id]="randomId" type="text" [formControlName]="controlName"
-            class="form-control custom-select ">
-      <option *ngFor="let option of options | keys" [value]="option.key">{{option.value}}</option>
-    </select>
+      <select *ngSwitchCase="'select'" [id]="randomId" type="text" [formControlName]="controlName"
+              class="form-control custom-select ">
+        <option *ngFor="let option of options | keys" [value]="option.key">{{option.value}}</option>
+      </select>
 
-    <input *ngSwitchCase="'number'" [id]="randomId" type="number" [formControlName]="controlName"
-           class="form-control"/>
+      <input *ngSwitchCase="'number'" [id]="randomId" type="number" [formControlName]="controlName"
+             class="form-control"/>
 
-    <div *ngSwitchCase="'checkbox'" class="form-check" style="margin-left: 20px; margin-top: 8px;">
-      <input class="form-check-input" type="checkbox" [id]="randomId" [formControlName]="controlName">
-      <!--<label class="form-check-label" [for]="randomId">{{getLabel()}}</label>-->
+      <div *ngSwitchCase="'checkbox'" class="form-check" style="margin-left: 20px; margin-top: 8px;">
+        <input class="form-check-input" type="checkbox" [id]="randomId" [formControlName]="controlName">
+      </div>
+
+      <input *ngSwitchDefault [id]="randomId" type="text" [formControlName]="controlName" class="form-control"/>
+
+
+      <div class="input-group-append">
+        <ng-template *ngTemplateOutlet="append"></ng-template>
+      </div>
+
     </div>
 
-    <input *ngSwitchDefault [id]="randomId" type="text" [formControlName]="controlName" class="form-control"/>
 
   </div>
 

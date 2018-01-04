@@ -1,3 +1,7 @@
-<p>
-  turret works!
-</p>
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Turret">
+
+  <ng-template #controls let-index="index">
+    <inz-turret-form [turretForm]="formGroups[index]"></inz-turret-form>
+  </ng-template>
+
+</inz-form-array>

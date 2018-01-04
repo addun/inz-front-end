@@ -1,0 +1,21 @@
+<div [formGroup]="form">
+  <inz-form [form]="form.controls[controlName]" [label]="labelPlural">
+
+    <inz-input *ngFor="let formControl of formControls; let i = index"
+               [controlName]="i" [type]="type" [label]="label +' '+ (i+1)">
+
+      <ng-template #append>
+        <button (click)="removeRow(i)" class="btn btn-danger input-group-text"
+                style="border-top-left-radius: 0; border-bottom-left-radius: 0">
+          <i class="fa fa-times"></i>
+        </button>
+      </ng-template>
+
+    </inz-input>
+
+    <div class="text-right">
+      <button class="btn btn-primary" (click)="addNewRow()">Add</button>
+    </div>
+
+  </inz-form>
+</div>

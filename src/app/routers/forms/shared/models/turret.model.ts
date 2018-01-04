@@ -1,5 +1,5 @@
 import {ToolHandlingUnit} from './tool-handling-unit.model';
-import {AbstractControl, FormControl, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormControl, Validators} from '@angular/forms';
 import {ToolAssembly} from './tool-assembly.model';
 
 export class Turret extends ToolHandlingUnit {
@@ -10,17 +10,29 @@ export class Turret extends ToolHandlingUnit {
   cut_to_cut_max_turret_index_time?: string = null;
   turret_contents: ToolAssembly[] = [];
 
+  constructor(model?) {
+    super(model);
+    Object.assign(this, model);
+  }
+
   public static getFormControls(loadModel?): { [key: string]: AbstractControl } {
     if (!loadModel) {
       loadModel = new Turret();
     }
 
+    const spinde_names = new FormArray([]);
+    loadModel.spindle_name.forEach(element => {
+      spinde_names.push(
+        new FormControl(element)
+      );
+    });
+
     return Object.assign(ToolHandlingUnit.getFormControls(loadModel), {
-      spindle_name: new FormControl(loadModel.spindle_name, Validators.required),
+      spindle_name: spinde_names,
       number_of_fixed_tools: new FormControl(loadModel.number_of_fixed_tools, Validators.required),
       number_of_rotating_tools: new FormControl(loadModel.number_of_rotating_tools, Validators.required),
-      cut_to_cut_min_turret_index_time: new FormControl(loadModel.cut_to_cut_min_turret_index_time, Validators.required),
-      cut_to_cut_max_turret_index_time: new FormControl(loadModel.cut_to_cut_max_turret_index_time, Validators.required),
+      cut_to_cut_min_turret_index_time: new FormControl(loadModel.cut_to_cut_min_turret_index_time),
+      cut_to_cut_max_turret_index_time: new FormControl(loadModel.cut_to_cut_max_turret_index_time),
     });
   }
 }
