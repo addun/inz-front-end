@@ -1,0 +1,10 @@
+<inz-form [form]="toolMagazineForm">
+  <inz-input controlName="number_of_tools" label="Number 0f tools"></inz-input>
+  <inz-input controlName="random_access" label="Random access"></inz-input>
+  <inz-input controlName="diameter_full" label="Diameter full"></inz-input>
+  <inz-input controlName="diameter_empty" label="Diameter empty"></inz-input>
+  <inz-input controlName="tool_length" label="Tool length"></inz-input>
+  <inz-input controlName="tool_weight" label="Tool weight"></inz-input>
+  <inz-input controlName="storage_configuration" label="Storage configuration" type="select"
+             [options]="toolStorageConfiguration"></inz-input>
+</inz-form>

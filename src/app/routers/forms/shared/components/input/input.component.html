@@ -9,6 +9,10 @@
   <div [ngSwitch]="type" class="col-12 col-sm-12 col-md-9">
     <div class="input-group">
 
+      <div class="input-group-prepend" *ngIf="prepend">
+        <ng-template *ngTemplateOutlet="prepend"></ng-template>
+      </div>
+
       <input *ngSwitchCase="'text'" [id]="randomId" type="text" [formControlName]="controlName" class="form-control"/>
 
       <select *ngSwitchCase="'select'" [id]="randomId" type="text" [formControlName]="controlName"
@@ -26,7 +30,7 @@
       <input *ngSwitchDefault [id]="randomId" type="text" [formControlName]="controlName" class="form-control"/>
 
 
-      <div class="input-group-append">
+      <div class="input-group-append" *ngIf="append">
         <ng-template *ngTemplateOutlet="append"></ng-template>
       </div>
 

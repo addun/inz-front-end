@@ -21,9 +21,6 @@ export class FormArrayComponent implements OnInit {
   }
 
   addGroup() {
-    console.log(
-      new FormGroup(this.generator())
-    );
     this.forms.push(
       new FormGroup(this.generator())
     );

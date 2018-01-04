@@ -1,3 +1,7 @@
-<p>
-  tool-magazine works!
-</p>
+<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Tool magazine">
+
+  <ng-template #controls let-index="index">
+    <inz-tool-magazine-form [toolMagazineForm]="formGroups[index]"></inz-tool-magazine-form>
+  </ng-template>
+
+</inz-form-array>

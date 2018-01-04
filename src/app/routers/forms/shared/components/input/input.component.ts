@@ -13,6 +13,7 @@ export class InputComponent implements OnInit {
   @Input() type: 'text' | 'number' | 'checkbox' | 'select';
   @Input() options;
   @ContentChild('append') append: TemplateRef<any>;
+  @ContentChild('prepend') prepend: TemplateRef<any>;
 
   form: FormGroup;
   randomId: string = Math.random().toString(36).substring(2, 30);

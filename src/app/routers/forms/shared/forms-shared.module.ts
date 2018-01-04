@@ -29,7 +29,9 @@ import {RectangularWorkTableFormComponent} from './forms/rectangular-work-table-
 import {TurretFormComponent} from './forms/turret-form/turret-form.component';
 import {ToolHandlingUnitFormComponent} from './forms/tool-handling-unit-form/tool-handling-unit-form.component';
 import {ToolChangerFormComponent} from './forms/tool-changer-form/tool-changer-form.component';
-import { InputArrayComponent } from './components/input-array/input-array.component';
+import {InputArrayComponent} from './components/input-array/input-array.component';
+import {ToolMagazineFormComponent} from './forms/tool-magazine-form/tool-magazine-form.component';
+import {ToolAssemblyFormComponent} from './forms/tool-assembly-form/tool-assembly-form.component';
 
 @NgModule({
   imports: [
@@ -66,6 +68,8 @@ import { InputArrayComponent } from './components/input-array/input-array.compon
     ToolHandlingUnitFormComponent,
     ToolChangerFormComponent,
     InputArrayComponent,
+    ToolMagazineFormComponent,
+    ToolAssemblyFormComponent,
   ],
   exports: [
     CardComponent,
@@ -94,6 +98,8 @@ import { InputArrayComponent } from './components/input-array/input-array.compon
     TurretFormComponent,
     ToolChangerFormComponent,
     InputArrayComponent,
+    ToolMagazineFormComponent,
+    ToolAssemblyFormComponent,
   ]
 })
 export class FormsSharedModule {
