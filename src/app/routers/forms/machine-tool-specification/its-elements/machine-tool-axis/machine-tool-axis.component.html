@@ -1,4 +1,4 @@
-<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Machine tool axis">
+<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Machine tool axis">
 
   <ng-template #controls let-index="index">
     <inz-machine-tool-axis-form [machineToolAxisForm]="formGroups[index]"></inz-machine-tool-axis-form>

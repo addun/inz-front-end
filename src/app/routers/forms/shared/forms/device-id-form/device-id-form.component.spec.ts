@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeviceIdControlsComponent } from './device-id-controls.component';
+import { DeviceIdFormComponent } from './device-id-form.component';
 
-describe('DeviceIdControlsComponent', () => {
-  let component: DeviceIdControlsComponent;
-  let fixture: ComponentFixture<DeviceIdControlsComponent>;
+describe('DeviceIdFormComponent', () => {
+  let component: DeviceIdFormComponent;
+  let fixture: ComponentFixture<DeviceIdFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeviceIdControlsComponent ]
+      declarations: [ DeviceIdFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeviceIdControlsComponent);
+    fixture = TestBed.createComponent(DeviceIdFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

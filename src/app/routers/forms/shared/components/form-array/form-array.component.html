@@ -1,4 +1,4 @@
-<inz-card [cardName]="label+' #'+(i+1)" *ngFor="let group of forms; let i = index">
+<inz-card [cardName]="label+' #'+(i+1)" *ngFor="let group of forms.controls; let i = index">
 
   <ng-template *ngTemplateOutlet="controls;context:{index:i}"></ng-template>
 
@@ -10,13 +10,9 @@
 
 </inz-card>
 
-<div *ngIf="forms.length === 0" class="alert alert-secondary text-center" role="alert">
-  <h3>Any <b>{{label}}</b> to display</h3>
+<div *ngIf="forms.length === 0" class="jumbotron text-center">
+  <h1 class="display-4">Nothing to display!</h1>
+  <p class="lead">Click button below, to add new <strong class="font-weight-bold text-uppercase">{{label}}</strong></p>
 </div>
 
-<p>
-  <span (click)="addGroup()" class="text-primary" style="cursor: pointer;">Add new group +</span>
-</p>
-<div class="text-center">
-  <button (click)="saveGroups()" class="btn btn-primary">Save</button>
-</div>
+<button (click)="addGroup()" class="btn btn-success">Add new</button>

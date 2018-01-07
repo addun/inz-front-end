@@ -8,6 +8,9 @@ import {FormGroup} from '@angular/forms';
   styleUrls: ['./machine-tool-specification-form.component.sass']
 })
 export class MachineToolSpecificationFormComponent implements OnInit {
+  @Input() machineToolSpecificationForm: FormGroup;
+  @Input() label: string;
+  @Input() required: boolean;
   machineClass = MachineClass;
 
   constructor() {

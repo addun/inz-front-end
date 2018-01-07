@@ -1,7 +1,7 @@
 import {MachineTool} from './machine-tool.model';
 import {MachineClass} from '../types/machine-class.type';
 import {DeviceId} from './device-id.model';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MachiningCapability} from './machining-capability.model';
 import {MachineToolElement} from './machine-tool-element.model';
 import {Installation} from './installation.model';
@@ -11,14 +11,15 @@ import {MeasuringCapability} from './measuring-capability.model';
 
 
 export class MachineToolSpecification extends MachineTool {
-  machine_class: MachineClass;
+  machine_class: MachineClass = MachineClass.DRILLING_MACHINE;
   device_id: DeviceId = new DeviceId();
   machining_capabilities: MachiningCapability[] = [];
+
   measuring_capability: MeasuringCapability = new MeasuringCapability();
   environmental_evaluation: EnvironmentalEvaluation = new EnvironmentalEvaluation();
   location: Location = new Location();
   installation: Installation = new Installation();
-  its_elements: MachineToolElement[] = [new MachineToolElement()];
+  its_elements: MachineToolElement[] = [];
 
   constructor(machineToolSpecification?) {
     super(machineToolSpecification);
@@ -31,12 +32,21 @@ export class MachineToolSpecification extends MachineTool {
       loadModel = new MachineToolSpecification();
     }
 
-    return Object.assign(MachineTool.getFormControls(loadModel), {
+    const formControls = Object.assign(MachineTool.getFormControls(loadModel), {
       machine_class: new FormControl(loadModel.machine_class, Validators.required),
       device_id: new FormGroup(DeviceId.getFormControls(loadModel.device_id)),
+      machining_capabilities: new FormArray([]),
       environmental_evaluation: new FormGroup(EnvironmentalEvaluation.getFormControls(loadModel.environmental_evaluation)),
       location: new FormGroup(Location.getFormControls(loadModel.location)),
       measuring_capability: new FormGroup(MeasuringCapability.getFormControls(loadModel.measuring_capability)),
     });
+
+    loadModel.machining_capabilities.forEach(mc => {
+      formControls.machining_capabilities.push(new FormGroup(
+        MachiningCapability.getFormControls(mc)
+      ));
+    });
+
+    return formControls;
   }
 }

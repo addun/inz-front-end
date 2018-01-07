@@ -1,8 +1,8 @@
-<inz-form-array [forms]="machiningCapabilityForms" [generator]="generator" (save)="save()" label="Machining capability">
+<inz-form-array [forms]="machiningCapabilityForms" [formGroupGenerator]="generator" label="Machining capability">
 
   <ng-template #controls let-index="index">
     <inz-machining-capability-form
-      [machiningCapabilityForm]="machiningCapabilityForms[index]"></inz-machining-capability-form>
+      [machiningCapabilityForm]="machiningCapabilityForms.controls[index]"></inz-machining-capability-form>
   </ng-template>
 
 </inz-form-array>

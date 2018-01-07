@@ -1,5 +1,5 @@
-import {Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {AbstractControl, FormGroup} from '@angular/forms';
+import {Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
+import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'inz-form-array',
@@ -7,10 +7,9 @@ import {AbstractControl, FormGroup} from '@angular/forms';
   styleUrls: ['./form-array.component.sass']
 })
 export class FormArrayComponent implements OnInit {
-  @Input() forms: FormGroup[];
-  @Input() generator: () => { [key: string]: AbstractControl };
+  @Input() forms: FormArray;
+  @Input() formGroupGenerator: { [key: string]: AbstractControl };
   @Input() label: string;
-  @Output() save: EventEmitter<null> = new EventEmitter<null>();
   @ContentChild('controls') controls: TemplateRef<any>;
 
   constructor() {
@@ -22,17 +21,12 @@ export class FormArrayComponent implements OnInit {
 
   addGroup() {
     this.forms.push(
-      new FormGroup(this.generator())
+      new FormGroup(this.formGroupGenerator)
     );
-    console.log(this.forms);
-  }
-
-  saveGroups() {
-    this.save.emit();
   }
 
   removeGroup(index) {
-    this.forms.splice(index, 1);
+    this.forms.removeAt(index);
   }
 
 }

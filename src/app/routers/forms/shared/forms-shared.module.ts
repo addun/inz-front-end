@@ -11,7 +11,6 @@ import {SharedModule} from '../../../shared/shared.module';
 import {ChuckFormComponent} from './forms/chuck-form/chuck-form.component';
 import {InputComponent} from './components/input/input.component';
 import {FormComponent} from './components/form/form.component';
-import {DeviceIdControlsComponent} from './controls/device-id-controls/device-id-controls.component';
 import {LocationControlsComponent} from './controls/location-controls/location-controls.component';
 import {FormArrayComponent} from './components/form-array/form-array.component';
 import {FormHrefComponent} from './components/form-href/form-href.component';
@@ -36,9 +35,10 @@ import {SpindleFormComponent} from './forms/spindle-form/spindle-form.component'
 import {SpindleRangeFormComponent} from './forms/spindle-range-form/spindle-range-form.component';
 import {WorkSpindleFormComponent} from './forms/work-spindle-form/work-spindle-form.component';
 import {ToolSpindleFormComponent} from './forms/tool-spindle-form/tool-spindle-form.component';
-import { TaperedSpindleFormComponent } from './forms/tapered-spindle-form/tapered-spindle-form.component';
-import { StraightSpindleFormComponent } from './forms/straight-spindle-form/straight-spindle-form.component';
-import { ThreadedSpindleFormComponent } from './forms/threaded-spindle-form/threaded-spindle-form.component';
+import {TaperedSpindleFormComponent} from './forms/tapered-spindle-form/tapered-spindle-form.component';
+import {StraightSpindleFormComponent} from './forms/straight-spindle-form/straight-spindle-form.component';
+import {ThreadedSpindleFormComponent} from './forms/threaded-spindle-form/threaded-spindle-form.component';
+import {DeviceIdFormComponent} from './forms/device-id-form/device-id-form.component';
 
 @NgModule({
   imports: [
@@ -56,7 +56,6 @@ import { ThreadedSpindleFormComponent } from './forms/threaded-spindle-form/thre
     ChuckFormComponent,
     InputComponent,
     FormComponent,
-    DeviceIdControlsComponent,
     LocationControlsComponent,
     FormArrayComponent,
     FormHrefComponent,
@@ -84,6 +83,7 @@ import { ThreadedSpindleFormComponent } from './forms/threaded-spindle-form/thre
     TaperedSpindleFormComponent,
     StraightSpindleFormComponent,
     ThreadedSpindleFormComponent,
+    DeviceIdFormComponent,
   ],
   exports: [
     CardComponent,
@@ -96,7 +96,6 @@ import { ThreadedSpindleFormComponent } from './forms/threaded-spindle-form/thre
     ChuckFormComponent,
     InputComponent,
     FormComponent,
-    DeviceIdControlsComponent,
     LocationControlsComponent,
     FormArrayComponent,
     FormHrefComponent,
@@ -121,6 +120,7 @@ import { ThreadedSpindleFormComponent } from './forms/threaded-spindle-form/thre
     TaperedSpindleFormComponent,
     StraightSpindleFormComponent,
     ThreadedSpindleFormComponent,
+    DeviceIdFormComponent
   ]
 })
 export class FormsSharedModule {

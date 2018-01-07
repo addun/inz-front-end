@@ -1,9 +1,16 @@
 <div class="card">
-  <h1 class="card-header text-center">{{ cardName }}</h1>
-  <div class="card-body">
-    <ng-content></ng-content>
-  </div>
-  <div class="card-footer text-center">
-    <ng-container [ngTemplateOutlet]="footer"></ng-container>
+  <h1 class="card-header card-collapse text-center" (click)="isCollapsed = !isCollapsed" placement="bottom"
+      ngbTooltip="Click to collapse">{{ cardName }}</h1>
+  <div [ngbCollapse]="isCollapsed">
+
+    <div class="card-body">
+      <ng-content></ng-content>
+    </div>
+
+
+    <div *ngIf="footer" class="card-footer text-center">
+      <ng-container [ngTemplateOutlet]="footer"></ng-container>
+    </div>
+
   </div>
 </div>

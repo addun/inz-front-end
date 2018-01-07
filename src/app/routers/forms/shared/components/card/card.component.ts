@@ -10,4 +10,6 @@ export class CardComponent {
   @ContentChild('footer')
   public footer: TemplateRef<ElementRef>;
 
+  isCollapsed = false;
+
 }

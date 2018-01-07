@@ -1,4 +1,4 @@
-<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Threaded spindle">
+<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Threaded spindle">
 
   <ng-template #controls let-index="index">
     <inz-threaded-spindle-form [threadedSpindleForm]="formGroups[index]"></inz-threaded-spindle-form>

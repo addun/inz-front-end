@@ -5,8 +5,6 @@ import {ApiService} from '../../../../../../core/api/api.service';
 @Injectable()
 export class MachineToolSpecificationService {
 
-  machine_tool_specification: MachineToolSpecification = new MachineToolSpecification();
-
   constructor(private apiService: ApiService) {
 
   }

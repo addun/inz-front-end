@@ -1,41 +1,41 @@
 <inz-card *ngIf="machineToolSpecificationForm" cardName="Machine Tool Specification">
 
-  <inz-form [form]="machineToolSpecificationForm" label="Base">
-    <inz-machine-tool-specification-form></inz-machine-tool-specification-form>
-  </inz-form>
+  <inz-machine-tool-specification-form [machineToolSpecificationForm]="machineToolSpecificationForm"
+                                       label="Base"></inz-machine-tool-specification-form>
 
-  <inz-form [form]="machineToolSpecificationForm.controls['device_id']" label="Device id" [required]="true">
-    <inz-device-id-controls></inz-device-id-controls>
-  </inz-form>
+  <inz-device-id-form [deviceIdForm]="machineToolSpecificationForm.controls['device_id']"
+                      label="Device id"
+                      [required]="true"></inz-device-id-form>
 
-  <inz-form label="Machining capabilities">
-    <inz-form-href href="machining-capabilities"></inz-form-href>
-  </inz-form>
+  <inz-form-href href="machining-capabilities" label="Machining capabilities"></inz-form-href>
 
-  <inz-form label="Measuring capability" [form]="machineToolSpecificationForm.controls['measuring_capability']">
-    <inz-input controlName="measuring_accuracy" label="Measuring accuracy"></inz-input>
-    <inz-input controlName="description" label="Description"></inz-input>
-  </inz-form>
+  <!--<inz-form label="Machining capabilities">-->
+  <!--</inz-form>-->
 
-  <inz-form [form]="machineToolSpecificationForm.controls['location']" label="Location">
-    <inz-location-controls></inz-location-controls>
-  </inz-form>
+  <!--<inz-form label="Measuring capability" [form]="machineToolSpecificationForm.controls['measuring_capability']">-->
+  <!--<inz-input controlName="measuring_accuracy" label="Measuring accuracy"></inz-input>-->
+  <!--<inz-input controlName="description" label="Description"></inz-input>-->
+  <!--</inz-form>-->
 
-  <inz-form label="Installation">
-    <inz-form-href href="installation"></inz-form-href>
-  </inz-form>
+  <!--<inz-form [form]="machineToolSpecificationForm.controls['location']" label="Location">-->
+  <!--<inz-location-controls></inz-location-controls>-->
+  <!--</inz-form>-->
 
-  <inz-form [form]="machineToolSpecificationForm.controls['environmental_evaluation']" label="Environment"
-            [required]="false">
-    <inz-input controlName="evaluation_name" label="Evaluation name"></inz-input>
-    <inz-input controlName="power_in_idling" label="Power in idling"></inz-input>
-    <inz-input controlName="time_for_warming_up" label="Time for warming up"></inz-input>
-    <inz-form-href href="standard-machining-process" label="Power for standard machining"></inz-form-href>
-  </inz-form>
+  <!--<inz-form label="Installation">-->
+  <!--<inz-form-href href="installation"></inz-form-href>-->
+  <!--</inz-form>-->
 
-  <inz-form label="Its elements">
-    <inz-form-href href="its-elements" label="Machine tool elements"></inz-form-href>
-  </inz-form>
+  <!--<inz-form [form]="machineToolSpecificationForm.controls['environmental_evaluation']" label="Environment"-->
+  <!--[required]="false">-->
+  <!--<inz-input controlName="evaluation_name" label="Evaluation name"></inz-input>-->
+  <!--<inz-input controlName="power_in_idling" label="Power in idling"></inz-input>-->
+  <!--<inz-input controlName="time_for_warming_up" label="Time for warming up"></inz-input>-->
+  <!--<inz-form-href href="standard-machining-process" label="Power for standard machining"></inz-form-href>-->
+  <!--</inz-form>-->
+
+  <!--<inz-form label="Its elements">-->
+  <!--<inz-form-href href="its-elements" label="Machine tool elements"></inz-form-href>-->
+  <!--</inz-form>-->
 
   <ng-template #footer>
     <button (click)="save()" class="btn btn-primary">Save</button>

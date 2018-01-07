@@ -1,4 +1,4 @@
-<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Part probe">
+<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Part probe">
 
   <ng-template #controls let-index="index">
     <inz-form [form]="formGroups[index]" label="Base">

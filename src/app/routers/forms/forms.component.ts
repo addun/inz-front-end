@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MachineToolSpecificationService} from './machine-tool-specification/shared/services/machine-tool-specification/machine-tool-specification.service';
+import {MachineToolSpecificationFormService} from './machine-tool-specification/shared/services/machine-tool-specification-form/machine-tool-specification-form.service';
 
 @Component({
   selector: 'inz-forms',
@@ -7,11 +7,11 @@ import {MachineToolSpecificationService} from './machine-tool-specification/shar
   styleUrls: ['./forms.component.sass']
 })
 export class FormsComponent implements OnInit {
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService) {
   }
 
   get schema() {
-    return this.machineToolSpecificationService.machine_tool_specification;
+    return this.machineToolSpecificationFormService.machineToolSpecificationForm.value;
   }
 
   ngOnInit() {

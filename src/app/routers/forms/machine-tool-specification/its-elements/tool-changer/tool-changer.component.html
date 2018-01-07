@@ -1,4 +1,4 @@
-<inz-form-array [forms]="formGroups" [generator]="generator" (save)="save()" label="Tool changer">
+<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Tool changer">
 
   <ng-template #controls let-index="index">
     <inz-tool-changer-form [toolChangerForm]="formGroups[index]"></inz-tool-changer-form>
