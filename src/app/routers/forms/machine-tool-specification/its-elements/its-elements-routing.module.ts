@@ -23,6 +23,16 @@ import {ToolMagazineComponent} from './tool-magazine/tool-magazine.component';
 import {ToolChangerComponent} from './tool-changer/tool-changer.component';
 import {ToolMagazineContentsComponent} from './tool-magazine/tool-magazine-contents/tool-magazine-contents.component';
 import {TurretContentsComponent} from './turret/turret-contents/turret-contents.component';
+import {SpindleComponent} from './spindle/spindle.component';
+import {SpindleRangeComponent} from './spindle/spindle-range/spindle-range.component';
+import {WorkSpindleComponent} from './work-spindle/work-spindle.component';
+import {WorkSpindleRangeComponent} from './work-spindle/work-spindle-range/work-spindle-range.component';
+import {TaperedSpindleRangeComponent} from './tapered-spindle/tapered-spindle-range/tapered-spindle-range.component';
+import {StraightSpindleComponent} from './straight-spindle/straight-spindle.component';
+import {TaperedSpindleComponent} from './tapered-spindle/tapered-spindle.component';
+import {ThreadedSpindleComponent} from './threaded-spindle/threaded-spindle.component';
+import {ThreadedSpindleRangeComponent} from './threaded-spindle/threaded-spindle-range/threaded-spindle-range.component';
+import {StraightSpindleRangeComponent} from './straight-spindle/straight-spindle-range/straight-spindle-range.component';
 
 const routes: Routes = [
   {
@@ -143,6 +153,13 @@ const routes: Routes = [
             }
           },
           {
+            path: 'tool-changer',
+            component: ToolChangerComponent,
+            data: {
+              breadcrumb: 'Tool changer'
+            }
+          },
+          {
             path: 'rectangular-work-table',
             component: RectangularWorkTableComponent,
             data: {
@@ -201,11 +218,135 @@ const routes: Routes = [
             ]
           },
           {
-            path: 'tool-changer',
-            component: ToolChangerComponent,
+            path: 'spindle',
+            component: RouterOutletComponent,
             data: {
-              breadcrumb: 'Tool changer'
-            }
+              breadcrumb: 'Spindle'
+            },
+            children: [
+              {
+                path: '',
+                component: SpindleComponent
+              },
+              {
+                path: ':spindleId',
+                component: RouterOutletComponent,
+                children: [
+                  {
+                    path: 'range',
+                    component: SpindleRangeComponent,
+                    data: {
+                      breadcrumb: 'Spindle range'
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+
+          {
+            path: 'work-spindle',
+            component: RouterOutletComponent,
+            data: {
+              breadcrumb: 'Work spindle'
+            },
+            children: [
+              {
+                path: '',
+                component: WorkSpindleComponent
+              },
+              {
+                path: ':spindleId',
+                component: RouterOutletComponent,
+                children: [
+                  {
+                    path: 'range',
+                    component: WorkSpindleRangeComponent,
+                    data: {
+                      breadcrumb: 'Spindle range'
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            path: 'tapered-spindle',
+            component: RouterOutletComponent,
+            data: {
+              breadcrumb: 'Tapered spindle'
+            },
+            children: [
+              {
+                path: '',
+                component: TaperedSpindleComponent
+              },
+              {
+                path: ':spindleId',
+                component: RouterOutletComponent,
+                children: [
+                  {
+                    path: 'range',
+                    component: TaperedSpindleRangeComponent,
+                    data: {
+                      breadcrumb: 'Spindle range'
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            path: 'straight-spindle',
+            component: RouterOutletComponent,
+            data: {
+              breadcrumb: 'Straight spindle'
+            },
+            children: [
+              {
+                path: '',
+                component: StraightSpindleComponent
+              },
+              {
+                path: ':spindleId',
+                component: RouterOutletComponent,
+                children: [
+                  {
+                    path: 'range',
+                    component: StraightSpindleRangeComponent,
+                    data: {
+                      breadcrumb: 'Spindle range'
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            path: 'threaded-spindle',
+            component: RouterOutletComponent,
+            data: {
+              breadcrumb: 'Threaded spindle'
+            },
+            children: [
+              {
+                path: '',
+                component: ThreadedSpindleComponent
+              },
+              {
+                path: ':spindleId',
+                component: RouterOutletComponent,
+                children: [
+                  {
+                    path: 'range',
+                    component: ThreadedSpindleRangeComponent,
+                    data: {
+                      breadcrumb: 'Spindle range'
+                    }
+                  }
+                ]
+              }
+            ]
           },
         ]
       }

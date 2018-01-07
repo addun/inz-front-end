@@ -1,4 +1,4 @@
-<inz-card cardName="Machine Tool Specification">
+<inz-card *ngIf="machineToolSpecificationForm" cardName="Machine Tool Specification">
 
   <inz-form [form]="machineToolSpecificationForm" label="Base">
     <inz-machine-tool-specification-form></inz-machine-tool-specification-form>

@@ -2,7 +2,12 @@ import {ToolSpindle} from './tool-spindle.model';
 import {FormControl, Validators} from '@angular/forms';
 
 export class TaperedSpindle extends ToolSpindle {
-  spindle_taper_designation: string;
+  spindle_taper_designation: string = null;
+
+  constructor(model?) {
+    super(model);
+    Object.assign(this, model);
+  }
 
   public static getFormControls(loadModel?) {
     if (!loadModel) {

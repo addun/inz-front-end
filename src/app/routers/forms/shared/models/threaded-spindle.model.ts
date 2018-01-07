@@ -6,6 +6,11 @@ export class ThreadedSpindle extends ToolSpindle {
   spindle_thread_pitch: number = null;
   spindle_thread_form: string = null;
 
+  constructor(model?) {
+    super(model);
+    Object.assign(this, model);
+  }
+
   public static getFormControls(loadModel?) {
     if (!loadModel) {
       loadModel = new ThreadedSpindle();

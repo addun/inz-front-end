@@ -4,6 +4,10 @@ export class MeasuringCapability {
   measuring_accuracy: string = null;
   description?: string = null;
 
+  constructor(model?) {
+    Object.assign(this, model);
+  }
+
   public static getFormControls(loadModel?: MeasuringCapability) {
     if (!loadModel) {
       loadModel = new MeasuringCapability();

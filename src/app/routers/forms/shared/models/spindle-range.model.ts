@@ -6,6 +6,10 @@ export class SpindleRange {
   minimum_drive_torque: number = null;
   maximum_drive_torque: number = null;
 
+  constructor(model?) {
+    Object.assign(this, model);
+  }
+
   public static getFormControls(loadModel?: SpindleRange): { [key: string]: AbstractControl } {
     if (!loadModel) {
       loadModel = new SpindleRange();

@@ -118,6 +118,9 @@ import { ThreadedSpindleFormComponent } from './forms/threaded-spindle-form/thre
     SpindleRangeFormComponent,
     WorkSpindleFormComponent,
     ToolSpindleFormComponent,
+    TaperedSpindleFormComponent,
+    StraightSpindleFormComponent,
+    ThreadedSpindleFormComponent,
   ]
 })
 export class FormsSharedModule {

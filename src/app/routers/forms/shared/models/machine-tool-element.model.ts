@@ -18,6 +18,11 @@ import {RectangularWorkTable} from './rectangular-work-table.model';
 import {ToolChanger} from './tool-changer.model';
 import {ToolMagazine} from './tool-magazine.model';
 import {Turret} from './turret.model';
+import {Spindle} from './spindle.model';
+import {TaperedSpindle} from './tapered-spindle.model';
+import {WorkSpindle} from './work-spindle.model';
+import {StraightSpindle} from './straight-spindle.model';
+import {ThreadedSpindle} from './threaded-spindle.model';
 
 export class MachineToolElement {
   name: string = null;
@@ -63,4 +68,9 @@ class Capabilities {
   tool_changer: ToolChanger[] = [];
   tool_magazine: ToolMagazine[] = [];
   turret: Turret[] = [];
+  spindle: Spindle[] = [new Spindle()];
+  work_spindle: WorkSpindle[] = [];
+  tapered_spindle: TaperedSpindle[] = [];
+  straight_spindle: StraightSpindle[] = [];
+  threaded_spindle: ThreadedSpindle[] = [];
 }

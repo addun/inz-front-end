@@ -11,7 +11,7 @@ export class FormsComponent implements OnInit {
   }
 
   get schema() {
-    return this.machineToolSpecificationService;
+    return this.machineToolSpecificationService.machine_tool_specification;
   }
 
   ngOnInit() {

@@ -3,10 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'forms/machine-tool-specification'
-  },
-  {
     path: 'tree',
     loadChildren: './tree/tree.module#TreeModule',
     data: {
@@ -23,7 +19,11 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: './auth/auth.module#AuthModule'
-  }
+  },
+  {
+    path: '',
+    redirectTo: 'forms/machine-tool-specification'
+  },
 ];
 
 @NgModule({

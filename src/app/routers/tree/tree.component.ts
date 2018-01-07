@@ -1,9 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MenuItemSelectedEvent, NodeEvent, NodeMenuItemAction, Tree, TreeComponent as TC, TreeModel} from 'ng2-tree';
 import {TreeService} from './services/tree/tree.service';
-import {TreeToastService} from './services/toast/tree-toast.service';
 import {Router} from '@angular/router';
-import {environment} from '../../../environments/environment';
+import {Directory} from './models/directory.model';
 
 @Component({
   selector: 'inz-tree',
@@ -12,8 +11,6 @@ import {environment} from '../../../environments/environment';
 })
 export class TreeComponent implements OnInit, AfterViewInit {
   @ViewChild('treeFFS') treeFFS: TC;
-  self = {};
-
   public tree: TreeModel = {
     value: '/',
     id: 'root',
@@ -34,66 +31,84 @@ export class TreeComponent implements OnInit, AfterViewInit {
       'menuItems': [
         {action: NodeMenuItemAction.Rename, name: 'Rename', cssClass: 'fa fa-pencil-square-o'},
         {action: NodeMenuItemAction.NewFolder, name: 'New folder', cssClass: 'fa fa-folder-o'},
-        {action: NodeMenuItemAction.Custom, name: 'Add', cssClass: 'fa fa-book'},
-        {action: NodeMenuItemAction.Remove, name: 'Remove', cssClass: 'fa fa-removeGroup'},
+        {action: NodeMenuItemAction.Remove, name: 'Remove', cssClass: 'fa fa-times'},
       ]
     },
-    loadChildren: function(callback) {
-      const xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-          callback(JSON.parse(this.responseText));
-        }
-      };
-      xhttp.open('GET', `${environment.apiBaseUrl}tree/?parent=${this.id}`, true);
-      xhttp.send();
+    loadChildren: () => {
     }
   };
+  selectedNode: Tree;
 
   constructor(private treeService: TreeService,
-              private router: Router,
-              private treeToastService: TreeToastService) {
-    this.self = this;
-    console.log(self);
-    console.log(this);
+              private router: Router) {
   }
 
 
   ngOnInit() {
-    this.self = this;
-    console.log(self);
-
+    this.treeService.getTreeStructure().subscribe(
+      structure => {
+        this.treeFFS.treeModel.children = structure;
+      }
+    );
   }
 
   ngAfterViewInit(): void {
+    const rootNodeController = this.treeFFS.getControllerByNodeId('root');
+    this.treeService
+      .getTreeStructure()
+      .subscribe(structure => {
+        rootNodeController.setChildren(structure);
+      });
   }
 
   onNodeSelected(e: NodeEvent): void {
-    console.log(
-      this.treeFFS.getController().toTreeModel()
-    );
+    this.selectedNode = e.node;
   }
 
 
   onMenuItemSelected(e: MenuItemSelectedEvent): void {
   }
 
-  onNodeRemoved(e: NodeEvent): void {
+  onNodeRemoved(e: MenuItemSelectedEvent): void {
+    this.removeNode(e.node);
   }
 
-  onNodeRenamed(e: NodeEvent): void {
+  public onNodeRenamed(e: NodeEvent): void {
+    this.patchNode(e.node);
   }
 
 
-  onNodeCreated(e: NodeEvent): void {
+  public onNodeCreated(e: NodeEvent): void {
+    this.saveNode(e.node);
   }
 
   private patchNode(node: Tree) {
+    const directory = new Directory({
+      value: node.value,
+      parent: +node.parent.id,
+      id: +node.id
+    });
+    this.treeService
+      .patchNode(directory)
+      .subscribe();
   }
 
   private saveNode(node: Tree) {
+    const directory = new Directory({
+      value: node.value,
+      parent: node.parent.id === 'root' ? null : +node.parent.id
+    });
+    this.treeService
+      .addNode(directory)
+      .subscribe(response => {
+        node.id = response.id;
+      });
   }
 
   private removeNode(node: Tree) {
+    this.treeService
+      .deleteNode(+node.id)
+      .subscribe();
   }
+
 }

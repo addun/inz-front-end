@@ -25,6 +25,16 @@ import {ToolChangerComponent} from './tool-changer/tool-changer.component';
 import {ToolMagazineComponent} from './tool-magazine/tool-magazine.component';
 import {TurretContentsComponent} from './turret/turret-contents/turret-contents.component';
 import {ToolMagazineContentsComponent} from './tool-magazine/tool-magazine-contents/tool-magazine-contents.component';
+import { SpindleComponent } from './spindle/spindle.component';
+import { SpindleRangeComponent } from './spindle/spindle-range/spindle-range.component';
+import { WorkSpindleComponent } from './work-spindle/work-spindle.component';
+import { TaperedSpindleComponent } from './tapered-spindle/tapered-spindle.component';
+import { StraightSpindleComponent } from './straight-spindle/straight-spindle.component';
+import { ThreadedSpindleComponent } from './threaded-spindle/threaded-spindle.component';
+import { WorkSpindleRangeComponent } from './work-spindle/work-spindle-range/work-spindle-range.component';
+import { ThreadedSpindleRangeComponent } from './threaded-spindle/threaded-spindle-range/threaded-spindle-range.component';
+import { StraightSpindleRangeComponent } from './straight-spindle/straight-spindle-range/straight-spindle-range.component';
+import { TaperedSpindleRangeComponent } from './tapered-spindle/tapered-spindle-range/tapered-spindle-range.component';
 
 @NgModule({
   imports: [
@@ -56,6 +66,16 @@ import {ToolMagazineContentsComponent} from './tool-magazine/tool-magazine-conte
     ToolMagazineComponent,
     TurretContentsComponent,
     ToolMagazineContentsComponent,
+    SpindleComponent,
+    SpindleRangeComponent,
+    WorkSpindleComponent,
+    TaperedSpindleComponent,
+    StraightSpindleComponent,
+    ThreadedSpindleComponent,
+    WorkSpindleRangeComponent,
+    ThreadedSpindleRangeComponent,
+    StraightSpindleRangeComponent,
+    TaperedSpindleRangeComponent,
   ]
 })
 export class ItsElementsModule {

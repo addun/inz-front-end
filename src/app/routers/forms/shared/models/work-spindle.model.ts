@@ -12,7 +12,7 @@ export class WorkSpindle extends Spindle {
 
   constructor(model?) {
     super(model);
-    Object.assign(model);
+    Object.assign(this, model);
   }
 
   public static getFormControls(loadModel?) {

@@ -5,6 +5,11 @@ export class StraightSpindle extends ToolSpindle {
   spindle_bore_depth: number = null;
   spindle_bore_diameter: number = null;
 
+  constructor(model?) {
+    super(model);
+    Object.assign(this, model);
+  }
+
   public static getFormControls(loadModel?) {
     if (!loadModel) {
       loadModel = new StraightSpindle();
