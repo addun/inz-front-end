@@ -10,7 +10,7 @@ import {MachineToolSpecificationFormService} from '../shared/services';
 })
 export class MachiningCapabilitiesComponent implements OnInit {
   machiningCapabilityForms: FormArray;
-  generator = MachiningCapability.getFormControls();
+  generator = MachiningCapability.getFormControls;
 
   constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService) {
   }

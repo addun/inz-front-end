@@ -11,10 +11,9 @@ import {MeasuringCapability} from './measuring-capability.model';
 
 
 export class MachineToolSpecification extends MachineTool {
-  machine_class: MachineClass = MachineClass.DRILLING_MACHINE;
+  machine_class: MachineClass = null;
   device_id: DeviceId = new DeviceId();
   machining_capabilities: MachiningCapability[] = [];
-
   measuring_capability: MeasuringCapability = new MeasuringCapability();
   environmental_evaluation: EnvironmentalEvaluation = new EnvironmentalEvaluation();
   location: Location = new Location();
@@ -36,9 +35,10 @@ export class MachineToolSpecification extends MachineTool {
       machine_class: new FormControl(loadModel.machine_class, Validators.required),
       device_id: new FormGroup(DeviceId.getFormControls(loadModel.device_id)),
       machining_capabilities: new FormArray([]),
+      measuring_capability: new FormGroup(MeasuringCapability.getFormControls(loadModel.measuring_capability)),
       environmental_evaluation: new FormGroup(EnvironmentalEvaluation.getFormControls(loadModel.environmental_evaluation)),
       location: new FormGroup(Location.getFormControls(loadModel.location)),
-      measuring_capability: new FormGroup(MeasuringCapability.getFormControls(loadModel.measuring_capability)),
+      installation: new FormGroup(Installation.getFormControls(loadModel.installation))
     });
 
     loadModel.machining_capabilities.forEach(mc => {

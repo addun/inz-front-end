@@ -11,7 +11,6 @@ import {SharedModule} from '../../../shared/shared.module';
 import {ChuckFormComponent} from './forms/chuck-form/chuck-form.component';
 import {InputComponent} from './components/input/input.component';
 import {FormComponent} from './components/form/form.component';
-import {LocationControlsComponent} from './controls/location-controls/location-controls.component';
 import {FormArrayComponent} from './components/form-array/form-array.component';
 import {FormHrefComponent} from './components/form-href/form-href.component';
 import {MachineToolAxisFormComponent} from './forms/machine-tool-axis-form/machine-tool-axis-form.component';
@@ -39,6 +38,8 @@ import {TaperedSpindleFormComponent} from './forms/tapered-spindle-form/tapered-
 import {StraightSpindleFormComponent} from './forms/straight-spindle-form/straight-spindle-form.component';
 import {ThreadedSpindleFormComponent} from './forms/threaded-spindle-form/threaded-spindle-form.component';
 import {DeviceIdFormComponent} from './forms/device-id-form/device-id-form.component';
+import {MeasuringCapabilityFormComponent} from './forms/measuring-capability-form/measuring-capability-form.component';
+import {LocationFormComponent} from './forms/location-form/location-form.component';
 
 @NgModule({
   imports: [
@@ -56,7 +57,6 @@ import {DeviceIdFormComponent} from './forms/device-id-form/device-id-form.compo
     ChuckFormComponent,
     InputComponent,
     FormComponent,
-    LocationControlsComponent,
     FormArrayComponent,
     FormHrefComponent,
     MachineToolAxisFormComponent,
@@ -84,6 +84,8 @@ import {DeviceIdFormComponent} from './forms/device-id-form/device-id-form.compo
     StraightSpindleFormComponent,
     ThreadedSpindleFormComponent,
     DeviceIdFormComponent,
+    MeasuringCapabilityFormComponent,
+    LocationFormComponent
   ],
   exports: [
     CardComponent,
@@ -96,7 +98,6 @@ import {DeviceIdFormComponent} from './forms/device-id-form/device-id-form.compo
     ChuckFormComponent,
     InputComponent,
     FormComponent,
-    LocationControlsComponent,
     FormArrayComponent,
     FormHrefComponent,
     MachineToolAxisFormComponent,
@@ -120,7 +121,9 @@ import {DeviceIdFormComponent} from './forms/device-id-form/device-id-form.compo
     TaperedSpindleFormComponent,
     StraightSpindleFormComponent,
     ThreadedSpindleFormComponent,
-    DeviceIdFormComponent
+    DeviceIdFormComponent,
+    MeasuringCapabilityFormComponent,
+    LocationFormComponent
   ]
 })
 export class FormsSharedModule {

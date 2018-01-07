@@ -8,7 +8,7 @@ import {AbstractControl, FormArray, FormGroup} from '@angular/forms';
 })
 export class FormArrayComponent implements OnInit {
   @Input() forms: FormArray;
-  @Input() formGroupGenerator: { [key: string]: AbstractControl };
+  @Input() formGroupGenerator: () => { [key: string]: AbstractControl };
   @Input() label: string;
   @ContentChild('controls') controls: TemplateRef<any>;
 
@@ -21,7 +21,7 @@ export class FormArrayComponent implements OnInit {
 
   addGroup() {
     this.forms.push(
-      new FormGroup(this.formGroupGenerator)
+      new FormGroup(this.formGroupGenerator())
     );
   }
 

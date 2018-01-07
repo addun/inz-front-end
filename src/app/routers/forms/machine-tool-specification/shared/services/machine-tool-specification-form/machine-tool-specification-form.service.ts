@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray, FormGroup} from '@angular/forms';
 import {MachineToolSpecification} from '../../../../shared/models';
 
 @Injectable()
@@ -16,6 +16,18 @@ export class MachineToolSpecificationFormService {
 
   set machineToolSpecificationForm(value) {
     this._machineToolSpecificationForm = value;
+  }
+
+  get installationForm() {
+    return <FormGroup>this.machineToolSpecificationForm.controls['installation'];
+  }
+
+  get environmentalEvaluation() {
+    return <FormGroup>this.machineToolSpecificationForm.controls['environmental_evaluation'];
+  }
+
+  get standardMachiningProcessForm() {
+    return <FormArray>this.environmentalEvaluation.controls['power_for_standard_machining'];
   }
 
   buildMachineToolSpecificationFromModel(model: MachineToolSpecification) {

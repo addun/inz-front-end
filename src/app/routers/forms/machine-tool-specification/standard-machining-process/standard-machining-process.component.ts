@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray, FormGroup} from '@angular/forms';
 import {StandardMachiningProcess} from '../../shared/models/standard-machining-process.model';
-import {MachineToolSpecificationService} from '../shared/services/machine-tool-specification/machine-tool-specification.service';
+import {MachineToolSpecificationFormService} from '../shared/services';
 
 @Component({
   selector: 'inz-standard-machining-process',
@@ -9,35 +9,16 @@ import {MachineToolSpecificationService} from '../shared/services/machine-tool-s
   styleUrls: ['./standard-machining-process.component.sass']
 })
 export class StandardMachiningProcessComponent implements OnInit {
-  formGroups: FormGroup[];
-  generator = StandardMachiningProcess.getFormControls;
+  formGroups: FormArray;
+  generator = StandardMachiningProcess.getFormControls
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService) {
   }
 
-  get model() {
-    return this.machineToolSpecificationService.machine_tool_specification.environmental_evaluation.power_for_standard_machining;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService.machine_tool_specification.environmental_evaluation.power_for_standard_machining = model;
-  }
 
   ngOnInit(): void {
-    this.formGroups = this.buildForms();
+    this.formGroups = this.machineToolSpecificationFormService.standardMachiningProcessForm;
   }
 
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(StandardMachiningProcess.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new StandardMachiningProcess(form.value));
-    });
-  }
 
 }

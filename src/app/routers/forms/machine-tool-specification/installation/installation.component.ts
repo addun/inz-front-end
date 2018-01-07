@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MachineToolSpecificationService} from '../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {FormGroup} from '@angular/forms';
-import {Installation} from '../../shared/models/installation.model';
+import {MachineToolSpecificationFormService} from '../shared/services';
 
 @Component({
   selector: 'inz-installation',
@@ -11,30 +10,12 @@ import {Installation} from '../../shared/models/installation.model';
 export class InstallationComponent implements OnInit {
   installationForm: FormGroup;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
-  }
-
-  get installation() {
-    return this.machineToolSpecificationService.machine_tool_specification.installation;
-  }
-
-  set installation(installation: Installation) {
-    this.machineToolSpecificationService.machine_tool_specification.installation = installation;
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService) {
   }
 
   ngOnInit() {
-    this.installationForm = this.buildForm();
+    this.installationForm = this.machineToolSpecificationFormService.installationForm;
   }
 
-  saveForm() {
-    this.installation = new Installation(this.installationForm.value);
-  }
 
-  private buildForm() {
-    return new FormGroup(
-      Installation.getFormControls(
-        this.installation
-      )
-    );
-  }
 }

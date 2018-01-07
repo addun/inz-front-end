@@ -1,7 +1,7 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Standard machining process">
+<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" label="Standard machining process">
 
   <ng-template #controls let-index="index">
-    <inz-form [form]="formGroups[index]">
+    <inz-form [form]="formGroups.controls[index]">
       <inz-input label="Process description" controlName="process_description"></inz-input>
       <inz-input label="Type of machining" controlName="type_of_machining"></inz-input>
       <inz-input label="Power" controlName="power"></inz-input>
