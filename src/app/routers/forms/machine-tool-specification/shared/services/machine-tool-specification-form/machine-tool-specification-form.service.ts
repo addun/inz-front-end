@@ -8,7 +8,11 @@ export class MachineToolSpecificationFormService {
   constructor() {
   }
 
-  private _machineToolSpecificationForm = new FormGroup(MachineToolSpecification.getFormControls());
+  private _machineToolSpecificationForm = new FormGroup(MachineToolSpecification.getFormControls(new MachineToolSpecification({
+    its_elements: [{
+      name: 'test'
+    }]
+  })));
 
   get machineToolSpecificationForm() {
     return this._machineToolSpecificationForm;
@@ -34,8 +38,16 @@ export class MachineToolSpecificationFormService {
     return <FormArray>this.machineToolSpecificationForm.controls['its_elements'];
   }
 
-  buildMachineToolSpecificationFromModel(model: MachineToolSpecification) {
-    this.machineToolSpecificationForm = new FormGroup(MachineToolSpecification.getFormControls(model));
+  getCapabilities(index) {
+    return (<FormArray>this.itsElements.controls[index]).controls['capabilities'];
   }
 
+  getChuck(index): FormArray {
+    return this.getCapabilities(index).controls['chucks'];
+  }
+
+  getBarFeeder(index: number) {
+    return this.getCapabilities(index).controls['bar_feeders'];
+
+  }
 }

@@ -15,8 +15,9 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-        <pre>
-          {{schema | json}}
+      <strong>{{form.valid}}</strong>
+      <pre>
+          {{form.value | json}}
         </pre>
     </div>
   </div>

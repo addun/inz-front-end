@@ -26,7 +26,7 @@ export class MachineToolSpecification extends MachineTool {
   }
 
 
-  public static getFormControls(loadModel?: MachineToolSpecification): { [key: string]: AbstractControl } {
+  public static getFormControls(loadModel?): { [key: string]: AbstractControl } {
     if (!loadModel) {
       loadModel = new MachineToolSpecification();
     }

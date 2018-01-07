@@ -16,7 +16,6 @@ export class FormArrayComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.forms);
   }
 
   addGroup() {

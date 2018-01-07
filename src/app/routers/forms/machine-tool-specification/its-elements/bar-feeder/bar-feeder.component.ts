@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
-import {FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {BarFeeder} from '../../../shared/models/bar-feeder.model';
 import {ActivatedRoute} from '@angular/router';
+import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({
   selector: 'inz-bar-feeder',
@@ -10,20 +10,12 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./bar-feeder.component.sass']
 })
 export class BarFeederComponent implements OnInit {
-  formGroups: FormGroup[];
+  BarFeederForm: FormArray;
   generator = BarFeeder.getFormControls;
-  private activeArrayIndex: number;
+  private machineToolElementId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
-  }
-
-  get model() {
-    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.bar_feeders;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.bar_feeders = model;
   }
 
   ngOnInit(): void {
@@ -31,21 +23,8 @@ export class BarFeederComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = +params['machineToolElementId'];
-        this.formGroups = this.buildForms();
+        this.machineToolElementId = +params['machineToolElementId'];
+        this.BarFeederForm = this.machineToolSpecificationFormService.getBarFeeder(this.machineToolElementId);
       });
-  }
-
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(BarFeeder.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new BarFeeder(form.value));
-    });
   }
 }

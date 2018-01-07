@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {Chuck} from '../../../shared/models/chuck.model';
+import {MachineToolSpecificationFormService} from '../../shared/services/';
+import {FormArray} from '@angular/forms';
 
 @Component({
   selector: 'inz-chuck',
@@ -10,20 +10,12 @@ import {Chuck} from '../../../shared/models/chuck.model';
   styleUrls: ['./chuck.component.sass']
 })
 export class ChuckComponent implements OnInit {
-  formGroups: FormGroup[];
+  chuckForm: FormArray;
   generator = Chuck.getFormControls;
-  private activeArrayIndex: number;
+  private machineToolElementId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
-  }
-
-  get model() {
-    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.chucks;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.chucks = model;
   }
 
   ngOnInit(): void {
@@ -31,23 +23,9 @@ export class ChuckComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = +params['machineToolElementId'];
-        this.formGroups = this.buildForms();
+        this.machineToolElementId = +params['machineToolElementId'];
+        this.chuckForm = this.machineToolSpecificationFormService.getChuck(this.machineToolElementId);
       });
   }
-
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(Chuck.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new Chuck(form.value));
-    });
-  }
-
 
 }

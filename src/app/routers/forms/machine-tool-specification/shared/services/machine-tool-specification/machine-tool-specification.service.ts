@@ -9,6 +9,10 @@ export class MachineToolSpecificationService {
 
   }
 
+  get machine_tool_specification() {
+    return {};
+  }
+
   addMachineToolSpecification(model: MachineToolSpecification) {
     return this.apiService.post(`enginery/asdfawef/`, {
       data: JSON.stringify(model)

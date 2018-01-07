@@ -10,8 +10,8 @@ export class FormsComponent implements OnInit {
   constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService) {
   }
 
-  get schema() {
-    return this.machineToolSpecificationFormService.machineToolSpecificationForm.value;
+  get form() {
+    return this.machineToolSpecificationFormService.machineToolSpecificationForm;
   }
 
   ngOnInit() {
