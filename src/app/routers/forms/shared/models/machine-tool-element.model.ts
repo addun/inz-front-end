@@ -34,7 +34,7 @@ export class MachineToolElement {
     Object.assign(this, machineToolElement);
   }
 
-  public static getFormControls(loadModel?: MachineToolElement) {
+  public static getFormControls(loadModel?) {
     if (!loadModel) {
       loadModel = new MachineToolElement();
     }

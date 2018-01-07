@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {MachineToolSpecificationService} from '../shared/services/machine-tool-specification/machine-tool-specification.service';
+import {FormArray} from '@angular/forms';
 import {MachineToolElement} from '../../shared/models/machine-tool-element.model';
+import {MachineToolSpecificationFormService} from '../shared/services';
 
 @Component({
   selector: 'inz-its-elements',
@@ -9,27 +9,15 @@ import {MachineToolElement} from '../../shared/models/machine-tool-element.model
   styleUrls: ['./its-elements.component.sass']
 })
 export class ItsElementsComponent implements OnInit {
-  machineToolElementsForms: FormGroup[];
+  machineToolElementsForms: FormArray;
   generator = MachineToolElement.getFormControls;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService) {
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService) {
   }
 
   ngOnInit(): void {
-    this.machineToolElementsForms = this.buildForms();
+    this.machineToolElementsForms = this.machineToolSpecificationFormService.itsElements;
   }
 
-  buildForms(): FormGroup[] {
-    return this.machineToolSpecificationService.machine_tool_specification.its_elements.map(capability => {
-      return new FormGroup(MachineToolElement.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.machineToolSpecificationService.machine_tool_specification.its_elements = [];
-    this.machineToolElementsForms.forEach(form => {
-      this.machineToolSpecificationService.machine_tool_specification.its_elements.push(new MachineToolElement(form.value));
-    });
-  }
 
 }

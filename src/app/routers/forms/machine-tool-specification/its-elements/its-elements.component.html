@@ -1,8 +1,10 @@
-<inz-form-array [forms]="machineToolElementsForms" [formGroupGenerator]="generator" (save)="save()" label="Machine Tool Element">
+<inz-form-array [forms]="machineToolElementsForms"
+                [formGroupGenerator]="generator"
+                label="Machine Tool Element">
 
   <ng-template #controls let-index="index">
 
-    <inz-form [form]="machineToolElementsForms[index]" label="Base">
+    <inz-form [form]="machineToolElementsForms.controls[index]" label="Base">
       <inz-input controlName="name" label="Name"></inz-input>
       <inz-input controlName="description" label="Description"></inz-input>
       <inz-input controlName="weight" label="Weight"></inz-input>

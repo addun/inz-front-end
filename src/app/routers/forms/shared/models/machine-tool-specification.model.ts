@@ -38,12 +38,18 @@ export class MachineToolSpecification extends MachineTool {
       measuring_capability: new FormGroup(MeasuringCapability.getFormControls(loadModel.measuring_capability)),
       environmental_evaluation: new FormGroup(EnvironmentalEvaluation.getFormControls(loadModel.environmental_evaluation)),
       location: new FormGroup(Location.getFormControls(loadModel.location)),
-      installation: new FormGroup(Installation.getFormControls(loadModel.installation))
+      installation: new FormGroup(Installation.getFormControls(loadModel.installation)),
+      its_elements: new FormArray([]),
     });
 
     loadModel.machining_capabilities.forEach(mc => {
       formControls.machining_capabilities.push(new FormGroup(
         MachiningCapability.getFormControls(mc)
+      ));
+    });
+    loadModel.its_elements.forEach(itsElement => {
+      formControls.its_elements.push(new FormGroup(
+        MachineToolElement.getFormControls(itsElement)
       ));
     });
 

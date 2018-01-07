@@ -9,9 +9,9 @@
       <inz-input type="select" controlName="probe_type" label="Probe type"
                  [options]="probeType"></inz-input>
 
-      <inz-form [form]="formGroups[index].controls['device_id']" label="Device id" [required]="true">
-        <inz-device-id-controls></inz-device-id-controls>
-      </inz-form>
+
+      <inz-device-id-form [deviceIdForm]="formGroups[index].controls['device_id']"
+                          label="Device id"></inz-device-id-form>
 
     </inz-form>
   </ng-template>

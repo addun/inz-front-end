@@ -5,12 +5,11 @@
       <inz-input controlName="description" label="Description"></inz-input>
       <inz-input type="select" controlName="probe_type" [options]="probeType" label="Probe type"></inz-input>
       <inz-input type="select" controlName="dimensionality" [options]="sensorDimensionality"
-                  label="Dimensionality"></inz-input>
+                 label="Dimensionality"></inz-input>
       <inz-input controlName="setting_time" label="Setting time"></inz-input>
 
-      <inz-form [form]="formGroups[index].controls['device_id']" label="Device id" >
-        <inz-device-id-controls></inz-device-id-controls>
-      </inz-form>
+      <inz-device-id-form [deviceIdForm]="formGroups[index].controls['device_id']"
+                          label="Device id"></inz-device-id-form>
 
     </inz-form>
   </ng-template>

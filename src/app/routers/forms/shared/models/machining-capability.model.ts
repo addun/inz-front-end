@@ -12,7 +12,7 @@ export class MachiningCapability {
     Object.assign(this, machiningCapability);
   }
 
-  public static getFormControls(loadModel?: MachiningCapability): { [key: string]: AbstractControl } {
+  public static getFormControls(loadModel?): { [key: string]: AbstractControl } {
     if (!loadModel) {
       loadModel = new MachiningCapability();
     }

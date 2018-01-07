@@ -3,9 +3,12 @@
   <ng-template #controls let-index="index">
     <inz-form [form]="formGroups[index]" label="Base">
       <inz-input controlName="description" label="Description"></inz-input>
-      <inz-form [form]="formGroups[index].controls['device_id']" label="Device id">
-        <inz-device-id-controls></inz-device-id-controls>
-      </inz-form>
+
+
+      <inz-device-id-form [deviceIdForm]="formGroups[index].controls['device_id']"
+                          label="Device id"></inz-device-id-form>
+
+
     </inz-form>
   </ng-template>
 

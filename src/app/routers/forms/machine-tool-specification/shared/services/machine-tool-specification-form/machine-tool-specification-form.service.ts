@@ -30,6 +30,10 @@ export class MachineToolSpecificationFormService {
     return <FormArray>this.environmentalEvaluation.controls['power_for_standard_machining'];
   }
 
+  get itsElements() {
+    return <FormArray>this.machineToolSpecificationForm.controls['its_elements'];
+  }
+
   buildMachineToolSpecificationFromModel(model: MachineToolSpecification) {
     this.machineToolSpecificationForm = new FormGroup(MachineToolSpecification.getFormControls(model));
   }
