@@ -1,7 +1,7 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Collet">
+<inz-form-array [forms]="colletGroups" [formGroupGenerator]="generator" label="Collet">
 
   <ng-template #controls let-index="index">
-    <inz-form [form]="formGroups[index]">
+    <inz-form [form]="colletGroups.controls[index]">
       <inz-input controlName="description" label="Description"></inz-input>
       <inz-input controlName="collet_type" label="Collet type"></inz-input>
       <inz-input controlName="minimum_part_diameter" label="Minimum Part Diameter"></inz-input>

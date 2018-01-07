@@ -1,5 +1,5 @@
 import {ToolHandlingUnit} from './tool-handling-unit.model';
-import {AbstractControl, FormControl, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ToolStorageConfiguration} from '../types/tool-storage-configuration.type';
 import {ToolAssembly} from './tool-assembly.model';
 
@@ -23,7 +23,7 @@ export class ToolMagazine extends ToolHandlingUnit {
       loadModel = new ToolMagazine();
     }
 
-    return Object.assign(ToolHandlingUnit.getFormControls(loadModel), {
+    const formControls = Object.assign(ToolHandlingUnit.getFormControls(loadModel), {
       number_of_tools: new FormControl(loadModel.number_of_tools, Validators.required),
       random_access: new FormControl(loadModel.random_access, Validators.required),
       diameter_full: new FormControl(loadModel.diameter_full, Validators.required),
@@ -31,6 +31,15 @@ export class ToolMagazine extends ToolHandlingUnit {
       tool_length: new FormControl(loadModel.tool_length, Validators.required),
       tool_weight: new FormControl(loadModel.tool_weight, Validators.required),
       storage_configuration: new FormControl(loadModel.storage_configuration),
+      tool_magazine_contents: new FormArray([]),
     });
+
+    loadModel.tool_magazine_contents.forEach(element => {
+      formControls.tool_magazine_contents.push(new FormGroup(
+        ToolAssembly.getFormControls(element)
+      ));
+    });
+
+    return formControls;
   }
 }

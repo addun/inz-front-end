@@ -59,7 +59,7 @@ class Capabilities {
   tool_breakages: ToolBreakage[] = [];
   part_probes: PartProbe[] = [];
   tool_settings: ToolSetting[] = [];
-  coolant: Coolant[] = [];
+  coolants: Coolant[] = [];
   machine_tool_axes: MachineToolAxis[] = [];
   linear_axes: LinearAxis[] = [];
   continuous_rotaries: ContinuousRotary[] = [];
@@ -94,7 +94,7 @@ class Capabilities {
       tool_breakages: new FormArray([]),
       part_probes: new FormArray([]),
       tool_settings: new FormArray([]),
-      coolant: new FormArray([]),
+      coolants: new FormArray([]),
       machine_tool_axes: new FormArray([]),
       linear_axes: new FormArray([]),
       continuous_rotaries: new FormArray([]),
@@ -148,8 +148,8 @@ class Capabilities {
         ToolSetting.getFormControls(item)
       ));
     });
-    loadModel.coolant.forEach(item => {
-      formControls.coolant.push(new FormGroup(
+    loadModel.coolants.forEach(item => {
+      formControls.coolants.push(new FormGroup(
         Coolant.getFormControls(item)
       ));
     });

@@ -10,7 +10,7 @@ import {MachineToolSpecificationFormService} from '../../shared/services';
   styleUrls: ['./bar-feeder.component.sass']
 })
 export class BarFeederComponent implements OnInit {
-  BarFeederForm: FormArray;
+  barFeederForm: FormArray;
   generator = BarFeeder.getFormControls;
   private machineToolElementId: number;
 
@@ -24,7 +24,7 @@ export class BarFeederComponent implements OnInit {
       .params
       .subscribe(params => {
         this.machineToolElementId = +params['machineToolElementId'];
-        this.BarFeederForm = this.machineToolSpecificationFormService.getBarFeeder(this.machineToolElementId);
+        this.barFeederForm = this.machineToolSpecificationFormService.getBarFeeders(this.machineToolElementId);
       });
   }
 }

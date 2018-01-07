@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {ToolChanger} from '../../../shared/models/tool-changer.model';
 import {ActivatedRoute} from '@angular/router';
-import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
+import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({
   selector: 'inz-tool-changer',
@@ -10,45 +10,18 @@ import {MachineToolSpecificationService} from '../../shared/services/machine-too
   styleUrls: ['./tool-changer.component.sass']
 })
 export class ToolChangerComponent implements OnInit {
-  formGroups: FormGroup[];
+  toolChangerForm: FormArray;
   generator = ToolChanger.getFormControls;
-  private activeArrayIndex: number;
+  private machineToolElementId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
   }
 
-  get model() {
-    return this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tool_changer;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tool_changer = model;
-  }
-
   ngOnInit(): void {
-    this.activatedRoute
-      .parent
-      .params
-      .subscribe(params => {
-        this.activeArrayIndex = +params['machineToolElementId'];
-        this.formGroups = this.buildForms();
-        console.log(this.formGroups);
-      });
-  }
-
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(ToolChanger.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new ToolChanger(form.value));
+    this.activatedRoute.parent.params.subscribe(params => {
+      this.machineToolElementId = +params['machineToolElementId'];
+      this.toolChangerForm = this.machineToolSpecificationFormService.getToolChangers(this.machineToolElementId);
     });
   }
 

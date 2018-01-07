@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {Collet} from '../../../shared/models/collet.model';
+import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({
   selector: 'inz-collet',
@@ -10,20 +10,12 @@ import {Collet} from '../../../shared/models/collet.model';
   styleUrls: ['./collet.component.sass']
 })
 export class ColletComponent implements OnInit {
-  formGroups: FormGroup[];
+  colletGroups: FormArray;
   generator = Collet.getFormControls;
-  private activeArrayIndex: number;
+  private machineToolElementId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
-  }
-
-  get model() {
-    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.collets;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.collets = model;
   }
 
   ngOnInit(): void {
@@ -31,21 +23,9 @@ export class ColletComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = +params['machineToolElementId'];
-        this.formGroups = this.buildForms();
+        this.machineToolElementId = +params['machineToolElementId'];
+        this.colletGroups = this.machineToolSpecificationFormService.getCollets(this.machineToolElementId);
       });
   }
 
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(Collet.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new Collet(form.value));
-    });
-  }
 }

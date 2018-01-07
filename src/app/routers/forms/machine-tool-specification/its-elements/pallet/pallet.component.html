@@ -1,7 +1,7 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Pallet">
+<inz-form-array [forms]="palletForm" [formGroupGenerator]="generator" label="Pallet">
 
   <ng-template #controls let-index="index">
-    <inz-pallet-form [palletForm]="formGroups[index]"></inz-pallet-form>
+    <inz-pallet-form [palletForm]="palletForm.controls[index]"></inz-pallet-form>
   </ng-template>
 
 </inz-form-array>

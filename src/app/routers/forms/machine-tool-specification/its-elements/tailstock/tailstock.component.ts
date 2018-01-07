@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {Tailstock} from '../../../shared/models/tailstock.model';
+import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({
   selector: 'inz-tailstock',
@@ -10,20 +10,12 @@ import {Tailstock} from '../../../shared/models/tailstock.model';
   styleUrls: ['./tailstock.component.sass']
 })
 export class TailstockComponent implements OnInit {
-  formGroups: FormGroup[];
+  tailstockForm: FormArray;
   generator = Tailstock.getFormControls;
-  private activeArrayIndex: number;
+  private machineToolElementId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
-  }
-
-  get model() {
-    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tailstocks;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tailstocks = model;
   }
 
   ngOnInit(): void {
@@ -31,21 +23,9 @@ export class TailstockComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = +params['machineToolElementId'];
-        this.formGroups = this.buildForms();
+        this.machineToolElementId = +params['machineToolElementId'];
+        this.tailstockForm = this.machineToolSpecificationFormService.getTailstocks(this.machineToolElementId);
       });
   }
 
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(Tailstock.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new Tailstock(form.value));
-    });
-  }
 }

@@ -15,7 +15,6 @@ import {LinearAxisComponent} from './linear-axis/linear-axis.component';
 import {ContinuousRotaryComponent} from './continuous-rotary/continuous-rotary.component';
 import {IndexingComponent} from './indexing/indexing.component';
 import {LimitedSwingComponent} from './limited-swing/limited-swing.component';
-import {PalletComponent} from './pallet/pallet.component';
 import {CircularWorkTableComponent} from './circular-work-table/circular-work-table.component';
 import {RectangularWorkTableComponent} from './rectangular-work-table/rectangular-work-table.component';
 import {TurretComponent} from './turret/turret.component';
@@ -33,6 +32,7 @@ import {TaperedSpindleComponent} from './tapered-spindle/tapered-spindle.compone
 import {ThreadedSpindleComponent} from './threaded-spindle/threaded-spindle.component';
 import {ThreadedSpindleRangeComponent} from './threaded-spindle/threaded-spindle-range/threaded-spindle-range.component';
 import {StraightSpindleRangeComponent} from './straight-spindle/straight-spindle-range/straight-spindle-range.component';
+import {PalletComponent} from './pallet/pallet.component';
 
 const routes: Routes = [
   {
@@ -139,10 +139,17 @@ const routes: Routes = [
             }
           },
           {
-            path: 'rectangularWorkTables',
+            path: 'pallet',
             component: PalletComponent,
             data: {
               breadcrumb: 'Pallet'
+            }
+          },
+          {
+            path: 'rectangular-work-tables',
+            component: RectangularWorkTableComponent,
+            data: {
+              breadcrumb: 'Rectangular work tables'
             }
           },
           {

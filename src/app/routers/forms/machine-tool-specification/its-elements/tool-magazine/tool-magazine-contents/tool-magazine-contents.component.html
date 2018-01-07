@@ -1,7 +1,7 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Tool assembly">
+<inz-form-array [forms]="toolMagazineContentForm" [formGroupGenerator]="generator" label="Tool assembly">
 
   <ng-template #controls let-index="index">
-    <inz-tool-assembly-form [toolAssemblyForm]="formGroups[index]"></inz-tool-assembly-form>
+    <inz-tool-assembly-form [toolAssemblyForm]="toolMagazineContentForm.controls[index]"></inz-tool-assembly-form>
   </ng-template>
 
 

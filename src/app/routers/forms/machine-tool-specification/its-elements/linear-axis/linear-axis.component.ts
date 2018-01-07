@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {LinearAxis} from '../../../shared/models/linear-axis.model';
 import {ActivatedRoute} from '@angular/router';
-import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
+import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({
   selector: 'inz-linear-axis',
@@ -10,22 +10,12 @@ import {MachineToolSpecificationService} from '../../shared/services/machine-too
   styleUrls: ['./linear-axis.component.sass']
 })
 export class LinearAxisComponent implements OnInit {
-  formGroups: FormGroup[];
+  linearAxisForm: FormArray;
   generator = LinearAxis.getFormControls;
-  private activeArrayIndex: number;
+  private machineToolElementId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
-  }
-
-  get model() {
-    return this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.linear_axis;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.linear_axis = model;
   }
 
   ngOnInit(): void {
@@ -33,22 +23,9 @@ export class LinearAxisComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = +params['machineToolElementId'];
-        this.formGroups = this.buildForms();
+        this.machineToolElementId = +params['machineToolElementId'];
+        this.linearAxisForm = this.machineToolSpecificationFormService.getLinearAxes(this.machineToolElementId);
       });
-  }
-
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(LinearAxis.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new LinearAxis(form.value));
-    });
   }
 
 }

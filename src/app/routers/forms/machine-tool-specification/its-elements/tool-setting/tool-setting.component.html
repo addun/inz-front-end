@@ -1,7 +1,7 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Tailstock">
+<inz-form-array [forms]="toolSetting" [formGroupGenerator]="generator" label="Tailstock">
 
   <ng-template #controls let-index="index">
-    <inz-form [form]="formGroups[index]" label="Base">
+    <inz-form [form]="toolSetting.controls[index]" label="Base">
       <inz-input controlName="description" label="Description"></inz-input>
       <inz-input type="checkbox" controlName="measuring_radius" label="Measuring radius"></inz-input>
       <inz-input type="checkbox" controlName="measuring_length" label="Measuring length"></inz-input>
@@ -10,7 +10,7 @@
                  [options]="probeType"></inz-input>
 
 
-      <inz-device-id-form [deviceIdForm]="formGroups[index].controls['device_id']"
+      <inz-device-id-form [deviceIdForm]="toolSetting.controls[index].controls['device_id']"
                           label="Device id"></inz-device-id-form>
 
     </inz-form>

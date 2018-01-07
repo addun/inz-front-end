@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CircularWorkTable} from '../../../shared/models/circular-work-table.model';
 import {FormGroup} from '@angular/forms';
-import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {ActivatedRoute} from '@angular/router';
+import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({
   selector: 'inz-circular-work-table',
@@ -10,22 +10,12 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./circular-work-table.component.sass']
 })
 export class CircularWorkTableComponent implements OnInit {
-  formGroups: FormGroup[];
+  circularWorkTableForm: FormGroup[];
   generator = CircularWorkTable.getFormControls;
-  private activeArrayIndex: number;
+  private machineToolElementId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
-  }
-
-  get model() {
-    return this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.circular_work_tables;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.circular_work_tables = model;
   }
 
   ngOnInit(): void {
@@ -33,21 +23,8 @@ export class CircularWorkTableComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = +params['machineToolElementId'];
-        this.formGroups = this.buildForms();
+        this.machineToolElementId = +params['machineToolElementId'];
+        this.circularWorkTableForm = this.machineToolSpecificationFormService.getCircularWorkTables(this.machineToolElementId);
       });
-  }
-
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(CircularWorkTable.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new CircularWorkTable(form.value));
-    });
   }
 }

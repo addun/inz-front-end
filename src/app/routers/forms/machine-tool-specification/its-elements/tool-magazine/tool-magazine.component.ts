@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {ToolMagazine} from '../../../shared/models/tool-magazine.model';
-import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {ActivatedRoute} from '@angular/router';
+import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({
   selector: 'inz-tool-magazine',
@@ -10,44 +10,18 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./tool-magazine.component.sass']
 })
 export class ToolMagazineComponent implements OnInit {
-  formGroups: FormGroup[];
+  toolMagazineForm: FormArray;
   generator = ToolMagazine.getFormControls;
-  private activeArrayIndex: number;
+  private machineToolElementId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
   }
 
-  get model() {
-    return this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tool_magazine;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tool_magazine = model;
-  }
-
   ngOnInit(): void {
-    this.activatedRoute
-      .parent.parent
-      .paramMap
-      .subscribe(params => {
-        this.activeArrayIndex = +params.get('machineToolElementId');
-        this.formGroups = this.buildForms();
-      });
-  }
-
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(ToolMagazine.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new ToolMagazine(form.value));
+    this.activatedRoute.parent.parent.params.subscribe(params => {
+      this.machineToolElementId = +params['machineToolElementId'];
+      this.toolMagazineForm = this.machineToolSpecificationFormService.getToolMagazines(this.machineToolElementId);
     });
   }
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SpindleRange} from '../../../../shared/models/spindle-range.model';
-import {FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {MachineToolSpecificationService} from '../../../shared/services/machine-tool-specification/machine-tool-specification.service';
+import {MachineToolSpecificationFormService} from '../../../shared/services';
+import {FormArray} from '@angular/forms';
 
 @Component({
   selector: 'inz-work-spindle-range',
@@ -10,49 +10,25 @@ import {MachineToolSpecificationService} from '../../../shared/services/machine-
   styleUrls: ['./work-spindle-range.component.sass']
 })
 export class WorkSpindleRangeComponent implements OnInit {
-  formGroups: FormGroup[];
+  spindleRangeForm: FormArray;
   generator = SpindleRange.getFormControls;
-  private activeArrayIndex: number;
-  private spindleIndex: number;
+  private machineToolElementId: number;
+  private spindleId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
   }
 
-  get model() {
-    return this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.work_spindle[this.spindleIndex].range;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.work_spindle[this.spindleIndex].range = model;
-  }
-
   ngOnInit(): void {
-    this.activatedRoute
-      .parent.parent.parent
-      .params.subscribe(params => {
-      this.activeArrayIndex = +params['machineToolElementId'];
+    this.activatedRoute.parent.parent.parent.params.subscribe(params => {
 
-      this.activatedRoute
-        .parent.paramMap.subscribe(paramMap => {
-        this.spindleIndex = +paramMap.get('spindleId');
-        this.formGroups = this.buildForms();
+      this.machineToolElementId = +params['machineToolElementId'];
+
+      this.activatedRoute.parent.params.subscribe(pppparams => {
+        this.spindleId = +pppparams['spindleId'];
+        this.spindleRangeForm = this.machineToolSpecificationFormService.getWorkSpindleRange(this.machineToolElementId, this.spindleId);
       });
-    });
-  }
 
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(SpindleRange.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new SpindleRange(form.value));
     });
   }
 }

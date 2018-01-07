@@ -1,15 +1,13 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Tool breakage">
+<inz-form-array [forms]="toolBreakageForm" [formGroupGenerator]="generator" label="Tool breakage">
 
   <ng-template #controls let-index="index">
-    <inz-form [form]="formGroups[index]" label="Base">
+
+    <inz-form [form]="toolBreakageForm.controls[index]">
       <inz-input controlName="description" label="Description"></inz-input>
-
-
-      <inz-device-id-form [deviceIdForm]="formGroups[index].controls['device_id']"
+      <inz-device-id-form [deviceIdForm]="toolBreakageForm.controls[index].controls['device_id']"
                           label="Device id"></inz-device-id-form>
-
-
     </inz-form>
+
   </ng-template>
 
 </inz-form-array>

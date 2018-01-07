@@ -1,7 +1,7 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Continuous rotary">
+<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" label="Continuous rotary">
 
   <ng-template #controls let-index="index">
-    <inz-continuous-rotary-form [continuousRotaryForm]="formGroups[index]"></inz-continuous-rotary-form>
+    <inz-continuous-rotary-form [continuousRotaryForm]="formGroups.controls[index]"></inz-continuous-rotary-form>
   </ng-template>
 
 </inz-form-array>

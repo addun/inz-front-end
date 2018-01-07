@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {Pallet} from '../../../shared/models/pallet.model';
-import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {ActivatedRoute} from '@angular/router';
+import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({
   selector: 'inz-pallet',
@@ -10,22 +10,12 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./pallet.component.sass']
 })
 export class PalletComponent implements OnInit {
-  formGroups: FormGroup[];
+  palletForm: FormArray;
   generator = Pallet.getFormControls;
-  private activeArrayIndex: number;
+  private machineToolElementId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
-  }
-
-  get model() {
-    return this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.pallet;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.pallet = model;
   }
 
   ngOnInit(): void {
@@ -33,21 +23,9 @@ export class PalletComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = +params['machineToolElementId'];
-        this.formGroups = this.buildForms();
+        this.machineToolElementId = +params['machineToolElementId'];
+        this.palletForm = this.machineToolSpecificationFormService.getPallets(this.machineToolElementId);
       });
   }
 
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(Pallet.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new Pallet(form.value));
-    });
-  }
 }

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {MachineToolSpecificationService} from '../../shared/services/machine-tool-specification/machine-tool-specification.service';
 import {ToolSetting} from '../../../shared/models/tool-setting.model';
 import {ProbeType} from '../../../shared/types/probe-type.type';
+import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({
   selector: 'inz-tool-setting',
@@ -11,21 +11,13 @@ import {ProbeType} from '../../../shared/types/probe-type.type';
   styleUrls: ['./tool-setting.component.sass']
 })
 export class ToolSettingComponent implements OnInit {
-  formGroups: FormGroup[];
+  toolSetting: FormArray;
   generator = ToolSetting.getFormControls;
   probeType = ProbeType;
-  private activeArrayIndex: number;
+  private machineToolElementId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
-  }
-
-  get model() {
-    return this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tool_settings;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService.machine_tool_specification.its_elements[this.activeArrayIndex].capabilities.tool_settings = model;
   }
 
   ngOnInit(): void {
@@ -33,21 +25,9 @@ export class ToolSettingComponent implements OnInit {
       .parent
       .params
       .subscribe(params => {
-        this.activeArrayIndex = +params['machineToolElementId'];
-        this.formGroups = this.buildForms();
+        this.machineToolElementId = +params['machineToolElementId'];
+        this.toolSetting = this.machineToolSpecificationFormService.getToolSettings(this.machineToolElementId);
       });
   }
 
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(ToolSetting.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new ToolSetting(form.value));
-    });
-  }
 }

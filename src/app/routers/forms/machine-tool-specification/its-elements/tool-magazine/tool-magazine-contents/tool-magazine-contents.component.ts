@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ToolAssembly} from '../../../../shared/models/tool-assembly.model';
 import {ActivatedRoute} from '@angular/router';
-import {MachineToolSpecificationService} from '../../../shared/services/machine-tool-specification/machine-tool-specification.service';
-import {FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
+import {MachineToolSpecificationFormService} from '../../../shared/services';
 
 @Component({
   selector: 'inz-tool-magazine-contents',
@@ -10,54 +10,24 @@ import {FormGroup} from '@angular/forms';
   styleUrls: ['./tool-magazine-contents.component.sass']
 })
 export class ToolMagazineContentsComponent implements OnInit {
-  formGroups: FormGroup[];
+  toolMagazineContentForm: FormArray;
   generator = ToolAssembly.getFormControls;
   private machineToolElementId: number;
-  private turretIdIndex: number;
+  private toolMagazineId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
   }
 
-  get model() {
-    return this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.machineToolElementId]
-      .capabilities.tool_magazine[this.turretIdIndex].tool_magazine_contents;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.machineToolElementId]
-      .capabilities.tool_magazine[this.turretIdIndex].tool_magazine_contents = model;
-  }
-
   ngOnInit(): void {
-    this.activatedRoute.parent.paramMap
-      .subscribe(paramMap => {
-        this.turretIdIndex = +paramMap.get('toolMagazineId');
+    this.activatedRoute.parent.parent.parent.params.subscribe(params => {
 
-        this.activatedRoute
-          .parent.parent.parent
-          .paramMap.subscribe(pparamMap => {
-          this.machineToolElementId = +pparamMap.get('machineToolElementId');
-          this.formGroups = this.buildForms();
-        });
-
+      this.machineToolElementId = +params['machineToolElementId'];
+      this.activatedRoute.parent.params.subscribe(pppparams => {
+        this.toolMagazineId = pppparams['toolMagazineId'];
+        this.toolMagazineContentForm = this.machineToolSpecificationFormService.getToolMagazineContents(this.machineToolElementId, this.toolMagazineId);
       });
 
-
-  }
-
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(ToolAssembly.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new ToolAssembly(form.value));
     });
   }
 }

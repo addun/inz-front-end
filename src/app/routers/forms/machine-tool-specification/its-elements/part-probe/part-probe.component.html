@@ -1,14 +1,14 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Part probe">
+<inz-form-array [forms]="partProbeForm" [formGroupGenerator]="generator" label="Part probe">
 
   <ng-template #controls let-index="index">
-    <inz-form [form]="formGroups[index]" label="Base">
+    <inz-form [form]="partProbeForm.controls[index]">
       <inz-input controlName="description" label="Description"></inz-input>
       <inz-input type="select" controlName="probe_type" [options]="probeType" label="Probe type"></inz-input>
       <inz-input type="select" controlName="dimensionality" [options]="sensorDimensionality"
                  label="Dimensionality"></inz-input>
       <inz-input controlName="setting_time" label="Setting time"></inz-input>
 
-      <inz-device-id-form [deviceIdForm]="formGroups[index].controls['device_id']"
+      <inz-device-id-form [deviceIdForm]="partProbeForm.controls[index].controls['device_id']"
                           label="Device id"></inz-device-id-form>
 
     </inz-form>

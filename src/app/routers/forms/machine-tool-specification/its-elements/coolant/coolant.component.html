@@ -1,7 +1,8 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Coolant">
+<inz-form-array [forms]="coolantForm" [formGroupGenerator]="generator" label="Coolant">
 
   <ng-template #controls let-index="index">
-    <inz-form [form]="formGroups[index]">
+
+    <inz-form [form]="coolantForm.controls[index]">
       <inz-input controlName="description" label="Description"></inz-input>
       <inz-input type="select" controlName="coolant_type" label="Coolant type"
                   [options]="coolantType"></inz-input>
@@ -9,7 +10,6 @@
                   [options]="meansOfCoolantDelivery"></inz-input>
       <inz-input controlName="capacity_of_coolant_tank" label="Capacity of coolant tank"></inz-input>
       <inz-input controlName="coolant_weight" label="Coolant weight"></inz-input>
-
     </inz-form>
   </ng-template>
 

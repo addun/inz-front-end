@@ -24,7 +24,7 @@ export class ChuckComponent implements OnInit {
       .params
       .subscribe(params => {
         this.machineToolElementId = +params['machineToolElementId'];
-        this.chuckForm = this.machineToolSpecificationFormService.getChuck(this.machineToolElementId);
+        this.chuckForm = this.machineToolSpecificationFormService.getChucks(this.machineToolElementId);
       });
   }
 

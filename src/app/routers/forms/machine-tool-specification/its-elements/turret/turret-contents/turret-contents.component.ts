@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ToolAssembly} from '../../../../shared/models/tool-assembly.model';
-import {MachineToolSpecificationService} from '../../../shared/services/machine-tool-specification/machine-tool-specification.service';
-import {FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
+import {MachineToolSpecificationFormService} from '../../../shared/services';
 
 @Component({
   selector: 'inz-turret-contents',
@@ -10,54 +10,30 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./turret-contents.component.sass']
 })
 export class TurretContentsComponent implements OnInit {
-  formGroups: FormGroup[];
+  turretAssemblyForm: FormArray;
   generator = ToolAssembly.getFormControls;
   private machineToolElementId: number;
-  private turretIdIndex: number;
+  private turretId: number;
 
-  constructor(private machineToolSpecificationService: MachineToolSpecificationService,
+  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private activatedRoute: ActivatedRoute) {
   }
 
-  get model() {
-    return this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.machineToolElementId]
-      .capabilities.turret[this.turretIdIndex].turret_contents;
-  }
-
-  set model(model) {
-    this.machineToolSpecificationService
-      .machine_tool_specification.its_elements[this.machineToolElementId]
-      .capabilities.turret[this.turretIdIndex].turret_contents = model;
-  }
-
   ngOnInit(): void {
-    this.activatedRoute.parent.paramMap
-      .subscribe(paramMap => {
-        this.turretIdIndex = +paramMap.get('turretId');
+    this.activatedRoute
+      .parent.parent.parent
+      .params.subscribe(params => {
 
-        this.activatedRoute
-          .parent.parent.parent
-          .paramMap.subscribe(pparamMap => {
-          this.machineToolElementId = +pparamMap.get('machineToolElementId');
-          this.formGroups = this.buildForms();
-        });
+      this.machineToolElementId = +params['machineToolElementId'];
 
+      this.activatedRoute
+        .parent.params.subscribe(pppparams => {
+        this.turretId = pppparams['turretId'];
+        this.turretAssemblyForm = this.machineToolSpecificationFormService.getTurretContents(this.machineToolElementId, this.turretId);
+
+        console.log(this.turretAssemblyForm);
       });
 
-
-  }
-
-  buildForms(): FormGroup[] {
-    return this.model.map(capability => {
-      return new FormGroup(ToolAssembly.getFormControls(capability));
-    });
-  }
-
-  save() {
-    this.model = [];
-    this.formGroups.forEach(form => {
-      this.model.push(new ToolAssembly(form.value));
     });
   }
 

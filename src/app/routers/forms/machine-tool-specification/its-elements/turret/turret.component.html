@@ -1,7 +1,7 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Turret">
+<inz-form-array [forms]="turretForm" [formGroupGenerator]="generator" label="Turret">
 
   <ng-template #controls let-index="index">
-    <inz-turret-form [turretForm]="formGroups[index]"></inz-turret-form>
+    <inz-turret-form [turretForm]="turretForm.controls[index]"></inz-turret-form>
     <inz-form-href [href]="index + '/turret-contents'" label="Turret contents"></inz-form-href>
   </ng-template>
 

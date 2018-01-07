@@ -1,7 +1,7 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Tailstock">
+<inz-form-array [forms]="tailstockForm" [formGroupGenerator]="generator" label="Tailstock">
 
   <ng-template #controls let-index="index">
-    <inz-form [form]="formGroups[index]" label="Base">
+    <inz-form [form]="tailstockForm.controls[index]">
       <inz-input controlName="description" label="Description"></inz-input>
       <inz-input controlName="spindle_name" label="Spindle Name"></inz-input>
       <inz-input controlName="maximum_workpiece_weight_of_quill"

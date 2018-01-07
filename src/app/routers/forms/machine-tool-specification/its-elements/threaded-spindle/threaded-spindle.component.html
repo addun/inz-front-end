@@ -1,7 +1,7 @@
-<inz-form-array [forms]="formGroups" [formGroupGenerator]="generator" (save)="save()" label="Threaded spindle">
+<inz-form-array [forms]="threadedSpindleForm" [formGroupGenerator]="generator" label="Threaded spindle">
 
   <ng-template #controls let-index="index">
-    <inz-threaded-spindle-form [threadedSpindleForm]="formGroups[index]"></inz-threaded-spindle-form>
+    <inz-threaded-spindle-form [threadedSpindleForm]="threadedSpindleForm.controls[index]"></inz-threaded-spindle-form>
     <inz-form-href [href]="index+'/range'" label="Range"></inz-form-href>
   </ng-template>
 

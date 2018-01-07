@@ -13,6 +13,10 @@
 
     </inz-input>
 
+    <div *ngIf="formControls.length === 0" class="alert alert-info">
+      Click button to add new <strong>{{label}}</strong>
+    </div>
+
     <div class="text-right">
       <button class="btn btn-primary" (click)="addNewRow()">Add</button>
     </div>

@@ -1,5 +1,5 @@
 import {SpindleRange} from './spindle-range.model';
-import {AbstractControl, FormControl, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ElementCapability} from './element-capability.model';
 
 export class Spindle extends ElementCapability {
@@ -19,11 +19,22 @@ export class Spindle extends ElementCapability {
       loadModel = new Spindle();
     }
 
-    return Object.assign(ElementCapability.getFormControls(loadModel), {
+    const formControls = Object.assign(ElementCapability.getFormControls(loadModel), {
       spindle_power: new FormControl(loadModel.spindle_power, Validators.required),
       spindle_name: new FormControl(loadModel.spindle_name, Validators.required),
       spindle_manufacturer: new FormControl(loadModel.spindle_manufacturer),
       manufacturer_model_designation: new FormControl(loadModel.manufacturer_model_designation),
+      range: new FormArray([]),
     });
+
+    loadModel.range.forEach(element => {
+      formControls.range.push(new FormGroup(
+        SpindleRange.getFormControls(element)
+      ));
+    });
+
+    return formControls;
+
   }
 }
+
