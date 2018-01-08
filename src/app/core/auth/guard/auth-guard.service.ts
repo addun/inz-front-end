@@ -1,6 +1,5 @@
-import { resolve } from 'q';
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from './../service/auth.service';
+import { AuthService } from '../service/auth.service';
 import { ActivatedRouteSnapshot, CanActivateChild, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 

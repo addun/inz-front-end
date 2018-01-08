@@ -30,8 +30,6 @@ export class TurretContentsComponent implements OnInit {
         .parent.params.subscribe(pppparams => {
         this.turretId = pppparams['turretId'];
         this.turretAssemblyForm = this.machineToolSpecificationFormService.getTurretContents(this.machineToolElementId, this.turretId);
-
-        console.log(this.turretAssemblyForm);
       });
 
     });

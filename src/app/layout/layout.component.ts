@@ -14,4 +14,7 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToStartPage() {
+    this.router.navigate(['/']);
+  }
 }

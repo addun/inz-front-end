@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
 import {KeysPipe} from './pipes/keys/keys.pipe';
 import {CardComponent} from './components/card/card.component';
@@ -46,7 +45,6 @@ import {LocationFormComponent} from './forms/location-form/location-form.compone
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    NgbModule.forRoot(),
   ],
   declarations: [
     KeysPipe,
@@ -92,7 +90,6 @@ import {LocationFormComponent} from './forms/location-form/location-form.compone
     MachineToolSpecificationFormComponent,
     KeysPipe,
     ReactiveFormsModule,
-    NgbModule,
     MachiningCapabilityFormComponent,
     RouterOutletComponent,
     ChuckFormComponent,

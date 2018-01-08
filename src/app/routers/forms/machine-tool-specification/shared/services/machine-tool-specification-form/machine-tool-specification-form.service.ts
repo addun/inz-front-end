@@ -4,15 +4,20 @@ import {MachineToolSpecification} from '../../../../shared/models';
 
 @Injectable()
 export class MachineToolSpecificationFormService {
-
   constructor() {
   }
 
-  private _machineToolSpecificationForm = new FormGroup(MachineToolSpecification.getFormControls(new MachineToolSpecification({
-    its_elements: [{
-      name: 'test'
-    }]
-  })));
+  private _machineToolSpecificationId: number;
+
+  get machineToolSpecificationId(): number {
+    return this._machineToolSpecificationId;
+  }
+
+  set machineToolSpecificationId(value: number) {
+    this._machineToolSpecificationId = value;
+  }
+
+  private _machineToolSpecificationForm;
 
   get machineToolSpecificationForm() {
     return this._machineToolSpecificationForm;
@@ -36,6 +41,14 @@ export class MachineToolSpecificationFormService {
 
   get itsElements() {
     return <FormArray>this.machineToolSpecificationForm.controls['its_elements'];
+  }
+
+  loadMachineToolSpecificationFormFromModel(machineToolSpecification) {
+    this.machineToolSpecificationForm = new FormGroup(
+      MachineToolSpecification.getFormControls(
+        new MachineToolSpecification(machineToolSpecification)
+      )
+    );
   }
 
   getCapabilities(index) {

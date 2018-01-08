@@ -19,7 +19,6 @@ export class InputArrayComponent extends InputComponent implements OnInit {
   addNewRow() {
     const clone = new FormControl();
     (<FormArray>this.form.controls[this.controlName]).push(clone);
-    console.log(this.form.controls[this.controlName]);
   }
 
   removeRow(i: number) {

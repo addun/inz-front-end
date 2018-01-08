@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ToastModule} from 'ng2-toastr';
 import {AuthGuardService} from './auth/guard/auth-guard.service';
 import {BrowserModule} from '@angular/platform-browser';
+import {ApiToastService} from './toast/api-toast.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {BrowserModule} from '@angular/platform-browser';
     ApiService,
     AuthService,
     AuthToastService,
-    AuthGuardService
+    AuthGuardService,
+    ApiToastService
   ],
   declarations: []
 })

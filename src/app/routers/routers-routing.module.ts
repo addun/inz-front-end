@@ -21,8 +21,8 @@ const routes: Routes = [
     loadChildren: './auth/auth.module#AuthModule'
   },
   {
-    path: '',
-    redirectTo: 'forms/machine-tool-specification'
+    path: '**',
+    redirectTo: '/tree'
   },
 ];
 

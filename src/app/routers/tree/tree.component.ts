@@ -3,6 +3,8 @@ import {MenuItemSelectedEvent, NodeEvent, NodeMenuItemAction, Tree, TreeComponen
 import {TreeService} from './services/tree/tree.service';
 import {Router} from '@angular/router';
 import {Directory} from './models/directory.model';
+import {MachineToolSpecificationFormService, MachineToolSpecificationService} from '../forms/machine-tool-specification/shared/services';
+import {MachineToolSpecification} from '../forms/shared/models/machine-tool-specification.model';
 
 @Component({
   selector: 'inz-tree',
@@ -38,8 +40,11 @@ export class TreeComponent implements OnInit, AfterViewInit {
     }
   };
   selectedNode: Tree;
+  machineToolSpecifications: any[] = [];
 
   constructor(private treeService: TreeService,
+              private machineToolSpecificationFormService: MachineToolSpecificationFormService,
+              private machineToolSpecificationService: MachineToolSpecificationService,
               private router: Router) {
   }
 
@@ -62,7 +67,16 @@ export class TreeComponent implements OnInit, AfterViewInit {
   }
 
   onNodeSelected(e: NodeEvent): void {
-    this.selectedNode = e.node;
+    if (e.node.id !== 'root') {
+      this.selectedNode = e.node;
+      this.treeService.getMachineToolSpecificationsInNode(+this.selectedNode.id)
+        .subscribe(data => {
+          this.machineToolSpecifications = data;
+        });
+    } else {
+      this.selectedNode = null;
+    }
+
   }
 
 
@@ -80,6 +94,49 @@ export class TreeComponent implements OnInit, AfterViewInit {
 
   public onNodeCreated(e: NodeEvent): void {
     this.saveNode(e.node);
+  }
+
+  removeMachineToolSpecification(id: number) {
+    if (confirm('Are you sure?')) {
+      this.machineToolSpecificationService.removeMachineToolSpecification(
+        +this.machineToolSpecifications[id].id
+      ).subscribe(model => {
+        this.machineToolSpecifications.splice(id, 1);
+      });
+    }
+  }
+
+  editMachineToolSpecification(id: number) {
+    this.machineToolSpecificationFormService.loadMachineToolSpecificationFormFromModel(
+      this.machineToolSpecifications[id].data
+    );
+    this.machineToolSpecificationFormService.machineToolSpecificationId = this.machineToolSpecifications[id].id;
+    this.router.navigate(['/forms/machine-tool-specification/']);
+  }
+
+  addMachineToolSpecifications() {
+    const selectedNodeId = this.selectedNode.id;
+
+    this.machineToolSpecificationFormService.loadMachineToolSpecificationFormFromModel(new MachineToolSpecification({
+      description: 'Empty'
+    }));
+
+    this.machineToolSpecificationService.addMachineToolSpecification(
+      this.machineToolSpecificationFormService.machineToolSpecificationForm.value
+    ).subscribe(element => {
+      this.machineToolSpecifications.push(element);
+
+      this.treeService.addMachineToolSpecificationToNode(+selectedNodeId, element.id)
+        .subscribe();
+    });
+
+  }
+
+  MachineToolSpecificationToXML(i: number) {
+    const xml = json2xml(this.machineToolSpecifications[i].data);
+    const file = `<machine_tool_element>${xml}</machine_tool_element>`;
+
+    download('data.xml', file);
   }
 
   private patchNode(node: Tree) {
@@ -110,5 +167,63 @@ export class TreeComponent implements OnInit, AfterViewInit {
       .deleteNode(+node.id)
       .subscribe();
   }
+}
 
+/*
+ This work is licensed under Creative Commons GNU LGPL License.
+ License: http://creativecommons.org/licenses/LGPL/2.1/
+ Version: 0.9
+ Author:  Stefan Goessner/2006
+ Web:     http://goessner.net/
+*/
+function json2xml(o, tab?) {
+  const toXml = function (v, name, ind) {
+    let xml = '';
+    if (v instanceof Array) {
+      for (let i = 0, n = v.length; i < n; i++)
+        xml += ind + toXml(v[i], name, ind + '\t') + '\n';
+    }
+    else if (typeof(v) === 'object') {
+      let hasChild = false;
+      xml += ind + '<' + name;
+      for (const m in v) {
+        if (m.charAt(0) === '@')
+          xml += ' ' + m.substr(1) + '="' + v[m].toString() + '"';
+        else
+          hasChild = true;
+      }
+      xml += hasChild ? '>' : '/>';
+      if (hasChild) {
+        for (const m in v) {
+          if (m == '#text')
+            xml += v[m];
+          else if (m == '#cdata')
+            xml += '<![CDATA[' + v[m] + ']]>';
+          else if (m.charAt(0) != '@')
+            xml += toXml(v[m], m, ind + '\t');
+        }
+        xml += (xml.charAt(xml.length - 1) == '\n' ? ind : '') + '</' + name + '>';
+      }
+    }
+    else {
+      xml += ind + '<' + name + '>' + v.toString() + '</' + name + '>';
+    }
+    return xml;
+  }, xml = '';
+  for (const m in o)
+    xml += toXml(o[m], m, '');
+  return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, '');
+}
+
+function download(filename, text) {
+  const element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }

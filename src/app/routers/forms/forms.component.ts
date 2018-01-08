@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MachineToolSpecificationFormService} from './machine-tool-specification/shared/services/machine-tool-specification-form/machine-tool-specification-form.service';
+import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'inz-forms',
@@ -7,15 +8,16 @@ import {MachineToolSpecificationFormService} from './machine-tool-specification/
   styleUrls: ['./forms.component.sass']
 })
 export class FormsComponent implements OnInit {
-  constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService) {
+  constructor(private router: Router,
+              private location: Location) {
   }
 
-  get form() {
-    return this.machineToolSpecificationFormService.machineToolSpecificationForm;
-  }
 
   ngOnInit() {
+  }
 
+  goBack() {
+    this.location.back();
   }
 
 

@@ -14,7 +14,6 @@ export class RectangularWorkTable extends WorkTable {
     if (!loadModel) {
       loadModel = new RectangularWorkTable();
     }
-    console.log('Recwork table', loadModel);
     return Object.assign(WorkTable.getFormControls(loadModel), {
       table_width: new FormControl(loadModel.table_width, Validators.required),
       table_length: new FormControl(loadModel.table_length, Validators.required),

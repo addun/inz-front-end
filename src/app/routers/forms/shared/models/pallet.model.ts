@@ -15,7 +15,6 @@ export class Pallet extends WorkTable {
   constructor(model?) {
     super(model);
     Object.assign(this, model);
-    console.log(this);
   }
 
   public static getFormControls(loadModel?: Pallet): { [key: string]: AbstractControl } {
