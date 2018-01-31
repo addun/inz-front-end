@@ -26,9 +26,7 @@ export class WorkSpindle extends Spindle {
       round_bar_stock_diameter: new FormControl(loadModel.round_bar_stock_diameter),
       through_hole_diameter: new FormControl(loadModel.through_hole_diameter),
       hex_bar_stock_capacity: new FormControl(loadModel.hex_bar_stock_capacity),
-      chuck: new FormGroup(
-        Chuck.getFormControls(loadModel.chuck)
-      )
+      chuck: new FormGroup(Chuck.getFormControls(loadModel.chuck))
     });
   }
 }

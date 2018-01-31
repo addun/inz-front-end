@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {MachineToolSpecificationFormService, MachineToolSpecificationService} from './machine-tool-specification/shared/services';
 
 @Component({
   selector: 'inz-forms',
@@ -9,6 +10,8 @@ import {Location} from '@angular/common';
 })
 export class FormsComponent implements OnInit {
   constructor(private router: Router,
+              private machineToolSpecificationService: MachineToolSpecificationService,
+              private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private location: Location) {
   }
 
@@ -16,7 +19,12 @@ export class FormsComponent implements OnInit {
   ngOnInit() {
   }
 
-  goBack() {
+  saveAndGoBack() {
+    this.machineToolSpecificationService.updateMachineToolSpecification({
+        id: this.machineToolSpecificationFormService.machineToolSpecificationId,
+        data: this.machineToolSpecificationFormService.machineToolSpecificationForm.value
+      }
+    ).subscribe();
     this.location.back();
   }
 
