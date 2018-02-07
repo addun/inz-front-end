@@ -14,6 +14,7 @@ import {StandardMachiningProcessComponent} from './machine-tool-specification/st
 import {FormGuard} from './core/guard/form.guard';
 import { CreateComponent } from './create/create.component';
 import {FormService} from './shared/services/form/form.service';
+import { AddDataComponent } from './add-data/add-data.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import {FormService} from './shared/services/form/form.service';
     InstallationComponent,
     StandardMachiningProcessComponent,
     CreateComponent,
+    AddDataComponent,
   ],
   providers: [
     MachineToolSpecificationService,

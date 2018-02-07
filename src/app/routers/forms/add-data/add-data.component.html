@@ -1,0 +1,11 @@
+<inz-card cardName="Example test">
+  <inz-form [form]="formGroup">
+    <inz-input *ngFor="let input of inputs"
+               [type]="input.type"
+               [controlName]="input.name"></inz-input>
+  </inz-form>
+</inz-card>
+<button (click)="saveData()">Save it!</button>
+<pre>
+{{formGroup?.value | json}}
+</pre>

@@ -1,12 +1,17 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CreateComponent} from './create/create.component';
+import {AddDataComponent} from './add-data/add-data.component';
 
 const routes: Routes = [
   {
     path: 'create',
     component: CreateComponent
-  }
+  },
+  {
+    path: ':formId/add-data',
+    component: AddDataComponent
+  },
   // {
   //   path: '',
   //   component: FormsComponent,
