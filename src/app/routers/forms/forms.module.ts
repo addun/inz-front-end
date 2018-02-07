@@ -12,6 +12,8 @@ import {SharedModule} from '../../shared/shared.module';
 import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
 import {StandardMachiningProcessComponent} from './machine-tool-specification/standard-machining-process/standard-machining-process.component';
 import {FormGuard} from './core/guard/form.guard';
+import { CreateComponent } from './create/create.component';
+import {FormService} from './shared/services/form/form.service';
 
 @NgModule({
   imports: [
@@ -26,12 +28,14 @@ import {FormGuard} from './core/guard/form.guard';
     MachiningCapabilitiesComponent,
     InstallationComponent,
     StandardMachiningProcessComponent,
+    CreateComponent,
   ],
   providers: [
     MachineToolSpecificationService,
     FormGuard,
     FormToastService,
-    TreeService
+    TreeService,
+    FormService,
   ]
 })
 export class FormsModule {
