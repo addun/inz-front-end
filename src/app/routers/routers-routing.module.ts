@@ -3,10 +3,10 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'tree',
-    loadChildren: './tree/tree.module#TreeModule',
+    path: 'dashboard',
+    loadChildren: './dashboard/dashboard.module#DashboardModule',
     data: {
-      breadcrumb: 'Tree'
+      breadcrumb: 'Dashboard'
     }
   },
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/tree'
+    redirectTo: '/dashboard'
   },
 ];
 
