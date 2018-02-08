@@ -4,7 +4,7 @@ import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'inz-root',
-  template: '<inz-layout></inz-layout>',
+  template: '<router-outlet></router-outlet>',
   styleUrls: ['./shared/styles/main.sass'],
   encapsulation: ViewEncapsulation.None
 })
