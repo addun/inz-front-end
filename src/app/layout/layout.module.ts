@@ -4,6 +4,8 @@ import {LayoutComponent} from './layout.component';
 import {RouterModule} from '@angular/router';
 import {BreadcrumbsModule} from 'ng2-breadcrumbs';
 import {SharedModule} from '../shared/shared.module';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ContentComponent } from './content/content.component';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import {SharedModule} from '../shared/shared.module';
     BreadcrumbsModule,
   ],
   declarations: [
-    LayoutComponent
+    LayoutComponent,
+    NavbarComponent,
+    ContentComponent
   ],
   exports: [
     LayoutComponent
