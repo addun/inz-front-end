@@ -1,0 +1,21 @@
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+
+@Component({
+  selector: 'inz-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.sass']
+})
+export class NavbarComponent implements OnInit {
+
+  constructor(public router: Router) {
+  }
+
+  ngOnInit() {
+  }
+
+  goToGHomePage() {
+    this.router.navigate(['/']);
+  }
+
+}

@@ -7,12 +7,12 @@ export class ApiToastService {
   constructor(private toastr: ToastsManager) {
   }
 
-  saved() {
-    this.toastr.success('The operation was successful!');
+  success(msg: string, title: string) {
+    this.toastr.success(msg, title);
   }
 
-  error() {
-    this.toastr.error('Error while saved data!');
+  error(msg: string, title: string) {
+    this.toastr.error(msg, title);
   }
 
 }
