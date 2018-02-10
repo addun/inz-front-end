@@ -1,0 +1,25 @@
+<div *ngFor="let folder of tree">
+
+  <div class="folder-item">
+    <inz-tree-node [folder]="folder"
+                   (rename)="emitRename($event)"
+                   (select)="emitSelect($event)"
+                   (collapse)="emitCollapse($event)"
+                   (add)="emitAddChild($event)"
+                   (remove)="emitRemove($event); removeFolder($event)"
+    ></inz-tree-node>
+  </div>
+
+  <div *ngIf="!folder.isCollapse && folder.children?.length">
+    <inz-folder-tree [tree]="folder.children"
+                     (rename)="emitRename($event)"
+                     (select)="emitSelect($event)"
+                     (collapse)="emitCollapse($event)"
+                     (add)="emitAddChild($event)"
+                     (remove)="emitRemove($event)"
+    ></inz-folder-tree>
+  </div>
+
+</div>
+
+
