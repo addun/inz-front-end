@@ -39,7 +39,7 @@ import {ThreadedSpindleFormComponent} from './forms/threaded-spindle-form/thread
 import {DeviceIdFormComponent} from './forms/device-id-form/device-id-form.component';
 import {MeasuringCapabilityFormComponent} from './forms/measuring-capability-form/measuring-capability-form.component';
 import {LocationFormComponent} from './forms/location-form/location-form.component';
-import {FormService} from './services/form/form.service';
+import {FormRecorsTableComponent} from './components/form-recors-table/form-recors-table.component';
 
 @NgModule({
   imports: [
@@ -84,7 +84,8 @@ import {FormService} from './services/form/form.service';
     ThreadedSpindleFormComponent,
     DeviceIdFormComponent,
     MeasuringCapabilityFormComponent,
-    LocationFormComponent
+    LocationFormComponent,
+    FormRecorsTableComponent
   ],
   exports: [
     CardComponent,
@@ -121,7 +122,8 @@ import {FormService} from './services/form/form.service';
     ThreadedSpindleFormComponent,
     DeviceIdFormComponent,
     MeasuringCapabilityFormComponent,
-    LocationFormComponent
+    LocationFormComponent,
+    FormRecorsTableComponent
   ]
 })
 export class FormsSharedModule {

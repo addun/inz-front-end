@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../../../../core/api/api.service';
 import {Observable} from 'rxjs/Observable';
-import {FolderDTO} from '../../../../../shared/models/folder.model';
+import {FolderDTO} from '../../dto/folder.dto';
+
 
 @Injectable()
 export class DashboardService {
@@ -24,5 +25,4 @@ export class DashboardService {
   removeFolder(folderId: string): Observable<FolderDTO> {
     return this.apiService.delete(`folders/${folderId}`);
   }
-
 }

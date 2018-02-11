@@ -1,4 +1,4 @@
-export class Input {
+export interface InputDTO {
   _id?: string;
   name: string;
   label: string;

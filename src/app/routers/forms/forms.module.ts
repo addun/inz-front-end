@@ -12,9 +12,9 @@ import {SharedModule} from '../../shared/shared.module';
 import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
 import {StandardMachiningProcessComponent} from './machine-tool-specification/standard-machining-process/standard-machining-process.component';
 import {FormGuard} from './core/guard/form.guard';
-import { CreateComponent } from './create/create.component';
+import {CreateComponent} from './create/create.component';
 import {FormService} from './shared/services/form/form.service';
-import { AddDataComponent } from './add-data/add-data.component';
+import {FormDataComponent} from './form-data/form-data.component';
 
 @NgModule({
   imports: [
@@ -30,7 +30,7 @@ import { AddDataComponent } from './add-data/add-data.component';
     InstallationComponent,
     StandardMachiningProcessComponent,
     CreateComponent,
-    AddDataComponent,
+    FormDataComponent,
   ],
   providers: [
     MachineToolSpecificationService,

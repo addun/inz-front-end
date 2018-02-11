@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FolderDTO} from '../../shared/models/folder.model';
 import {DashboardService} from './shared/services/dashboard/dashboard.service';
+import {Router} from '@angular/router';
+import {FolderDTO} from './shared/dto/folder.dto';
+import {FormDTO} from '../forms/shared/dto/form.dto';
 
 @Component({
   selector: 'inz-dashboard',
@@ -9,29 +11,17 @@ import {DashboardService} from './shared/services/dashboard/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
   tree: FolderDTO[] = [];
+  form: FormDTO;
   private selectedFolder: FolderDTO;
 
-  constructor(private  dashboardService: DashboardService) {
+  constructor(private dashboardService: DashboardService,
+              private router: Router) {
   }
 
   ngOnInit() {
     this.dashboardService
       .getFolderTree()
       .subscribe(tree => this.tree = tree);
-  }
-
-  addChild() {
-    this.dashboardService.addFolder({
-      name: Math.random().toFixed(2),
-      parent: this.selectedFolder ? this.selectedFolder._id : null
-    })
-      .subscribe(addedFolder => {
-        if (this.selectedFolder) {
-          this.selectedFolder.children.push(addedFolder);
-        } else {
-          this.tree.push(addedFolder);
-        }
-      });
   }
 
   onFolderCollapse(folder: FolderDTO) {
@@ -47,11 +37,41 @@ export class DashboardComponent implements OnInit {
   }
 
   onFolderAdd(folder: FolderDTO) {
-    console.log(folder);
     this.dashboardService
       .addFolder(folder)
       .subscribe(addedFolder => {
         folder._id = addedFolder._id;
       });
+  }
+
+  onFolderSelect(folder: FolderDTO) {
+    // this.selectedFolder = folder;
+    // this.dashboardService
+    //   .getDataFromFolder(folder._id)
+    //   .subscribe(response => {
+    //     this.processFolderData(response);
+    //   });
+  }
+
+  processFolderData(formData: FormDTO[]) {
+    if (!formData.length) {
+      this.form = null;
+    } else {
+      this.form = formData[0];
+    }
+  }
+
+  addFormToFolder() {
+    this.router.navigate(['forms', 'create'], {
+      queryParams: {
+        folder: this.selectedFolder._id
+      }
+    });
+  }
+
+  onFolderRename(folder: FormDTO) {
+    this.dashboardService
+      .updateFolder(folder)
+      .subscribe();
   }
 }

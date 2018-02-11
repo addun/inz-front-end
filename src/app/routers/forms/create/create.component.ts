@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {FormService} from '../shared/services/form/form.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 enum InputType {
   text = 'text',
@@ -13,10 +14,13 @@ enum InputType {
   styleUrls: ['./create.component.sass']
 })
 export class CreateComponent implements OnInit {
+  folderId: string;
   formGroup: FormGroup;
   inputTypes = InputType;
 
-  constructor(private formService: FormService) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private formService: FormService) {
   }
 
   get inputs(): FormArray {
@@ -25,6 +29,11 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.formGroup = this.buildForm();
+    this.activatedRoute
+      .queryParamMap
+      .subscribe(params => {
+        this.folderId = params.get('folder');
+      });
   }
 
   buildForm(): FormGroup {
@@ -43,10 +52,12 @@ export class CreateComponent implements OnInit {
   }
 
   save() {
+    const formData = this.formGroup.value;
+    formData.folder = this.folderId;
     this.formService
-      .addModel(this.formGroup.value)
+      .addNewForm(formData)
       .subscribe(savedModel => {
-        this.formGroup.reset();
+        this.router.navigate(['forms', savedModel._id, 'add-data']);
       })
     ;
   }

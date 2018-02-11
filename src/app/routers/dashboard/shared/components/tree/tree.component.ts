@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FolderDTO} from '../../models/folder.model';
+import {FolderDTO} from '../../dto/folder.dto';
 
 @Component({
   selector: 'inz-folder-tree',

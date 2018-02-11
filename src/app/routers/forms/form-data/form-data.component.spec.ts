@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddDataComponent } from './add-data.component';
+import { FormDataComponent } from './form-data.component';
 
-describe('AddDataComponent', () => {
-  let component: AddDataComponent;
-  let fixture: ComponentFixture<AddDataComponent>;
+describe('FormDataComponent', () => {
+  let component: FormDataComponent;
+  let fixture: ComponentFixture<FormDataComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddDataComponent ]
+      declarations: [ FormDataComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddDataComponent);
+    fixture = TestBed.createComponent(FormDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

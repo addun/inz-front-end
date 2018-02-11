@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../../../../core/api/api.service';
-import {Input} from '../../models/input.model';
+import {FormDTO, FormInput, FormRecordDTO} from '../../dto/form.dto';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
@@ -10,16 +10,28 @@ export class FormService {
   constructor(private apiService: ApiService) {
   }
 
-  addModel(model) {
-    return this.apiService.post(`${this.formURL}`, model);
+  getForms(): Observable<FormDTO[]> {
+    return this.apiService.get(`${this.formURL}`);
   }
 
-  getInputs(formId: string): Observable<Input[]> {
-    return this.apiService.get(`${this.formURL}${formId}/inputs`);
+  getForm(formId: string): Observable<FormDTO> {
+    return this.apiService.get(`${this.formURL}${formId}/`);
   }
 
-  saveData(formId: string, data: any): Observable<any> {
-    return this.apiService.post(`${this.formURL}${formId}/data`, data);
+  getFormInputs(formId: string): Observable<FormInput[]> {
+    return this.apiService.get(`${this.formURL}${formId}/inputs/`);
+  }
+
+  getFormRecords(formId: string): Observable<FormInput[]> {
+    return this.apiService.get(`${this.formURL}${formId}/records/`);
+  }
+
+  addNewForm(form: FormDTO) {
+    return this.apiService.post(`${this.formURL}`, form);
+  }
+
+  addFormRecord(formId: string, data: FormRecordDTO): Observable<any> {
+    return this.apiService.post(`${this.formURL}${formId}/records/`, data);
   }
 
 }

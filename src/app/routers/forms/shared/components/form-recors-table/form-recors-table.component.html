@@ -1,0 +1,26 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <td>{{getFirstObjectKey(formData[0].values)}}</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of formData">
+    <td>{{getFirstObjectKeyValue(data.values)}}</td>
+    <td class="actions">
+
+      <button (click)="editRow(data)" ngbTooltip="Edit" class="btn btn-sm btn-outline-secondary">
+        <i class="fa fa-pencil"></i>
+      </button>
+      <button (click)="generateXML(data)" ngbTooltip="Generate XML" class="btn btn-sm btn-outline-secondary">
+        <i class="fa fa-code" aria-hidden="true"></i>
+      </button>
+      <button (click)="removeRow(data)" ngbTooltip="Remove" class="btn btn-sm btn-outline-secondary">
+        <i class="fa fa-times"></i>
+      </button>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+<button (click)="addFormData()" class="btn btn-sm btn-secondary">ADd data</button>

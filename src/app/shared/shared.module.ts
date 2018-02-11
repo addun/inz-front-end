@@ -2,9 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {FolderTreeComponent} from './components/tree/tree.component';
-import { TreeNodeComponent } from './components/tree-node/tree-node.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -12,15 +10,14 @@ import {FormsModule} from '@angular/forms';
     NgbModule.forRoot(),
     FormsModule,
     RouterModule,
+    ReactiveFormsModule
   ],
-  declarations: [
-    FolderTreeComponent,
-    TreeNodeComponent
-  ],
+  declarations: [],
   exports: [
     NgbModule,
+    FormsModule,
     RouterModule,
-    FolderTreeComponent
+    ReactiveFormsModule
   ]
 })
 export class SharedModule {

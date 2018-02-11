@@ -1,6 +1,7 @@
 <inz-card cardName="Example test">
   <inz-form [form]="formGroup">
     <inz-input *ngFor="let input of inputs"
+               [label]="input.label"
                [type]="input.type"
                [controlName]="input.name"></inz-input>
   </inz-form>

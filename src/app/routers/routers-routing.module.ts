@@ -4,17 +4,11 @@ import {RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {
     path: 'dashboard',
-    loadChildren: './dashboard/dashboard.module#DashboardModule',
-    data: {
-      breadcrumb: 'Dashboard'
-    }
+    loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
   {
     path: 'forms',
-    loadChildren: './forms/forms.module#FormsModule',
-    data: {
-      breadcrumb: ' '
-    },
+    loadChildren: './forms/forms.module#FormsModule'
   },
   {
     path: 'auth',

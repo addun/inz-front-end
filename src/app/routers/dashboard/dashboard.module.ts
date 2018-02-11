@@ -8,8 +8,8 @@ import {DashboardSharedModule} from './shared/dashboard-shared.module';
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
     DashboardRoutingModule,
+    SharedModule,
     DashboardSharedModule
   ],
   declarations: [DashboardComponent]
