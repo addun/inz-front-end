@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormService} from '../shared/services/form/form.service';
 import {FormRecordDTO} from '../shared/dto/form.dto';
 import {InputDTO} from '../shared/dto/input.dto';
@@ -11,12 +11,14 @@ import {InputDTO} from '../shared/dto/input.dto';
   styleUrls: ['./form-data.component.sass']
 })
 export class FormDataComponent implements OnInit {
-  formDataId: string;
+  formRecordId: string;
   formGroup: FormGroup;
   inputs: InputDTO[];
   formId: string;
+  formName: string;
 
   constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
               private formService: FormService) {
   }
 
@@ -26,51 +28,75 @@ export class FormDataComponent implements OnInit {
       .paramMap
       .subscribe(param => {
         this.formId = param.get('form');
-        this.formDataId = param.get('data');
+        this.formRecordId = param.get('record');
         this.getInputsDataAndBuildForm();
       });
   }
 
   getInputsDataAndBuildForm() {
     this.formService
-      .getInputs(this.formId)
-      .subscribe(inputs => {
-        this.inputs = inputs;
-        this.formGroup = this.buildForm(inputs);
+      .getForm(this.formId)
+      .subscribe(form => {
+        this.formName = form.name;
+        this.inputs = form.inputs;
+        this.buildForm();
       });
   }
 
-  buildForm(inputs: InputDTO[]) {
+  buildForm() {
     const group: any = {};
-
-    if (this.formDataId) {
+    if (this.formRecordId) {
       this.formService
-        .getFormRecords(this.formId, this.formDataId)
-        .subscribe(data => {
-          console.log(data);
-          inputs.forEach(input => {
-            group[input.name] = new FormControl(data.values[input.name], Validators.required);
+        .getRecord(this.formRecordId)
+        .subscribe(record => {
+          this.inputs.forEach(input => {
+            group[input.name] = new FormControl(record.values[input.name], Validators.required);
           });
+          this.formGroup = new FormGroup(group);
         });
     } else {
-      inputs.forEach(input => {
+      this.inputs.forEach(input => {
         group[input.name] = new FormControl('', Validators.required);
       });
+      this.formGroup = new FormGroup(group);
     }
-
-
-    return new FormGroup(group);
   }
 
-  saveData() {
+  saveAndCreateNext() {
     const data = <FormRecordDTO>{
       values: this.formGroup.value
     };
-    this.formService
-      .addFormRecord(this.formId, data)
-      .subscribe(response => {
-        this.formGroup.reset();
-      });
+    if (this.formRecordId) {
+      data._id = this.formRecordId;
+      this.formService.updateRecord(data)
+        .subscribe(_ => {
+          this.router.navigate(['/forms', this.formId, 'records', 'add']);
+        });
+    } else {
+      this.formService
+        .addFormRecord(this.formId, data)
+        .subscribe(response => {
+          this.formGroup.reset();
+        });
+    }
+  }
+
+  saveAndContinue() {
+    const data = <FormRecordDTO>{
+      values: this.formGroup.value
+    };
+    if (this.formRecordId) {
+      data._id = this.formRecordId;
+      console.log(data);
+      this.formService.updateRecord(data)
+        .subscribe();
+    } else {
+      this.formService
+        .addFormRecord(this.formId, data)
+        .subscribe(response => {
+          this.router.navigate(['/forms', this.formId, 'records', response._id, 'edit']);
+        });
+    }
   }
 
 }

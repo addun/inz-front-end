@@ -1,8 +1,8 @@
 export interface FormDTO {
   name: string;
   _id: string;
-  inputs?: FormInput[];
-  data?: FormRecordDTO[];
+  inputs?: FormInputDTO[];
+  records?: FormRecordDTO[];
 }
 
 export interface FormRecordDTO {
@@ -10,7 +10,7 @@ export interface FormRecordDTO {
   values: any[];
 }
 
-export interface FormInput {
+export interface FormInputDTO {
   _id?: string;
   label: string;
   type: string;

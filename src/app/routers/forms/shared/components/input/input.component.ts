@@ -34,12 +34,4 @@ export class InputComponent implements OnInit {
     this.required = this.isRequired();
   }
 
-  getLabel() {
-    if (!this.label) {
-      return this.controlName;
-    } else {
-      return this.label;
-    }
-  }
-
 }

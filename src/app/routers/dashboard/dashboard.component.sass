@@ -3,8 +3,16 @@
   display: flex
 
 .folders
+  padding-left: 25px
+  padding-right: 25px
   width: 300px
+  flex-shrink: 1
 
-.content
-  width: 100%
+.folder-content
+  width: calc(100% - 300px)
   overflow-y: auto
+  height: 100%
+
+.folders-actions
+  padding: 5px 0
+  border-bottom: 1px solid #eee

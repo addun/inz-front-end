@@ -4,6 +4,7 @@ import {DashboardRoutingModule} from './dashboard-routing.module';
 import {DashboardComponent} from './dashboard.component';
 import {SharedModule} from '../../shared/shared.module';
 import {DashboardSharedModule} from './shared/dashboard-shared.module';
+import {FormService} from '../forms/shared/services/form/form.service';
 
 @NgModule({
   imports: [
@@ -12,7 +13,12 @@ import {DashboardSharedModule} from './shared/dashboard-shared.module';
     SharedModule,
     DashboardSharedModule
   ],
-  declarations: [DashboardComponent]
+  declarations: [
+    DashboardComponent,
+  ],
+  providers: [
+    FormService
+  ]
 })
 export class DashboardModule {
 }

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormDTO, FormRecordDTO} from '../../dto/form.dto';
+import {FormService} from '../../services/form/form.service';
 
 @Component({
   selector: 'inz-form-recors-table',
@@ -8,9 +9,9 @@ import {FormDTO, FormRecordDTO} from '../../dto/form.dto';
   styleUrls: ['./form-recors-table.component.sass']
 })
 export class FormRecorsTableComponent implements OnInit {
-  formData: any[] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private formService: FormService) {
   }
 
   private _form: FormDTO;
@@ -23,7 +24,6 @@ export class FormRecorsTableComponent implements OnInit {
   set form(value: FormDTO) {
     if (value) {
       this._form = value;
-      this.formData = this._form.data;
     }
   }
 
@@ -38,11 +38,8 @@ export class FormRecorsTableComponent implements OnInit {
     return object[this.getFirstObjectKey(object)];
   }
 
-  addFormData() {
-    this.router.navigate(['forms', this._form._id, 'add-data']);
-  }
-
-  editRow(dta: FormRecordDTO) {
+  editRow(formRecordDTO: FormRecordDTO) {
+    this.router.navigate(['/forms', this.form._id, 'records', formRecordDTO._id, 'edit']);
 
   }
 
@@ -51,6 +48,15 @@ export class FormRecorsTableComponent implements OnInit {
   }
 
   removeRow(dta: FormRecordDTO) {
-    this.router.navigate(['forms', this._form._id, 'add-data']);
+    if (confirm('Are you sure?')) {
+      this.formService
+        .removeRecord(dta._id)
+        .subscribe(_ => {
+          const indexOf = this.form.records.indexOf(dta);
+          this.form.records.splice(indexOf, 1);
+        })
+
+      ;
+    }
   }
 }

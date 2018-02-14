@@ -1,12 +1,13 @@
 <div class="form-group row" [formGroup]="form">
 
-  <label [for]="randomId"
-         class="col-12 col-sm-12 col-md-3 col-form-label"
+  <label [for]="randomId" *ngIf="label"
+         class="col-12 col-md-3 col-form-label"
          [ngClass]="{'required': required}">
-    {{getLabel()}}
+    {{label}}
   </label>
 
-  <div [ngSwitch]="type" class="col-12 col-sm-12 col-md-9">
+  <div [ngSwitch]="type"
+       [ngClass]="{'col-12 col-sm-12 col-md-9':label,'col-12':!label}">
     <div class="input-group">
 
       <div class="input-group-prepend" *ngIf="prepend">

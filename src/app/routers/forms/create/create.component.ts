@@ -27,6 +27,7 @@ export class CreateComponent implements OnInit {
     return (<FormArray>this.formGroup.controls['inputs']);
   }
 
+
   ngOnInit() {
     this.formGroup = this.buildForm();
     this.activatedRoute
@@ -39,16 +40,24 @@ export class CreateComponent implements OnInit {
   buildForm(): FormGroup {
     return new FormGroup({
       name: new FormControl('', Validators.required),
-      inputs: new FormArray([])
+      inputs: new FormArray([this.createInputFormGroup()])
     });
   }
 
   createInputFormGroup() {
-    return {
-      name: new FormControl('', Validators.required),
+    return new FormGroup({
+      name: new FormControl('', [Validators.required, validateEmail]),
       label: new FormControl('', Validators.required),
       type: new FormControl(null, Validators.required),
-    };
+    });
+  }
+
+  addRow() {
+    this.inputs.push(this.createInputFormGroup());
+  }
+
+  removeRow(index: number) {
+    this.inputs.removeAt(index);
   }
 
   save() {
@@ -57,9 +66,19 @@ export class CreateComponent implements OnInit {
     this.formService
       .addNewForm(formData)
       .subscribe(savedModel => {
-        this.router.navigate(['forms', savedModel._id, 'add-data']);
+        this.router.navigate(['/forms', savedModel._id, 'records', 'add']);
       })
     ;
   }
 
+}
+
+
+function validateEmail(c: FormControl) {
+  const slug_regex = /^[a-zA-Z_-]+$/g;
+  return slug_regex.test(c.value) ? null : {
+    validateEmail: {
+      valid: false
+    }
+  };
 }

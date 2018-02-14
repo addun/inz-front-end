@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://api.inz.adrianbury.pl/',
+  apiBaseUrl: 'http://194.182.67.194:3000/',
 };

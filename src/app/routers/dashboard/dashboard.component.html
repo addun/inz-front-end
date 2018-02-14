@@ -1,15 +1,36 @@
-<inz-folder-tree class="folders"
-                 [tree]="tree"
-                 (select)="onFolderSelect($event)"
-                 (rename)="onFolderRename($event)"
-                 (add)="onFolderAdd($event)"
-                 (collapse)="onFolderCollapse($event)"
-                 (remove)="onFolderRemove($event)"
-></inz-folder-tree>
+<div class="folders border border-left-0 border-top-0 border-bottom-0 border-dark">
+  <div class="folders-actions">
+    <button (click)="addRootFolder()"
+            ngbTooltip="Add root folder"
+            placement="right"
+            class="btn btn-outline-secondary btn-sm">
+      <span class="fa fa-folder"></span>
+    </button>
+  </div>
 
-<!--<div class="content">-->
-  <!--<div *ngIf="!form">-->
-    <!--<button (click)="addFormToFolder()" class="btn btn-success">Add form</button>-->
-  <!--</div>-->
-<!---->
-<!--</div>-->
+  <inz-folder-tree [tree]="tree"
+                   (select)="onFolderSelect($event)"
+                   (rename)="onFolderRename($event)"
+                   (add)="onFolderAdd($event)"
+                   (collapse)="onFolderCollapse($event)"
+                   (remove)="onFolderRemove($event)"
+  ></inz-folder-tree>
+</div>
+
+
+<div class="folder-content" *ngIf="selectedFolder">
+  <p class="p-3 bg-secondary mb-0 text-white text-center">{{selectedFolder.name}}</p>
+
+  <div *ngIf="!form" class="text-center">
+    <p class="h4 mt-5">This folder don't contain any form!</p>
+    <button (click)="addFormToFolder()" class="btn btn-success">Add form</button>
+  </div>
+
+  <div *ngIf="form">
+    <inz-form-recors-table [form]="form"></inz-form-recors-table>
+    <div class="text-center">
+      <button (click)="addFormData()" class="btn btn-sm btn-secondary mb-5 mt-1">Add more</button>
+    </div>
+  </div>
+
+</div>

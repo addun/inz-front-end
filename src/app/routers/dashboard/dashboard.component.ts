@@ -3,6 +3,7 @@ import {DashboardService} from './shared/services/dashboard/dashboard.service';
 import {Router} from '@angular/router';
 import {FolderDTO} from './shared/dto/folder.dto';
 import {FormDTO} from '../forms/shared/dto/form.dto';
+import {FormService} from '../forms/shared/services/form/form.service';
 
 @Component({
   selector: 'inz-dashboard',
@@ -12,9 +13,10 @@ import {FormDTO} from '../forms/shared/dto/form.dto';
 export class DashboardComponent implements OnInit {
   tree: FolderDTO[] = [];
   form: FormDTO;
-  private selectedFolder: FolderDTO;
+  selectedFolder: FolderDTO;
 
   constructor(private dashboardService: DashboardService,
+              private formService: FormService,
               private router: Router) {
   }
 
@@ -22,6 +24,10 @@ export class DashboardComponent implements OnInit {
     this.dashboardService
       .getFolderTree()
       .subscribe(tree => this.tree = tree);
+  }
+
+  addFormData() {
+    this.router.navigate(['/forms', this.form._id, 'records', 'add']);
   }
 
   onFolderCollapse(folder: FolderDTO) {
@@ -45,20 +51,26 @@ export class DashboardComponent implements OnInit {
   }
 
   onFolderSelect(folder: FolderDTO) {
-    // this.selectedFolder = folder;
-    // this.dashboardService
-    //   .getDataFromFolder(folder._id)
-    //   .subscribe(response => {
-    //     this.processFolderData(response);
-    //   });
+    this.selectedFolder = folder;
+    this.formService
+      .getFormByFolder(this.selectedFolder._id)
+      .subscribe(response => {
+        if (response.length) {
+          this.form = response[0];
+        } else {
+          this.form = null;
+        }
+      });
   }
 
-  processFolderData(formData: FormDTO[]) {
-    if (!formData.length) {
-      this.form = null;
-    } else {
-      this.form = formData[0];
-    }
+  addRootFolder() {
+    const newFolder: FolderDTO = {
+      name: 'Untitled folder',
+      isCollapse: true,
+      children: []
+    };
+    this.tree.push(newFolder);
+    this.onFolderAdd(newFolder);
   }
 
   addFormToFolder() {

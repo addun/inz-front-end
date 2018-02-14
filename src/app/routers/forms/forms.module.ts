@@ -15,6 +15,7 @@ import {FormGuard} from './core/guard/form.guard';
 import {CreateComponent} from './create/create.component';
 import {FormService} from './shared/services/form/form.service';
 import {FormDataComponent} from './form-data/form-data.component';
+import {FormsLayoutModule} from './forms-layout/forms-layout.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import {FormDataComponent} from './form-data/form-data.component';
     FormsRoutingModule,
     FormsSharedModule,
     SharedModule,
+    FormsLayoutModule
   ],
   declarations: [
     FormsComponent,

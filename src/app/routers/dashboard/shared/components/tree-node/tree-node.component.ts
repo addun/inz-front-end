@@ -17,11 +17,13 @@ export class TreeNodeComponent implements OnInit {
   @ViewChild('inputName') inputEdit: ElementRef;
   nodeForm: FormGroup;
   isEditing = false;
+  private defaultName = 'Untitled folder';
 
   constructor() {
   }
 
   ngOnInit() {
+
   }
 
   buildForm() {
@@ -41,7 +43,7 @@ export class TreeNodeComponent implements OnInit {
 
   emitAddChild() {
     const newFolder: FolderDTO = {
-      name: 'Untitled folder',
+      name: this.defaultName,
       parent: this.folder._id,
       isCollapse: true,
       children: []

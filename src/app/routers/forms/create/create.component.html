@@ -1,20 +1,49 @@
-<inz-form [form]="nodeForm" label="Model">
-  <inz-input controlName="name" label="Name"></inz-input>
+<inz-card cardName="Create form">
 
-  <inz-form-array [forms]="inputs" label="Input" [formGroupGenerator]="createInputFormGroup">
+  <inz-form [form]="formGroup">
 
-    <ng-template #controls let-index="index">
+    <inz-input controlName="name" label="Name"></inz-input>
 
-      <inz-form [form]="inputs.controls[index]">
-        <inz-input controlName="name" label="Name"></inz-input>
-        <inz-input controlName="label" label="Label"></inz-input>
-        <inz-input controlName="type" label="Type" type="select" [options]="inputTypes"></inz-input>
-      </inz-form>
+    <inz-form label="Inputs" style="margin-bottom: 0"></inz-form>
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <span>Name (a-z, A-Z, _, -)</span>
+      </div>
+      <div class="col-12 col-md-4">
+        <span>Label</span>
+      </div>
+      <div class="col-12 col-md-3">
+        <span>Type</span>
+      </div>
+    </div>
 
-    </ng-template>
+    <inz-form [form]="inputs.controls[i]" *ngFor="let control of inputs.controls; let i=index" style="margin-bottom: 0">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <inz-input controlName="name"></inz-input>
+        </div>
+        <div class="col-12 col-md-4">
+          <inz-input controlName="label"></inz-input>
+        </div>
+        <div class="col-12 col-md-3">
+          <inz-input controlName="type" type="select" [options]="inputTypes"></inz-input>
+        </div>
+        <div class="col-12 col-md-1 text-right">
+          <button (click)="removeRow(i)" class="btn btn-danger">
+            <span class="fa fa-times"></span>
+          </button>
+        </div>
+      </div>
+    </inz-form>
 
-  </inz-form-array>
+    <div class="text-right">
+      <button (click)="addRow()" class="btn btn-info">Add</button>
+    </div>
 
-</inz-form>
+  </inz-form>
 
-<button (click)="save()">Save this sheet</button>
+  <ng-template #footer>
+    <button [disabled]="!formGroup.valid" (click)="save()" class="btn btn-success">Save form</button>
+  </ng-template>
+
+</inz-card>
