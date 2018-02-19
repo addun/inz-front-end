@@ -23,7 +23,18 @@
 
   <div *ngIf="!form" class="text-center">
     <p class="h4 mt-5">This folder don't contain any form!</p>
-    <button (click)="addFormToFolder()" class="btn btn-success">Add form</button>
+
+    <button (click)="addFormToFolder()" class="btn btn-success">Create form</button>
+
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-primary" ngbDropdownToggle>Use exist</button>
+      <div ngbDropdownMenu>
+        <button class="dropdown-item">Action - 1</button>
+        <button class="dropdown-item">Another Action</button>
+        <button class="dropdown-item">Something else is here</button>
+      </div>
+    </div>
+
   </div>
 
   <div *ngIf="form">

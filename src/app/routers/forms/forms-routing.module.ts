@@ -3,6 +3,10 @@ import {RouterModule, Routes} from '@angular/router';
 import {CreateComponent} from './create/create.component';
 import {FormDataComponent} from './form-data/form-data.component';
 import {FormsLayoutComponent} from './forms-layout/forms-layout.component';
+import {MachineToolSpecificationComponent} from './machine-tool-specification/machine-tool-specification.component';
+import {InstallationComponent} from './machine-tool-specification/installation/installation.component';
+import {MachiningCapabilitiesComponent} from './machine-tool-specification/machining-capabilities/machining-capabilities.component';
+import {StandardMachiningProcessComponent} from './machine-tool-specification/standard-machining-process/standard-machining-process.component';
 
 const routes: Routes = [
   {
@@ -13,51 +17,23 @@ const routes: Routes = [
       {path: ':form/records/add', component: FormDataComponent},
       {path: ':form/records/:record/edit', component: FormDataComponent},
     ]
-  }
-  // {
-  //   path: '',
-  //   component: FormsComponent,
-  //   // canActivate: [FormGuard],
-  //   // canActivateChild: [FormGuard],
-  //   record: {
-  //     breadcrumb: 'Machine Tool Specification'
-  //   },
-  //   children: [
-  //     {
-  //       path: '',
-  //       component: MachineToolSpecificationComponent
-  //     },
-  //     {
-  //       path: 'installation',
-  //       component: InstallationComponent,
-  //       record: {
-  //         breadcrumb: 'Installation'
-  //       },
-  //     },
-  //     {
-  //       path: 'machining-capabilities',
-  //       component: MachiningCapabilitiesComponent,
-  //       record: {
-  //         breadcrumb: 'Machining Capabilities'
-  //       },
-  //     },
-  //     {
-  //       path: 'standard-machining-process',
-  //       component: StandardMachiningProcessComponent,
-  //       record: {
-  //         breadcrumb: 'Standard Machining Process'
-  //       },
-  //     },
-  //     {
-  //       path: 'its-elements',
-  //       component: RouterOutletComponent,
-  //       loadChildren: './machine-tool-specification/its-elements/its-elements.module#ItsElementsModule',
-  //       record: {
-  //         breadcrumb: 'Its Elements'
-  //       },
-  //     },
-  //   ]
-  // }
+  },
+  {
+    path: 'predefined/machine-tool-specification',
+    component: FormsLayoutComponent,
+    // canActivate: [FormGuard],
+    // canActivateChild: [FormGuard],
+    children: [
+      {path: '', component: MachineToolSpecificationComponent},
+      {path: 'installation', component: InstallationComponent},
+      {path: 'machining-capabilities', component: MachiningCapabilitiesComponent},
+      {path: 'standard-machining-process', component: StandardMachiningProcessComponent},
+      {
+        path: 'its-elements',
+        loadChildren: './machine-tool-specification/its-elements/its-elements.module#ItsElementsModule',
+      },
+    ]
+  },
 ];
 
 @NgModule({

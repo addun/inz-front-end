@@ -21,13 +21,12 @@ export class TurretContentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute
-      .parent.parent.parent
       .params.subscribe(params => {
 
       this.machineToolElementId = +params['machineToolElementId'];
 
       this.activatedRoute
-        .parent.params.subscribe(pppparams => {
+        .params.subscribe(pppparams => {
         this.turretId = pppparams['turretId'];
         this.turretAssemblyForm = this.machineToolSpecificationFormService.getTurretContents(this.machineToolElementId, this.turretId);
       });

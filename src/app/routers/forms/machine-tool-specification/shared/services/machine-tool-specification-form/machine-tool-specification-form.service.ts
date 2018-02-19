@@ -17,9 +17,14 @@ export class MachineToolSpecificationFormService {
     this._machineToolSpecificationId = value;
   }
 
-  private _machineToolSpecificationForm;
+  private _machineToolSpecificationForm = new FormGroup(
+    MachineToolSpecification.getFormControls(
+      new MachineToolSpecification({})
+    )
+  );
 
   get machineToolSpecificationForm() {
+    // this.loadMachineToolSpecificationFormFromModel({});
     return this._machineToolSpecificationForm;
   }
 
@@ -41,14 +46,6 @@ export class MachineToolSpecificationFormService {
 
   get itsElements() {
     return <FormArray>this.machineToolSpecificationForm.controls['its_elements'];
-  }
-
-  loadMachineToolSpecificationFormFromModel(machineToolSpecification) {
-    this.machineToolSpecificationForm = new FormGroup(
-      MachineToolSpecification.getFormControls(
-        new MachineToolSpecification(machineToolSpecification)
-      )
-    );
   }
 
   getCapabilities(index) {
@@ -180,5 +177,13 @@ export class MachineToolSpecificationFormService {
 
   getThreadedSpindleRange(index: number, j: number) {
     return this.getThreadedSpindles(index).controls[j].controls['range'];
+  }
+
+  private loadMachineToolSpecificationFormFromModel(machineToolSpecification) {
+    this.machineToolSpecificationForm = new FormGroup(
+      MachineToolSpecification.getFormControls(
+        new MachineToolSpecification(machineToolSpecification)
+      )
+    );
   }
 }

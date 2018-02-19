@@ -19,10 +19,12 @@ export class ToolChangerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.parent.params.subscribe(params => {
-      this.machineToolElementId = +params['machineToolElementId'];
-      this.toolChangerForm = this.machineToolSpecificationFormService.getToolChangers(this.machineToolElementId);
-    });
+    this.activatedRoute
+      .params
+      .subscribe(params => {
+        this.machineToolElementId = +params['machineToolElementId'];
+        this.toolChangerForm = this.machineToolSpecificationFormService.getToolChangers(this.machineToolElementId);
+      });
   }
 
 }

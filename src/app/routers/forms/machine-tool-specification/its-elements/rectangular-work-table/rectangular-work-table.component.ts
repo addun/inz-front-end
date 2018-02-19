@@ -20,7 +20,6 @@ export class RectangularWorkTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute
-      .parent
       .params
       .subscribe(params => {
         this.machineToolElementId = +params['machineToolElementId'];

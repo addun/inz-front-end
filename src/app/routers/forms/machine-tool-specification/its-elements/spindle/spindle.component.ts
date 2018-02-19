@@ -20,7 +20,7 @@ export class SpindleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.parent.parent.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       this.machineToolElementId = +params['machineToolElementId'];
       this.spindleForm = this.machineToolSpecificationFormService.getSpindles(this.machineToolElementId);
     });

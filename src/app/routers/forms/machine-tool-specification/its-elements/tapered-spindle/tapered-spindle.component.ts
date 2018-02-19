@@ -20,7 +20,7 @@ export class TaperedSpindleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.parent.parent.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       this.machineToolElementId = +params['machineToolElementId'];
       this.formGroups = this.machineToolSpecificationFormService.getTaperedSpindles(this.machineToolElementId);
     });

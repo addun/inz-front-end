@@ -20,7 +20,6 @@ export class ToolBreakageComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute
-      .parent
       .params
       .subscribe(params => {
         this.machineToolElementId = +params['machineToolElementId'];

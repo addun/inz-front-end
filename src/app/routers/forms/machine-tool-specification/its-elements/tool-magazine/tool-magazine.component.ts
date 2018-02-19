@@ -19,7 +19,7 @@ export class ToolMagazineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.parent.parent.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       this.machineToolElementId = +params['machineToolElementId'];
       this.toolMagazineForm = this.machineToolSpecificationFormService.getToolMagazines(this.machineToolElementId);
     });

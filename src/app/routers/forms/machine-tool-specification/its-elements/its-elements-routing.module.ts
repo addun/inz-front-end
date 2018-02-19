@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {BarFeederComponent} from './bar-feeder/bar-feeder.component';
-import {RouterOutletComponent} from '../../shared/components/router-outlet/router-outlet.component';
 import {ItsElementsComponent} from './its-elements.component';
 import {TailstockComponent} from './tailstock/tailstock.component';
 import {ColletComponent} from './collet/collet.component';
@@ -35,331 +34,46 @@ import {StraightSpindleRangeComponent} from './straight-spindle/straight-spindle
 import {PalletComponent} from './pallet/pallet.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: RouterOutletComponent,
-    children: [
-      {
-        path: '',
-        component: ItsElementsComponent
-      },
-      {
-        path: ':machineToolElementId',
-        component: RouterOutletComponent,
-        children: [
-          {
-            path: 'bar-feeders',
-            component: BarFeederComponent,
-            data: {
-              breadcrumb: 'Bar Feeders'
-            }
-          },
-          {
-            path: 'tailstocks',
-            component: TailstockComponent,
-            data: {
-              breadcrumb: 'Tailstocks'
-            }
-          },
-          {
-            path: 'collets',
-            component: ColletComponent,
-            data: {
-              breadcrumb: 'Collets'
-            }
-          },
-          {
-            path: 'chucks',
-            component: ChuckComponent,
-            data: {
-              breadcrumb: 'Chucks'
-            }
-          },
-          {
-            path: 'tool-breakages',
-            component: ToolBreakageComponent,
-            data: {
-              breadcrumb: 'Tool breakages'
-            }
-          },
-          {
-            path: 'part-probes',
-            component: PartProbeComponent,
-            data: {
-              breadcrumb: 'Part probes'
-            }
-          },
-          {
-            path: 'tool-settings',
-            component: ToolSettingComponent,
-            data: {
-              breadcrumb: 'Tool settings'
-            }
-          },
-          {
-            path: 'collants',
-            component: CoolantComponent,
-            data: {
-              breadcrumb: 'Coolants'
-            }
-          },
-          {
-            path: 'machine-tool-axis',
-            component: MachineToolAxisComponent,
-            data: {
-              breadcrumb: 'Machine tool axis'
-            }
-          },
-          {
-            path: 'linear-axis',
-            component: LinearAxisComponent,
-            data: {
-              breadcrumb: 'Linear axis'
-            }
-          },
-          {
-            path: 'continuous-rotary',
-            component: ContinuousRotaryComponent,
-            data: {
-              breadcrumb: 'Continuous rotary'
-            }
-          },
-          {
-            path: 'indexing',
-            component: IndexingComponent,
-            data: {
-              breadcrumb: 'Indexing'
-            }
-          },
-          {
-            path: 'limited-swing',
-            component: LimitedSwingComponent,
-            data: {
-              breadcrumb: 'Limited swing'
-            }
-          },
-          {
-            path: 'pallet',
-            component: PalletComponent,
-            data: {
-              breadcrumb: 'Pallet'
-            }
-          },
-          {
-            path: 'rectangular-work-tables',
-            component: RectangularWorkTableComponent,
-            data: {
-              breadcrumb: 'Rectangular work tables'
-            }
-          },
-          {
-            path: 'circular-work-table',
-            component: CircularWorkTableComponent,
-            data: {
-              breadcrumb: 'Circular work table'
-            }
-          },
-          {
-            path: 'tool-changer',
-            component: ToolChangerComponent,
-            data: {
-              breadcrumb: 'Tool changer'
-            }
-          },
-          {
-            path: 'rectangular-work-table',
-            component: RectangularWorkTableComponent,
-            data: {
-              breadcrumb: 'Rectangular work table'
-            }
-          },
-          {
-            path: 'turret',
-            component: RouterOutletComponent,
-            data: {
-              breadcrumb: 'Turret'
-            },
-            children: [
-              {
-                path: '',
-                component: TurretComponent
-              },
-              {
-                path: ':turretId',
-                component: RouterOutletComponent,
-                children: [
-                  {
-                    path: 'turret-contents',
-                    component: TurretContentsComponent,
-                    data: {
-                      breadcrumb: 'Turret contents'
-                    }
-                  }
-                ]
-              }
-            ]
-          }, {
-            path: 'tool-magazine',
-            component: RouterOutletComponent,
-            data: {
-              breadcrumb: 'Tool magazine'
-            },
-            children: [
-              {
-                path: '',
-                component: ToolMagazineComponent
-              },
-              {
-                path: ':toolMagazineId',
-                component: RouterOutletComponent,
-                children: [
-                  {
-                    path: 'tool-magazine-contents',
-                    component: ToolMagazineContentsComponent,
-                    data: {
-                      breadcrumb: 'Tool magazine contents'
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            path: 'spindle',
-            component: RouterOutletComponent,
-            data: {
-              breadcrumb: 'Spindle'
-            },
-            children: [
-              {
-                path: '',
-                component: SpindleComponent
-              },
-              {
-                path: ':spindleId',
-                component: RouterOutletComponent,
-                children: [
-                  {
-                    path: 'range',
-                    component: SpindleRangeComponent,
-                    data: {
-                      breadcrumb: 'Spindle range'
-                    }
-                  }
-                ]
-              }
-            ]
-          },
+  {path: '', component: ItsElementsComponent},
+  {path: ':machineToolElementId/bar-feeders', component: BarFeederComponent},
+  {path: ':machineToolElementId/tailstocks', component: TailstockComponent},
+  {path: ':machineToolElementId/collets', component: ColletComponent},
+  {path: ':machineToolElementId/chucks', component: ChuckComponent},
+  {path: ':machineToolElementId/tool-breakages', component: ToolBreakageComponent},
+  {path: ':machineToolElementId/part-probes', component: PartProbeComponent},
+  {path: ':machineToolElementId/tool-settings', component: ToolSettingComponent},
+  {path: ':machineToolElementId/collants', component: CoolantComponent},
+  {path: ':machineToolElementId/machine-tool-axis', component: MachineToolAxisComponent},
+  {path: ':machineToolElementId/linear-axis', component: LinearAxisComponent},
+  {path: ':machineToolElementId/continuous-rotary', component: ContinuousRotaryComponent},
+  {path: ':machineToolElementId/indexing', component: IndexingComponent},
+  {path: ':machineToolElementId/limited-swing', component: LimitedSwingComponent},
+  {path: ':machineToolElementId/pallet', component: PalletComponent},
+  {path: ':machineToolElementId/rectangular-work-tables', component: RectangularWorkTableComponent},
+  {path: ':machineToolElementId/circular-work-table', component: CircularWorkTableComponent},
+  {path: ':machineToolElementId/tool-changer', component: ToolChangerComponent},
+  {path: ':machineToolElementId/rectangular-work-table', component: RectangularWorkTableComponent},
 
-          {
-            path: 'work-spindle',
-            component: RouterOutletComponent,
-            data: {
-              breadcrumb: 'Work spindle'
-            },
-            children: [
-              {
-                path: '',
-                component: WorkSpindleComponent
-              },
-              {
-                path: ':spindleId',
-                component: RouterOutletComponent,
-                children: [
-                  {
-                    path: 'range',
-                    component: WorkSpindleRangeComponent,
-                    data: {
-                      breadcrumb: 'Spindle range'
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            path: 'tapered-spindle',
-            component: RouterOutletComponent,
-            data: {
-              breadcrumb: 'Tapered spindle'
-            },
-            children: [
-              {
-                path: '',
-                component: TaperedSpindleComponent
-              },
-              {
-                path: ':spindleId',
-                component: RouterOutletComponent,
-                children: [
-                  {
-                    path: 'range',
-                    component: TaperedSpindleRangeComponent,
-                    data: {
-                      breadcrumb: 'Spindle range'
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            path: 'straight-spindle',
-            component: RouterOutletComponent,
-            data: {
-              breadcrumb: 'Straight spindle'
-            },
-            children: [
-              {
-                path: '',
-                component: StraightSpindleComponent
-              },
-              {
-                path: ':spindleId',
-                component: RouterOutletComponent,
-                children: [
-                  {
-                    path: 'range',
-                    component: StraightSpindleRangeComponent,
-                    data: {
-                      breadcrumb: 'Spindle range'
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            path: 'threaded-spindle',
-            component: RouterOutletComponent,
-            data: {
-              breadcrumb: 'Threaded spindle'
-            },
-            children: [
-              {
-                path: '',
-                component: ThreadedSpindleComponent
-              },
-              {
-                path: ':spindleId',
-                component: RouterOutletComponent,
-                children: [
-                  {
-                    path: 'range',
-                    component: ThreadedSpindleRangeComponent,
-                    data: {
-                      breadcrumb: 'Spindle range'
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-        ]
-      }
-    ]
-  },
+  {path: ':machineToolElementId/turret', component: TurretComponent},
+  {path: ':machineToolElementId/turret/:turretId/turret-contents', component: TurretContentsComponent},
 
+  {path: ':machineToolElementId/tool-magazine', component: ToolMagazineComponent},
+  {path: ':machineToolElementId/tool-magazine/:toolMagazineId/tool-magazine-contents', component: ToolMagazineContentsComponent},
+
+  {path: ':machineToolElementId/spindle', component: SpindleComponent},
+  {path: ':machineToolElementId/spindle/:spindleId/range', component: SpindleRangeComponent},
+
+  {path: ':machineToolElementId/work-spindle', component: WorkSpindleComponent},
+  {path: ':machineToolElementId/work-spindle/:spindleId/range', component: WorkSpindleRangeComponent},
+
+  {path: ':machineToolElementId/tapered-spindle', component: TaperedSpindleComponent},
+  {path: ':machineToolElementId/tapered-spindle/:spindleId/range', component: TaperedSpindleRangeComponent},
+
+  {path: ':machineToolElementId/straight-spindle', component: StraightSpindleComponent},
+  {path: ':machineToolElementId/straight-spindle/:spindleId/range', component: StraightSpindleRangeComponent},
+
+  {path: ':machineToolElementId/threaded-spindle', component: ThreadedSpindleComponent},
+  {path: ':machineToolElementId/threaded-spindle/:spindleId/range', component: ThreadedSpindleRangeComponent},
 ];
 
 @NgModule({

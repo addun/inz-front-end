@@ -20,7 +20,7 @@ export class TurretComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute
-      .parent.parent
+
       .params
       .subscribe(params => {
         this.machineToolElementId = +params['machineToolElementId'];

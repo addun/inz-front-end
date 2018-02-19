@@ -20,7 +20,7 @@ export class ThreadedSpindleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.parent.parent.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       this.machineToolElementId = +params['machineToolElementId'];
       this.threadedSpindleForm = this.machineToolSpecificationFormService.getThreadedSpindles(this.machineToolElementId);
     });

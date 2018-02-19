@@ -20,10 +20,10 @@ export class ToolMagazineContentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.parent.parent.parent.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
 
       this.machineToolElementId = +params['machineToolElementId'];
-      this.activatedRoute.parent.params.subscribe(pppparams => {
+      this.activatedRoute.params.subscribe(pppparams => {
         this.toolMagazineId = pppparams['toolMagazineId'];
         this.toolMagazineContentForm = this.machineToolSpecificationFormService.getToolMagazineContents(this.machineToolElementId, this.toolMagazineId);
       });

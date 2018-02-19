@@ -20,11 +20,11 @@ export class TaperedSpindleRangeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.parent.parent.parent.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
 
       this.machineToolElementId = +params['machineToolElementId'];
 
-      this.activatedRoute.parent.params.subscribe(pppparams => {
+      this.activatedRoute.params.subscribe(pppparams => {
         this.spindleId = +pppparams['spindleId'];
         this.taperedSpindleRangeForm = this.machineToolSpecificationFormService.getTaperedSpindleRange(this.machineToolElementId, this.spindleId);
       });
