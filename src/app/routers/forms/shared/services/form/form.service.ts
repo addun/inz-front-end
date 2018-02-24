@@ -34,7 +34,7 @@ export class FormService {
     return this.apiService.get(`${this.formURL}${formId}/records/`);
   }
 
-  addNewForm(form: FormDTO) {
+  addNewForm(form: FormDTO): Observable<FormDTO> {
     return this.apiService.post(`${this.formURL}`, form);
   }
 

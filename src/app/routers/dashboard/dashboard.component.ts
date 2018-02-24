@@ -86,4 +86,12 @@ export class DashboardComponent implements OnInit {
       .updateFolder(folder)
       .subscribe();
   }
+
+  addMachineToolSpecificationToFolder() {
+    this.formService.addNewForm({
+      name: 'machine-tool-specification',
+      predefined: true,
+      folder: this.selectedFolder._id
+    }).subscribe(_ => this.onFolderSelect(this.selectedFolder));
+  }
 }

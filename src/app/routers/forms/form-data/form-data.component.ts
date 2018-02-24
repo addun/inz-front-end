@@ -38,8 +38,12 @@ export class FormDataComponent implements OnInit {
       .getForm(this.formId)
       .subscribe(form => {
         this.formName = form.name;
-        this.inputs = form.inputs;
-        this.buildForm();
+        if (!form.predefined) {
+          this.inputs = form.inputs;
+          this.buildForm();
+        } else {
+
+        }
       });
   }
 

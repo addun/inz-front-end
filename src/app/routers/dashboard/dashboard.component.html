@@ -27,11 +27,10 @@
     <button (click)="addFormToFolder()" class="btn btn-success">Create form</button>
 
     <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-primary" ngbDropdownToggle>Use exist</button>
+      <button class="btn btn-primary" ngbDropdownToggle>Use predefined</button>
       <div ngbDropdownMenu>
-        <button class="dropdown-item">Action - 1</button>
-        <button class="dropdown-item">Another Action</button>
-        <button class="dropdown-item">Something else is here</button>
+        <button (click)="addMachineToolSpecificationToFolder()" class="dropdown-item">Machine tool specification
+        </button>
       </div>
     </div>
 

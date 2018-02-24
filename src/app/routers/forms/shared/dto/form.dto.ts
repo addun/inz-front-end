@@ -1,8 +1,10 @@
 export interface FormDTO {
   name: string;
-  _id: string;
+  _id?: string;
   inputs?: FormInputDTO[];
   records?: FormRecordDTO[];
+  predefined: boolean;
+  folder: string;
 }
 
 export interface FormRecordDTO {
