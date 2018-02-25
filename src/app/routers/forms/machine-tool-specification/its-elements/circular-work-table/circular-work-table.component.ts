@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CircularWorkTable} from '../../../shared/models/circular-work-table.model';
+import {CircularWorkTable} from '../../shared/models/circular-work-table.model';
 import {FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';

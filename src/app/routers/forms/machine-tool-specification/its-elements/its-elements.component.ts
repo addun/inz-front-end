@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
-import {MachineToolElement} from '../../shared/models/machine-tool-element.model';
+import {MachineToolElement} from '../shared/models/machine-tool-element.model';
 import {MachineToolSpecificationFormService} from '../shared/services';
 
 @Component({

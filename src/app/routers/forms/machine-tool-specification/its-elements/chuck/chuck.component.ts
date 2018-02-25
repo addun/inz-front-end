@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Chuck} from '../../../shared/models/chuck.model';
+import {Chuck} from '../../shared/models/chuck.model';
 import {MachineToolSpecificationFormService} from '../../shared/services/';
 import {FormArray} from '@angular/forms';
 

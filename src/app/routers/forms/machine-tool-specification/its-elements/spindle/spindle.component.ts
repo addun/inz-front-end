@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {Spindle} from '../../../shared/models/spindle.model';
+import {Spindle} from '../../shared/models/spindle.model';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({

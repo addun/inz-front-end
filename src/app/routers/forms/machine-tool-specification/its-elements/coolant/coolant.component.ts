@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {CoolantType} from '../../../shared/types/coolant-type.type';
+import {CoolantType} from '../../shared/types/coolant-type.type';
 import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {Coolant} from '../../../shared/models/coolant.model';
-import {MeansOfCoolantDelivery} from '../../../shared/types/means-of-coolant-delivery.type';
+import {Coolant} from '../../shared/models/coolant.model';
+import {MeansOfCoolantDelivery} from '../../shared/types/means-of-coolant-delivery.type';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({

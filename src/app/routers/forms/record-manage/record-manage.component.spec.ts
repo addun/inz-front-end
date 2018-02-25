@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RouterOutletComponent } from './router-outlet.component';
+import { RecordManageComponent } from './record-manage.component';
 
-describe('RouterOutletComponent', () => {
-  let component: RouterOutletComponent;
-  let fixture: ComponentFixture<RouterOutletComponent>;
+describe('RecordManageComponent', () => {
+  let component: RecordManageComponent;
+  let fixture: ComponentFixture<RecordManageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RouterOutletComponent ]
+      declarations: [ RecordManageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RouterOutletComponent);
+    fixture = TestBed.createComponent(RecordManageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

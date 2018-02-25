@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {Tailstock} from '../../../shared/models/tailstock.model';
+import {Tailstock} from '../../shared/models/tailstock.model';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({

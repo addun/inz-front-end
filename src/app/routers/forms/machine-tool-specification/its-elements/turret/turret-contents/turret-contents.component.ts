@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ToolAssembly} from '../../../../shared/models/tool-assembly.model';
+import {ToolAssembly} from '../../../shared/models/tool-assembly.model';
 import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../../shared/services';

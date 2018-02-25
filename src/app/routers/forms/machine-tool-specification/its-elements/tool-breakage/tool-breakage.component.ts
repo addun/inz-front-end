@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {ToolBreakage} from '../../../shared/models/tool-breakage.model';
+import {ToolBreakage} from '../../shared/models/tool-breakage.model';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({

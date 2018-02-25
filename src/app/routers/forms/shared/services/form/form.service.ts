@@ -51,6 +51,6 @@ export class FormService {
   }
 
   updateRecord(formRecord: FormRecordDTO) {
-    return this.apiService.post(`${this.formURL}records/${formRecord._id}/`, formRecord);
+    return this.apiService.patch(`${this.formURL}records/${formRecord._id}/`, formRecord);
   }
 }

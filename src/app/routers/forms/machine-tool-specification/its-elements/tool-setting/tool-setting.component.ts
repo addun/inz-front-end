@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {ToolSetting} from '../../../shared/models/tool-setting.model';
-import {ProbeType} from '../../../shared/types/probe-type.type';
+import {ToolSetting} from '../../shared/models/tool-setting.model';
+import {ProbeType} from '../../shared/types/probe-type.type';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({

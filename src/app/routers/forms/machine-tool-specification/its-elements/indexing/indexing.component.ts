@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {Indexing} from '../../../shared/models/indexing.model';
+import {Indexing} from '../../shared/models/indexing.model';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({

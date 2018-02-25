@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SpindleRange} from '../../../../shared/models/spindle-range.model';
+import {SpindleRange} from '../../../shared/models/spindle-range.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../../shared/services';
 import {FormArray} from '@angular/forms';

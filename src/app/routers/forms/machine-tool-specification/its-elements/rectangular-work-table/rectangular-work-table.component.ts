@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
-import {RectangularWorkTable} from '../../../shared/models/rectangular-work-table.model';
+import {RectangularWorkTable} from '../../shared/models/rectangular-work-table.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 

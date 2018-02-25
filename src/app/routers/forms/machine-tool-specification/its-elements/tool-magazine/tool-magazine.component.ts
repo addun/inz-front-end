@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
-import {ToolMagazine} from '../../../shared/models/tool-magazine.model';
+import {ToolMagazine} from '../../shared/models/tool-magazine.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 

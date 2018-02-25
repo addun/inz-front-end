@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
-import {MachineToolAxis} from '../../../shared/models/machine-tool-axis.model';
+import {MachineToolAxis} from '../../shared/models/machine-tool-axis.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
-import {StraightSpindle} from '../../../shared/models/straight-spindle.model';
+import {StraightSpindle} from '../../shared/models/straight-spindle.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 

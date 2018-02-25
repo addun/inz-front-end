@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {Collet} from '../../../shared/models/collet.model';
+import {Collet} from '../../shared/models/collet.model';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 
 @Component({

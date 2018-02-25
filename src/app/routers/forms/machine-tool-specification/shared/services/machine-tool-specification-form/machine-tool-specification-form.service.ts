@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FormArray, FormGroup} from '@angular/forms';
-import {MachineToolSpecification} from '../../../../shared/models';
+import {MachineToolSpecification} from '../../models';
 
 @Injectable()
 export class MachineToolSpecificationFormService {

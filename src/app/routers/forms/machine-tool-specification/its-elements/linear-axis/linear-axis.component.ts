@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
-import {LinearAxis} from '../../../shared/models/linear-axis.model';
+import {LinearAxis} from '../../shared/models/linear-axis.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {MachineToolSpecification} from '../../../../shared/models/machine-tool-specification.model';
+import {MachineToolSpecification} from '../../models/machine-tool-specification.model';
 import {ApiService} from '../../../../../../core/api/api.service';
 import {map} from 'rxjs/operators';
 

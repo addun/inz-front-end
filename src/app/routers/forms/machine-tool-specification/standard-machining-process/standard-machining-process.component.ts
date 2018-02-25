@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormGroup} from '@angular/forms';
-import {StandardMachiningProcess} from '../../shared/models/standard-machining-process.model';
+import {StandardMachiningProcess} from '../shared/models/standard-machining-process.model';
 import {MachineToolSpecificationFormService} from '../shared/services';
 
 @Component({

@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormService} from '../shared/services/form/form.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {FormService} from '../shared/services/form/form.service';
 
 enum InputType {
   text = 'text',
@@ -9,11 +9,11 @@ enum InputType {
 }
 
 @Component({
-  selector: 'inz-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.sass']
+  selector: 'inz-form-create',
+  templateUrl: './form-create.component.html',
+  styleUrls: ['./form-create.component.sass']
 })
-export class CreateComponent implements OnInit {
+export class FormCreateComponent implements OnInit {
   folderId: string;
   formGroup: FormGroup;
   inputTypes = InputType;

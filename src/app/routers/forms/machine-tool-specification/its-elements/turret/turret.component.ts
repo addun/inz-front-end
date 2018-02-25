@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Turret} from '../../../shared/models/turret.model';
+import {Turret} from '../../shared/models/turret.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 import {FormArray} from '@angular/forms';

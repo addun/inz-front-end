@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {WorkSpindle} from '../../../shared/models/work-spindle.model';
+import {WorkSpindle} from '../../shared/models/work-spindle.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 

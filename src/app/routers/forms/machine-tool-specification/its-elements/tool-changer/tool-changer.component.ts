@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
-import {ToolChanger} from '../../../shared/models/tool-changer.model';
+import {ToolChanger} from '../../shared/models/tool-changer.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 

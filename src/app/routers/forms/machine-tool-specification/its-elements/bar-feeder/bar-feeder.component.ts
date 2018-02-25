@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
-import {BarFeeder} from '../../../shared/models/bar-feeder.model';
+import {BarFeeder} from '../../shared/models/bar-feeder.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 

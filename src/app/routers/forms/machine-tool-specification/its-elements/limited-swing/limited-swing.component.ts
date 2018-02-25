@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LimitedSwing} from '../../../shared/models/limited-swing.model';
+import {LimitedSwing} from '../../shared/models/limited-swing.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services/machine-tool-specification-form/machine-tool-specification-form.service';
 import {FormArray} from '@angular/forms';

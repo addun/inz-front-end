@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MachiningCapability} from '../../shared/models/machining-capability.model';
+import {MachiningCapability} from '../shared/models/machining-capability.model';
 import {FormArray} from '@angular/forms';
 import {MachineToolSpecificationFormService} from '../shared/services';
 

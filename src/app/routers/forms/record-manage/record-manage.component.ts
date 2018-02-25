@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {InputDTO} from '../shared/dto/input.dto';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormService} from '../shared/services/form/form.service';
 import {FormRecordDTO} from '../shared/dto/form.dto';
-import {InputDTO} from '../shared/dto/input.dto';
 
 @Component({
-  selector: 'inz-form-data',
-  templateUrl: './form-data.component.html',
-  styleUrls: ['./form-data.component.sass']
+  selector: 'inz-record-manage',
+  templateUrl: './record-manage.component.html',
+  styleUrls: ['./record-manage.component.sass']
 })
-export class FormDataComponent implements OnInit {
+export class RecordManageComponent implements OnInit {
   formRecordId: string;
   formGroup: FormGroup;
   inputs: InputDTO[];
@@ -37,6 +37,7 @@ export class FormDataComponent implements OnInit {
     this.formService
       .getForm(this.formId)
       .subscribe(form => {
+        console.log(form);
         this.formName = form.name;
         if (!form.predefined) {
           this.inputs = form.inputs;

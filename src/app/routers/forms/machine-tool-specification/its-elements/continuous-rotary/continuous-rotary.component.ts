@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray} from '@angular/forms';
-import {ContinuousRotary} from '../../../shared/models/continuous-rotary.model';
+import {ContinuousRotary} from '../../shared/models/continuous-rotary.model';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services';
 

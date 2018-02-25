@@ -12,12 +12,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RouterModule,
     ReactiveFormsModule
   ],
-  declarations: [],
+  declarations: [
+
+  ],
   exports: [
     NgbModule,
     FormsModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class SharedModule {
