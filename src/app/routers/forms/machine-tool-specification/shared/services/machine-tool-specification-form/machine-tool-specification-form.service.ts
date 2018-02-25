@@ -11,7 +11,6 @@ export class MachineToolSpecificationFormService {
   machineToolSpecificationForm;
 
   constructor() {
-    console.log('nowa instancja');
     this.loadMachineToolSpecificationFormFromModel();
   }
 

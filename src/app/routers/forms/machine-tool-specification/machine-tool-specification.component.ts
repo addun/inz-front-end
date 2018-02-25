@@ -45,14 +45,12 @@ export class MachineToolSpecificationComponent implements OnInit {
   }
 
   onSave() {
-    console.log(this.machineToolSpecificationFormService.machineToolSpecificationForm.value);
     if (this.machineToolSpecificationFormService.formData.record) {
       this.formService.updateRecord({
         _id: this.machineToolSpecificationFormService.formData.record,
         values: this.machineToolSpecificationFormService.machineToolSpecificationForm.value
       })
         .subscribe(response => {
-          console.log('updated');
         });
     } else {
       this.formService
@@ -60,7 +58,6 @@ export class MachineToolSpecificationComponent implements OnInit {
           values: this.machineToolSpecificationFormService.machineToolSpecificationForm.value
         })
         .subscribe(saved => {
-          console.log(saved);
         });
     }
   }

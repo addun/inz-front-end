@@ -37,7 +37,6 @@ export class RecordManageComponent implements OnInit {
     this.formService
       .getForm(this.formId)
       .subscribe(form => {
-        console.log(form);
         this.formName = form.name;
         if (!form.predefined) {
           this.inputs = form.inputs;
