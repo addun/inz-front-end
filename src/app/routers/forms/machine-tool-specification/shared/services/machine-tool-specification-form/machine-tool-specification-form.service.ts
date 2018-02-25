@@ -4,32 +4,15 @@ import {MachineToolSpecification} from '../../models';
 
 @Injectable()
 export class MachineToolSpecificationFormService {
+  formData: {
+    form: string;
+    record?: string
+  };
+  machineToolSpecificationForm;
+
   constructor() {
-  }
-
-  private _machineToolSpecificationId: number;
-
-  get machineToolSpecificationId(): number {
-    return this._machineToolSpecificationId;
-  }
-
-  set machineToolSpecificationId(value: number) {
-    this._machineToolSpecificationId = value;
-  }
-
-  private _machineToolSpecificationForm = new FormGroup(
-    MachineToolSpecification.getFormControls(
-      new MachineToolSpecification({})
-    )
-  );
-
-  get machineToolSpecificationForm() {
-    // this.loadMachineToolSpecificationFormFromModel({});
-    return this._machineToolSpecificationForm;
-  }
-
-  set machineToolSpecificationForm(value) {
-    this._machineToolSpecificationForm = value;
+    console.log('nowa instancja');
+    this.loadMachineToolSpecificationFormFromModel();
   }
 
   get installationForm() {
@@ -179,7 +162,7 @@ export class MachineToolSpecificationFormService {
     return this.getThreadedSpindles(index).controls[j].controls['range'];
   }
 
-  private loadMachineToolSpecificationFormFromModel(machineToolSpecification) {
+  loadMachineToolSpecificationFormFromModel(machineToolSpecification = {}) {
     this.machineToolSpecificationForm = new FormGroup(
       MachineToolSpecification.getFormControls(
         new MachineToolSpecification(machineToolSpecification)

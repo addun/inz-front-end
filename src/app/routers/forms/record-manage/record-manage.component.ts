@@ -43,7 +43,12 @@ export class RecordManageComponent implements OnInit {
           this.inputs = form.inputs;
           this.buildForm();
         } else {
-
+          this.router.navigate(['/forms/', 'predefined', this.formName], {
+            queryParams: {
+              form: this.formId,
+              record: this.formRecordId
+            }
+          });
         }
       });
   }

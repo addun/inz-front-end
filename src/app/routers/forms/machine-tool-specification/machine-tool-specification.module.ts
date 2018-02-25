@@ -36,7 +36,6 @@ import {MachineToolSpecificationComponent} from './machine-tool-specification.co
 import {InstallationComponent} from './installation/installation.component';
 import {StandardMachiningProcessComponent} from './standard-machining-process/standard-machining-process.component';
 import {MachiningCapabilitiesComponent} from './machining-capabilities/machining-capabilities.component';
-import {MachineToolSpecificationService} from './shared/services/machine-tool-specification/machine-tool-specification.service';
 import {ItsElementsComponent} from './its-elements/its-elements.component';
 import {TailstockComponent} from './its-elements/tailstock/tailstock.component';
 import {ColletComponent} from './its-elements/collet/collet.component';
@@ -144,9 +143,6 @@ import {BarFeederComponent} from './its-elements/bar-feeder/bar-feeder.component
     ThreadedSpindleRangeComponent,
     StraightSpindleRangeComponent,
     TaperedSpindleRangeComponent,
-  ],
-  providers: [
-    MachineToolSpecificationService
   ]
 })
 export class MachineToolSpecificationModule {
