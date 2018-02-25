@@ -22,22 +22,30 @@ export class MachineToolSpecificationComponent implements OnInit {
     this.activatedRoute
       .queryParams
       .subscribe((params: { form: string; record?: string }) => {
-        if (!this.machineToolSpecificationFormService.formData) {
-          this.machineToolSpecificationFormService.formData = params;
-        }
 
-        if (params.record) {
-          this.formService.getRecord(params.record).subscribe(dto => {
-            this.machineToolSpecificationFormService.loadMachineToolSpecificationFormFromModel(dto.values);
+          if (this.machineToolSpecificationFormService.formData.form !== params.form
+            || this.machineToolSpecificationFormService.formData.record !== params.record) {
+
+            this.machineToolSpecificationFormService.formData = params;
+            if (params.record) {
+              this.formService.getRecord(params.record).subscribe(dto => {
+                this.machineToolSpecificationFormService.loadMachineToolSpecificationFormFromModel(dto.values);
+                this.machineToolSpecificationForm = this.machineToolSpecificationFormService.machineToolSpecificationForm;
+              });
+            } else {
+              this.machineToolSpecificationForm = this.machineToolSpecificationFormService.machineToolSpecificationForm;
+            }
+          } else if (this.machineToolSpecificationFormService.formData.form === params.form
+            || this.machineToolSpecificationFormService.formData.record === params.record) {
             this.machineToolSpecificationForm = this.machineToolSpecificationFormService.machineToolSpecificationForm;
-          });
-        } else if (params.form) {
-          this.machineToolSpecificationForm = this.machineToolSpecificationFormService.machineToolSpecificationForm;
+            this.onSave();
+          }
         }
-      });
+      );
   }
 
   onSave() {
+    console.log(this.machineToolSpecificationFormService.machineToolSpecificationForm.value);
     if (this.machineToolSpecificationFormService.formData.record) {
       this.formService.updateRecord({
         _id: this.machineToolSpecificationFormService.formData.record,

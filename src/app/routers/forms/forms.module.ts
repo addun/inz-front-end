@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsComponent} from './forms.component';
 import {FormToastService} from './shared/services/toast/form-toast.service';
-import {TreeService} from '../tree/services/tree/tree.service';
 import {FormsRoutingModule} from './forms-routing.module';
 import {FormsSharedModule} from './shared/forms-shared.module';
 import {SharedModule} from '../../shared/shared.module';
@@ -26,7 +25,6 @@ import {FormsLayoutComponent} from './shared/components/forms-layout/forms-layou
   ],
   providers: [
     FormToastService,
-    TreeService,
     FormService,
   ]
 })

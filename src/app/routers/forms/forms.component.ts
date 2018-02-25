@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
 
 @Component({
   selector: 'inz-forms',
@@ -7,16 +6,11 @@ import {Location} from '@angular/common';
   styleUrls: ['./forms.component.sass']
 })
 export class FormsComponent implements OnInit {
-  constructor(private location: Location) {
+  constructor() {
   }
 
 
   ngOnInit() {
   }
-
-  saveAndGoBack() {
-    this.location.back();
-  }
-
 
 }

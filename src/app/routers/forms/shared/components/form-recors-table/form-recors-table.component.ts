@@ -44,7 +44,23 @@ export class FormRecorsTableComponent implements OnInit {
   }
 
   generateXML(dta: FormRecordDTO) {
+    if (this.form.predefined && this.form.name === 'machine-tool-specification') {
+      if (dta.values.its_elements) {
+        dta.values.its_elements = dta.values.its_elements.map(element => {
+          const flatCapabilities = [];
+          for (const key in element.capabilities) {
+            const value = element.capabilities[key];
+            flatCapabilities.push(...value);
+          }
+          element.capabilities = flatCapabilities;
+          return element;
+        });
+      }
+    }
 
+    const values = dta.values;
+    const xml = `<root>${objectToXML(values)}</root>`;
+    download('test.xml', xml);
   }
 
   removeRow(dta: FormRecordDTO) {
@@ -59,4 +75,47 @@ export class FormRecorsTableComponent implements OnInit {
       ;
     }
   }
+}
+
+function objectToXML(object) {
+  let xml = ``;
+  for (const key in object) {
+    const value = object[key];
+
+    if (Object.prototype.toString.call(value) === '[object Object]') {
+      const nestedXML = objectToXML(value);
+      xml += keyValueToXML(key, nestedXML);
+    } else if (Object.prototype.toString.call(value) === '[object Array]') {
+      value.forEach(element => {
+        const nestedXML = objectToXML(element);
+        xml += keyValueToXML(key, nestedXML);
+      });
+    } else {
+      xml += keyValueToXML(key, value);
+    }
+  }
+  return xml;
+}
+
+function keyValueToXML(key, value) {
+  if (value === null) {
+    return `<${key}></${key}>`;
+  } else {
+    return `<${key}>${value}</${key}>`;
+  }
+}
+
+function download(filename, text) {
+  const data = new Blob([text]);
+  const element = document.createElement('a');
+  element.setAttribute('href', URL.createObjectURL(data));
+  element.setAttribute('type', 'text/xml');
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }

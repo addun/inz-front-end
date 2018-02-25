@@ -1,6 +1,6 @@
 import {AbstractControl, FormControl, Validators} from '@angular/forms';
 
-export abstract class MachineTool {
+export class MachineTool {
   description: string = null;
 
   constructor(machineTool) {

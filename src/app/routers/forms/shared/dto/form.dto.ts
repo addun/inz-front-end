@@ -9,7 +9,7 @@ export interface FormDTO {
 
 export interface FormRecordDTO {
   _id?: string;
-  values: {};
+  values: any;
 }
 
 export interface FormInputDTO {

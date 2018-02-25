@@ -1,13 +1,13 @@
 <table *ngIf="form.records.length" class="table table-hover">
   <thead class="thead-dark">
   <tr>
-    <th>{{getFirstObjectKey(form.records[0].values)}}</th>
+    <th>{{ getFirstObjectKey(form.records[0].values) }}</th>
     <th>Actions</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let record of form.records">
-    <td>{{getFirstObjectKeyValue(record.values)}}</td>
+    <td>{{ getFirstObjectKeyValue(record.values) }}</td>
     <td class="actions">
 
       <button (click)="editRow(record)" ngbTooltip="Edit" class="btn btn-sm btn-outline-secondary">

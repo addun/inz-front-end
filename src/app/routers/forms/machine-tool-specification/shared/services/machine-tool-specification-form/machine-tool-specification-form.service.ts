@@ -7,7 +7,7 @@ export class MachineToolSpecificationFormService {
   formData: {
     form: string;
     record?: string
-  };
+  } = {form: ''};
   machineToolSpecificationForm;
 
   constructor() {
