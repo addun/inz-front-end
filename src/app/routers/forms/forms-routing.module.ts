@@ -13,7 +13,7 @@ const routes: Routes = [
       {path: ':form/records/add', component: RecordManageComponent},
       {path: ':form/records/:record/edit', component: RecordManageComponent},
       {
-        path: 'predefined/machine-tool-specification',
+        path: 'predefined/machine_tool_specification',
         loadChildren: './machine-tool-specification/machine-tool-specification.module#MachineToolSpecificationModule'
       },
     ]

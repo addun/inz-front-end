@@ -43,10 +43,10 @@ export class FormRecorsTableComponent implements OnInit {
 
   }
 
-  generateXML(dta: FormRecordDTO) {
-    if (this.form.predefined && this.form.name === 'machine-tool-specification') {
-      if (dta.values.its_elements) {
-        dta.values.its_elements = dta.values.its_elements.map(element => {
+  generateXML(dto: FormRecordDTO) {
+    if (this.form.predefined && this.form.name === 'machine_tool_specification') {
+      if (dto.values.its_elements) {
+        dto.values.its_elements = dto.values.its_elements.map(element => {
           const flatCapabilities = [];
           for (const key in element.capabilities) {
             const value = element.capabilities[key];
@@ -56,10 +56,10 @@ export class FormRecorsTableComponent implements OnInit {
           return element;
         });
       }
-    }
 
-    const values = dta.values;
-    const xml = `<root>${objectToXML(values)}</root>`;
+    }
+    const values = dto.values;
+    const xml = `<${this.form.name}>${objectToXML(values)}</${this.form.name}>`;
     download('test.xml', xml);
   }
 
