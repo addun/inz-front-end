@@ -8,7 +8,7 @@ export class FormToastService {
   }
 
   addedSuccess() {
-    this.toastr.success('Added');
+    this.toastr.success('Saved');
   }
 
   updateSuccess() {

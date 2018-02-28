@@ -4,6 +4,7 @@ import {InputDTO} from '../shared/dto/input.dto';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormService} from '../shared/services/form/form.service';
 import {FormRecordDTO} from '../shared/dto/form.dto';
+import {FormToastService} from '../shared/services/toast/form-toast.service';
 
 @Component({
   selector: 'inz-record-manage',
@@ -19,6 +20,7 @@ export class RecordManageComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
+              private formToastService: FormToastService,
               private formService: FormService) {
   }
 
@@ -80,12 +82,14 @@ export class RecordManageComponent implements OnInit {
       this.formService.updateRecord(data)
         .subscribe(_ => {
           this.router.navigate(['/forms', this.formId, 'records', 'add']);
+          this.formToastService.addedSuccess();
         });
     } else {
       this.formService
         .addFormRecord(this.formId, data)
         .subscribe(response => {
           this.formGroup.reset();
+          this.formToastService.addedSuccess();
         });
     }
   }
@@ -96,14 +100,14 @@ export class RecordManageComponent implements OnInit {
     };
     if (this.formRecordId) {
       data._id = this.formRecordId;
-      console.log(data);
       this.formService.updateRecord(data)
-        .subscribe();
+        .subscribe(_ => this.formToastService.addedSuccess());
     } else {
       this.formService
         .addFormRecord(this.formId, data)
         .subscribe(response => {
           this.router.navigate(['/forms', this.formId, 'records', response._id, 'edit']);
+          this.formToastService.addedSuccess();
         });
     }
   }

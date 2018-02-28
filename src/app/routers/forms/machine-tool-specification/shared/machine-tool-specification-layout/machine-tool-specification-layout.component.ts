@@ -3,6 +3,7 @@ import {MachineToolSpecificationFormService} from '../services/machine-tool-spec
 import {Location} from '@angular/common';
 import {FormService} from '../../../shared/services/form/form.service';
 import {Router} from '@angular/router';
+import {FormToastService} from '../../../shared/services/toast/form-toast.service';
 
 @Component({
   selector: 'inz-machine-tool-specification-layout',
@@ -13,6 +14,7 @@ export class MachineToolSpecificationLayoutComponent implements OnInit {
 
   constructor(private formService: FormService,
               private router: Router,
+              private formToastService: FormToastService,
               private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private location: Location) {
   }
@@ -27,6 +29,7 @@ export class MachineToolSpecificationLayoutComponent implements OnInit {
     })
       .subscribe(_ => {
         this.location.back();
+        this.formToastService.addedSuccess();
       });
   }
 

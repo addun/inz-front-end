@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {MachineToolSpecificationFormService} from './shared/services';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormService} from '../shared/services/form/form.service';
+import {FormToastService} from '../shared/services/toast/form-toast.service';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class MachineToolSpecificationComponent implements OnInit {
 
   constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private formService: FormService,
+              private router: Router,
+              private formToastService: FormToastService,
               private activatedRoute: ActivatedRoute) {
   }
 
@@ -25,7 +28,6 @@ export class MachineToolSpecificationComponent implements OnInit {
 
           if (this.machineToolSpecificationFormService.formData.form !== params.form
             || this.machineToolSpecificationFormService.formData.record !== params.record) {
-
             this.machineToolSpecificationFormService.formData = params;
             if (params.record) {
               this.formService.getRecord(params.record).subscribe(dto => {
@@ -33,12 +35,15 @@ export class MachineToolSpecificationComponent implements OnInit {
                 this.machineToolSpecificationForm = this.machineToolSpecificationFormService.machineToolSpecificationForm;
               });
             } else {
+              this.machineToolSpecificationFormService.loadMachineToolSpecificationFormFromModel({
+                description: 'Empty'
+              });
               this.machineToolSpecificationForm = this.machineToolSpecificationFormService.machineToolSpecificationForm;
+              this.onSave();
             }
           } else if (this.machineToolSpecificationFormService.formData.form === params.form
-            || this.machineToolSpecificationFormService.formData.record === params.record) {
+            && this.machineToolSpecificationFormService.formData.record === params.record) {
             this.machineToolSpecificationForm = this.machineToolSpecificationFormService.machineToolSpecificationForm;
-            this.onSave();
           }
         }
       );
@@ -58,6 +63,13 @@ export class MachineToolSpecificationComponent implements OnInit {
           values: this.machineToolSpecificationFormService.machineToolSpecificationForm.value
         })
         .subscribe(saved => {
+          this.router.navigate([], {
+            queryParams: {
+              record: saved._id,
+              form: this.machineToolSpecificationFormService.formData.form
+            }
+          });
+          this.formToastService.addedSuccess();
         });
     }
   }
