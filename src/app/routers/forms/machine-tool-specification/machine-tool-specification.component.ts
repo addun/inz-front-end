@@ -56,6 +56,7 @@ export class MachineToolSpecificationComponent implements OnInit {
         values: this.machineToolSpecificationFormService.machineToolSpecificationForm.value
       })
         .subscribe(response => {
+          this.formToastService.addedSuccess();
         });
     } else {
       this.formService
