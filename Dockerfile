@@ -10,5 +10,5 @@ RUN npm run build
 FROM nginx:1.12
 WORKDIR /inz-front-end
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder ./dist /inz-front-end
+COPY --from=builder /app/dist /inz-front-end
 EXPOSE 80
