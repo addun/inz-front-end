@@ -30,13 +30,10 @@ export class FormRecorsTableComponent implements OnInit {
   ngOnInit() {
   }
 
-  getFirstObjectKey(object: Object) {
-    return Object.keys(object)[0];
+  getObjectKeys(object: Object): string[] {
+    return Object.keys(object);
   }
 
-  getFirstObjectKeyValue(object: Object) {
-    return object[this.getFirstObjectKey(object)];
-  }
 
   editRow(formRecordDTO: FormRecordDTO) {
     this.router.navigate(['/forms', this.form._id, 'records', formRecordDTO._id, 'edit']);

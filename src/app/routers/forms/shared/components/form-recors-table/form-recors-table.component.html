@@ -1,29 +1,45 @@
-<table *ngIf="form.records.length" class="table table-hover">
-  <thead class="thead-dark">
-  <tr>
-    <th>{{ getFirstObjectKey(form.records[0].values) }}</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let record of form.records">
-    <td>{{ getFirstObjectKeyValue(record.values) }}</td>
-    <td class="actions">
+<div class="table-responsive">
+  <table *ngIf="form.records.length" class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <ng-template [ngIf]="!form.predefined">
+        <th *ngFor="let key of getObjectKeys(form.records[0].values)">
+          {{key}}
+        </th>
+      </ng-template>
+      <ng-template [ngIf]="form.predefined">
+        <th>{{getObjectKeys(form.records[0].values)[0]}}</th>
+      </ng-template>
+      <th class="actions">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let record of form.records">
+      <ng-template [ngIf]="!form.predefined">
+        <td *ngFor="let key of getObjectKeys(form.records[0].values)">
+          {{record.values[key]}}
+        </td>
+      </ng-template>
+      <ng-template [ngIf]="form.predefined">
+        <td>{{record.values[getObjectKeys(form.records[0].values)[0]]}}</td>
+      </ng-template>
+      <td class="actions">
 
-      <button (click)="editRow(record)" ngbTooltip="Edit" class="btn btn-sm btn-outline-secondary">
-        <i class="fa fa-pencil"></i>
-      </button>
-      <button (click)="generateXML(record)" ngbTooltip="Generate XML" class="btn btn-sm btn-outline-secondary">
-        <i class="fa fa-code" aria-hidden="true"></i>
-      </button>
-      <button (click)="removeRow(record)" ngbTooltip="Remove" class="btn btn-sm btn-outline-secondary">
-        <i class="fa fa-times"></i>
-      </button>
+        <button (click)="editRow(record)" ngbTooltip="Edit" class="btn btn-sm btn-outline-secondary">
+          <i class="fa fa-pencil"></i>
+        </button>
+        <button (click)="generateXML(record)" ngbTooltip="Generate XML" class="btn btn-sm btn-outline-secondary">
+          <i class="fa fa-code" aria-hidden="true"></i>
+        </button>
+        <button (click)="removeRow(record)" ngbTooltip="Remove" class="btn btn-sm btn-outline-secondary">
+          <i class="fa fa-times"></i>
+        </button>
 
-    </td>
-  </tr>
-  </tbody>
-</table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 
 <p *ngIf="!form.records.length" class="p-2 text-center">
   This form does not contains any records
