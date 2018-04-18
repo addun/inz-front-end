@@ -1,16 +1,18 @@
-import { Injectable } from '@angular/core';
-import { ApiService } from '../../api/api.service';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {ApiService} from '../../api/api.service';
+import {environment} from '../../../../environments/environment';
 
 @Injectable()
 export class AuthService {
 
-  isLogged: boolean = false;
-  constructor(private apiService: ApiService) { }
+  isLogged = false;
+
+  constructor(private apiService: ApiService) {
+  }
 
   login(login: { login: string, password: string }): Promise<boolean> {
     return new Promise((resolver, reject) => {
-      if (login.login === 'admin' && login.password === 'adminadmin') {
+      if (login.login === environment.auth.login && login.password === environment.auth.password) {
         this.isLogged = true;
         resolver(true);
       } else {

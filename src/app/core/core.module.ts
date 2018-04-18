@@ -23,7 +23,7 @@ import {ApiToastService} from './toast/api-toast.service';
     AuthGuardService,
     ApiToastService
   ],
-  declarations: []
+  declarations: [],
 })
 export class CoreModule {
 }
