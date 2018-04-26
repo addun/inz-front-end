@@ -3,6 +3,6 @@ export const environment = {
   apiBaseUrl: 'https://api.inz.adrianbury.pl/',
   auth: {
     login: 'admin',
-    password: 'admin'
+    password: 'supertajne'
   }
 };
