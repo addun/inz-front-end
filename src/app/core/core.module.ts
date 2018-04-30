@@ -3,11 +3,12 @@ import {AuthService} from './auth/service/auth.service';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ApiService} from './api/api.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ToastModule} from 'ng2-toastr';
 import {AuthGuardService} from './auth/guard/auth-guard.service';
 import {BrowserModule} from '@angular/platform-browser';
 import {ApiToastService} from './toast/api-toast.service';
+import {AuthInterceptor} from './auth/interceptor/auth.interceptor';
 
 @NgModule({
   imports: [
@@ -21,7 +22,12 @@ import {ApiToastService} from './toast/api-toast.service';
     AuthService,
     AuthToastService,
     AuthGuardService,
-    ApiToastService
+    ApiToastService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   declarations: [],
 })

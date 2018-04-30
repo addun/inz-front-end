@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .login(this.loginForm.value)
       .then(logged => {
+        console.log(logged);
         if (logged) {
           this.router.navigate(['/']);
         } else {

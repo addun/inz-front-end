@@ -1,24 +1,45 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../api/api.service';
-import {environment} from '../../../../environments/environment';
 
 @Injectable()
 export class AuthService {
-
-  isLogged = false;
+  isLogged: boolean;
+  private loginForm: LoginForm = {
+    login: '',
+    password: ''
+  };
 
   constructor(private apiService: ApiService) {
+    this.isLogged = false;
   }
 
-  login(login: { login: string, password: string }): Promise<boolean> {
-    return new Promise((resolver, reject) => {
-      if (login.login === environment.auth.login && login.password === environment.auth.password) {
-        this.isLogged = true;
-        resolver(true);
-      } else {
-        resolver(false);
-      }
+  login(loginForm: LoginForm): Promise<boolean> {
+    this.loginForm = loginForm;
+    return new Promise( (resolve, reject) => {
+      this.apiService.get('auth')
+        .subscribe(
+          response => {
+            this.isLogged = true;
+            resolve(true);
+          },
+          error => {
+            resolve(false);
+          }
+        );
+
     });
   }
 
+  getAuthorizationHeaderValue(): string {
+    return `Basic ${btoa(this.loginForm.login + ':' + this.loginForm.password)}`;
+  }
+
+  getAuthorizationHeaderKey(): string {
+    return 'Authorization';
+  }
+}
+
+interface LoginForm {
+  login: string;
+  password: string;
 }
