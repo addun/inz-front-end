@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DashboardService} from './shared/services/dashboard/dashboard.service';
 import {Router} from '@angular/router';
 import {FolderDTO} from './shared/dto/folder.dto';
@@ -10,7 +10,7 @@ import {FormService} from '../forms/shared/services/form/form.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.sass']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   tree: FolderDTO[] = [];
   form: FormDTO;
   selectedFolder: FolderDTO;
@@ -20,10 +20,19 @@ export class DashboardComponent implements OnInit {
               private router: Router) {
   }
 
+
   ngOnInit() {
+    this.selectedFolder = JSON.parse(localStorage.getItem('selectedFolder'));
+    if (this.selectedFolder) {
+      this.onFolderSelect(this.selectedFolder);
+    }
     this.dashboardService
       .getFolderTree()
       .subscribe(tree => this.tree = tree);
+  }
+
+  ngOnDestroy(): void {
+    localStorage.setItem('selectedFolder', JSON.stringify(this.selectedFolder));
   }
 
   addFormData() {
