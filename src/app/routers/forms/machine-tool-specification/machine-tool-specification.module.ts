@@ -69,7 +69,7 @@ import {StraightSpindleRangeComponent} from './its-elements/straight-spindle/str
 import {TaperedSpindleRangeComponent} from './its-elements/tapered-spindle/tapered-spindle-range/tapered-spindle-range.component';
 import {BarFeederComponent} from './its-elements/bar-feeder/bar-feeder.component';
 import {MachineToolSpecificationFormService} from './shared/services/machine-tool-specification-form/machine-tool-specification-form.service';
-import { MachineToolSpecificationLayoutComponent } from './shared/machine-tool-specification-layout/machine-tool-specification-layout.component';
+import {MachineToolSpecificationLayoutComponent} from './shared/machine-tool-specification-layout/machine-tool-specification-layout.component';
 
 
 @NgModule({

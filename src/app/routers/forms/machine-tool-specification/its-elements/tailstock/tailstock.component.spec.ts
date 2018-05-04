@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TailstockComponent } from './tailstock.component';
+import {TailstockComponent} from './tailstock.component';
 
 describe('TailstockComponent', () => {
   let component: TailstockComponent;
@@ -8,9 +8,9 @@ describe('TailstockComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TailstockComponent ]
+      declarations: [TailstockComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

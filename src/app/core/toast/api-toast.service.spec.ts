@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { ApiToastService } from './api-toast.service';
+import {ApiToastService} from './api-toast.service';
 
 describe('ApiToastService', () => {
   beforeEach(() => {

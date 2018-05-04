@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RectangularWorkTableFormComponent } from './rectangular-work-table-form.component';
+import {RectangularWorkTableFormComponent} from './rectangular-work-table-form.component';
 
 describe('RectangularWorkTableFormComponent', () => {
   let component: RectangularWorkTableFormComponent;
@@ -8,9 +8,9 @@ describe('RectangularWorkTableFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RectangularWorkTableFormComponent ]
+      declarations: [RectangularWorkTableFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

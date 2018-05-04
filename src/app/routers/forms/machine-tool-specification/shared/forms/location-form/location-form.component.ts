@@ -10,7 +10,9 @@ export class LocationFormComponent implements OnInit {
   @Input() locationForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

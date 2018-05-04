@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ToolChangerFormComponent } from './tool-changer-form.component';
+import {ToolChangerFormComponent} from './tool-changer-form.component';
 
 describe('ToolChangerFormComponent', () => {
   let component: ToolChangerFormComponent;
@@ -8,9 +8,9 @@ describe('ToolChangerFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolChangerFormComponent ]
+      declarations: [ToolChangerFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

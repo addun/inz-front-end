@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SpindleRangeFormComponent } from './spindle-range-form.component';
+import {SpindleRangeFormComponent} from './spindle-range-form.component';
 
 describe('SpindleRangeFormComponent', () => {
   let component: SpindleRangeFormComponent;
@@ -8,9 +8,9 @@ describe('SpindleRangeFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpindleRangeFormComponent ]
+      declarations: [SpindleRangeFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

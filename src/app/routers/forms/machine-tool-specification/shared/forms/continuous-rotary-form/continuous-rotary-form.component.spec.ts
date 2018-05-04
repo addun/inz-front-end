@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ContinuousRotaryFormComponent } from './continuous-rotary-form.component';
+import {ContinuousRotaryFormComponent} from './continuous-rotary-form.component';
 
 describe('ContinuousRotaryFormComponent', () => {
   let component: ContinuousRotaryFormComponent;
@@ -8,9 +8,9 @@ describe('ContinuousRotaryFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContinuousRotaryFormComponent ]
+      declarations: [ContinuousRotaryFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

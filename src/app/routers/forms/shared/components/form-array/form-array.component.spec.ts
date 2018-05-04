@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormArrayComponent } from './form-array.component';
+import {FormArrayComponent} from './form-array.component';
 
 describe('FormArrayComponent', () => {
   let component: FormArrayComponent;
@@ -8,9 +8,9 @@ describe('FormArrayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormArrayComponent ]
+      declarations: [FormArrayComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

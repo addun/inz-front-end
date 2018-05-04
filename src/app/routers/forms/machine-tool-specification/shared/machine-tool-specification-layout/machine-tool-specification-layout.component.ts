@@ -13,7 +13,7 @@ import {FormToastService} from '../../../shared/services/toast/form-toast.servic
 export class MachineToolSpecificationLayoutComponent implements OnInit {
 
   constructor(private formService: FormService,
-              private router: Router,
+              public router: Router,
               private formToastService: FormToastService,
               private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private location: Location) {

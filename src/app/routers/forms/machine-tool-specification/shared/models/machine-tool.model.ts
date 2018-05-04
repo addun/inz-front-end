@@ -9,7 +9,7 @@ export class MachineTool {
 
   public static getFormControls(loadModel?: MachineTool): { [key: string]: AbstractControl } {
     return {
-      description: new FormControl(loadModel.description,  Validators.required)
+      description: new FormControl(loadModel.description, Validators.required)
     };
   }
 }

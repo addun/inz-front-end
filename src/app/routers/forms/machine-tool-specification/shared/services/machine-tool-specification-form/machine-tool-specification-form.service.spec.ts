@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { MachineToolSpecificationFormService } from './machine-tool-specification-form.service';
+import {MachineToolSpecificationFormService} from './machine-tool-specification-form.service';
 
 describe('MachineToolSpecificationFormService', () => {
   beforeEach(() => {

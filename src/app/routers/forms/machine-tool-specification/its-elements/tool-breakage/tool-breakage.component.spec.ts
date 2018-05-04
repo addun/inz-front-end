@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ToolBreakageComponent } from './tool-breakage.component';
+import {ToolBreakageComponent} from './tool-breakage.component';
 
 describe('ToolBreakageComponent', () => {
   let component: ToolBreakageComponent;
@@ -8,9 +8,9 @@ describe('ToolBreakageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolBreakageComponent ]
+      declarations: [ToolBreakageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

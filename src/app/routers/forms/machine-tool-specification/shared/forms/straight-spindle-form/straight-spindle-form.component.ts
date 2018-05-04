@@ -10,7 +10,9 @@ export class StraightSpindleFormComponent implements OnInit {
   @Input() straightSpindleForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

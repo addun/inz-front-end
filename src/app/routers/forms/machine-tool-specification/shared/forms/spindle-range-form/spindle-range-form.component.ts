@@ -10,7 +10,9 @@ export class SpindleRangeFormComponent implements OnInit {
   @Input() spindleRangerForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

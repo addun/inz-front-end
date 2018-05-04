@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CircularWorkTableComponent } from './circular-work-table.component';
+import {CircularWorkTableComponent} from './circular-work-table.component';
 
 describe('CircularWorkTableComponent', () => {
   let component: CircularWorkTableComponent;
@@ -8,9 +8,9 @@ describe('CircularWorkTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CircularWorkTableComponent ]
+      declarations: [CircularWorkTableComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -10,7 +10,9 @@ export class TurretFormComponent implements OnInit {
   @Input() turretForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

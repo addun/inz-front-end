@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ThreadedSpindleRangeComponent } from './threaded-spindle-range.component';
+import {ThreadedSpindleRangeComponent} from './threaded-spindle-range.component';
 
 describe('ThreadedSpindleRangeComponent', () => {
   let component: ThreadedSpindleRangeComponent;
@@ -8,9 +8,9 @@ describe('ThreadedSpindleRangeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ThreadedSpindleRangeComponent ]
+      declarations: [ThreadedSpindleRangeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

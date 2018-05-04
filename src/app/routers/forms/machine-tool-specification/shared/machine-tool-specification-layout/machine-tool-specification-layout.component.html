@@ -1,4 +1,4 @@
-<div *ngIf="this.router.url.split('?')[0] !== '/forms/predefined/machine_tool_specification'"
+<div *ngIf="router.url.split('?')[0] !== '/forms/predefined/machine_tool_specification'"
      style="position: fixed; left: 25px; top: 50%; z-index: 999999">
   <button class="btn btn-sm btn-primary"
           (click)="saveAndGoBack()"

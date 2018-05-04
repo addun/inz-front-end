@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { InputArrayComponent } from './input-array.component';
+import {InputArrayComponent} from './input-array.component';
 
 describe('InputArrayComponent', () => {
   let component: InputArrayComponent;
@@ -8,9 +8,9 @@ describe('InputArrayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputArrayComponent ]
+      declarations: [InputArrayComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

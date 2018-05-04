@@ -10,7 +10,9 @@ export class RotaryAxisFormComponent implements OnInit {
   @Input() rotaryAxisForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

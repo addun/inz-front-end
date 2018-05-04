@@ -10,7 +10,9 @@ export class ToolSpindleFormComponent implements OnInit {
   @Input() toolSpindleForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

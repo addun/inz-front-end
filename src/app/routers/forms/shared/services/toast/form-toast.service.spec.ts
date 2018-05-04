@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { FormToastService } from './form-toast.service';
+import {FormToastService} from './form-toast.service';
 
 describe('FormToastService', () => {
   beforeEach(() => {

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TurretContentsComponent } from './turret-contents.component';
+import {TurretContentsComponent} from './turret-contents.component';
 
 describe('TurretContentsComponent', () => {
   let component: TurretContentsComponent;
@@ -8,9 +8,9 @@ describe('TurretContentsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TurretContentsComponent ]
+      declarations: [TurretContentsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

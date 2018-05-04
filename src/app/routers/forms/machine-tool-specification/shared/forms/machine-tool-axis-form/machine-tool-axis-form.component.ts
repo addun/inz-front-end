@@ -10,7 +10,9 @@ export class MachineToolAxisFormComponent implements OnInit {
   @Input() machineToolAxisForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

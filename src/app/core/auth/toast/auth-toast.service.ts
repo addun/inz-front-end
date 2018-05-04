@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { ToastsManager } from 'ng2-toastr';
+import {Injectable} from '@angular/core';
+import {ToastsManager} from 'ng2-toastr';
 
 @Injectable()
 export class AuthToastService {
 
-  constructor(private toastsManager: ToastsManager) { }
+  constructor(private toastsManager: ToastsManager) {
+  }
 
 
   loginFailed() {

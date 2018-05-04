@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ToolHandlingUnitFormComponent } from './tool-handling-unit-form.component';
+import {ToolHandlingUnitFormComponent} from './tool-handling-unit-form.component';
 
 describe('ToolHandlingUnitFormComponent', () => {
   let component: ToolHandlingUnitFormComponent;
@@ -8,9 +8,9 @@ describe('ToolHandlingUnitFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolHandlingUnitFormComponent ]
+      declarations: [ToolHandlingUnitFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

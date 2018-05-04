@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ColletComponent } from './collet.component';
+import {ColletComponent} from './collet.component';
 
 describe('ColletComponent', () => {
   let component: ColletComponent;
@@ -8,9 +8,9 @@ describe('ColletComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ColletComponent ]
+      declarations: [ColletComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

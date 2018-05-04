@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ThreadedSpindle} from '../../shared/models/threaded-spindle.model';
-import {FormArray, FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {MachineToolSpecificationFormService} from '../../shared/services/machine-tool-specification-form/machine-tool-specification-form.service';
 

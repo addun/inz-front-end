@@ -68,7 +68,10 @@ const routes: Routes = [
     {path: 'its-elements/:machineToolElementId/turret', component: TurretComponent},
     {path: 'its-elements/:machineToolElementId/turret/:turretId/turret-contents', component: TurretContentsComponent},
     {path: 'its-elements/:machineToolElementId/tool-magazine', component: ToolMagazineComponent},
-    {path: 'its-elements/:machineToolElementId/tool-magazine/:toolMagazineId/tool-magazine-contents', component: ToolMagazineContentsComponent},
+    {
+      path: 'its-elements/:machineToolElementId/tool-magazine/:toolMagazineId/tool-magazine-contents',
+      component: ToolMagazineContentsComponent
+    },
     {path: 'its-elements/:machineToolElementId/spindle', component: SpindleComponent},
     {path: 'its-elements/:machineToolElementId/spindle/:spindleId/range', component: SpindleRangeComponent},
     {path: 'its-elements/:machineToolElementId/work-spindle', component: WorkSpindleComponent},

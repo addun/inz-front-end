@@ -1,7 +1,8 @@
 <inz-form-array [forms]="circularWorkTableForm" [formGroupGenerator]="generator" label="Circular work table">
 
   <ng-template #controls let-index="index">
-    <inz-circular-work-table-form [circularWorkTable]="circularWorkTableForm.controls[index]"></inz-circular-work-table-form>
+    <inz-circular-work-table-form
+      [circularWorkTable]="circularWorkTableForm.controls[index]"></inz-circular-work-table-form>
   </ng-template>
 
 </inz-form-array>

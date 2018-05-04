@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WorkTableFormComponent } from './work-table-form.component';
+import {WorkTableFormComponent} from './work-table-form.component';
 
 describe('WorkTableFormComponent', () => {
   let component: WorkTableFormComponent;
@@ -8,9 +8,9 @@ describe('WorkTableFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WorkTableFormComponent ]
+      declarations: [WorkTableFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

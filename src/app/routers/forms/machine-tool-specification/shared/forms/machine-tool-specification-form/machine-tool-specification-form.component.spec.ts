@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MachineToolSpecificationFormComponent } from './machine-tool-specification-form.component';
+import {MachineToolSpecificationFormComponent} from './machine-tool-specification-form.component';
 
 describe('MachineToolSpecificationFormComponent', () => {
   let component: MachineToolSpecificationFormComponent;
@@ -8,9 +8,9 @@ describe('MachineToolSpecificationFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MachineToolSpecificationFormComponent ]
+      declarations: [MachineToolSpecificationFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

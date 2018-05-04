@@ -10,7 +10,9 @@ export class WorkSpindleFormComponent implements OnInit {
   @Input() workSpindleForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

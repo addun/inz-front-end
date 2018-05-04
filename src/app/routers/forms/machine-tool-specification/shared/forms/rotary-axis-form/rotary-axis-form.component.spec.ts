@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RotaryAxisFormComponent } from './rotary-axis-form.component';
+import {RotaryAxisFormComponent} from './rotary-axis-form.component';
 
 describe('RotaryAxisFormComponent', () => {
   let component: RotaryAxisFormComponent;
@@ -8,9 +8,9 @@ describe('RotaryAxisFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RotaryAxisFormComponent ]
+      declarations: [RotaryAxisFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

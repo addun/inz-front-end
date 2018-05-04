@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { StandardMachiningProcessComponent } from './standard-machining-process.component';
+import {StandardMachiningProcessComponent} from './standard-machining-process.component';
 
 describe('StandardMachiningProcessComponent', () => {
   let component: StandardMachiningProcessComponent;
@@ -8,9 +8,9 @@ describe('StandardMachiningProcessComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StandardMachiningProcessComponent ]
+      declarations: [StandardMachiningProcessComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

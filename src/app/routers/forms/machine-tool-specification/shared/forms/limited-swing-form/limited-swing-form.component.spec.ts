@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LimitedSwingFormComponent } from './limited-swing-form.component';
+import {LimitedSwingFormComponent} from './limited-swing-form.component';
 
 describe('LimitedSwingFormComponent', () => {
   let component: LimitedSwingFormComponent;
@@ -8,9 +8,9 @@ describe('LimitedSwingFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LimitedSwingFormComponent ]
+      declarations: [LimitedSwingFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -10,7 +10,9 @@ export class ToolChangerFormComponent implements OnInit {
   @Input() toolChangerForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

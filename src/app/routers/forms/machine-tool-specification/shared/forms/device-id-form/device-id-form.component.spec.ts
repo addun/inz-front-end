@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DeviceIdFormComponent } from './device-id-form.component';
+import {DeviceIdFormComponent} from './device-id-form.component';
 
 describe('DeviceIdFormComponent', () => {
   let component: DeviceIdFormComponent;
@@ -8,9 +8,9 @@ describe('DeviceIdFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeviceIdFormComponent ]
+      declarations: [DeviceIdFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

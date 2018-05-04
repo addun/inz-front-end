@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LinearAxisComponent } from './linear-axis.component';
+import {LinearAxisComponent} from './linear-axis.component';
 
 describe('LinearAxisComponent', () => {
   let component: LinearAxisComponent;
@@ -8,9 +8,9 @@ describe('LinearAxisComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LinearAxisComponent ]
+      declarations: [LinearAxisComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

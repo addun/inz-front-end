@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { StraightSpindleRangeComponent } from './straight-spindle-range.component';
+import {StraightSpindleRangeComponent} from './straight-spindle-range.component';
 
 describe('StraightSpindleRangeComponent', () => {
   let component: StraightSpindleRangeComponent;
@@ -8,9 +8,9 @@ describe('StraightSpindleRangeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StraightSpindleRangeComponent ]
+      declarations: [StraightSpindleRangeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

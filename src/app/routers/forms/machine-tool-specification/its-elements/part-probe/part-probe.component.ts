@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {FormArray, FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {PartProbe} from '../../shared/models/part-probe.model';
 import {SensorDimensionality} from '../../shared/types/sensor-dimensionality.type';
 import {ProbeType} from '../../shared/types/probe-type.type';

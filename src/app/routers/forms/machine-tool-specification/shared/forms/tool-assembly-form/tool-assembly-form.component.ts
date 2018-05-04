@@ -10,7 +10,9 @@ export class ToolAssemblyFormComponent implements OnInit {
   @Input() toolAssemblyForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -14,8 +14,7 @@ import {SharedModule} from '../shared/shared.module';
   declarations: [
     RoutersComponent
   ],
-  providers: [
-  ]
+  providers: []
 })
 export class RoutersModule {
 }

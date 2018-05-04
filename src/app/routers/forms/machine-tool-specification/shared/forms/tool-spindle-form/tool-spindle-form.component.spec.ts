@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ToolSpindleFormComponent } from './tool-spindle-form.component';
+import {ToolSpindleFormComponent} from './tool-spindle-form.component';
 
 describe('ToolSpindleFormComponent', () => {
   let component: ToolSpindleFormComponent;
@@ -8,9 +8,9 @@ describe('ToolSpindleFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolSpindleFormComponent ]
+      declarations: [ToolSpindleFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

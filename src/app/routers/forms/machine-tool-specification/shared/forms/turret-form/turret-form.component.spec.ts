@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TurretFormComponent } from './turret-form.component';
+import {TurretFormComponent} from './turret-form.component';
 
 describe('TurretFormComponent', () => {
   let component: TurretFormComponent;
@@ -8,9 +8,9 @@ describe('TurretFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TurretFormComponent ]
+      declarations: [TurretFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

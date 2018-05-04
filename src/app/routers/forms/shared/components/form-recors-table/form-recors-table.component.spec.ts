@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormRecorsTableComponent } from './form-recors-table.component';
+import {FormRecorsTableComponent} from './form-recors-table.component';
 
 describe('FormRecorsTableComponent', () => {
   let component: FormRecorsTableComponent;
@@ -8,9 +8,9 @@ describe('FormRecorsTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormRecorsTableComponent ]
+      declarations: [FormRecorsTableComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

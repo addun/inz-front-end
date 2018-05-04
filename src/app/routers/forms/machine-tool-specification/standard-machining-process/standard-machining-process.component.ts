@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormGroup} from '@angular/forms';
+import {FormArray} from '@angular/forms';
 import {StandardMachiningProcess} from '../shared/models/standard-machining-process.model';
 import {MachineToolSpecificationFormService} from '../shared/services';
 
@@ -10,7 +10,7 @@ import {MachineToolSpecificationFormService} from '../shared/services';
 })
 export class StandardMachiningProcessComponent implements OnInit {
   formGroups: FormArray;
-  generator = StandardMachiningProcess.getFormControls
+  generator = StandardMachiningProcess.getFormControls;
 
   constructor(private machineToolSpecificationFormService: MachineToolSpecificationFormService) {
   }

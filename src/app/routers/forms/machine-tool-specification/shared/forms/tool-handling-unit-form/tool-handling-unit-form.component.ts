@@ -10,7 +10,9 @@ export class ToolHandlingUnitFormComponent implements OnInit {
   @Input() toolHandlingUnitForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

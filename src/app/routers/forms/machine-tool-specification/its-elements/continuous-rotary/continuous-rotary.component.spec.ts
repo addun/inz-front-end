@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ContinuousRotaryComponent } from './continuous-rotary.component';
+import {ContinuousRotaryComponent} from './continuous-rotary.component';
 
 describe('ContinuousRotaryComponent', () => {
   let component: ContinuousRotaryComponent;
@@ -8,9 +8,9 @@ describe('ContinuousRotaryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContinuousRotaryComponent ]
+      declarations: [ContinuousRotaryComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

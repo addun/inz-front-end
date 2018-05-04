@@ -15,7 +15,7 @@ export class AuthService {
 
   login(loginForm: LoginForm): Promise<boolean> {
     this.loginForm = loginForm;
-    return new Promise( (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this.apiService.get('auth')
         .subscribe(
           response => {

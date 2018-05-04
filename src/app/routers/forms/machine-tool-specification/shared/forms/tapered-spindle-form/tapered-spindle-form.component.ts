@@ -10,7 +10,9 @@ export class TaperedSpindleFormComponent implements OnInit {
   @Input() taperedSpindleForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -10,7 +10,9 @@ export class TSlotFormComponent implements OnInit {
   @Input() tSlotForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

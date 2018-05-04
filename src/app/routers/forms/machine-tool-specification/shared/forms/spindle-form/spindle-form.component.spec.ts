@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SpindleFormComponent } from './spindle-form.component';
+import {SpindleFormComponent} from './spindle-form.component';
 
 describe('SpindleFormComponent', () => {
   let component: SpindleFormComponent;
@@ -8,9 +8,9 @@ describe('SpindleFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpindleFormComponent ]
+      declarations: [SpindleFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

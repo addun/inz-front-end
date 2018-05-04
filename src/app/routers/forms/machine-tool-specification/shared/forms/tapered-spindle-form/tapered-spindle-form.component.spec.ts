@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TaperedSpindleFormComponent } from './tapered-spindle-form.component';
+import {TaperedSpindleFormComponent} from './tapered-spindle-form.component';
 
 describe('TaperedSpindleFormComponent', () => {
   let component: TaperedSpindleFormComponent;
@@ -8,9 +8,9 @@ describe('TaperedSpindleFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TaperedSpindleFormComponent ]
+      declarations: [TaperedSpindleFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

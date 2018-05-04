@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RecordManageComponent } from './record-manage.component';
+import {RecordManageComponent} from './record-manage.component';
 
 describe('RecordManageComponent', () => {
   let component: RecordManageComponent;
@@ -8,9 +8,9 @@ describe('RecordManageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecordManageComponent ]
+      declarations: [RecordManageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

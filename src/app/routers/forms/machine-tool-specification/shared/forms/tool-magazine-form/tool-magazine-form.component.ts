@@ -12,7 +12,9 @@ export class ToolMagazineFormComponent implements OnInit {
   @Input() label: string;
   @Input() required: boolean;
   toolStorageConfiguration = ToolStorageConfiguration;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

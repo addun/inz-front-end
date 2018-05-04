@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MachineToolSpecificationLayoutComponent } from './machine-tool-specification-layout.component';
+import {MachineToolSpecificationLayoutComponent} from './machine-tool-specification-layout.component';
 
 describe('MachineToolSpecificationLayoutComponent', () => {
   let component: MachineToolSpecificationLayoutComponent;
@@ -8,9 +8,9 @@ describe('MachineToolSpecificationLayoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MachineToolSpecificationLayoutComponent ]
+      declarations: [MachineToolSpecificationLayoutComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

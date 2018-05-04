@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LimitedSwingComponent } from './limited-swing.component';
+import {LimitedSwingComponent} from './limited-swing.component';
 
 describe('LimitedSwingComponent', () => {
   let component: LimitedSwingComponent;
@@ -8,9 +8,9 @@ describe('LimitedSwingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LimitedSwingComponent ]
+      declarations: [LimitedSwingComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

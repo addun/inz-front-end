@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MachineToolAxisComponent } from './machine-tool-axis.component';
+import {MachineToolAxisComponent} from './machine-tool-axis.component';
 
 describe('MachineToolAxisComponent', () => {
   let component: MachineToolAxisComponent;
@@ -8,9 +8,9 @@ describe('MachineToolAxisComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MachineToolAxisComponent ]
+      declarations: [MachineToolAxisComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PalletFormComponent } from './pallet-form.component';
+import {PalletFormComponent} from './pallet-form.component';
 
 describe('PalletFormComponent', () => {
   let component: PalletFormComponent;
@@ -8,9 +8,9 @@ describe('PalletFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PalletFormComponent ]
+      declarations: [PalletFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

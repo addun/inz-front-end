@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TSlotFormComponent } from './t-slot-form.component';
+import {TSlotFormComponent} from './t-slot-form.component';
 
 describe('TSlotFormComponent', () => {
   let component: TSlotFormComponent;
@@ -8,9 +8,9 @@ describe('TSlotFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TSlotFormComponent ]
+      declarations: [TSlotFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

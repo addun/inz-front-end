@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { IndexingFormComponent } from './indexing-form.component';
+import {IndexingFormComponent} from './indexing-form.component';
 
 describe('IndexingFormComponent', () => {
   let component: IndexingFormComponent;
@@ -8,9 +8,9 @@ describe('IndexingFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IndexingFormComponent ]
+      declarations: [IndexingFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

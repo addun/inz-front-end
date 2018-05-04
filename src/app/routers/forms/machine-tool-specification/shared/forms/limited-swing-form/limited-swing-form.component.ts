@@ -10,7 +10,9 @@ export class LimitedSwingFormComponent implements OnInit {
   @Input() limitedSwingForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

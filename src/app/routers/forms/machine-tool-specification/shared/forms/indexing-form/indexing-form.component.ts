@@ -10,7 +10,9 @@ export class IndexingFormComponent implements OnInit {
   @Input() indexingForm: FormGroup;
   @Input() label: string;
   @Input() required: boolean;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormHrefComponent } from './form-href.component';
+import {FormHrefComponent} from './form-href.component';
 
 describe('FormHrefComponent', () => {
   let component: FormHrefComponent;
@@ -8,9 +8,9 @@ describe('FormHrefComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormHrefComponent ]
+      declarations: [FormHrefComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
