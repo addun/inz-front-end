@@ -4,12 +4,9 @@
   align-items: center
   padding-left: 10px
   cursor: pointer
-  &:hover
+
+  &.is-selected, &:hover
     background-color: #eee
-    .node-actions
-      opacity: 1
-    .node-name
-      padding-bottom: 0
 
 .node-container
   width: 100%
@@ -22,18 +19,7 @@
 .node-content
   width: 100%
 
-.node-input
-
 .node-name
   padding-bottom: 1px
   margin: 3px
   display: inline-block
-
-.node-actions
-  opacity: 0
-
-.dropdown-toggle::after
-  content: none
-
-.icon-dropdown
-  padding: 5px 10px

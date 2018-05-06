@@ -5,6 +5,8 @@ import {TreeNodeComponent} from './components/tree-node/tree-node.component';
 import {FolderTreeComponent} from './components/tree/tree.component';
 import {SharedModule} from '../../../shared/shared.module';
 import {FormRecorsTableComponent} from '../../forms/shared/components/form-recors-table/form-recors-table.component';
+import {TreeService} from './services/tree/tree.service';
+import {FolderFormModalComponent} from './components/folder-form-modal/folder-form-modal.component';
 
 @NgModule({
   imports: [
@@ -12,16 +14,22 @@ import {FormRecorsTableComponent} from '../../forms/shared/components/form-recor
     SharedModule
   ],
   providers: [
-    DashboardService
+    DashboardService,
+    TreeService
+  ],
+  entryComponents: [
+    FolderFormModalComponent
   ],
   declarations: [
     FolderTreeComponent,
     TreeNodeComponent,
-    FormRecorsTableComponent
+    FormRecorsTableComponent,
+    FolderFormModalComponent
   ],
   exports: [
     FolderTreeComponent,
-    FormRecorsTableComponent
+    FormRecorsTableComponent,
+    FolderFormModalComponent
   ]
 })
 export class DashboardSharedModule {

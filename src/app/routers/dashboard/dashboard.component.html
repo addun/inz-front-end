@@ -1,22 +1,33 @@
 <div class="folders border border-left-0 border-top-0 border-bottom-0 border-dark">
   <div class="folders-actions">
-    <button (click)="addRootFolder()"
+    <button (click)="addNewCollection()"
             ngbTooltip="Add root folder"
             placement="right"
             class="btn btn-outline-secondary btn-sm">
       <span class="fa fa-folder"></span>
     </button>
+    <button (click)="addFolderToSelectedFolder(content)"
+            ngbTooltip="Add subfolder"
+            placement="right"
+            class="btn btn-outline-secondary btn-sm">
+      <span class="fa fa-file"></span>
+    </button>
+    <button (click)="renameSelectedFolder()"
+            ngbTooltip="Edit folder name"
+            placement="right"
+            class="btn btn-outline-secondary btn-sm">
+      <span class="fa fa-pencil"></span>
+    </button>
+    <button (click)="removeSelectedFolder()"
+            ngbTooltip="Remove folder"
+            placement="right"
+            class="btn btn-outline-secondary btn-sm">
+      <span class="fa fa-trash"></span>
+    </button>
   </div>
 
-  <inz-folder-tree [tree]="tree"
-                   (select)="onFolderSelect($event)"
-                   (rename)="onFolderRename($event)"
-                   (add)="onFolderAdd($event)"
-                   (collapse)="onFolderCollapse($event)"
-                   (remove)="onFolderRemove($event)"
-  ></inz-folder-tree>
+  <inz-folder-tree [tree]="tree"></inz-folder-tree>
 </div>
-
 
 <div class="folder-content" *ngIf="selectedFolder">
   <p class="p-3 bg-secondary mb-0 text-white text-center">{{selectedFolder.name}}</p>
