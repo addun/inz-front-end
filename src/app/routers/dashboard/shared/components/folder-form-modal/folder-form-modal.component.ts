@@ -11,7 +11,7 @@ export class FolderFormModalComponent implements OnInit, AfterViewInit {
   @Input() name: string;
   @Input() isCreated = false;
   @ViewChildren('inputName') inputName;
-  private folderForm: FormGroup;
+  folderForm: FormGroup;
 
   constructor(public activeModal: NgbActiveModal) {
   }
