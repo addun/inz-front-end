@@ -42,11 +42,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.refreshFolderTree();
     this.selectFolderSubscription = this.treeService.listenSelectedFolder()
       .subscribe(folderDTO => {
-        this.onFolderSelect(folderDTO);
+        this.selectedFolder = folderDTO;
       });
   }
-
-  // ToDo: START
 
   ngOnDestroy(): void {
     this.selectFolderSubscription.unsubscribe();
@@ -85,8 +83,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       folder: this.selectedFolder._id
     }).subscribe(_ => this.onFolderSelect(this.selectedFolder));
   }
-
-// ToDo: END
 
   addNewCollection() {
     const modalRef = this.modalService.open(FolderFormModalComponent);
