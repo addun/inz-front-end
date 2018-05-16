@@ -1,7 +1,7 @@
 import {Component, HostBinding, HostListener, Input, OnDestroy, OnInit} from '@angular/core';
-import {FolderDTO} from '../../dto/folder.dto';
 import {TreeService} from '../../services/tree/tree.service';
 import {Subscription} from 'rxjs';
+import {FolderToRead} from '../../models/folder.model';
 
 @Component({
   selector: 'inz-tree-node',
@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./tree-node.component.sass']
 })
 export class TreeNodeComponent implements OnInit, OnDestroy {
-  @Input() folder: FolderDTO;
+  @Input() folder: FolderToRead;
   @HostBinding('class.is-selected') isSelected = false;
   private selectedFolderSubscription: Subscription;
 
@@ -17,37 +17,26 @@ export class TreeNodeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if (!this.treeService.selectedFolder) {
-      return;
-    }
     this.isSelected = this.isTheSame(this.treeService.selectedFolder);
     this.selectedFolderSubscription = this.treeService
-      .lisenSelectedFolder()
+      .listenSelectedFolder()
       .subscribe(folderDTO => {
-        if (!this.treeService.selectedFolder) {
-          return;
-        }
         this.isSelected = this.isTheSame(folderDTO);
       });
   }
 
   ngOnDestroy(): void {
-    if (this.selectedFolderSubscription) {
-      this.selectedFolderSubscription.unsubscribe();
-    }
   }
 
   @HostListener('click', ['$event'])
   onTreeNodeClick(e) {
-    this.treeService.setFolderAsSelected(this.folder);
+    this.treeService.selectedFolder = this.folder;
   }
 
-  toggleChildren() {
-    this.folder.isCollapse = !this.folder.isCollapse;
-    this.treeService.collapseEvent(this.folder);
-  }
-
-  private isTheSame(folder: FolderDTO): boolean {
+  private isTheSame(folder: FolderToRead): boolean {
+    if (!folder) {
+      return false;
+    }
     return folder._id === this.folder._id;
   }
 }

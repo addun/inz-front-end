@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChildren} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {FolderToCreate, FolderToRead, FolderToUpdate, initFolderToCreate} from '../../models/folder.model';
 
 @Component({
   selector: 'inz-folder-form-modal',
@@ -8,8 +9,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./folder-form-modal.component.sass']
 })
 export class FolderFormModalComponent implements OnInit, AfterViewInit {
-  @Input() name: string;
-  @Input() isCreated = false;
+  @Input() folder: FolderToRead | FolderToCreate | FolderToUpdate;
   @ViewChildren('inputName') inputName;
   folderForm: FormGroup;
 
@@ -21,16 +21,28 @@ export class FolderFormModalComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.createForm();
+    if (!this.folder) {
+      this.folder = initFolderToCreate();
+      this.createFormToFolderCreate(this.folder);
+    } else {
+      this.createFormToFolderUpdate(<FolderToUpdate>this.folder);
+    }
   }
 
   submitForm() {
-    this.activeModal.close(this.folderForm.value);
+    const updatedFolder = Object.assign(this.folder, this.folderForm.value);
+    this.activeModal.close(updatedFolder);
   }
 
-  private createForm() {
+  private createFormToFolderUpdate(folder: FolderToUpdate) {
     this.folderForm = new FormGroup({
-      name: new FormControl(this.name, Validators.required)
+      name: new FormControl(folder.name, Validators.required),
+    });
+  }
+
+  private createFormToFolderCreate(folder: FolderToCreate) {
+    this.folderForm = new FormGroup({
+      name: new FormControl(folder.name, Validators.required),
     });
   }
 

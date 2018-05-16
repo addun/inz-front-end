@@ -6,19 +6,22 @@
             class="btn btn-outline-secondary btn-sm">
       <span class="fa fa-folder"></span>
     </button>
-    <button (click)="addFolderToSelectedFolder()"
+    <button (click)="addSubFolder()"
+            [disabled]="!selectedFolder"
             ngbTooltip="Add subfolder"
             placement="right"
             class="btn btn-outline-secondary btn-sm">
       <span class="fa fa-file"></span>
     </button>
     <button (click)="renameSelectedFolder()"
+            [disabled]="!selectedFolder"
             ngbTooltip="Edit folder name"
             placement="right"
             class="btn btn-outline-secondary btn-sm">
       <span class="fa fa-pencil"></span>
     </button>
     <button (click)="removeSelectedFolder()"
+            [disabled]="!selectedFolder"
             ngbTooltip="Remove folder"
             placement="right"
             class="btn btn-outline-secondary btn-sm">

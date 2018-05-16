@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FolderDTO} from '../../dto/folder.dto';
+import {FolderToRead} from '../../models/folder.model';
 
 @Component({
   selector: 'inz-folder-tree',
@@ -7,7 +7,7 @@ import {FolderDTO} from '../../dto/folder.dto';
   styleUrls: ['./tree.component.sass']
 })
 export class FolderTreeComponent implements OnInit {
-  @Input() tree: FolderDTO[];
+  @Input() tree: FolderToRead[];
 
   constructor() {
   }
@@ -15,8 +15,5 @@ export class FolderTreeComponent implements OnInit {
   ngOnInit() {
   }
 
-  showChildren(folder: FolderDTO): boolean {
-    return !folder.isCollapse && folder.children.length > 0;
-  }
 
 }

@@ -1,6 +1,6 @@
 <div *ngFor="let folder of tree">
   <inz-tree-node class="folder-item" [folder]="folder"></inz-tree-node>
-  <inz-folder-tree [tree]="folder.children" *ngIf="showChildren(folder)" class="folder-item"></inz-folder-tree>
+  <inz-folder-tree [tree]="folder.children" class="folder-item"></inz-folder-tree>
 </div>
 
 

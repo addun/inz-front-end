@@ -1,36 +1,55 @@
 import {Injectable} from '@angular/core';
-import {FolderDTO} from '../../dto/folder.dto';
 import {Observable, Subject} from 'rxjs';
+import {FolderToRead} from '../../models/folder.model';
+import {StorageService} from '../../../../../core/storage/storage.service';
 
 @Injectable()
 export class TreeService {
-  private currentFolder: FolderDTO;
-  private selectedFolderSubject = new Subject<FolderDTO>();
-  private collapseFolderSubject = new Subject<FolderDTO>();
+  private selectedFolderSubject = new Subject<FolderToRead>();
+  private storageKey = 'nodes_state';
+  private selectedFolderId = 'selected_folder_id';
 
-  constructor() {
+  constructor(private storageService: StorageService) {
   }
 
-  public get selectedFolder(): FolderDTO {
-    return this.currentFolder;
+
+  get selectedFolder(): FolderToRead {
+    return this.loadSelectedFolderFromMemory();
   }
 
-  setFolderAsSelected(folder: FolderDTO) {
-    this.currentFolder = folder;
+  set selectedFolder(folder: FolderToRead) {
+    this.saveSelectedFolderInMemory(folder);
     this.selectedFolderSubject.next(folder);
   }
 
-  lisenSelectedFolder(): Observable<FolderDTO> {
+  listenSelectedFolder(): Observable<FolderToRead> {
     return this.selectedFolderSubject.asObservable();
   }
 
-  lisenCollapseFolder(): Observable<FolderDTO> {
-    return this.collapseFolderSubject.asObservable();
+  getNodeState(nodeId: string) {
+    const nodesState = this.storageService.get(this.storageKey);
+    if (!nodesState) {
+      return null;
+    } else {
+      return nodesState[nodeId];
+    }
   }
 
-  collapseEvent(folder: FolderDTO) {
-    this.collapseFolderSubject.next(folder);
+  saveNodeState(nodeId: string, state: any): void {
+    let nodesState = this.storageService.get(this.storageKey);
+    if (!nodesState) {
+      nodesState = {};
+    }
+    nodesState[nodeId] = state;
+    this.storageService.save(this.storageKey, nodesState);
   }
 
+  private saveSelectedFolderInMemory(folderToRead: FolderToRead) {
+    this.storageService.save(this.selectedFolderId, folderToRead);
+  }
+
+  private loadSelectedFolderFromMemory(): FolderToRead {
+    return this.storageService.get(this.selectedFolderId);
+  }
 
 }

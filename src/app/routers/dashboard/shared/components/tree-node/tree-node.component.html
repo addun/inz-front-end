@@ -1,12 +1,8 @@
-<div class="node-container" (click)="toggleChildren()">
+<div class="node-icon">
+  <span *ngIf="!isSelected" class="fa fa-folder-o"></span>
+  <span *ngIf="isSelected" class="fa fa-folder-open-o"></span>
+</div>
 
-  <div class="node-icon">
-    <span *ngIf="folder.isCollapse" class="fa fa-folder-o"></span>
-    <span *ngIf="!folder.isCollapse" class="fa fa-folder-open-o"></span>
-  </div>
-
-  <div class="node-content">
-    <span class="node-name">{{folder.name}}</span>
-  </div>
-
+<div class="node-content">
+  <span class="node-name">{{folder.name}}</span>
 </div>

@@ -1,19 +1,18 @@
 <form [formGroup]="folderForm" (ngSubmit)="submitForm()">
   <div class="modal-header">
-    <h4 class="modal-title" *ngIf="isCreated">Add new folder</h4>
-    <h4 class="modal-title" *ngIf="!isCreated">Edit folder</h4>
-    <button type="button" class="close" aria-label="Close"
-            (click)="activeModal.dismiss()">
-    </button>
+    <h4 class="modal-title">
+      <ng-template [ngIf]="!folder._id">Add new a folder</ng-template>
+      <ng-template [ngIf]="folder._id">Update the folder</ng-template>
+    </h4>
   </div>
   <div class="modal-body">
     <div class="form-group">
       <label for="newFolderName">Folder name</label>
-      <input #inputName formControlName="name" type="text" class="form-control" id="newFolderName">
+      <input #inputName autocomplete="off" formControlName="name" type="text" class="form-control" id="newFolderName">
     </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-light" (click)="activeModal.dismiss()">Close</button>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" [disabled]="!folderForm.valid" class="btn btn-primary">Add</button>
   </div>
 </form>
