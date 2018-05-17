@@ -1,3 +1,5 @@
+[![BCH compliance](https://bettercodehub.com/edge/badge/inz-adrianbury/front-end?branch=master)](https://bettercodehub.com/)
+
 # InzFrontEnd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.4.
