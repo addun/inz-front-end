@@ -1,6 +1,6 @@
 <div class="node-icon">
-  <span *ngIf="!isSelected" class="fa fa-folder-o"></span>
-  <span *ngIf="isSelected" class="fa fa-folder-open-o"></span>
+  <span *ngIf="!folder.isOpen" class="fa fa-folder-o"></span>
+  <span *ngIf="folder.isOpen" class="fa fa-folder-open-o"></span>
 </div>
 
 <div class="node-content">

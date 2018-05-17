@@ -7,7 +7,14 @@ import {TreeService} from './shared/services/tree/tree.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FolderFormModalComponent} from './shared/components/folder-form-modal/folder-form-modal.component';
 import {Subscription} from 'rxjs';
-import {FolderToCreate, FolderToRead, FolderToUpdate, initFolderToCreate} from './shared/models/folder.model';
+import {
+  convertFolderToReadArrayToFolderArray, Folder,
+  FolderToCreate,
+  FolderToRead,
+  FolderToUpdate,
+  initFolderToCreate
+} from './shared/models/folder.model';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'inz-dashboard',
@@ -16,7 +23,7 @@ import {FolderToCreate, FolderToRead, FolderToUpdate, initFolderToCreate} from '
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   selectFolderSubscription: Subscription;
-  tree: FolderToRead[] = [];
+  tree: Folder[] = [];
   form: FormDTO;
   @ViewChild('content') private modalContent: TemplateRef<any>;
 
@@ -81,7 +88,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       name: 'machine_tool_specification',
       predefined: true,
       folder: this.selectedFolder._id
-    }).subscribe(_ => this.onFolderSelect(this.selectedFolder));
+    }).subscribe(() => this.onFolderSelect(this.selectedFolder));
   }
 
   addNewCollection() {
@@ -96,7 +103,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     modalRef.componentInstance.folder = initFolderToCreate(this.selectedFolder._id);
     modalRef.result
       .then(result => this.addFolder(result))
-      .catch(_ => null);
+      .catch(() => null);
   }
 
   renameSelectedFolder() {
@@ -110,6 +117,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   refreshFolderTree() {
     this.dashboardService
       .getFolderTree()
+      .pipe(map(array => convertFolderToReadArrayToFolderArray(array)))
       .subscribe(tree => {
         this.tree = tree;
         this.selectedFolder = this.treeService.selectedFolder;
@@ -128,22 +136,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private addFolder(folder: FolderToCreate) {
     this.dashboardService
       .addFolder(folder)
-      .subscribe(_ => this.refreshFolderTree());
+      .subscribe(() => this.refreshFolderTree());
   }
 
   private updateFolder(folder: FolderToUpdate) {
     this.dashboardService
       .updateFolder(folder)
-      .subscribe(_ => this.refreshFolderTree());
+      .subscribe(() => this.refreshFolderTree());
   }
 
   private removeFolder(folder: string) {
     this.dashboardService
       .removeFolder(folder)
-      .subscribe(_ => this.refreshFolderTree());
+      .subscribe(() => this.refreshFolderTree());
   }
 
   private onModalClose(error) {
-    console.log('error');
+    console.log('Close error: ', error);
   }
 }

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FolderToRead} from '../../models/folder.model';
+import {Folder} from '../../models/folder.model';
 
 @Component({
   selector: 'inz-folder-tree',
@@ -7,12 +7,16 @@ import {FolderToRead} from '../../models/folder.model';
   styleUrls: ['./tree.component.sass']
 })
 export class FolderTreeComponent implements OnInit {
-  @Input() tree: FolderToRead[];
+  @Input() tree: Folder[];
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  isOpen(folder: Folder): boolean {
+    return folder.isOpen;
   }
 
 
