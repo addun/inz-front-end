@@ -35,9 +35,7 @@ export class MachineToolSpecificationComponent implements OnInit {
                 this.machineToolSpecificationForm = this.machineToolSpecificationFormService.machineToolSpecificationForm;
               });
             } else {
-              this.machineToolSpecificationFormService.loadMachineToolSpecificationFormFromModel({
-                description: 'Empty'
-              });
+              this.machineToolSpecificationFormService.loadMachineToolSpecificationFormFromModel();
               this.machineToolSpecificationForm = this.machineToolSpecificationFormService.machineToolSpecificationForm;
               this.onSave();
             }
@@ -64,13 +62,13 @@ export class MachineToolSpecificationComponent implements OnInit {
           values: this.machineToolSpecificationFormService.machineToolSpecificationForm.value
         })
         .subscribe(saved => {
-          this.router.navigate([], {
+          this.formToastService.addedSuccess();
+          this.router.navigate(['/forms', this.machineToolSpecificationFormService.formData.form, 'records', 'add'], {
             queryParams: {
               record: saved._id,
               form: this.machineToolSpecificationFormService.formData.form
-            }
+            },
           });
-          this.formToastService.addedSuccess();
         });
     }
   }
