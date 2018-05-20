@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FolderFormModalComponent } from './folder-form-modal.component';
+import { FolderNodeContentComponent } from './folder-node-content.component';
 
-describe('FolderFormModalComponent', () => {
-  let component: FolderFormModalComponent;
-  let fixture: ComponentFixture<FolderFormModalComponent>;
+describe('FolderNodeContentComponent', () => {
+  let component: FolderNodeContentComponent;
+  let fixture: ComponentFixture<FolderNodeContentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FolderFormModalComponent ]
+      declarations: [ FolderNodeContentComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FolderFormModalComponent);
+    fixture = TestBed.createComponent(FolderNodeContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

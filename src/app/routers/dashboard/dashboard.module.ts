@@ -5,13 +5,16 @@ import {DashboardComponent} from './dashboard.component';
 import {SharedModule} from '../../shared/shared.module';
 import {DashboardSharedModule} from './shared/dashboard-shared.module';
 import {FormService} from '../forms/shared/services/form/form.service';
+import {FolderTreeModule} from './libs/folder-tree/folder-tree.module';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-    DashboardSharedModule
+    // DashboardSharedModule,
+
+    FolderTreeModule
   ],
   declarations: [
     DashboardComponent,

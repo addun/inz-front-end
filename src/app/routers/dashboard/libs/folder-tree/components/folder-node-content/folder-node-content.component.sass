@@ -5,8 +5,15 @@
   padding-left: 10px
   cursor: pointer
 
-  &.is-selected, &:hover
+  &:hover
     background-color: #eee
+
+  .node-actions
+    display: none
+  &.is-selected
+    background-color: #dddddd
+    .node-actions
+      display: block
 
 .node-icon
   padding-right: 10px
@@ -19,3 +26,11 @@
   padding-bottom: 1px
   margin: 3px
   display: inline-block
+  user-select: none
+
+.node-actions-container
+  height: 100%
+
+
+.node-actions
+  padding: 8px 10px

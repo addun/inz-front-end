@@ -1,0 +1,4 @@
+<ng-container *ngFor="let folder of folders">
+  <inz-folder-node-content [folder]="folder"></inz-folder-node-content>
+  <inz-folder-node *ngIf="canShowChildren(folder)" [folders]="folder.children"></inz-folder-node>
+</ng-container>

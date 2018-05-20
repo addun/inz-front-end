@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
+import {FolderToCreate, FolderToRead, FolderToUpdate} from '../../models/folder.model';
 import {ApiService} from '../../../../../core/api/api.service';
 import {Observable} from 'rxjs';
-import {FolderToRead, FolderToCreate, FolderToUpdate} from '../../models/folder.model';
 
-
-@Injectable()
-export class DashboardService {
-
+@Injectable({
+  providedIn: 'root'
+})
+export class FolderService {
   constructor(private apiService: ApiService) {
   }
 
