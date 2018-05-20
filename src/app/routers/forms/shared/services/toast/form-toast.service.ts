@@ -1,22 +1,22 @@
 import {Injectable} from '@angular/core';
-import {ToastsManager} from 'ng2-toastr';
+import {NotificationService} from '../../../../../core/notification/notification.service';
 
 @Injectable()
 export class FormToastService {
 
-  constructor(private toastr: ToastsManager) {
+  constructor(private notificationService: NotificationService) {
   }
 
   addedSuccess() {
-    this.toastr.success('Saved');
+    this.notificationService.success('Saved');
   }
 
   updateSuccess() {
-    this.toastr.success('Updated');
+    this.notificationService.success('Updated');
   }
 
   errorInRequest() {
-    this.toastr.error('Invalid request!');
+    this.notificationService.error('Invalid request!');
   }
 
 }

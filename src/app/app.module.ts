@@ -5,6 +5,7 @@ import {LayoutModule} from './layout/layout.module';
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from './shared/shared.module';
+import {ToastrModule} from 'ngx-toastr';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import {SharedModule} from './shared/shared.module';
   imports: [
     SharedModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     CoreModule,
     LayoutModule,
     AppRoutingModule,
