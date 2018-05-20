@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../api/api.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   isLogged: boolean;
   private loginForm: LoginForm = {
