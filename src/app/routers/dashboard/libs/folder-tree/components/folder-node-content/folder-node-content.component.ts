@@ -1,7 +1,6 @@
 import {Component, HostBinding, HostListener, Input, OnDestroy, OnInit} from '@angular/core';
 import {Folder} from '../../models/folder';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {FolderNodeEditComponent} from '../folder-node-edit/folder-node-edit.component';
 import {FolderTreeService} from '../../services/folder-tree/folder-tree.service';
 
 @Component({
@@ -37,15 +36,6 @@ export class FolderNodeContentComponent implements OnInit, OnDestroy {
   toggleShowChildren(): void {
     this.folder.isOpen = !this.folder.isOpen;
     this.folderTreeService.saveNodeState(this.folder.id, this.folder.isOpen);
-  }
-
-  editFolder() {
-    const modalRef = this.modalService.open(FolderNodeEditComponent);
-    modalRef.componentInstance.folder = this.folder;
-    modalRef.result.then((result: Folder) => {
-      this.folder = result;
-    }).catch(() => {
-    });
   }
 
   isSelected(): boolean {

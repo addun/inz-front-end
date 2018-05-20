@@ -1,8 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {Folder} from './libs/folder-tree/models/folder';
-import {FolderService} from './shared/services/folder/folder.service';
+import {FolderService} from './services/folder/folder.service';
 import {map} from 'rxjs/operators';
-import {FolderToRead} from './shared/models/folder.model';
+import {
+  convertFolderModelToFolderToCreate,
+  convertFolderModelToFolderToUpdate,
+  convertFolderToReadToFolderModel,
+  FolderToCreate,
+  FolderToUpdate
+} from './models/folder.model';
+import {FolderTreeService} from './libs/folder-tree/services/folder-tree/folder-tree.service';
+import {FormService} from '../forms/shared/services/form/form.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FolderNodeEditComponent} from './libs/folder-tree/components/folder-node-edit/folder-node-edit.component';
 
 @Component({
   selector: 'inz-dashboard',
@@ -10,35 +20,88 @@ import {FolderToRead} from './shared/models/folder.model';
   styleUrls: ['./dashboard.component.sass']
 })
 export class DashboardComponent implements OnInit {
-  tree: Folder[] = [];
+  public tree: Folder[] = [];
+  private selectedFolderId;
   // selectFolderSubscription: Subscription;
   // form: FormDTO;
   // @ViewChild('content') private modalContent: TemplateRef<any>;
 
-  constructor(private folderService: FolderService) {
+  constructor(private folderService: FolderService,
+              private formService: FormService,
+              private modalService: NgbModal,
+              private folderTreeService: FolderTreeService) {
   }
 
   ngOnInit(): void {
     this.fetchFolderTree();
-  }
-
-  private fetchFolderTree() {
-    this.folderService
-      .getFolderTree()
-      .pipe(
-        map(items => this.convertFolderToReadToFolderModel(items))
-      ).subscribe(folders => this.tree = folders);
-  }
-
-  private convertFolderToReadToFolderModel(folders: FolderToRead[]): Folder[] {
-    return folders.map(item => {
-      return new Folder({
-        id: item._id,
-        name: item.name,
-        children: this.convertFolderToReadToFolderModel(item.children),
-        isOpen: false
+    this.selectedFolderId = this.folderTreeService.selectedFolder;
+    this.folderTreeService.onFolderSelect()
+      .subscribe(selectedFolderId => {
+        this.selectedFolderId = selectedFolderId;
       });
+  }
+
+  refreshTree() {
+    this.fetchFolderTree();
+  }
+
+  addNewCollection() {
+    const modalRef = this.modalService.open(FolderNodeEditComponent);
+    modalRef.componentInstance.folder = new Folder({
+      isOpen: false, id: null, children: [], name: ''
     });
+    modalRef.result.then((result: Folder) => {
+      this.folderService.addFolder(convertFolderModelToFolderToCreate(result))
+        .subscribe(() => {
+          this.fetchFolderTree();
+        });
+    }).catch(() => {
+    });
+  }
+
+  addSubfolderToSelectedFolder() {
+    const modalRef = this.modalService.open(FolderNodeEditComponent);
+    modalRef.componentInstance.folder = new Folder({
+      isOpen: false, id: null, children: [], name: '', parent: this.selectedFolderId
+    });
+    modalRef.result.then((result: Folder) => {
+      this.folderService.addFolder(convertFolderModelToFolderToCreate(result))
+        .subscribe(() => {
+          this.fetchFolderTree();
+        });
+    }).catch(() => {
+    });
+  }
+
+  editSelectedFolder() {
+    this.folderService.getFolder(this.selectedFolderId)
+      .subscribe(folder => {
+        const folders = convertFolderToReadToFolderModel([folder]);
+        this.showModalAndEditFolder(folders[0]);
+      });
+
+  }
+
+  removeSelectedFolder() {
+    if (confirm('Are you sure?')) {
+      this.removeFolder(this.selectedFolderId);
+      this.folderTreeService.selectedFolder = null;
+    }
+  }
+
+  private showModalAndEditFolder(folder: Folder) {
+    const modalRef = this.modalService.open(FolderNodeEditComponent);
+    modalRef.componentInstance.folder = folder;
+    modalRef.result.then((result: Folder) => {
+      this.updateFolder(convertFolderModelToFolderToUpdate(result));
+    }).catch(() => {
+    });
+  }
+
+  private addFolder(folder: FolderToCreate) {
+    this.folderService
+      .addFolder(folder)
+      .subscribe(() => this.fetchFolderTree());
   }
 
   //
@@ -99,12 +162,6 @@ export class DashboardComponent implements OnInit {
   //   }).subscribe(() => this.onFolderSelect(this.selectedFolderKey));
   // }
   //
-  // addNewCollection() {
-  //   const modalRef = this.modalService.open(FolderFormModalComponent);
-  //   modalRef.result
-  //     .then(result => this.addFolder(result))
-  //     .catch(error => this.onModalClose(error));
-  // }
   //
   // addSubFolder() {
   //   const modalRef = this.modalService.open(FolderFormModalComponent);
@@ -122,44 +179,24 @@ export class DashboardComponent implements OnInit {
   //     .catch((error) => this.onModalClose(error));
   // }
   //
-  // refreshFolderTree() {
-  //   this.dashboardService
-  //     .getFolderTree()
-  //     .pipe(map(array => convertFolderToReadArrayToFolderArray(array)))
-  //     .subscribe(tree => {
-  //       this.tree = tree;
-  //       this.selectedFolderKey = this.treeService.selectedFolderKey;
-  //     });
-  // }
-  //
-  // removeSelectedFolder() {
-  //   const selectedFolderKey = this.treeService.selectedFolderKey;
-  //   if (confirm('Are you sure?')) {
-  //     this.selectedFolderKey = null;
-  //     this.treeService.selectedFolderKey = null;
-  //     this.removeFolder(selectedFolderKey._id);
-  //   }
-  // }
-  //
-  // private addFolder(folder: FolderToCreate) {
-  //   this.dashboardService
-  //     .addFolder(folder)
-  //     .subscribe(() => this.refreshFolderTree());
-  // }
-  //
-  // private updateFolder(folder: FolderToUpdate) {
-  //   this.dashboardService
-  //     .updateFolder(folder)
-  //     .subscribe(() => this.refreshFolderTree());
-  // }
-  //
-  // private removeFolder(folder: string) {
-  //   this.dashboardService
-  //     .removeFolder(folder)
-  //     .subscribe(() => this.refreshFolderTree());
-  // }
-  //
-  // private onModalClose(error) {
-  //   console.log('Close error: ', error);
-  // }
+
+  private updateFolder(folder: FolderToUpdate) {
+    this.folderService
+      .updateFolder(folder)
+      .subscribe(() => this.fetchFolderTree());
+  }
+
+  private removeFolder(folder: string) {
+    this.folderService
+      .removeFolder(folder)
+      .subscribe(() => this.fetchFolderTree());
+  }
+
+  private fetchFolderTree() {
+    this.folderService
+      .getFolderTree()
+      .pipe(
+        map(items => convertFolderToReadToFolderModel(items))
+      ).subscribe(folders => this.tree = folders);
+  }
 }

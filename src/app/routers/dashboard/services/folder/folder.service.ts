@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {FolderToCreate, FolderToRead, FolderToUpdate} from '../../models/folder.model';
-import {ApiService} from '../../../../../core/api/api.service';
+import {ApiService} from '../../../../core/api/api.service';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -12,6 +12,10 @@ export class FolderService {
 
   getFolderTree(): Observable<FolderToRead[]> {
     return this.apiService.get(`folders/`);
+  }
+
+  getFolder(folderId: string): Observable<FolderToRead> {
+    return this.apiService.get(`folders/${folderId}`);
   }
 
   addFolder(folder: FolderToCreate): Observable<FolderToRead> {

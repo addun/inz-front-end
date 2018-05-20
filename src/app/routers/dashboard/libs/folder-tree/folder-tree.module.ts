@@ -12,21 +12,22 @@ import {FolderTreeService} from './services/folder-tree/folder-tree.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
-    FolderTreeService
+    FolderTreeService,
   ],
   declarations: [
     FolderNodeComponent,
     FolderNodeContentComponent,
-    FolderNodeEditComponent
+    FolderNodeEditComponent,
   ],
   entryComponents: [
-    FolderNodeEditComponent
+    FolderNodeEditComponent,
   ],
   exports: [
-    FolderNodeComponent
+    FolderNodeComponent,
+    FolderNodeEditComponent,
   ]
 })
 export class FolderTreeModule {

@@ -18,4 +18,5 @@ export class FolderNodeComponent implements OnInit {
   canShowChildren(folder: Folder): boolean {
     return folder.isOpen && this.folders.length > 0;
   }
+
 }

@@ -1,29 +1,8 @@
-<div class="node-icon" (click)="toggleShowChildren()">
+<div class="node-icon" (click)="toggleShowChildren()" ngbTooltip="Click to open" placement="right">
   <span *ngIf="!folder.isOpen" class="fa fa-folder-o"></span>
   <span *ngIf="folder.isOpen" class="fa fa-folder-open-o"></span>
 </div>
 
 <div class="node-content">
   <span class="node-name">{{folder.name}}</span>
-</div>
-
-<div class="node-actions-container" ngbDropdown placement="bottom-right">
-
-  <div class="node-actions" ngbDropdownToggle></div>
-
-
-  <div ngbDropdownMenu>
-    <button class="dropdown-item" (click)="editFolder()">
-      <span class="fa fa-pencil" aria-hidden="true"></span>
-      Edit
-    </button>
-    <button class="dropdown-item" (click)="emitAddChld()">
-      <span class="fa fa-plus" aria-hidden="true"></span>
-      New
-    </button>
-    <button class="dropdown-item" (click)="emitRemove()">
-      <span class="fa fa-trash" aria-hidden="true"></span>
-      Remove
-    </button>
-  </div>
 </div>
