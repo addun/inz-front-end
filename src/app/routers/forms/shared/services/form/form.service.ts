@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../../../../core/api/api.service';
 import {FormDTO, FormInputDTO, FormRecordDTO} from '../../dto/form.dto';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 
 @Injectable()

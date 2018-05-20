@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../../../../core/api/api.service';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {FolderToRead, FolderToCreate, FolderToUpdate} from '../../models/folder.model';
 
 
