@@ -1,43 +1,72 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../../api/api.service';
+import {StorageService} from '../../storage/storage.service';
+import {HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isLogged: boolean;
-  private loginForm: LoginForm = {
-    login: '',
-    password: ''
-  };
 
-  constructor(private apiService: ApiService) {
-    this.isLogged = false;
+  private authTokenKey = 'login_token';
+
+  constructor(private apiService: ApiService, private storageService: StorageService) {
   }
 
-  login(loginForm: LoginForm): Promise<boolean> {
-    this.loginForm = loginForm;
-    return new Promise((resolve, reject) => {
-      this.apiService.get('auth')
-        .subscribe(
-          response => {
-            this.isLogged = true;
-            resolve(true);
-          },
-          error => {
-            resolve(false);
-          }
-        );
+  signIn(data: LoginForm): Promise<any> {
+    const token = this.generateToken(data);
+    return this.verifyToken(token);
+  }
 
+  isLogin(): Promise<boolean> {
+    return this.verifyToken(this.getAuthTokenFromMemory());
+  }
+
+  logout(): Promise<void> {
+    return new Promise((resolve) => {
+      this.removeAuthToken();
+      resolve();
     });
-  }
-
-  getAuthorizationHeaderValue(): string {
-    return `Basic ${btoa(this.loginForm.login + ':' + this.loginForm.password)}`;
   }
 
   getAuthorizationHeaderKey(): string {
     return 'Authorization';
+  }
+
+  getAuthTokenFromMemory() {
+    const token = this.storageService.get(this.authTokenKey);
+    return token ? token : '';
+  }
+
+  private verifyToken(token: string): Promise<any> {
+    return new Promise<any>((resolve) => {
+      this.apiService.get('auth/', {
+        headers: new HttpHeaders().append(this.getAuthorizationHeaderKey(), token)
+      }).toPromise()
+        .then(() => {
+          this.saveAuthTokenToMemory(token);
+          resolve(true);
+        }, () => {
+          this.removeAuthToken();
+          resolve(false);
+        }).catch(() => {
+        resolve(false);
+      })
+      ;
+    });
+
+  }
+
+  private generateToken(data: LoginForm): string {
+    return `Basic ${btoa(data.login + ':' + data.password)}`;
+  }
+
+  private removeAuthToken() {
+    this.storageService.remove(this.authTokenKey);
+  }
+
+  private saveAuthTokenToMemory(token: string) {
+    this.storageService.save(this.authTokenKey, token);
   }
 }
 

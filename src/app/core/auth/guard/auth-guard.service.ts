@@ -23,12 +23,15 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
 
   checkLogin(): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      if (this.authService.isLogged) {
-        resolve(true);
-      } else {
-        resolve(false);
-        this.router.navigate(['/auth']);
-      }
+      this.authService.isLogin()
+        .then(value => {
+          if (value) {
+            resolve(true);
+          } else {
+            this.router.navigate(['/auth']);
+            resolve(false);
+          }
+        });
     });
   }
 }

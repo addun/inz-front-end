@@ -23,16 +23,9 @@ export class LoginComponent implements OnInit {
 
   }
 
-  private buildLoginForm() {
-    this.loginForm = this.fb.group({
-      login: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
-
   login() {
     this.authService
-      .login(this.loginForm.value)
+      .signIn(this.loginForm.value)
       .then(logged => {
         if (logged) {
           this.router.navigate(['/']);
@@ -40,6 +33,13 @@ export class LoginComponent implements OnInit {
           this.authToastService.loginFailed();
         }
       });
+  }
+
+  private buildLoginForm() {
+    this.loginForm = this.fb.group({
+      login: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
 }

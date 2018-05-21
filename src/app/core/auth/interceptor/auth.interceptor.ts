@@ -11,12 +11,16 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const authorizationHeaderValue = this.authService.getAuthorizationHeaderValue();
+    const authorizationHeaderValue = this.authService.getAuthTokenFromMemory();
     const authorizationHeaderKey = this.authService.getAuthorizationHeaderKey();
-    const updatedRequest = request.clone({
-        headers: request.headers.set(authorizationHeaderKey, authorizationHeaderValue)
-      }
-    );
-    return next.handle(updatedRequest);
+    if (request.headers.has(authorizationHeaderKey)) {
+      return next.handle(request);
+    } else {
+      const updatedRequest = request.clone({
+          headers: request.headers.set(authorizationHeaderKey, authorizationHeaderValue)
+        }
+      );
+      return next.handle(updatedRequest);
+    }
   }
 }
