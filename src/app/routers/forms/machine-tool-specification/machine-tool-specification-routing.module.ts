@@ -54,7 +54,7 @@ const routes: Routes = [
       {path: 'its-elements/:machineToolElementId/tool-breakages', component: ToolBreakageComponent},
       {path: 'its-elements/:machineToolElementId/part-probes', component: PartProbeComponent},
       {path: 'its-elements/:machineToolElementId/tool-settings', component: ToolSettingComponent},
-      {path: 'its-elements/:machineToolElementId/collants', component: CoolantComponent},
+      {path: 'its-elements/:machineToolElementId/coolants', component: CoolantComponent},
       {path: 'its-elements/:machineToolElementId/machine-tool-axis', component: MachineToolAxisComponent},
       {path: 'its-elements/:machineToolElementId/linear-axis', component: LinearAxisComponent},
       {path: 'its-elements/:machineToolElementId/continuous-rotary', component: ContinuousRotaryComponent},
