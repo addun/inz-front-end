@@ -23,7 +23,7 @@ export class FolderService {
   }
 
   updateFolder(folder: FolderToUpdate): Observable<FolderToRead> {
-    return this.apiService.patch(`folders/${folder._id}`, folder);
+    return this.apiService.put(`folders/${folder._id}`, folder);
   }
 
   removeFolder(folderId: string): Observable<FolderToRead> {
