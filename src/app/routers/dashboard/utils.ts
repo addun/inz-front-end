@@ -1,27 +1,45 @@
-import {isArray, isNumber, isObject, isString} from 'util';
-
 export function objectToXML(object) {
-  let xml = ``;
-  for (const key of Object.keys(object)) {
-    const value = object[key];
+  const o = object;
+  const tab = '\n';
+  const toXml = function (v, name, ind) {
+    let _xml = '';
+    if (v instanceof Array) {
+      for (let i = 0, n = v.length; i < n; i++)
+        _xml += ind + toXml(v[i], name, ind + '\t') + '\n';
+    } else if (typeof(v) === 'object') {
+      let hasChild = false;
+      _xml += ind + '<' + name;
+      for (const m in v) {
+        if (m.charAt(0) === '@') {
+          _xml += ' ' + m.substr(1) + '="' + v[m].toString() + '"';
 
-    if (isObject(value)) {
-      const nestedXML = objectToXML(value);
-      xml += keyValueToXML(key, nestedXML);
-    } else if (isArray(value)) {
-      value.forEach(element => {
-        if (isString(element) || isNumber(element)) {
-          xml += keyValueToXML(key, element);
         } else {
-          const nestedXML = objectToXML(element);
-          xml += keyValueToXML(key, nestedXML);
+          hasChild = true;
         }
-      });
+      }
+      _xml += hasChild ? '>' : '/>';
+      if (hasChild) {
+        for (const m in v) {
+          if (m === '#text') {
+            _xml += v[m];
+          } else if (m === '#cdata') {
+            _xml += '<![CDATA[' + v[m] + ']]>';
+          } else if (m.charAt(0) !== '@') {
+            _xml += toXml(v[m], m, ind + '\t');
+          }
+        }
+        _xml += (_xml.charAt(_xml.length - 1) === '\n' ? ind : '') + '</' + name + '>';
+      }
     } else {
-      xml += keyValueToXML(key, value);
+      _xml += ind + '<' + name + '>' + v.toString() + '</' + name + '>';
     }
+    return _xml;
+  };
+  let xml = '';
+  for (const m in o) {
+    xml += toXml(o[m], m, '');
   }
-  return xml;
+  return tab ? xml.replace(/\t/g, tab) : xml.replace(/\t|\n/g, '');
 }
 
 function keyValueToXML(key, value) {
