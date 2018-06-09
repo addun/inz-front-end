@@ -13,6 +13,8 @@ import {FolderTreeService} from './libs/folder-tree/services/folder-tree/folder-
 import {FormService} from '../forms/shared/services/form/form.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FolderNodeEditComponent} from './libs/folder-tree/components/folder-node-edit/folder-node-edit.component';
+import {FormDTO} from '../forms/shared/dto/form.dto';
+import {FolderNotificationService} from './services/folder-notification/folder-notification.service';
 
 @Component({
   selector: 'inz-dashboard',
@@ -21,23 +23,25 @@ import {FolderNodeEditComponent} from './libs/folder-tree/components/folder-node
 })
 export class DashboardComponent implements OnInit {
   public tree: Folder[] = [];
-  private selectedFolderId;
-  // selectFolderSubscription: Subscription;
-  // form: FormDTO;
-  // @ViewChild('content') private modalContent: TemplateRef<any>;
+  public selectedFolderId;
+  public hasSelectedFolderForm = false;
+  public selectedForm: FormDTO;
 
   constructor(private folderService: FolderService,
               private formService: FormService,
               private modalService: NgbModal,
+              private folderNotificationService: FolderNotificationService,
               private folderTreeService: FolderTreeService) {
   }
 
   ngOnInit(): void {
     this.fetchFolderTree();
     this.selectedFolderId = this.folderTreeService.selectedFolder;
+    this.displayViewBaseOnSelectedFolder();
     this.folderTreeService.onFolderSelect()
       .subscribe(selectedFolderId => {
         this.selectedFolderId = selectedFolderId;
+        this.displayViewBaseOnSelectedFolder();
       });
   }
 
@@ -51,10 +55,7 @@ export class DashboardComponent implements OnInit {
       isOpen: false, id: null, children: [], name: ''
     });
     modalRef.result.then((result: Folder) => {
-      this.folderService.addFolder(convertFolderModelToFolderToCreate(result))
-        .subscribe(() => {
-          this.fetchFolderTree();
-        });
+      this.addFolder(convertFolderModelToFolderToCreate(result));
     }).catch(() => {
     });
   }
@@ -65,10 +66,8 @@ export class DashboardComponent implements OnInit {
       isOpen: false, id: null, children: [], name: '', parent: this.selectedFolderId
     });
     modalRef.result.then((result: Folder) => {
-      this.folderService.addFolder(convertFolderModelToFolderToCreate(result))
-        .subscribe(() => {
-          this.fetchFolderTree();
-        });
+      const folderToCreate = convertFolderModelToFolderToCreate(result);
+      this.addFolder(folderToCreate);
     }).catch(() => {
     });
   }
@@ -89,9 +88,19 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  createMachineToolSpecificationForm() {
+    this.formService.addNewForm({
+      name: 'Machine tool specification form',
+      predefined: true,
+      folder: this.selectedFolderId
+    }).subscribe(response => {
+      this.hasSelectedFolderForm = true;
+    });
+  }
+
   private showModalAndEditFolder(folder: Folder) {
     const modalRef = this.modalService.open(FolderNodeEditComponent);
-    modalRef.componentInstance.folder = folder;
+    modalRef.componentInstance.folderId = folder;
     modalRef.result.then((result: Folder) => {
       this.updateFolder(convertFolderModelToFolderToUpdate(result));
     }).catch(() => {
@@ -101,95 +110,46 @@ export class DashboardComponent implements OnInit {
   private addFolder(folder: FolderToCreate) {
     this.folderService
       .addFolder(folder)
-      .subscribe(() => this.fetchFolderTree());
+      .subscribe(() => {
+        this.folderNotificationService.folderHasBeenCreate();
+        this.fetchFolderTree();
+      }, error => {
+        this.folderNotificationService.serverError();
+      });
   }
 
-  //
-  // private _selectedFolder: FolderToRead;
-  //
-  // get selectedFolderKey(): FolderToRead {
-  //   return this._selectedFolder;
-  // }
-  //
-  // set selectedFolderKey(value: FolderToRead) {
-  //   this._selectedFolder = value;
-  //   this.onFolderSelect(value);
-  // }
-  //
-  // ngOnInit() {
-  //   this.refreshFolderTree();
-  //   this.selectFolderSubscription = this.treeService.listenSelectedFolder()
-  //     .subscribe(folderDTO => {
-  //       this.selectedFolderKey = folderDTO;
-  //     });
-  // }
-  //
-  // ngOnDestroy(): void {
-  //   this.selectFolderSubscription.unsubscribe();
-  // }
-  //
-  // addFormData() {
-  //   this.router.navigate(['/forms', this.form._id, 'records', 'add']);
-  // }
-  //
-  // onFolderSelect(folder: FolderToRead) {
-  //   if (folder) {
-  //     this.formService
-  //       .getFormByFolder(folder._id)
-  //       .subscribe(response => {
-  //         if (response.length) {
-  //           this.form = response[0];
-  //         } else {
-  //           this.form = null;
-  //         }
-  //       });
-  //   }
-  // }
-  //
-  // addFormToFolder() {
-  //   this.router.navigate(['forms', 'create'], {
-  //     queryParams: {
-  //       folder: this.selectedFolderKey._id
-  //     }
-  //   });
-  // }
-  //
-  // addMachineToolSpecificationToFolder() {
-  //   this.formService.addNewForm({
-  //     name: 'machine_tool_specification',
-  //     predefined: true,
-  //     folder: this.selectedFolderKey._id
-  //   }).subscribe(() => this.onFolderSelect(this.selectedFolderKey));
-  // }
-  //
-  //
-  // addSubFolder() {
-  //   const modalRef = this.modalService.open(FolderFormModalComponent);
-  //   modalRef.componentInstance.folder = initFolderToCreate(this.selectedFolderKey._id);
-  //   modalRef.result
-  //     .then(result => this.addFolder(result))
-  //     .catch(() => null);
-  // }
-  //
-  // renameSelectedFolder() {
-  //   const modalRef = this.modalService.open(FolderFormModalComponent);
-  //   modalRef.componentInstance.folder = this.selectedFolderKey;
-  //   modalRef.result
-  //     .then((result) => this.updateFolder(result))
-  //     .catch((error) => this.onModalClose(error));
-  // }
-  //
+  private displayViewBaseOnSelectedFolder() {
+    this.hasSelectedFolderForm = false;
+    this.formService.getForm(this.selectedFolderId)
+      .subscribe(value => {
+        this.hasSelectedFolderForm = true;
+        this.selectedForm = value;
+      }, error => {
+        this.hasSelectedFolderForm = false;
+      });
+  }
 
   private updateFolder(folder: FolderToUpdate) {
     this.folderService
       .updateFolder(folder)
-      .subscribe(() => this.fetchFolderTree());
+      .subscribe(() => {
+        this.folderNotificationService.folderHasBeenEdited();
+        this.fetchFolderTree();
+      }, error => {
+        this.folderNotificationService.serverError();
+
+      });
   }
 
   private removeFolder(folder: string) {
     this.folderService
       .removeFolder(folder)
-      .subscribe(() => this.fetchFolderTree());
+      .subscribe(() => {
+        this.folderNotificationService.folderHasBeenRemoved();
+        this.fetchFolderTree();
+      }, error => {
+        this.folderNotificationService.serverError();
+      });
   }
 
   private fetchFolderTree() {

@@ -6,9 +6,9 @@ import {FormsRoutingModule} from './forms-routing.module';
 import {FormsSharedModule} from './shared/forms-shared.module';
 import {SharedModule} from '../../shared/shared.module';
 import {FormService} from './shared/services/form/form.service';
-import {FormCreateComponent} from './form-create/form-create.component';
-import {RecordManageComponent} from './record-manage/record-manage.component';
 import {FormsLayoutComponent} from './shared/components/forms-layout/forms-layout.component';
+import { RecordCreateComponent } from './pages/record-create/record-create.component';
+import {FormCreateComponent} from './pages/form-create/form-create.component';
 
 @NgModule({
   imports: [
@@ -20,8 +20,8 @@ import {FormsLayoutComponent} from './shared/components/forms-layout/forms-layou
   declarations: [
     FormsComponent,
     FormCreateComponent,
-    RecordManageComponent,
-    FormsLayoutComponent
+    FormsLayoutComponent,
+    RecordCreateComponent,
   ],
   providers: [
     FormToastService,

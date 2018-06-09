@@ -2,13 +2,15 @@ import {Injectable} from '@angular/core';
 import {FormArray, FormGroup} from '@angular/forms';
 import {MachineToolSpecification} from '../../models';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MachineToolSpecificationFormService {
   formData: {
-    form: string;
-    record?: string
-  } = {form: ''};
-  machineToolSpecificationForm;
+    formId: string;
+    recordId?: string
+  } = {formId: ''};
+  machineToolSpecificationForm: FormGroup;
 
   constructor() {
     this.loadMachineToolSpecificationFormFromModel();

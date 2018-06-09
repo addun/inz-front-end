@@ -15,7 +15,7 @@ export class MachineToolSpecificationLayoutComponent implements OnInit {
   constructor(private formService: FormService,
               public router: Router,
               private formToastService: FormToastService,
-              private machineToolSpecificationFormService: MachineToolSpecificationFormService,
+              public machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private location: Location) {
   }
 
@@ -23,10 +23,12 @@ export class MachineToolSpecificationLayoutComponent implements OnInit {
   }
 
   saveAndGoBack() {
-    this.formService.updateRecord({
-      _id: this.machineToolSpecificationFormService.formData.record,
-      values: this.machineToolSpecificationFormService.machineToolSpecificationForm.value
-    })
+    this.formService.updateFormRecord(
+      this.machineToolSpecificationFormService.formData.formId,
+      this.machineToolSpecificationFormService.formData.recordId,
+      {
+        values: this.machineToolSpecificationFormService.machineToolSpecificationForm.value
+      })
       .subscribe(_ => {
         this.location.back();
         this.formToastService.addedSuccess();

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormService} from '../shared/services/form/form.service';
+import {FormService} from '../../shared/services/form/form.service';
+import {FormNotificationService} from '../../services/form-notification/form-notification.service';
 
 enum InputType {
   text = 'text',
@@ -17,9 +18,11 @@ export class FormCreateComponent implements OnInit {
   folderId: string;
   formGroup: FormGroup;
   inputTypes = InputType;
+  hasBeenSaved = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
+              private formNotificationService: FormNotificationService,
               private formService: FormService) {
   }
 
@@ -33,7 +36,7 @@ export class FormCreateComponent implements OnInit {
     this.activatedRoute
       .queryParamMap
       .subscribe(params => {
-        this.folderId = params.get('folder');
+        this.folderId = params.get('folderId');
       });
   }
 
@@ -48,7 +51,7 @@ export class FormCreateComponent implements OnInit {
     return new FormGroup({
       name: new FormControl('', [Validators.required, validateEmail]),
       label: new FormControl('', Validators.required),
-      type: new FormControl(null, Validators.required),
+      type: new FormControl(this.inputTypes.text, Validators.required),
     });
   }
 
@@ -61,21 +64,23 @@ export class FormCreateComponent implements OnInit {
   }
 
   save() {
-    const formData = this.formGroup.value;
+    const formData = this.formGroup.getRawValue();
     formData.folder = this.folderId;
     this.formService
       .addNewForm(formData)
       .subscribe(savedModel => {
-        this.router.navigate(['/forms', savedModel._id, 'records', 'add']);
-      })
-    ;
+        this.formNotificationService.formHasBeenSaved();
+        this.hasBeenSaved = true;
+      }, error => {
+        this.formNotificationService.formExist();
+      });
   }
 
 }
 
 
 function validateEmail(c: FormControl) {
-  const slug_regex = /^[a-zA-Z_-]+$/g;
+  const slug_regex = /^[a-zA-Z_]+$/g;
   return slug_regex.test(c.value) ? null : {
     validateEmail: {
       valid: false

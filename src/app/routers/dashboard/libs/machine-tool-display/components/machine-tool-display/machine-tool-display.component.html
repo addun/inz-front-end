@@ -1,0 +1,40 @@
+<div *ngIf="form" class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Description</th>
+      <th class="actions">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let record of form.records">
+      <td>
+        {{record.values['description']}}
+      </td>
+
+      <td>
+        <a [routerLink]="['/forms', 'predefined','machine_tool_specification']" ngbTooltip="Edit"
+           [queryParams]="{formId: formId, recordId: record._id}"
+           class="btn btn-sm btn-outline-secondary">
+          <i class="fa fa-pencil"></i>
+        </a>
+        <button (click)="generateXML(record)" ngbTooltip="Generate XML"
+                style="width: 32px"
+                class="btn btn-sm btn-outline-secondary ml-2">
+          <i class="fa fa-code" aria-hidden="true"></i>
+        </button>
+        <button (click)="removeRow(record)" ngbTooltip="Remove" class="btn btn-sm btn-outline-secondary ml-2">
+          <i class="fa fa-times"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<div *ngIf="form && !form.records.length" class="empty-content">
+  <i class="fa fa-frown-o empty-content-emoji" aria-hidden="true"></i>
+  <p *ngIf="!isWrongForm">This form does not contain any records</p>
+</div>

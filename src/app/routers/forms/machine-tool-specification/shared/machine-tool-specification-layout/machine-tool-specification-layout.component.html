@@ -9,3 +9,7 @@
 </div>
 
 <router-outlet></router-outlet>
+
+<pre *ngIf="machineToolSpecificationFormService.machineToolSpecificationForm">
+  {{machineToolSpecificationFormService.machineToolSpecificationForm.getRawValue() | json}}
+</pre>

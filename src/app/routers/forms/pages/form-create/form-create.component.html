@@ -2,12 +2,12 @@
 
   <inz-form [form]="formGroup">
 
-    <inz-input controlName="name" label="Name"></inz-input>
+    <inz-input controlName="name" label="Form name"></inz-input>
 
     <inz-form label="Inputs" style="margin-bottom: 0"></inz-form>
     <div class="row">
       <div class="col-12 col-md-4">
-        <span>Name (a-z, A-Z, _, -)</span>
+        <span>Key (You can use 'a-z', 'A-Z' and '_')</span>
       </div>
       <div class="col-12 col-md-4">
         <span>Label</span>
@@ -29,7 +29,7 @@
           <inz-input controlName="type" type="select" [options]="inputTypes"></inz-input>
         </div>
         <div class="col-12 col-md-1 text-right">
-          <button (click)="removeRow(i)" class="btn btn-danger">
+          <button (click)="removeRow(i)" [disabled]="hasBeenSaved" class="btn btn-danger">
             <span class="fa fa-times"></span>
           </button>
         </div>
@@ -37,13 +37,13 @@
     </inz-form>
 
     <div class="text-right">
-      <button (click)="addRow()" class="btn btn-info">Add</button>
+      <button (click)="addRow()" [disabled]="hasBeenSaved" class="btn btn-info">Add new field</button>
     </div>
 
   </inz-form>
 
   <ng-template #footer>
-    <button [disabled]="!formGroup.valid" (click)="save()" class="btn btn-success">Save form</button>
+    <button [disabled]="!formGroup.valid || hasBeenSaved" (click)="save()" class="btn btn-success">Save form</button>
   </ng-template>
 
 </inz-card>

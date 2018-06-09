@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsLayoutComponent} from './shared/components/forms-layout/forms-layout.component';
-import {FormCreateComponent} from './form-create/form-create.component';
-import {RecordManageComponent} from './record-manage/record-manage.component';
+import {RecordCreateComponent} from './pages/record-create/record-create.component';
+import {FormCreateComponent} from './pages/form-create/form-create.component';
 
 const routes: Routes = [
   {
@@ -10,8 +10,8 @@ const routes: Routes = [
     component: FormsLayoutComponent,
     children: [
       {path: 'create', component: FormCreateComponent},
-      {path: ':form/records/add', component: RecordManageComponent},
-      {path: ':form/records/:record/edit', component: RecordManageComponent},
+      {path: ':formId/records/add', component: RecordCreateComponent},
+      {path: ':formId/records/:recordId/edit', component: RecordCreateComponent},
       {
         path: 'predefined/machine_tool_specification',
         loadChildren: './machine-tool-specification/machine-tool-specification.module#MachineToolSpecificationModule'

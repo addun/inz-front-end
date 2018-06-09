@@ -1,0 +1,21 @@
+<inz-card *ngIf="formGroup" [cardName]="form.name">
+
+  <inz-form [form]="formGroup">
+    <inz-input *ngFor="let input of formInputs"
+               [label]="input.label"
+               [type]="input.type"
+               [controlName]="input.name"></inz-input>
+  </inz-form>
+
+  <ng-template #footer>
+    <div class="text-right">
+      <button (click)="saveAndAddNext()" [disabled]="!formGroup.valid" class="btn btn-primary">
+        Save and add another
+      </button>
+      <button (click)="save()" [disabled]="!formGroup.valid" class="ml-2 btn btn-primary">
+        Save
+      </button>
+    </div>
+  </ng-template>
+
+</inz-card>

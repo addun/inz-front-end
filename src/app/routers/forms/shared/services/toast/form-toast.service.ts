@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {NotificationService} from '../../../../../core/notification/notification.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FormToastService {
 
   constructor(private notificationService: NotificationService) {

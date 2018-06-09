@@ -36,30 +36,41 @@
   <inz-folder-node [folders]="tree"></inz-folder-node>
 </div>
 
-<!--<div class="folder-content" *ngIf="selectedFolderKey">-->
-<!--<p class="p-3 bg-secondary mb-0 text-white text-center">{{selectedFolderKey.name}}</p>-->
 
-<!--<div *ngIf="!form" class="text-center">-->
-<!--<p class="h4 mt-5">This folder don't contain any form!</p>-->
+<div class="folder-content" *ngIf="hasSelectedFolderForm">
+  <ng-container *ngIf="!selectedForm.predefined">
+    <inz-forms-display [formId]="selectedFolderId"></inz-forms-display>
 
-<!--<button (click)="addFormToFolder()" class="btn btn-success">Create form</button>-->
+    <div class="text-center m-3">
+      <a [routerLink]="['/forms', selectedFolderId, 'records', 'add']" class="btn btn-primary">Add new records</a>
+    </div>
+  </ng-container>
 
-<!--<div ngbDropdown class="d-inline-block">-->
-<!--<button class="btn btn-primary" ngbDropdownToggle>Use predefined</button>-->
-<!--<div ngbDropdownMenu>-->
-<!--<button (click)="addMachineToolSpecificationToFolder()" class="dropdown-item">Machine tool specification-->
-<!--</button>-->
-<!--</div>-->
-<!--</div>-->
+  <ng-container *ngIf="selectedForm.predefined">
+    <inz-machine-tool-display [formId]="selectedFolderId"></inz-machine-tool-display>
+    <div class="text-center m-3">
+      <a [routerLink]="['/forms', 'predefined','machine_tool_specification']"
+         [queryParams]="{formId: selectedFolderId}"
+         class="btn btn-primary">Add new record</a>
+    </div>
+  </ng-container>
 
-<!--</div>-->
+</div>
 
-<!--<div *ngIf="form">-->
-<!--<inz-form-recors-table [form]="form"></inz-form-recors-table>-->
-<!--<div class="text-center">-->
-<!--<button (click)="addFormData()" class="btn btn-sm btn-secondary mb-5 mt-1">Add more</button>-->
-<!--</div>-->
-<!--</div>-->
+<div class="folder-content text-center no-content" *ngIf="!hasSelectedFolderForm && selectedFolderId">
+  <i class="info-icon fa fa-info-circle" aria-hidden="true"></i>
+  <p class="info-text">This folder is empty</p>
+
+  <a [routerLink]="['/forms','create']" [queryParams]="{folderId: selectedFolderId}" class="btn btn-primary">
+    Create custom form
+  </a>
+  <button (click)="createMachineToolSpecificationForm()" class="btn btn-primary" style="margin-left: 15px">
+    Create machine tool specification form
+  </button>
+</div>
 
 
-<!--</div>-->
+<div *ngIf="!selectedFolderId" class="folder-content not-selected-folder">
+  <i class="arrow fa fa-hand-o-left" aria-hidden="true"></i>
+  <p>Select folder to display content</p>
+</div>

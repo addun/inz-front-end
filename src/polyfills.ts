@@ -71,6 +71,6 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  */
 // import 'intl';  // Run `npm install --save intl`.
 /**
- * Need to import at least one locale-record with intl.
+ * Need to import at least one locale-recordId with intl.
  */
-// import 'intl/locale-record/jsonp/en';
+// import 'intl/locale-recordId/jsonp/en';

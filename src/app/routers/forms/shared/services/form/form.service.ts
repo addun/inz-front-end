@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {ApiService} from '../../../../../core/api/api.service';
 import {FormDTO, FormInputDTO, FormRecordDTO} from '../../dto/form.dto';
 import {Observable} from 'rxjs';
-import {HttpParams} from '@angular/common/http';
 
 @Injectable()
 export class FormService {
@@ -17,13 +16,6 @@ export class FormService {
 
   getForm(formId: string): Observable<FormDTO> {
     return this.apiService.get(`${this.formURL}${formId}/`);
-  }
-
-  getFormByFolder(folderId: string): Observable<FormDTO[]> {
-    const params = new HttpParams().set('folder', folderId);
-    return this.apiService.get(`${this.formURL}`, {
-      params: params
-    });
   }
 
   getFormInputs(formId: string): Observable<FormInputDTO[]> {
@@ -42,15 +34,15 @@ export class FormService {
     return this.apiService.post(`${this.formURL}${formId}/records/`, data);
   }
 
-  removeRecord(recordId: string) {
-    return this.apiService.delete(`${this.formURL}records/${recordId}/`);
+  removeFormRecord(formId: string, recordId: string) {
+    return this.apiService.delete(`${this.formURL}${formId}/records/${recordId}/`);
   }
 
-  getRecord(recordId: string): Observable<FormRecordDTO> {
-    return this.apiService.get(`${this.formURL}records/${recordId}/`);
+  getFormRecord(formId: string, recordId: string): Observable<FormRecordDTO> {
+    return this.apiService.get(`${this.formURL}${formId}/records/${recordId}/`);
   }
 
-  updateRecord(formRecord: FormRecordDTO) {
-    return this.apiService.patch(`${this.formURL}records/${formRecord._id}/`, formRecord);
+  updateFormRecord(formId: string, recordId: string, recordData: FormRecordDTO) {
+    return this.apiService.put(`${this.formURL}${formId}/records/${recordId}/`, recordData);
   }
 }
