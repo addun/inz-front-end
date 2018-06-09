@@ -15,7 +15,7 @@ export class MachineToolSpecificationLayoutComponent implements OnInit {
   constructor(private formService: FormService,
               public router: Router,
               private formToastService: FormToastService,
-              public machineToolSpecificationFormService: MachineToolSpecificationFormService,
+              private machineToolSpecificationFormService: MachineToolSpecificationFormService,
               private location: Location) {
   }
 
