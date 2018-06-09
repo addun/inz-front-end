@@ -38,8 +38,17 @@ export class MachineToolDisplayComponent implements OnInit, OnChanges {
   }
 
   generateXML(record: FormRecordDTO) {
-    let xml = objectToXML(record.values);
-    xml = `<machine_tool_specification>${xml}</machine_tool_specification>`;
+    const objToManipulate = Object.assign({}, record.values);
+    objToManipulate.its_elements = objToManipulate.its_elements.map(element => {
+      const output = [];
+      for (const property of Object.keys(element.capabilities)) {
+        const capability = element.capabilities[property];
+        output.push(...capability);
+      }
+      return output;
+    });
+
+    const xml = `<machine_tool_specification>${objectToXML(objToManipulate)}</machine_tool_specification>`;
     download(this.form.name + '.xml', xml);
   }
 
