@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit {
 
   private showModalAndEditFolder(folder: Folder) {
     const modalRef = this.modalService.open(FolderNodeEditComponent);
-    modalRef.componentInstance.folderId = folder;
+    modalRef.componentInstance.folder = folder;
     modalRef.result.then((result: Folder) => {
       this.updateFolder(convertFolderModelToFolderToUpdate(result));
     }).catch(() => {
