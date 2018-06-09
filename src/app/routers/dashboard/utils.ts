@@ -1,6 +1,6 @@
 export function objectToXML(object) {
   const o = object;
-  const tab = '\n';
+  const tab = '';
   const toXml = function (v, name, ind) {
     let _xml = '';
     if (v instanceof Array) {
