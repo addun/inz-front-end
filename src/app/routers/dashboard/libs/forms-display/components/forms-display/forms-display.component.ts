@@ -2,6 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {FormService} from '../../../../../forms/shared/services/form/form.service';
 import {FormDTO, FormRecordDTO} from '../../../../../forms/shared/dto/form.dto';
 import {FormDisplayNotificationService} from '../../serivces/form-display-notification/form-display-notification.service';
+import {download, objectToXML} from '../../../../utils';
 
 @Component({
   selector: 'inz-forms-display',
@@ -59,47 +60,4 @@ export class FormsDisplayComponent implements OnInit, OnChanges {
       );
   }
 
-}
-
-function objectToXML(object) {
-  let xml = ``;
-  for (const key of Object.keys(object)) {
-    const value = object[key];
-
-    if (Object.prototype.toString.call(value) === '[object Object]') {
-      const nestedXML = objectToXML(value);
-      xml += keyValueToXML(key, nestedXML);
-    } else if (Object.prototype.toString.call(value) === '[object Array]') {
-      value.forEach(element => {
-        const nestedXML = objectToXML(element);
-        xml += keyValueToXML(key, nestedXML);
-      });
-    } else {
-      xml += keyValueToXML(key, value);
-    }
-  }
-  return xml;
-}
-
-function keyValueToXML(key, value) {
-  if (value === null) {
-    return `<${key}></${key}>`;
-  } else {
-    return `<${key}>${value}</${key}>`;
-  }
-}
-
-function download(filename, text) {
-  const data = new Blob([text]);
-  const element = document.createElement('a');
-  element.setAttribute('href', URL.createObjectURL(data));
-  element.setAttribute('type', 'text/xml');
-  element.setAttribute('download', filename);
-
-  element.style.display = 'none';
-  document.body.appendChild(element);
-
-  element.click();
-
-  document.body.removeChild(element);
 }
