@@ -95,8 +95,7 @@ export class DashboardComponent implements OnInit {
       predefined: true,
       folder: this.selectedFolderId
     }).subscribe(response => {
-      this.selectedForm = response;
-      this.hasSelectedFolderForm = true;
+      this.displayViewBaseOnSelectedFolder();
     });
   }
 
