@@ -3,7 +3,6 @@ import {FormDisplayNotificationService} from '../../../forms-display/serivces/fo
 import {FormService} from '../../../../../forms/shared/services/form/form.service';
 import {FormDTO, FormRecordDTO} from '../../../../../forms/shared/dto/form.dto';
 import {download, objectToXML} from '../../../../utils';
-import {MachineToolSpecification} from '../../../../../forms/machine-tool-specification/shared/models';
 
 @Component({
   selector: 'inz-machine-tool-display',
@@ -14,6 +13,7 @@ export class MachineToolDisplayComponent implements OnInit, OnChanges {
   @Input() formId: string;
   form: FormDTO = null;
   isWrongForm = false;
+  isLoaded = false;
 
   constructor(private formService: FormService,
               private formDisplayNotificationService: FormDisplayNotificationService) {
@@ -67,6 +67,8 @@ export class MachineToolDisplayComponent implements OnInit, OnChanges {
           this.isWrongForm = true;
           this.formDisplayNotificationService.incorrectData();
         }
-      );
+        , () => {
+          this.isLoaded = true;
+        });
   }
 }

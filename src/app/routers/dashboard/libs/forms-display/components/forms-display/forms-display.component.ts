@@ -13,6 +13,7 @@ export class FormsDisplayComponent implements OnInit, OnChanges {
   @Input() formId: string;
   form: FormDTO = null;
   isWrongForm = false;
+  isLoaded = false;
 
   constructor(private formService: FormService,
               private formDisplayNotificationService: FormDisplayNotificationService) {
@@ -45,6 +46,7 @@ export class FormsDisplayComponent implements OnInit, OnChanges {
   }
 
   private fetchFormRecords() {
+    this.isLoaded = false;
     this.formService
       .getForm(this.formId)
       .subscribe(
@@ -56,6 +58,8 @@ export class FormsDisplayComponent implements OnInit, OnChanges {
           this.form = null;
           this.isWrongForm = true;
           this.formDisplayNotificationService.incorrectData();
+        }, () => {
+          this.isLoaded = true;
         }
       );
   }

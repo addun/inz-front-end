@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   public selectedFolderId;
   public hasSelectedFolderForm = false;
   public selectedForm: FormDTO;
+  public isLoaded = false;
 
   constructor(private folderService: FolderService,
               private formService: FormService,
@@ -120,13 +121,15 @@ export class DashboardComponent implements OnInit {
   }
 
   private displayViewBaseOnSelectedFolder() {
-    this.hasSelectedFolderForm = false;
+    this.isLoaded = false;
     this.formService.getForm(this.selectedFolderId)
       .subscribe(value => {
         this.hasSelectedFolderForm = true;
         this.selectedForm = value;
       }, error => {
         this.hasSelectedFolderForm = false;
+      }, () => {
+        this.isLoaded = true;
       });
   }
 

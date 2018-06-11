@@ -38,3 +38,9 @@
   <i class="fa fa-battery-0  empty-content-emoji" aria-hidden="true"></i>
   <p *ngIf="!isWrongForm">This form does not contain any records</p>
 </div>
+
+<div *ngIf="isLoaded" class="text-center m-3">
+  <a [routerLink]="['/forms', 'predefined','machine_tool_specification']"
+     [queryParams]="{formId: formId}"
+     class="btn btn-primary">Add new record</a>
+</div>

@@ -37,22 +37,13 @@
 </div>
 
 
-<div class="folder-content" *ngIf="hasSelectedFolderForm">
+<div class="folder-content" *ngIf="hasSelectedFolderForm && isLoaded">
   <ng-container *ngIf="!selectedForm.predefined">
     <inz-forms-display [formId]="selectedFolderId"></inz-forms-display>
-
-    <div class="text-center m-3">
-      <a [routerLink]="['/forms', selectedFolderId, 'records', 'add']" class="btn btn-primary">Add new records</a>
-    </div>
   </ng-container>
 
   <ng-container *ngIf="selectedForm.predefined">
     <inz-machine-tool-display [formId]="selectedFolderId"></inz-machine-tool-display>
-    <div class="text-center m-3">
-      <a [routerLink]="['/forms', 'predefined','machine_tool_specification']"
-         [queryParams]="{formId: selectedFolderId}"
-         class="btn btn-primary">Add new record</a>
-    </div>
   </ng-container>
 
 </div>

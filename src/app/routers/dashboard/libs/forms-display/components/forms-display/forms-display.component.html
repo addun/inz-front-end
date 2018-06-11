@@ -40,3 +40,6 @@
   <p *ngIf="!isWrongForm">This form does not contain any records</p>
 </div>
 
+<div *ngIf="isLoaded" class="text-center m-3">
+  <a [routerLink]="['/forms', formId, 'records', 'add']" class="btn btn-primary">Add new records</a>
+</div>
