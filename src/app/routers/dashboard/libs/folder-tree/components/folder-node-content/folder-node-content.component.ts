@@ -30,7 +30,9 @@ export class FolderNodeContentComponent implements OnInit, OnDestroy {
 
   @HostListener('click')
   onComponentClick() {
-    this.folderTreeService.selectedFolder = this.folder.id;
+    if( this.folderTreeService.selectedFolder !== this.folder.id) {
+      this.folderTreeService.selectedFolder = this.folder.id;
+    }
   }
 
   toggleShowChildren(): void {
