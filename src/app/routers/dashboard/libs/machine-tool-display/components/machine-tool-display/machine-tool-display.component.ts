@@ -3,6 +3,7 @@ import {FormDisplayNotificationService} from '../../../forms-display/serivces/fo
 import {FormService} from '../../../../../forms/shared/services/form/form.service';
 import {FormDTO, FormRecordDTO} from '../../../../../forms/shared/dto/form.dto';
 import {download, objectToXML} from '../../../../utils';
+import {MachineToolSpecification} from '../../../../../forms/machine-tool-specification/shared/models';
 
 @Component({
   selector: 'inz-machine-tool-display',
@@ -45,7 +46,8 @@ export class MachineToolDisplayComponent implements OnInit, OnChanges {
         const capability = element.capabilities[property];
         output.push(...capability);
       }
-      return output;
+      element.capabilities = output;
+      return element;
     });
 
     const xml = `<machine_tool_specification>${objectToXML(objToManipulate)}</machine_tool_specification>`;
