@@ -29,7 +29,6 @@
     "bootstrap": "^4.0.0",
     "core-js": "^2.5.3",
     "font-awesome": "^4.7.0",
-    "ng2-breadcrumbs": "^0.1.281",
     "ngx-toastr": "^8.7.3",
     "rxjs": "6.1.0",
     "rxjs-compat": "^6.0.0-rc.0",
