@@ -80,7 +80,7 @@ export class FormCreateComponent implements OnInit {
 
 
 function validateEmail(c: FormControl) {
-  const slug_regex = /^[a-zA-Z_]+$/g;
+  const slug_regex = /^[a-zA-Z0-9_]+$/g;
   return slug_regex.test(c.value) ? null : {
     validateEmail: {
       valid: false
